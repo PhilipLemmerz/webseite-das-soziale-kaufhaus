@@ -1,0 +1,126 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+    background-color: #0058A3;
+    color: whitesmoke;
+}
+
+.rowTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+}
+
+.logoImage {
+    width: 10rem;
+    object-fit: contain;
+}
+
+.spacer {
+    align-self: center;
+    background-color: whitesmoke;
+    width: 50vw;
+    height: 2px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.rowBottom {
+    display: flex;
+    justify-content: center;
+    column-gap: 2rem;
+}
+
+.link {
+    text-decoration: underline transparent
+}
+
+.link:hover {
+    text-decoration: underline whitesmoke;
+}
+
+.linkBox {
+    display: block;
+}
+
+.menuBTN,
+.infoBTN {
+    display: none;
+}
+
+.menuMobile {
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    width: 100vw;
+    background-color: #0058A3;
+    border-left: 1px solid #0058A3;
+    border-bottom: 1px solid #0058A3;
+    font-size: 1.2em;
+    border-radius: 0 0 0 5px;
+}
+
+.infoMenu {
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    width: 100vw;
+    background-color: #0058A3;
+    border-left: 1px solid #0058A3;
+    border-bottom: 1px solid #0058A3;
+    font-size: 1.2em;
+    border-radius: 0 0 0 5px;
+}
+
+.closeBTN {
+    align-self: flex-end;
+    font-size: 2.5em;
+}
+
+
+@media screen and (max-width: 800px) {
+
+    .linkBox,
+    .contactBox {
+        display: none;
+    }
+
+    .menuBTN {
+        display: block;
+        font-size: 2.5em;
+        background-color: whitesmoke;
+        color: #0058A3;
+        padding: 0.5rem;
+        border-radius: 5px;
+    }
+
+    .infoBTN {
+        display: block;
+        color: whitesmoke;
+        font-size: 2.5em;
+    }
+
+    .rowTop {
+        align-items: center;
+    }
+}
+
+
+@media screen and (max-width: 450px) {
+    .rowTop {
+        flex-direction: column;
+        row-gap: 2rem;
+    }
+
+    .rowBottom {
+        flex-direction: column;
+        align-items: center;
+    }
+}

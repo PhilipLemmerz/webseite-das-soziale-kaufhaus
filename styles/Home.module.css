@@ -38,6 +38,8 @@
   background-position: 50%;
   display: flex;
   border-radius: 5px;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .aboveFoldRightQuadratTop {
@@ -47,6 +49,8 @@
   height: 30vh;
   background-position: 80% 0%;
   background-image: url('../public/entrümpelung-sozialkaufhaus-koeln-bonn-header.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .aboveFoldleftQuadratBottom {
@@ -56,6 +60,8 @@
   background-image: url('../public/sozialkaufhaus-umzugsunternehmen-koeln-bonn.jpg');
   display: flex;
   border-radius: 5px;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .aboveFoldRightQuadratBottom {
@@ -65,6 +71,8 @@
   display: flex;
   height: 30vh;
   background-image: url('../public/moebelspende-koeln-bonn-header.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .introductionSection {
@@ -72,10 +80,11 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 3rem;
+  padding: 0 2rem 0 2rem;
 }
 
 .introductionSectionContent {
-  width: 1500px;
+  max-width: 1500px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,7 +92,6 @@
 }
 
 .headline {
-  font-size: 2.5em;
   margin-bottom: 0
 }
 
@@ -94,35 +102,26 @@
   background: linear-gradient(90deg, rgb(255, 255, 255) 0%, #fbd81480 45%, #fbd8149c 100%);
   color: #0058A3;
   border-radius: 5px;
-  width: 30%;
+  max-width: 30rem;
 }
 
-.serviceSection {
+.productsSection {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 5rem;
-  margin-bottom: 10rem;
+  margin-bottom: 5rem;
 }
 
 .products {
   display: flex;
   align-self: flex-start;
-  max-width: 1500px;
 }
 
 .productsImage {
-  height: 40vh;
-  width: 50vw;
+  height: 320px;
+  width: 40vw;
   object-fit: cover;
-}
-
-.imageOverlay {
-  background: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 30%);
-  margin-top: -25rem;
-  height: 40vh;
-  width: 50vw;
-  z-index: 1;
 }
 
 .productsContent {
@@ -131,16 +130,19 @@
   padding-right: 1rem;
   background-color: #0058A3;
   width: 30vw;
-  height: 40vh;
+  height: 320px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 0px 5px 5px 0px;
+  text-align: center;
 }
 
 .productsHeadline {
   margin-bottom: 0rem;
+  margin-top: 0;
+  font-size: 1.5em;
 }
 
 .productsBTN {
@@ -162,32 +164,198 @@
   cursor: pointer;
 }
 
-.clearing {
-  align-self: flex-end;
+.serviceSection {
   display: flex;
-  max-width: 1500px;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5rem;
+  padding: 0 2rem 0 2rem;
 }
 
-.clearingContent {
+.servicesHeadline {
+  text-align: center;
+}
+
+.serviceSectionContent {
+  max-width: 1500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.servicesBox {
+  display: flex;
+  column-gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  row-gap: 2rem;
+}
+
+.serviceParagraph {
+  text-align: center;
+  margin-top: -0.5rem;
+  margin-bottom: 3rem;
+}
+
+.clearingService,
+.pickUpService,
+.transportService {
+  border-radius: 5px;
+  box-shadow: rgb(73, 73, 73) 1px 1px 5px;
+  width: 22rem;
+}
+
+.serviceImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px 5px 0px 0px;
+  object-position: 50% 0%;
+}
+
+.cardContent {
+  padding: 0 1rem 2rem 1rem;
+}
+
+.serviceList,
+.contactList,
+.storeItemList {
+  list-style: none;
+  padding: 0;
+}
+
+.checkIcon {
+  color: #0058A3
+}
+
+.serviceBTN {
+  background-color: white;
+  outline: none;
+  border: solid 1px #0058A3;
+  padding: 0.4rem 0.7rem 0.4rem 0.7rem;
+  border-radius: 5px;
+  margin-top: 0.5rem;
+}
+
+.serviceBTN:hover {
+  background-color: #0058A3;
+  color: white;
+  cursor: pointer;
+}
+
+.donatesSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 8rem;
+  margin-bottom: 5rem;
+}
+
+.donate {
+  align-self: flex-end;
+  display: flex;
+}
+
+.donateContent {
   color: white;
   padding-left: 1rem;
   padding-right: 1rem;
   background-color: #0058A3;
   width: 30vw;
-  height: 40vh;
+  height: 320px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 5px 0 0 5px;
+  text-align: center;
 }
 
-.clearingImage {
-  width: 49.2vw;
+.donateHeadline {
+  margin-bottom: 0rem;
+  font-size: 1.5em;
+  margin-top: 0;
+}
+
+.donateImage {
+  width: 40vw;
   object-fit: cover;
-  height: 40vh;
+  height: 320px;
   object-fit: cover;
   object-position: 10% 0%;
+}
+
+.donateBTN {
+  border: 2px solid white;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+  font-size: 1em;
+  font-weight: 600;
+  padding: 0.5rem;
+  margin-top: 2rem;
+  width: 12rem;
+}
+
+.donateBTN:hover {
+  background-color: white;
+  border: 2px solid #0058A3;
+  color: #0058A3;
+  cursor: pointer;
+}
+
+.storeSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 2rem 5rem 2rem;
+  background-color: #F5FAFD;
+}
+
+.locationBox {
+  display: flex;
+  column-gap: 5rem;
+  align-items: center;
+  width: 90vw;
+  max-width: 1500px;
+}
+
+.locationContent {
+  text-align: left;
+}
+
+.headlineStore {
+  color: #0058A3;
+  background: linear-gradient(90deg, rgb(255, 255, 255) 0%, #fbd81480 45%, #fbd8149c 100%);
+  max-width: 20rem;
+  border-radius: 5px;
+}
+
+.storeImageHeimerzheim,
+.storeImageLannesdorf {
+  max-width: 25vw;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.spacer {
+  width: 15vw;
+  margin: 2rem 0 2rem 0;
+  border-bottom: #bdbdbd 1px solid;
+}
+
+.contactListItem {
+  padding-bottom: 0.5rem;
+}
+
+.contactBox {
+  box-shadow: rgb(73, 73, 73) 1px 1px 5px;
+  width: 60%;
+  padding: 2px 5px 2px 15px;
+  border-radius: 5px;
+  margin-top: 2rem;
 }
 
 
@@ -195,9 +363,19 @@
   .aboveFoldSection {
     padding: 2rem;
   }
+
+  .productsImage,
+  .donateImage {
+    width: 50vw;
+  }
+
+  .productsContent,
+  .donateContent {
+    width: 40vw;
+  }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 830px) {
   .aboveFoldleftQuadratTop {
     width: 50%;
   }
@@ -213,40 +391,133 @@
   .aboveFoldRightQuadratBottom {
     width: 50%;
   }
+
+  .clearingService,
+  .pickUpService,
+  .transportService {
+    width: 90vw;
+    max-width: 23rem;
+  }
+
+  .locationBox {
+    flex-direction: column-reverse;
+  }
+
+  .locationContent {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .storeImageHeimerzheim {
+    max-width: 500px;
+    width: 90vw;
+    height: auto;
+  }
+
+  .storeImageLannesdorf {
+    max-width: 500px;
+    width: 90vw;
+    height: auto;
+    margin-top: 2rem;
+  }
+
+  .aboveFoldleftQuadratTop {
+    height: calc(100vw/3);
+    min-height: 120px;
+  }
+
+  .aboveFoldRightQuadratTop {
+    height: calc(100vw/3);
+    min-height: 120px;
+  }
+
+  .aboveFoldleftQuadratBottom {
+    height: calc(100vw/3);
+    min-height: 120px;
+  }
+
+  .aboveFoldRightQuadratBottom {
+    height: calc(100vw / 3);
+    min-height: 120px;
+  }
 }
 
-@media screen and (max-width: 545px) {
+@media screen and (max-width: 500px) {
+  .aboveFoldContent {
+    font-size: 0.6em;
+  }
+
   .aboveFoldRow {
-    flex-direction: column;
-    row-gap: 1rem;
+    column-gap: 0.5rem;
   }
 
   .aboveFoldSection {
-    padding-top: 1rem;
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    row-gap: 0.5rem;
+  }
+
+  .introductionSection {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
 
-  .aboveFoldleftQuadratTop {
-    width: 100%;
-    height: 30vh;
-    background-position: 50% 10%;
+  .subheadline {
+    font-size: 1.2em;
   }
 
-  .aboveFoldRightQuadratTop {
-    width: 100%;
-    height: 30vh;
+  .productsContent {
+    width: 70vw;
   }
 
-  .aboveFoldleftQuadratBottom {
-    width: 100%;
-    height: 30vh;
-    background-position: 35% 55%;
+  .productsImage {
+    width: 30vw;
   }
 
-  .aboveFoldRightQuadratBottom {
-    width: 100%;
-    height: 30vh;
-    background-position: 77% 58%;
+  .productsBTN {
+    width: 80%
+  }
+
+  .donatesSection {
+    margin-bottom: 0;
+  }
+
+  .donateImage {
+    width: 30vw;
+    height: 50vh;
+  }
+
+  .donateContent {
+    width: 70vw;
+    height: 50vh;
+  }
+
+  .donateBTN {
+    width: 80%
+  }
+
+  .contactBox {
+    width: 90vw;
+  }
+
+  .storeSection {
+    padding-top: 5rem;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .aboveFoldContent {
+    word-wrap: break-word;
+  }
+
+  .productsHeadline,
+  .donateHeadline {
+    font-size: 1.1em;
+  }
+
+  .productsBTN,
+  .donateBTN {
+    font-size: 0.8em;
   }
 }
