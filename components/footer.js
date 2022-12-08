@@ -16,7 +16,7 @@ export default function FooterComponent() {
         <Fragment>
             <footer className={styles.footer}>
                 <div className={styles.rowTop}>
-                    <Link href="/"><Image class={styles.logoImage} src="/Logo Sozialkaufhaus Bonn white.png" alt="logo Footer Sozialkaufhaus Kön Bonn" width={200} height={100} /></Link>
+                    <Link href="/"><Image className={styles.logoImage} src="/Logo Sozialkaufhaus Bonn white.png" alt="logo Footer Sozialkaufhaus Kön Bonn" width={200} height={100} /></Link>
                     <nav className={styles.linkBox}>
                         <h4>Weiterführende Links</h4>
                         <Link href="/"><p className={styles.link}>Sortiment</p></Link>
@@ -45,9 +45,9 @@ export default function FooterComponent() {
                     <div className={styles.closeBTN} onClick={setMenuMobile.bind(this, false)}>
                         <AiOutlineCloseSquare />
                     </div>
-                    <Link href="/"><Image class={styles.logoImage} src="/Logo Sozialkaufhaus Bonn white.png" alt="logo Footer Sozialkaufhaus Kön Bonn" width={200} height={100} /></Link>
+                    <Link href="/"><Image className={styles.logoImage} src="/Logo Sozialkaufhaus Bonn white.png" alt="logo Footer Sozialkaufhaus Kön Bonn" width={200} height={100} /></Link>
                     <h4>Weiterführende Links</h4>
-                    <Link href="/"><p className={styles.link}>Sortiment</p></Link>
+                    <Link href="/gebraucht-moebel"><p className={styles.link}>Sortiment</p></Link>
                     <Link href="/"><p className={styles.link}>Entrümpelung</p></Link>
                     <Link href="/"><p className={styles.link}>Möbelabholung</p></Link>
                     <Link href="/"><p className={styles.link}>Über uns</p></Link>
@@ -57,7 +57,7 @@ export default function FooterComponent() {
                     <div className={styles.closeBTN} onClick={setMenuInfo.bind(this, false)}>
                         <AiOutlineCloseSquare />
                     </div>
-                    <Link href="/"><Image class={styles.logoImage} src="/Logo Sozialkaufhaus Bonn white.png" alt="logo Footer Sozialkaufhaus Kön Bonn" width={200} height={100} /></Link>
+                    <Link href="/"><Image className={styles.logoImage} src="/Logo Sozialkaufhaus Bonn white.png" alt="logo Footer Sozialkaufhaus Kön Bonn" width={200} height={100} /></Link>
                     <h4>Kontakt</h4>
                     <Link href="/"><p className={styles.link}> <BsFillCursorFill /> zum Kontaktformular</p></Link>
                     <p> <IoMailUnreadOutline /> info@dsk-nrw.de</p>

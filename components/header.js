@@ -6,14 +6,42 @@ import { GoLocation } from "react-icons/go";
 import { BiTimeFive } from "react-icons/bi";
 import { TbMessageCircle } from "react-icons/tb";
 import { IoMailUnreadOutline } from "react-icons/io5";
-import { BsWhatsapp, BsInfoCircleFill } from "react-icons/bs";
+import { BsWhatsapp, BsInfoCircleFill, BsTelephoneForward } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineCloseSquare } from "react-icons/ai";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from 'next/router'
 
 export default function HeaderComponent() {
     const [infoSlider, setinfoSlider] = useState(false);
     const [menu, setMenu] = useState(false);
+    const [scrollMenu, setScrollMenu] = useState(false);
+    const [scrolledY, setScrolled] = useState(0);
+    const [callInfo, setCallInfo] = useState(false);
+
+    const router = useRouter();
+    const page = router.pathname;
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY)
+        }
+        window.addEventListener("scroll", handleScroll);     
+
+        if (page === '/' && scrolledY > 300) {
+            activateScrollMenu()
+        } else {
+            deactivateScrollMenu()
+        }
+    });
+
+    function activateScrollMenu() {
+        setScrollMenu(true);
+    }
+
+    function deactivateScrollMenu() {
+        setScrollMenu(false);
+    }
 
     return (
         <Fragment>
@@ -60,20 +88,6 @@ export default function HeaderComponent() {
                         </div>
                     </div>
                 </div>
-                <nav className={styles.navigationBox}>
-                    <div className={styles.navigation}>
-                        <Link href="/" className={styles.navLink}>Sortiment</Link>
-                        <Link href="/" className={styles.navLink}>Haushaltsauflösungen</Link>
-                        <Link href="/" className={styles.navLink}>Umzüge</Link>
-                        <Link href="/" className={styles.navLink}>Möbelabholungen</Link>
-                        <Link href="/" className={styles.navLink}>Über uns</Link>
-                        <Link href="/" className={styles.navLink}>Kontakt</Link>
-                        <Link href="/" className={styles.navLink}>Karriere</Link>
-                        <div onClick={setMenu.bind(this, true)} className={styles.menuHamburger}>
-                            <GiHamburgerMenu />
-                        </div>
-                    </div>
-                </nav>
                 {infoSlider && <div className={styles.infoSlider}>
                     <div className={styles.closeBTN} onClick={setinfoSlider.bind(this, false)}>
                         <AiOutlineCloseSquare />
@@ -99,7 +113,7 @@ export default function HeaderComponent() {
                     <div className={styles.closeBTN} onClick={setMenu.bind(this, false)}>
                         <AiOutlineCloseSquare />
                     </div>
-                    <Link href="/" className={styles.navLinkMobile}>Sortiment</Link>
+                    <Link href="/gebraucht-moebel" className={styles.navLinkMobile}>Sortiment</Link>
                     <Link href="/" className={styles.navLinkMobile}>Haushaltsauflösungen</Link>
                     <Link href="/" className={styles.navLinkMobile}>Umzüge</Link>
                     <Link href="/" className={styles.navLinkMobile}>Möbelabholungen</Link>
@@ -108,6 +122,49 @@ export default function HeaderComponent() {
                     <Link href="/" className={styles.navLinkMobile}>Karriere</Link>
                 </div>
                 }
+                {scrollMenu && <nav className={styles.navigationScrolledBox}>
+                    <div className={styles.navigationScrolled}>
+                        <Link href="/gebraucht-moebel" className={styles.navLink}>Sortiment</Link>
+                        <Link href="/" className={styles.navLink}>Haushaltsauflösungen</Link>
+                        <Link href="/" className={styles.navLink}>Umzüge</Link>
+                        <Link href="/" className={styles.navLink}>Möbelabholungen</Link>
+                        <Link href="/" className={styles.navLink}>Über uns</Link>
+                        <Link href="/" className={styles.navLink}>Kontakt</Link>
+                        <Link href="/" className={styles.navLink}>Karriere</Link>
+                        <div onClick={setMenu.bind(this, true)} className={styles.menuHamburger}>
+                            <GiHamburgerMenu />
+                        </div>
+                    </div>
+                    <button onClick={setCallInfo.bind(this, true)} className={styles.contactBTNscrolledMenu}><BsTelephoneForward /> jetzt anrufen </button>
+                </nav>
+                }
+                <nav className={styles.navigationBox}>
+                    <div className={styles.navigation}>
+                        <Link href="/gebraucht-moebel" className={styles.navLink}>Sortiment</Link>
+                        <Link href="/" className={styles.navLink}>Haushaltsauflösungen</Link>
+                        <Link href="/" className={styles.navLink}>Umzüge</Link>
+                        <Link href="/" className={styles.navLink}>Möbelabholungen</Link>
+                        <Link href="/" className={styles.navLink}>Über uns</Link>
+                        <Link href="/" className={styles.navLink}>Kontakt</Link>
+                        <Link href="/" className={styles.navLink}>Karriere</Link>
+                        <div onClick={setMenu.bind(this, true)} className={styles.menuHamburger}>
+                            <GiHamburgerMenu />
+                        </div>
+                    </div>
+                </nav>
+                {callInfo && <div className={styles.callInfoBox}>
+                    <div className={styles.closeBTN} onClick={setCallInfo.bind(this, false)}>
+                        <AiOutlineCloseSquare />
+                    </div>
+                    <div>
+                        <p>Filiale Swisttal:</p>
+                        <p className={styles.phoneNumber}><BsTelephoneForward />  +49 (0) 2254 600 480 5  </p>
+                    </div>
+                    <div>
+                        <p>Filiale Bonn:</p>
+                        <p className={styles.phoneNumber}><BsTelephoneForward /> +49 (0) 228 227 983 49 </p>
+                    </div>
+                </div>}
             </header>
         </Fragment>
     )

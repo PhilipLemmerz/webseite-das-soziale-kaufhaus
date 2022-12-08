@@ -74,7 +74,7 @@
 }
 
 .infoSlider {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     background-color: #F5FAFD;
@@ -86,6 +86,7 @@
     border-bottom: 1px solid #0058A3;
     display: flex;
     flex-direction: column;
+    z-index: 1;
 }
 
 .sliderContentBox {
@@ -100,9 +101,10 @@
 }
 
 .mobileMenu {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     row-gap: 1.5rem;
@@ -115,6 +117,61 @@
     font-size: 1.2em;
     animation: slideIn 0.5s forwards ease-in-out;
     border-radius: 0 0 0 5px;
+}
+
+.navigationScrolledBox {
+    background-color: #0058A3;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 2rem 0.8rem 2rem;
+}
+
+.navigationScrolled {
+    column-gap: 1rem;
+    display: flex;
+    color: whitesmoke;
+    font-size: 1.1em;
+}
+
+.contactBTNscrolledMenu {
+    background-color: #f7df58;
+    outline: none;
+    border-radius: 5px;
+    width: 15rem;
+    border: none;
+    color: #0058A3;
+    font-size: 1.1em;
+    padding: 0.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 1rem;
+}
+
+.callInfoBox {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 60vw;
+    background-color: #F5FAFD;
+    border-bottom: #0058A3 1px solid;
+    border-left: #0058A3 solid 1px;
+    border-radius: 0 0 0 5px;
+    animation: slideIn 0.5s forwards ease-in-out;
+    padding: 2rem;
+}
+
+.phoneNumber {
+    color: #0058A3;
+    font-weight: 600;
 }
 
 @keyframes slideIn {
@@ -175,9 +232,23 @@
         column-gap: 1rem;
         font-size: 1em;
     }
+
+    .navigationScrolledBox {
+        flex-direction: column-reverse;
+        align-items: center;
+        row-gap: 0.5rem;
+    }
+
+    .contactBTNscrolledMenu {
+        font-size: 0.9em;
+        font-weight: 500;
+        padding: 0.4rem;
+        width: 10rem;
+    }
+
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
     .headerHeadData {
         column-gap: 1rem;
     }
@@ -196,7 +267,20 @@
         background-color: whitesmoke;
         color: #0058A3;
         padding: 0.5rem;
+        font-size: 1.2em;
+    }
+
+    .navigationScrolledBox {
+        flex-direction: row;
+        align-items: center;
+        row-gap: 0.5rem;
+    }
+
+    .contactBTNscrolledMenu {
         font-size: 1.1em;
+        font-weight: 500;
+        padding: 0.4rem;
+        width: 12rem;
     }
 }
 
@@ -227,11 +311,18 @@
     }
 }
 
-@media screen and (max-width: 400px) {
-    .infoSlider, .mobileMenu {
+@media screen and (max-width: 430px) {
+
+    .infoSlider,
+    .mobileMenu,
+    .callInfoBox {
         width: 100vw;
         border: none;
         border-bottom: #0058A3 solid 1px;
         border-radius: 0px;
+    }
+
+    .navigationScrolledBox {
+        padding: 0.8rem;
     }
 }

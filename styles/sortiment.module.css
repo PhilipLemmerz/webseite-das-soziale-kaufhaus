@@ -1,0 +1,125 @@
+.rowProducts {
+    display: flex;
+    column-gap: 1rem;
+    margin: 1rem 0 1rem 0;
+    width: 100%;
+    justify-content: center;
+}
+
+.productFurniture {
+    background-image: url('../public/gebraucht-moebel-sozialkaufhaus.jpg');
+    background-size: cover;
+    width: 350px;
+    height: 250px;
+    display: flex;
+    border-radius: 5px;
+}
+
+.productArticles {
+    background-image: url('../public/sozialkaufhaus-gebraucht-moebel-haushaltswaren.jpg');
+    background-size: cover;
+    width: 350px;
+    height: 250px;
+    display: flex;
+    border-radius: 5px;
+}
+
+.productClothes {
+    background-image: url('../public/gebraucht-moebel-kleidung-sozialkaufhaus.jpg');
+    background-size: cover;
+    width: 350px;
+    height: 250px;
+    display: flex;
+    border-radius: 5px;
+}
+
+.productEletricity {
+    background-image: url('../public/gebraucht-moebel-egeräte-sozialkaufhaus.jpg');
+    background-size: cover;
+    width: 350px;
+    height: 250px;
+    display: flex;
+    border-radius: 5px;
+}
+
+.productLamps {
+    background-image: url('../public/gebraucht-möbel-lampen-sozialkaufhaus.jpg');
+    background-size: cover;
+    width: 350px;
+    height: 250px;
+    display: flex;
+    border-radius: 5px;
+}
+
+.productSpecials {
+    background-image: url('../public/gebraucht-moebel-besonderes-sozialkaufhaus.jpg');
+    background-size: cover;
+    width: 350px;
+    height: 250px;
+    display: flex;
+    border-radius: 5px;
+}
+
+.productsText {
+    align-self: flex-end;
+    background-color: #FBD914;
+    padding: 0.5rem;
+    color: #0058A3;
+    width: 100%;
+    margin: 0;
+    border-radius: 0 0 4px 4px;
+}
+
+.introductionSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 5rem 0 5rem;
+    text-align: center;
+}
+
+.subheadline {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1.8em;
+    background: linear-gradient(90deg, rgb(255, 255, 255) 0%, #fbd81480 45%, #fbd8149c 100%);
+    color: #0058A3;
+    border-radius: 5px;
+    max-width: 30rem;
+    margin-top: 0;
+}
+
+.ebaySection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #0058A3;
+    padding: 5rem;
+    margin: 5rem 0 5rem 0;
+    color: whitesmoke;
+}
+
+.ebayHeadline {
+    margin: 0;
+}
+
+.ebayBTN {
+    background-color: #FBD914;
+    font-size: 1.5em;
+    outline: none;
+    border: none;
+    width: 20rem;
+    padding: 0.7rem 0 0.7rem 0;
+    border-radius: 5px;
+    color: #0058A3;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 0.5rem;
+}
+
+.ebayBTN:hover {
+    background-color: #f8e36c;
+    cursor: pointer;
+}

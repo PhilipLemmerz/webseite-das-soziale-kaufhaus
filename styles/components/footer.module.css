@@ -123,4 +123,14 @@
         flex-direction: column;
         align-items: center;
     }
+
+    .infoMenu {
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .infoMenu {
+        font-size: 0.8em;
+    }
 }
