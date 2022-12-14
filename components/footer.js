@@ -19,8 +19,8 @@ export default function FooterComponent() {
                     <Link href="/"><Image className={styles.logoImage} src="/Logo Sozialkaufhaus Bonn white.png" alt="logo Footer Sozialkaufhaus Kön Bonn" width={200} height={100} /></Link>
                     <nav className={styles.linkBox}>
                         <h4>Weiterführende Links</h4>
-                        <Link href="/"><p className={styles.link}>Sortiment</p></Link>
-                        <Link href="/"><p className={styles.link}>Entrümpelung</p></Link>
+                        <Link href="/gebraucht-moebel"><p className={styles.link}>Sortiment</p></Link>
+                        <Link href="/entruempelung-bonn-koeln"><p className={styles.link}>Entrümpelungen</p></Link>
                         <Link href="/"><p className={styles.link}>Möbelabholung</p></Link>
                         <Link href="/"><p className={styles.link}>Über uns</p></Link>
                         <Link href="/"><p className={styles.link}>Karriere</p></Link>
@@ -48,7 +48,7 @@ export default function FooterComponent() {
                     <Link href="/"><Image className={styles.logoImage} src="/Logo Sozialkaufhaus Bonn white.png" alt="logo Footer Sozialkaufhaus Kön Bonn" width={200} height={100} /></Link>
                     <h4>Weiterführende Links</h4>
                     <Link href="/gebraucht-moebel"><p className={styles.link}>Sortiment</p></Link>
-                    <Link href="/"><p className={styles.link}>Entrümpelung</p></Link>
+                    <Link href="/entruempelung-bonn-koeln"><p className={styles.link}>Entrümpelungen</p></Link>
                     <Link href="/"><p className={styles.link}>Möbelabholung</p></Link>
                     <Link href="/"><p className={styles.link}>Über uns</p></Link>
                     <Link href="/"><p className={styles.link}>Karriere</p></Link>

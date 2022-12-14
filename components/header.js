@@ -28,7 +28,7 @@ export default function HeaderComponent() {
         }
         window.addEventListener("scroll", handleScroll);     
 
-        if (page === '/' && scrolledY > 300) {
+        if (page === '/' && scrolledY > 300 || page === '/gebraucht-moebel' && scrolledY > 300  ) {
             activateScrollMenu()
         } else {
             deactivateScrollMenu()
@@ -47,7 +47,7 @@ export default function HeaderComponent() {
         <Fragment>
             <header className={styles.header}>
                 <div className={styles.headerHead}>
-                    <Image src="/logo-sozialkaufhaus-bonn-koeln.png" alt="Logo Sozialkaufhaus Koeln Bonn" className={styles.logo} height={100} width={150}></Image>
+                    <Link href="/"><Image src="/logo-sozialkaufhaus-bonn-koeln.png" alt="Logo Sozialkaufhaus Koeln Bonn" className={styles.logo} height={100} width={150}></Image></Link>
                     <div className={styles.headerHeadData}>
                         <div className={styles.contentBox}>
                             <GoLocation className={styles.icon} />
@@ -114,7 +114,7 @@ export default function HeaderComponent() {
                         <AiOutlineCloseSquare />
                     </div>
                     <Link href="/gebraucht-moebel" className={styles.navLinkMobile}>Sortiment</Link>
-                    <Link href="/" className={styles.navLinkMobile}>Haushaltsauflösungen</Link>
+                    <Link href="/entruempelung-bonn-koeln" className={styles.navLinkMobile}>Entrümpelungen</Link>
                     <Link href="/" className={styles.navLinkMobile}>Umzüge</Link>
                     <Link href="/" className={styles.navLinkMobile}>Möbelabholungen</Link>
                     <Link href="/" className={styles.navLinkMobile}>Über uns</Link>
@@ -125,7 +125,7 @@ export default function HeaderComponent() {
                 {scrollMenu && <nav className={styles.navigationScrolledBox}>
                     <div className={styles.navigationScrolled}>
                         <Link href="/gebraucht-moebel" className={styles.navLink}>Sortiment</Link>
-                        <Link href="/" className={styles.navLink}>Haushaltsauflösungen</Link>
+                        <Link href="/entruempelung-bonn-koeln" className={styles.navLink}>Entrümpelungen</Link>
                         <Link href="/" className={styles.navLink}>Umzüge</Link>
                         <Link href="/" className={styles.navLink}>Möbelabholungen</Link>
                         <Link href="/" className={styles.navLink}>Über uns</Link>
@@ -141,7 +141,7 @@ export default function HeaderComponent() {
                 <nav className={styles.navigationBox}>
                     <div className={styles.navigation}>
                         <Link href="/gebraucht-moebel" className={styles.navLink}>Sortiment</Link>
-                        <Link href="/" className={styles.navLink}>Haushaltsauflösungen</Link>
+                        <Link href="/entruempelung-bonn-koeln" className={styles.navLink}>Entrümpelungen</Link>
                         <Link href="/" className={styles.navLink}>Umzüge</Link>
                         <Link href="/" className={styles.navLink}>Möbelabholungen</Link>
                         <Link href="/" className={styles.navLink}>Über uns</Link>

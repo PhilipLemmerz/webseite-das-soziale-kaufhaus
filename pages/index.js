@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link';
 import { Fragment } from 'react'
 import styles from '../styles/Home.module.css';
 import { BsCheck2, BsWhatsapp, BsTelephone } from "react-icons/bs";
@@ -11,18 +12,18 @@ export default function HomePage() {
       <section className={styles.aboveFoldSection}>
         <div className={styles.aboveFoldRow}>
           <div className={styles.aboveFoldleftQuadratTop}>
-            <p className={styles.aboveFoldContent}>Sortiment & Möbel</p>
+            <Link className={styles.aboveFoldContent} href="/gebraucht-moebel">Sortiment & Möbel</Link>
           </div>
           <div className={styles.aboveFoldRightQuadratTop}>
-            <p className={styles.aboveFoldContent}> Umzüge</p>
+            <Link className={styles.aboveFoldContent} href="/">Umzug</Link>
           </div>
         </div>
         <div className={styles.aboveFoldRow}>
           <div className={styles.aboveFoldleftQuadratBottom}>
-            <p className={styles.aboveFoldContent}>Haushaltsauflösungen</p>
+            <Link className={styles.aboveFoldContent} href="/entrümpelung-koeln-bonn">Entrümpelung</Link>
           </div>
           <div className={styles.aboveFoldRightQuadratBottom}>
-            <p className={styles.aboveFoldContent}>Möbelabholungen</p>
+            <Link className={styles.aboveFoldContent} href="/">Möbelabholung</Link>
           </div>
         </div>
       </section>
@@ -47,7 +48,7 @@ export default function HomePage() {
           <div className={styles.productsContent}>
             <h3 className={styles.productsHeadline}>Möbel & mehr</h3>
             <p className={styles.productsText}>Sortiment unserer Sozialkaufhäuser</p>
-            <button className={styles.productsBTN}> jetzt entdecken </button>
+            <Link href="/gebraucht-moebel"><button className={styles.productsBTN}> jetzt entdecken </button></Link>
           </div>
         </div>
       </section>
@@ -68,7 +69,7 @@ export default function HomePage() {
                   <li><BsCheck2 className={styles.checkIcon} /> Entrümpelung zum Festpreis</li>
                   <li><BsCheck2 className={styles.checkIcon} /> Wiederverwertung Ihres Mobiliars</li>
                 </ul>
-                <button className={styles.serviceBTN}>jetzt informieren </button>
+                <Link href="/entruempelung-bonn-koeln"><button className={styles.serviceBTN}>jetzt informieren </button></Link>
               </div>
             </div>
             <div className={styles.clearingService}>

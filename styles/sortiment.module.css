@@ -1,3 +1,7 @@
+.aboveTheFoldSection {
+    padding: 0 2rem 0 2rem;
+}
+
 .rowProducts {
     display: flex;
     column-gap: 1rem;
@@ -10,7 +14,8 @@
     background-image: url('../public/gebraucht-moebel-sozialkaufhaus.jpg');
     background-size: cover;
     width: 350px;
-    height: 250px;
+    max-height: 250px;
+    height: calc(100vw / 3);
     display: flex;
     border-radius: 5px;
 }
@@ -19,7 +24,8 @@
     background-image: url('../public/sozialkaufhaus-gebraucht-moebel-haushaltswaren.jpg');
     background-size: cover;
     width: 350px;
-    height: 250px;
+    max-height: 250px;
+    height: calc(100vw / 3);
     display: flex;
     border-radius: 5px;
 }
@@ -28,7 +34,8 @@
     background-image: url('../public/gebraucht-moebel-kleidung-sozialkaufhaus.jpg');
     background-size: cover;
     width: 350px;
-    height: 250px;
+    max-height: 250px;
+    height: calc(100vw / 3);
     display: flex;
     border-radius: 5px;
 }
@@ -37,7 +44,8 @@
     background-image: url('../public/gebraucht-moebel-egeräte-sozialkaufhaus.jpg');
     background-size: cover;
     width: 350px;
-    height: 250px;
+    max-height: 250px;
+    height: calc(100vw / 3);
     display: flex;
     border-radius: 5px;
 }
@@ -46,7 +54,8 @@
     background-image: url('../public/gebraucht-möbel-lampen-sozialkaufhaus.jpg');
     background-size: cover;
     width: 350px;
-    height: 250px;
+    max-height: 250px;
+    height: calc(100vw / 3);
     display: flex;
     border-radius: 5px;
 }
@@ -55,7 +64,8 @@
     background-image: url('../public/gebraucht-moebel-besonderes-sozialkaufhaus.jpg');
     background-size: cover;
     width: 350px;
-    height: 250px;
+    max-height: 250px;
+    height: calc(100vw / 3);
     display: flex;
     border-radius: 5px;
 }
@@ -68,6 +78,7 @@
     width: 100%;
     margin: 0;
     border-radius: 0 0 4px 4px;
+    word-break: break-all;
 }
 
 .introductionSection {
@@ -122,4 +133,133 @@
 .ebayBTN:hover {
     background-color: #f8e36c;
     cursor: pointer;
+}
+
+.discountSection {
+    display: flex;
+    column-gap: 2rem;
+    justify-content: center;
+    margin-bottom: 5rem;
+    align-items: center;
+    padding: 2rem;
+}
+
+.deliverySection {
+    display: flex;
+    column-gap: 2rem;
+    justify-content: center;
+    margin-bottom: 5rem;
+    align-items: center;
+    padding: 2rem;
+}
+
+.discountImage {
+    object-fit: cover;
+    height: auto;
+    max-height: 300px;
+    width: 40vw;
+    border-radius: 5px;
+}
+
+.discountText {
+    font-size: 2em;
+    text-align: center;
+    max-width: 40vw;
+}
+
+.percentText {
+    font-weight: 700;
+    background: linear-gradient(90deg, rgb(255, 255, 255) 0%, #fbd81480 45%, #fbd8149c 100%);
+    color: #0058A3;
+    border-radius: 5px
+}
+
+.faqSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 2rem 5rem 2rem;
+    text-align: center;
+
+}
+
+.questionBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 1500px;
+    text-align: center;
+    border: 1px solid rgb(179, 179, 179);
+    border-radius: 5px;
+    padding: 1rem 2rem 1rem 2rem;
+    margin-bottom: 2rem;
+}
+
+.question {
+    margin-bottom: 0.2rem;
+    color: #0058A3
+}
+
+@media screen and (max-width: 1000px) {
+    .discountText {
+        font-size: 1.2em;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .productsText {
+        font-size: 0.7em;
+    }
+
+    .aboveTheFoldSection {
+        padding: 0.5rem;
+    }
+
+    .rowProducts {
+        column-gap: 0.5rem;
+    }
+
+    .introductionSection {
+        padding: 1rem;
+    }
+
+    .subheadline {
+        font-size: 1.3em;
+    }
+
+    .ebaySection {
+        margin: 3rem 0 3rem 0;
+        padding: 3rem 1rem 3rem 1rem;
+        text-align: center;
+    }
+
+
+    .ebayBTN {
+        width: 80vw;
+        font-size: 1em;
+    }
+
+    .discountSection {
+        flex-direction: column-reverse;
+        margin-bottom: 0;
+    }
+
+    .deliverySection {
+        flex-direction: column;
+        margin-bottom: 0;
+    }
+
+    .discountImage {
+        width: 80vw;
+    }
+
+    .discountText {
+        max-width: 80vw;
+    }
+
+    .faqSection, .questionBox {
+        padding: 1rem;
+    }
+
 }
