@@ -59,14 +59,14 @@ export default function SortimentPage() {
                 <div className={styles.questionBox}>
                     <h3 className={styles.question}>Wer darf im Sozialkaufhaus bei Köln und Bonn einkaufen? </h3>
                     <p>
-                        Bei uns ist jeder Kunde herzlich willkommen – In unserem Sozialkaufhaus bei Köln und Bonn darf jeder Gebraucht-Möbel und Haushaltswaren einkaufen.
+                        Bei uns ist jeder Kunde herzlich willkommen. In unserem Sozialkaufhaus bei Köln und Bonn darf jeder Gebraucht-Möbel und Haushaltswaren einkaufen.
                         Bedürftige Personen erhalten jedoch zusätzlich 20 % Nachlass auf alle Artikel.
                     </p>
                 </div>
                 <div className={styles.questionBox}>
                     <h3 className={styles.question}>Liefern Sie meinen Gebraucht-Möbel Einkauf auch an? </h3>
                     <p>
-                        Ja – Wir liefern Ihren Gebraucht-Möbel Einkauf auch zu Ihnen nach Hause. Die Lieferung ist ab 25 € möglich und berechnet sich aus der Entferung und dem Lieferaufwand an der Lieferadresse.
+                        Ja, wir liefern Ihren Gebraucht-Möbel Einkauf auch zu Ihnen nach Hause. Die Lieferung ist ab 25 € möglich und berechnet sich aus der Entferung und dem Lieferaufwand an der Lieferadresse.
                         Die festen Lieferkosten teilen wir Ihnen bei Ihrem Einkauf mit. Gerne helfen wir Ihnen auch bei der Montage Ihres Gebraucht-Möbel Einkauf.
                     </p>
                 </div>

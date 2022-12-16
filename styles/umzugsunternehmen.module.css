@@ -1,0 +1,203 @@
+.aboveFoldSection {
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+    background-color: #F5FAFD;
+}
+
+.formWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10rem;
+    background-color: #F5FAFD;
+    padding-bottom: 10rem;
+}
+
+.headerImage {
+    border-radius: 5px;
+}
+
+.formBackground {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 5px rgb(109, 109, 109);
+    border-radius: 5px;
+    width: 70vw;
+    margin-top: -3.5rem;
+    padding: 1.5rem;
+}
+
+.formLP {
+    background-color: white;
+    justify-content: center;
+    align-items: flex-end;
+    display: flex;
+    column-gap: 2rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.input {
+    width: 300px;
+    height: 40px;
+    font-size: 1em;
+    padding-left: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid rgb(196, 196, 196);
+    outline: none;
+    margin-top: 0.5rem;
+}
+
+.input:focus {
+    background-color: #0057a30e;
+}
+
+
+.lpFormBTN {
+    background-color: #0058A3;
+    width: 250px;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.lpFormBTN:hover {
+    background-color: #0057a3d3;
+    cursor: pointer;
+}
+
+.textForm {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+}
+
+.mainFormBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.637);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formMain {
+    width: 70vw;
+    border: 1px solid #0058A3;
+    border-radius: 5px;
+    padding: 2rem 5rem 2rem 5rem;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.closeBTNPopup {
+    font-size: 2em;
+    color: #0057a3;
+    align-self: flex-end;
+    cursor: pointer;
+    margin-right: -4rem;
+    margin-top: -1rem;
+}
+
+
+.formRow {
+    width: 100%;
+    display: flex;
+    column-gap: 2rem;
+}
+
+.formGroupMainForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputMainForm {
+    height: 30px;
+    font-size: 1em;
+    padding-left: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid rgb(196, 196, 196);
+    outline: none;
+    margin-top: 0.5rem;
+}
+
+.invalidInput {
+    height: 30px;
+    font-size: 1em;
+    padding-left: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ff7f7fd3;
+    outline: none;
+    margin-top: 0.5rem;
+}
+
+.formHeadlineTop {
+    margin-bottom: 0rem;
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.formHeadlineBottom {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.submitBTN {
+    background-color: #0058A3;
+    width: 250px;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1em;
+    font-weight: 500;
+    align-self: center;
+    margin-top: 2rem;
+}
+
+.submitBTN:hover {
+    background-color: #0057a3d3;
+    cursor: pointer;
+}
+
+.textarea {
+    height: 30px;
+    font-size: 1em;
+    padding-left: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid rgb(196, 196, 196);
+    outline: none;
+    margin-top: 0.5rem;
+    max-height: 200px;
+    height: 50px;
+    max-width: 100%;
+}
+
+.errorMessage {
+    border: 1px solid #ff7f7fd3;
+    padding: 0.7rem;
+    border-radius: 5px;
+    width: 70%;
+    text-align: center;
+}

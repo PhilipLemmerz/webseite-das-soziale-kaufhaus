@@ -1,18 +1,20 @@
 import { Fragment } from "react";
 import styles from "../styles/entruempelung.module.css";
-import { useRef, useState } from "react";
-import { BsFillHouseFill, BsCheckLg, BsInfoCircle, BsCheckCircleFill, BsTrash, BsWhatsapp } from "react-icons/bs";
+import { useRef, useState, useEffect } from "react";
+import { BsFillHouseFill, BsInfoCircle, BsCheckCircleFill, BsTrash, BsWhatsapp } from "react-icons/bs";
 import Autocomplete from "react-google-autocomplete";
 import { FaWalking } from "react-icons/fa";
 import { AiOutlineVideoCameraAdd, AiOutlineCloseCircle, AiOutlineEdit } from "react-icons/ai";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { BiArrowBack } from "react-icons/bi";
 import router from 'next/router';
-
+import Image from "next/image";
+import { HiCursorClick } from "react-icons/hi";
 
 export default function EntrümpelungPage() {
     const [files, setFiles] = useState([]);
     const [formPopup, setFormPopup] = useState(false);
+    const [scrollBTN, setScrollBTN] = useState(false);
     const [whatsAppHint, setWhatsAppHint] = useState(false);
     const [errorMessage, setErrorMessage] = useState(false);
     const [categoryRef, setCategoryRef] = useState('');
@@ -20,10 +22,32 @@ export default function EntrümpelungPage() {
     const [qm, setqm] = useState('90');
     const [infoSlider, setInfoSlider] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [scrolledY, setScrolled] = useState(0);
 
     const options = {
         componentRestrictions: { country: 'DE' },
         types: ['address']
+    }
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY)
+        }
+        window.addEventListener("scroll", handleScroll);
+
+        if (scrolledY > 900) {
+            activateScrollMenu()
+        } else {
+            deactivateScrollMenu()
+        }
+    });
+
+    function activateScrollMenu() {
+        setScrollBTN(true);
+    }
+
+    function deactivateScrollMenu() {
+        setScrollBTN(false);
     }
 
     const adressRefViewing = useRef();
@@ -33,6 +57,7 @@ export default function EntrümpelungPage() {
     const emailRefViewing = useRef();
     const telRefViewing = useRef();
     const adressRef = useRef();
+    const adressRefVideo = useRef();
     const dateRef = useRef();
     const qmRef = useRef();
     const nameRef = useRef();
@@ -70,6 +95,10 @@ export default function EntrümpelungPage() {
         setWhatsAppHint(false);
     }
 
+    function openForm() {
+        setFormPopup(true)
+    }
+
     function handleFileChange(event) {
         setFiles([...files, ...event.target.files])
         event.target.value = null;
@@ -91,7 +120,6 @@ export default function EntrümpelungPage() {
     }
 
     async function submitHandler(event) {
-        setLoading(true)
         event.preventDefault();
         if (contactInformationStep === "appointment") {
             sendEmailViewing();
@@ -102,20 +130,81 @@ export default function EntrümpelungPage() {
     }
 
     async function sendEmailViewing() {
-        if (nameRefViewing.current.value.length > 3 || emailRefViewing.current.value.length > 3 || telRefViewing.current.value.length > 3 || adressRefViewing.current.value.length > 3
-            || dateRefViewing.current.value.length > 3 || qmRefViewing.current.value.length > 1) {
-            setErrorMessage(false);
-            const data = {
-                name: nameRefViewing.current.value,
-                email: emailRefViewing.current.value,
-                phone: telRefViewing.current.value,
-                adress: adressRefViewing.current.value,
-                date: dateRefViewing.current.value,
-                qm: qmRefViewing.current.value,
+        setLoading(true)
+        try {
+            if (nameRefViewing.current.value.length > 3 && emailRefViewing.current.value.length > 3 && telRefViewing.current.value.length > 3 && adressRefViewing.current.value.length > 3
+                && qmRefViewing.current.value.length > 1) {
+                setErrorMessage(false);
+                const data = {
+                    name: nameRefViewing.current.value,
+                    email: emailRefViewing.current.value,
+                    phone: telRefViewing.current.value,
+                    adress: adressRefViewing.current.value,
+                    date: dateRefViewing.current.value,
+                    qm: qmRefViewing.current.value,
+                }
+                const response = await fetch('http://localhost:3030/dsk-website/entruempelungForm', {
+                    method: "POST",
+                    body: JSON.stringify({ ...data }),
+                    headers: { "Content-Type": "application/json" }
+                });
+                if (response.ok) {
+                    setLoading(false);
+                    router.replace('anfrage-entruempelung-erhalten');
+                } else {
+                    setLoading(false)
+                    setErrorMessage('Ups - Leider ist ein Fehler aufgetreten - Bitte versuchen Sie es erneut');
+                }
+            } else {
+                setLoading(false)
+                setErrorMessage('Bitte füllen Sie alle Felder gültig aus');
             }
+        } catch (err) {
+            setLoading(false);
+            setErrorMessage('Ups - Leider ist ein Fehler aufgetreten - Bitte versuchen Sie es erneut');
+        }
+
+    }
+
+    async function sendEmailVideo() {
+        setLoading(true)
+        try {
+            if (files.length === 0) {
+                setLoading(false)
+                return setErrorMessage('Bitte laden Sie ein Video der Immobilie hoch');
+            }
+
+            if (nameRef.current.value.length < 3 || emailRef.current.value.length < 3 || telRef.current.value.length < 3 || adressRefVideo.current.value.length < 3
+                || qmRef.current.value.length < 1) {
+                setLoading(false)
+                setErrorMessage('Bitte füllen Sie alle Felder gültig aus');
+            } else {
+                setErrorMessage(false);
+                const data = {
+                    name: nameRef.current.value,
+                    email: emailRef.current.value,
+                    phone: telRef.current.value,
+                    adress: adressRefVideo.current.value,
+                    date: dateRef.current.value,
+                    qm: qmRef.current.value,
+                    category: categoryRef,
+                }
+                const fileNameArray = await uploadFiles(data.name);
+                await sendNewEmail(fileNameArray, data);
+
+            }
+        } catch (err) {
+            setLoading(false)
+            setErrorMessage('Ups - Leider ist ein Fehler aufgetreten - Bitte versuchen Sie es erneut');
+        }
+    }
+
+    async function sendNewEmail(filenameArray, data) {
+        try {
+            const videoUrl = `localhost:3000/admin/videos/${filenameArray.join('+++')}`;
             const response = await fetch('http://localhost:3030/dsk-website/entruempelungForm', {
                 method: "POST",
-                body: JSON.stringify({ ...data }),
+                body: JSON.stringify({ ...data, link: videoUrl }),
                 headers: { "Content-Type": "application/json" }
             });
             if (response.ok) {
@@ -125,52 +214,11 @@ export default function EntrümpelungPage() {
                 setLoading(false)
                 setErrorMessage('Ups - Leider ist ein Fehler aufgetreten - Bitte versuchen Sie es erneut');
             }
-        } else {
-            setLoading(false)
-            setErrorMessage('Bitte füllen Sie alle Felder gültig aus');
-        }
-    }
-
-    async function sendEmailVideo() {
-        if (files.length === 0) {
-            setLoading(false)
-            return setErrorMessage('Bitte laden Sie ein Video der Immobilie hoch');
-        }
-
-        if (nameRef.current.value.length < 3 || emailRef.current.value.length < 3 || telRef.current.value.length < 3 || adressRef.current.value.length < 3
-            || dateRef.current.value.length < 3 || qmRef.current.value.length < 1) {
-            setLoading(false)
-            setErrorMessage('Bitte füllen Sie alle Felder gültig aus');
-        } else {
-            setErrorMessage(false);
-            const data = {
-                name: nameRef.current.value,
-                email: emailRef.current.value,
-                phone: telRef.current.value,
-                adress: adressRef.current.value,
-                date: dateRef.current.value,
-                qm: qmRef.current.value,
-                category: categoryRef,
-            }
-            const fileNameArray = await uploadFiles(data.name);
-            const sendEmail = await sendNewEmail(fileNameArray, data);
-        }
-    }
-
-    async function sendNewEmail(filenameArray, data) {
-        const videoUrl = `localhost:3000/admin/videos/${filenameArray.join('+++')}`;
-        const response = await fetch('http://localhost:3030/dsk-website/entruempelungForm', {
-            method: "POST",
-            body: JSON.stringify({ ...data, link: videoUrl }),
-            headers: { "Content-Type": "application/json" }
-        });
-        if (response.ok) {
-            setLoading(false);
-            router.replace('anfrage-entruempelung-erhalten');
-        } else {
+        } catch (err) {
             setLoading(false)
             setErrorMessage('Ups - Leider ist ein Fehler aufgetreten - Bitte versuchen Sie es erneut');
         }
+
     }
 
     async function uploadFiles(clientName) {
@@ -198,28 +246,29 @@ export default function EntrümpelungPage() {
 
     return (
         <Fragment>
+            {scrollBTN && <button onClick={setFormPopup.bind(this, true)} className={styles.scrollCTAButton}>{formPopup === 'closed' ? 'Anfrage fotzsetzen' : 'kostenloses Angebot'}</button>}
             <section className={styles.aboveTheFold}>
                 <div className={styles.imageOverlay}></div>
                 <div className={styles.headerContent}>
-                    <h1 className={styles.headline}>Entrümpelung für Köln & Bonn</h1>
-                    <p className={styles.subheadline}>über 15 Jahre Erfahrung</p>
-
                     {/* LandingPage Form */}
                     <div className={styles.form}>
-                        <div className={styles.formGroup}>
-                            <label className={styles.label} htmlFor="address">
-                                Adresse der Immobilie:
-                            </label>
-                            <Autocomplete options={options} className={styles.input} ref={adressRef} apiKey={"AIzaSyBXcBLbQlz5-zAwEHfLqD2mQcxghJ8TjOs"} placeholder="Deutschherrenstraße 197, 53179 Bonn" />
+                        <div className={styles.inputWrapper}>
+                            <div className={styles.formGroup}>
+                                <label className={styles.label} htmlFor="address">
+                                    Immobilienadresse:
+                                </label>
+                                <Autocomplete options={options} className={styles.input} ref={adressRef} apiKey={"AIzaSyBXcBLbQlz5-zAwEHfLqD2mQcxghJ8TjOs"} placeholder="Deutschherrenstraße 197, 53179 Bonn" />
+                            </div>
+                            <div className={styles.formGroup}>
+                                <label className={styles.label} htmlFor="date">
+                                    Wunschtermin:
+                                </label>
+                                <input required type="date" ref={dateRef} className={styles.dateInput}></input>
+                            </div>
                         </div>
-                        <div className={styles.formGroup}>
-                            <label className={styles.label} htmlFor="date">
-                                gewünschter Räumungstermin:
-                            </label>
-                            <input required type="date" ref={dateRef} className={styles.dateInput}></input>
-                        </div>
+
                         <div className={styles.formGroupQM}>
-                            <label htmlFor="qm">
+                            <label htmlFor="qm" className={styles.qmLabel}>
                                 Quadratmeter:
                             </label>
                             <div className={styles.qmInputBox}>
@@ -230,6 +279,7 @@ export default function EntrümpelungPage() {
                         </div>
                         <button type="button" className={styles.formBTN} onClick={openPopupForm}>{formPopup === 'closed' ? 'Anfrage fotzsetzen' : 'kostenloses Angebot erhalten'}</button>
                         {errorMessage && !formPopup && <p className={styles.errorMessage}>{errorMessage}</p>}
+
                     </div>
 
                     {/* PopUp Form */}
@@ -266,7 +316,7 @@ export default function EntrümpelungPage() {
                                     <h3 className={styles.contactHeadline}>Kontaktinformation:</h3>
                                     <div className={styles.formGroupContact}>
                                         <label className={styles.label}>Ansprechpartner</label>
-                                        <input placeholder="Herr Max Mustermann" ref={nameRefViewing} className={styles.inputContact} type="text"></input>
+                                        <input minLength="3" placeholder="Herr Max Mustermann" ref={nameRefViewing} className={styles.inputContact} type="text"></input>
                                     </div>
                                     <div className={styles.contactFormRow}>
                                         <div className={styles.formGroupContact}>
@@ -275,7 +325,7 @@ export default function EntrümpelungPage() {
                                         </div>
                                         <div className={styles.formGroupContact}>
                                             <label className={styles.label}>Telefonnummer</label>
-                                            <input placeholder="0228-227 983 49" ref={telRefViewing} className={styles.inputContact} type="tel"></input>
+                                            <input minLength="3" placeholder="0228-227 983 49" ref={telRefViewing} className={styles.inputContact} type="tel"></input>
                                         </div>
                                     </div>
                                     <h3 className={styles.contactHeadlineProperty}>Ihre Angaben zu der Immobilie:</h3>
@@ -285,8 +335,8 @@ export default function EntrümpelungPage() {
                                     </div>
                                     <div className={styles.contactFormRow}>
                                         <div className={styles.formGroupContact}>
-                                            <label className={styles.label}>spätester Räumungstermin:</label>
-                                            <input required className={styles.inputContact} ref={dateRefViewing} defaultValue={dateRef.current.value} type="date"></input>
+                                            <label className={styles.label}>Wunschtermin:</label>
+                                            <input className={styles.inputContact} ref={dateRefViewing} defaultValue={dateRef.current.value} type="date"></input>
                                         </div>
                                         <div className={styles.formGroupContact}>
                                             <label className={styles.label}>Quadratmeter:</label>
@@ -325,7 +375,7 @@ export default function EntrümpelungPage() {
                                     <h3 className={styles.contactHeadline}>Kontaktinformation:</h3>
                                     <div className={styles.formGroupContact}>
                                         <label className={styles.label}>Ansprechpartner</label>
-                                        <input placeholder="Herr Max Mustermann" ref={nameRef} className={styles.inputContact} type="text"></input>
+                                        <input minLength="3" placeholder="Herr Max Mustermann" ref={nameRef} className={styles.inputContact} type="text"></input>
                                     </div>
                                     <div className={styles.contactFormRow}>
                                         <div className={styles.formGroupContact}>
@@ -334,18 +384,18 @@ export default function EntrümpelungPage() {
                                         </div>
                                         <div className={styles.formGroupContact}>
                                             <label className={styles.label}>Telefonnummer</label>
-                                            <input placeholder="0228-227 983 49" ref={telRef} className={styles.inputContact} type="tel"></input>
+                                            <input minLength="3" placeholder="0228-227 983 49" ref={telRef} className={styles.inputContact} type="tel"></input>
                                         </div>
                                     </div>
                                     <h3 className={styles.contactHeadlineProperty}>Ihre Angaben zu der Immobilie:</h3>
                                     <div className={styles.formGroupContact}>
                                         <label className={styles.label}>Anschrift:</label>
-                                        <Autocomplete options={options} className={styles.inputContact} ref={adressRef} apiKey={"AIzaSyBXcBLbQlz5-zAwEHfLqD2mQcxghJ8TjOs"} defaultValue={adressRef.current.value} />
+                                        <Autocomplete options={options} className={styles.inputContact} ref={adressRefVideo} apiKey={"AIzaSyBXcBLbQlz5-zAwEHfLqD2mQcxghJ8TjOs"} defaultValue={adressRef.current.value} />
                                     </div>
                                     <div className={styles.contactFormRow}>
                                         <div className={styles.formGroupContact}>
                                             <label className={styles.label}>spätester Räumungstermin:</label>
-                                            <input required className={styles.inputContact} defaultValue={dateRef.current.value} type="date"></input>
+                                            <input className={styles.inputContact} defaultValue={dateRef.current.value} type="date"></input>
                                         </div>
                                         <div className={styles.formGroupContact}>
                                             <label className={styles.label}>Quadratmeter:</label>
@@ -366,16 +416,14 @@ export default function EntrümpelungPage() {
                             </form>
                         </div>}
                 </div>
-                <div className={styles.trustElementBox}>
-                    <p> <BsCheckLg className={styles.checkIcon} /> kostenfreie Beratung</p>
-                    <p> <BsCheckLg className={styles.checkIcon} /> Wiederverwertung Ihres Mobiliars</p>
-                    <p> <BsCheckLg className={styles.checkIcon} /> versichert & professionell</p>
-                </div>
             </section>
-
+            <div className={styles.headlineBox}>
+                <h1 className={styles.headline}>Entrümpelung im Raum Köln & Bonn</h1>
+                <p className={styles.subHeadline}> wiederverwerten statt entsorgen</p>
+            </div>
             {infoSlider && <section className={styles.infoSlider}>
                 <AiOutlineCloseCircle className={styles.closeBTNInfoSlider} onClick={setInfoSlider.bind(this, false)} />
-                <h2 className={styles.sliderHeadline}>Kostenfreier vor Ort Termin</h2>
+                <h2 className={styles.sliderHeadlineTop}>Kostenfreier vor Ort Termin</h2>
                 <ul className={styles.infoSliderList}>
                     <li><span className={styles.numberListIcon}>1</span>Unser Außendienst ruft Sie an und vereinbart mit Ihnen einen kostenfreien Besichtigungstermin.</li>
                     <li><span className={styles.numberListIcon}>2</span>Wir beraten Sie unverbindlich vor Ort.</li>
@@ -396,6 +444,162 @@ export default function EntrümpelungPage() {
                 </div>
                 <p> Bitte warten...</p>
             </div>}
+
+            {/* Content */}
+            <section className={styles.introductionSection}>
+                <div className={styles.introductionWrapper}>
+                    <Image className={styles.introductionImage} src="/sozialkaufhaus-bonn-koeln-moebel-header.jpg" alt="Sozialkaufhaus Bonn Koeln Entrümpelung" width={500} height={300}></Image>
+                    <div className={styles.introductionSectionContent}>
+                        <p className={styles.introductionSectionSubheadline}>nachhaltig & umweltschonend</p>
+                        <h2 className={styles.introductionSectionHeadline}>Ihre Entrümpelung mit unserem Sozialkaufhaus</h2>
+                        <p>Wiederverwerten statt entsorgen - Wenn auch Ihnen am Herzen liegt, dass nicht das gesamte Inventar bei Ihrer Entrümpelung entsorgt wird, dann sind wird
+                            genau Ihr richtiger Ansprechpartner. Mit zwei Sozialkaufhäusern bei Köln & Bonn können wir einen Großteil Ihres Mobiliars & Inventars wiederverwerten & bedürftigen
+                            Personen zur Verfügung stellen. Gerne beraten wir Sie kostenfrei & unverbindlich !
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section className={styles.howSection}>
+                <h2 className={styles.howSectionHeadline}>Ablauf für eine optimale Entrümpelung</h2>
+                <p className={styles.howSectionSubheadline}>Über 15 Jahren Erfahrung !</p>
+                <div className={styles.workFlowWrapper}>
+                    <div className={styles.stepBox}>
+                        <span className={styles.stepIcon}>1</span>
+                        <h3>kostenfreie Beratung</h3>
+                        <p>
+                            Ob persönlich vor Ort oder digital - Einer unserer 5 Entrümpelungsexperten berät Sie unverbindlich und kostenfrei. Gerne besichtigten wir die
+                            Immobilie oder beraten Sie auf Basis eines Videos der Immobilie kontakfrei und digital.
+                        </p>
+                    </div>
+                    <div className={styles.stepBox}>
+                        <span className={styles.stepIcon}>2</span>
+                        <h3>Angebot mit Festpreisbindung</h3>
+                        <p>
+                            Bei uns wissen Sie vorab zu 100% was die Entrümpelung kostet. Auf Basis der Besichtigung oder des zur Verfügung gestellten Video kalkulieren wir den
+                            Aufwand und unterbreiten Ihnen ein Angebot mit Festpreisbindung. Anschließend können Sie in Ruhe entscheiden, ob Sie uns mit Ihrer Entrümpelung beauftragen möchten.
+                        </p>
+                    </div>
+                    <div className={styles.stepBox}>
+                        <span className={styles.stepIcon}>3</span>
+                        <h3>professionelle Entrümpelung</h3>
+                        <p>
+                            Nach verbindlicher Terminvereinbarung führen wir Ihre Entrümpelung binnen ein bis drei Tagen durch. Gut erhaltenes & verwertbares Inventar & Mobiliar wird in unseren
+                            Sozialkaufhäusern bei Köln & Bonn bedürftigen Personen zur Verfügung gestellt. Alles weitere wird umweltschonend bei einem zertifizierten Entsorgungsbetrieb
+                            entsorgt. Sie erhalten Ihre Immmobilie besenrein entrümpelt zurück.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section className={styles.imagedskSection}>
+                <Image className={styles.imageDSK} src="/entrümpelung-sozialkaufhaus-koeln-bonn-header.jpg" alt="Entrümpelung Köln Bonn in Aktion" width={500} height={350}></Image>
+            </section>
+            <section className={styles.advantageSection}>
+                <h2 className={styles.advantageSectionSubheadline}>Entrümpelung mit Ihrem Sozialkaufhaus</h2>
+                <p className={styles.advantageSectionHeadline}>Ihre Vorteile auf einen Blick</p>
+                <div className={styles.advantageBoxWrapper}>
+                    <div className={styles.advantage}>
+                        <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
+                        nachhaltige Wiederverwertung Ihres Inventars
+                    </div>
+                    <div className={styles.advantage}>
+                        <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
+                        Angebot mit 100% Festpreisbindung
+                    </div>
+                    <div className={styles.advantage}>
+                        <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
+                        versicherte & professionelle Entrümpelung
+                    </div>
+                    <div className={styles.advantage}>
+                        <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
+                        besenrein nach maxmimal drei Tagen
+                    </div>
+                    <div className={styles.advantage}>
+                        <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
+                        über 15 Jahre Erfahrung für Ihre Entrümpelung
+                    </div>
+                </div>
+            </section>
+            <section className={styles.callToActionSection}>
+                <button onClick={openForm} className={styles.ctaBTN}>{formPopup === 'closed' ? 'Anfrage fotzsetzen' : 'kostenloses Angebot erhalten'} <HiCursorClick /></button>
+            </section>
+            <section className={styles.faqSection}>
+                <h2 className={styles.headlineFAQ}>Häufig gestellte Fragen</h2>
+                <div className={styles.faqBox}>
+                    <div className={styles.questionBox}>
+                        <h3 className={styles.question}>Wie lange dauert eine Entrümpelung ?</h3>
+                        <p>
+                            Bei 95% der Entrümpelungen können wir Ihnen Ihre Immobilie bereits nach 2 Tagen besenrein entrümpelt übergeben.
+                            Den genauen Aufwand können wir Ihnen bei einem kostenfreien Besichtigungstermin oder nach der Zusendung eines Videos nennen.
+                        </p>
+                    </div>
+                    <div className={styles.questionBox}>
+                        <h3 className={styles.question}>
+                            Kann es trotz der Entrümpelung zum Festpreis zu Mehrkosten kommen?
+                        </h3>
+                        <p>
+                            Nein, sie zahlen nur den im Kostenvoranschlag ausgewiesenen Betrag für die besichtigte und besprochene Entrümpelung.
+                        </p>
+                    </div>
+                    <div className={styles.questionBox}>
+                        <h3 className={styles.question}>
+                            Ist die Entrümpelung versichert?
+                        </h3>
+                        <p>
+                            Alle unsere Leistungen sind bei der Ergo Versicherungsgruppe umfangreich versichert. Gerne weisen wir Ihnen dies auf Nachfrage durch Vorlage
+                            der Versicherungspolice vor.
+                        </p>
+                    </div>
+                    <div className={styles.questionBox}>
+                        <h3 className={styles.question}>
+                            Profitieren von den werthaltigen Möbeln aus der Entrümpelung wirklich Bedürftige aus dem Raum Köln/Bonn ?
+                        </h3>
+                        <p>
+                            Grundsätzlich haben wir in unseren Sozialkaufhäusern bei Köln und Bonn keine Personenkreis Beschränkung.
+                            Wir führen jedoch nur Second-Hand Artikel und dementsprechend sind 90% unserer Kunden Sozialhilfeempfänger, Renter und Studenten. Bedürftige Menschen
+                            erhalten zudem zusätzlich nochnmals 20% Nachlass auf den gesamten Einkauf.
+                        </p>
+                    </div>
+                    <div className={styles.questionBox}>
+                        <h3 className={styles.question}>
+                            Ist der Besichtigungstermin auch kostenfrei, wenn ich das Angebot nicht beanspruche ?
+                        </h3>
+                        <p>
+                            Ja, der Besichtigungstermin ist kostenfrei und unverbindlich. Auch, wenn Sie die Entrümpelung nicht mit uns durchführen,
+                            bleibt die Besichtigung eine kostenfreie Leistung.
+                        </p>
+                    </div>
+                    <div className={styles.questionBox}>
+                        <h3 className={styles.question}>
+                            In welchem Umkreis führen Sie Entrümpelungen durch ?
+                        </h3>
+                        <p>
+                            Entrümpelungen, Haushaltsauflösungen und Wohnungsauflösungen führen wir im gesamten Raum Köln/Bonn gerne für Sie durch.
+                            Auch der gesamte Swisttaler Raum, Euskirchen, Erftstadt, Kerpen bis hin nach Bad-Münstereifel und die Eifel zählt zu unserem Leistungsgebiet.
+                            Aber auch auf der Beueler Rheinseite und dem Siebengebirgsraum sind wir gerne für Sie im Einsatz.
+                        </p>
+                    </div>
+                    <div className={styles.questionBox}>
+                        <h3 className={styles.question}>
+                            Führen Sie die Entrümpelung bzw. Haushaltsauflösung mit Containern durch ?
+                        </h3>
+                        <p>
+                            Nein. Wir führen jede Entrümpelung ausschließlich mit Transportern durch. Dies hat für Sie sehr viele Vorteile. Wir sind zeitlich viel flexibler,
+                            schneller & unabhängig von Subunternehmern und können auch bei schwer erreichbaren Immobilien zuverlässig & schnell entrümpeln.
+                        </p>
+                    </div>
+                    <div className={styles.questionBox}>
+                        <h3 className={styles.question}>
+                            Welche Vorlaufzeiten benötigen Sie für die Entrümpelung ?
+                        </h3>
+                        <p>
+                            Die Besichtigung können wir binnen weniger Tage durchführen und den Kostenvoranschlag erhalten Sie je nach Dringlichkeit auf Nachfrage
+                            bereits am Tag nach der Besichtigung. Für die eigentliche Entrümpelung benötigen wir eine Vorlaufszeit in der Regel eine Vorlaufszeit
+                            von ca. 2-3 Wochen. Muss die Entrümpelung sehr kurzfristig durchgeführt werden, rufen Sie uns gerne an. Wir halten für kurzfristige
+                            Aufträge i. d. R. immer Kapazitäten frei.
+                        </p>
+                    </div>
+                </div>
+            </section>
         </Fragment>
     )
 }

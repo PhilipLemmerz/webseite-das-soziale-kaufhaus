@@ -1,53 +1,73 @@
-.headerImage {
-    width: 100%;
-    height: 55vh;
-    object-fit: cover;
-}
-
-.imageOverlay {
-    position: absolute;
-    width: 100%;
-    height: 55vh;
-    background-color: rgba(0, 0, 0, 0.329);
-    top: 239px;
-}
-
 .aboveTheFold {
-    margin-bottom: 15rem;
+    margin-bottom: 2rem;
     padding-top: 2rem;
     display: flex;
     width: 100%;
-    height: 55vh;
+    height: 80vh;
+    max-height: 500px;
     background-size: cover;
     flex-direction: column;
     background-image: url('../public/entruempelung-koeln-bonn-header.jpg');
 }
 
+
+.scrollCTAButton {
+    position: fixed;
+    top: 0.75rem;
+    right: 1rem;
+    background-color: #f7df58;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    color: #0058A3;
+    font-size: 1.1em;
+    padding: 0.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 1rem;
+}
+
+.scrollCTAButton:hover {
+    cursor: pointer;
+    background-color: #ffec81;
+
+}
+
 .headerContent {
-    margin-left: 10rem;
+    display: flex;
+    flex-direction: column;
+    margin-right: 5rem;
+}
+
+.headlineBox {
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
 }
 
 .headline {
-    position: relative;
-    color: whitesmoke;
+    margin: 0;
+    font-size: 2.5em;
     margin-bottom: 0;
 }
 
-.subheadline {
-    position: relative;
-    width: 25rem;
-    border-radius: 5px;
-    color: whitesmoke;
-    font-weight: 600;
+.subHeadline {
+    font-weight: 500;
     font-style: italic;
-    font-size: 2em;
-    margin-top: 1rem;
-    margin-bottom: 3.5rem;
+    font-size: 1.7em;
+    max-width: 25rem;
+    border-radius: 5px;
+    color: #0057a3;
+    background: linear-gradient(90deg, rgb(255, 255, 255) 0%, #fbd81480 45%, #fbd8149c 100%);
 }
 
 .form {
-    align-self: flex-start;
-    width: 30rem;
+    align-self: flex-end;
+    margin-top: 12rem;
+    width: 40vw;
     padding: 0.5rem 1rem 1.5rem 1rem;
     background-color: #F5F5F5;
     position: relative;
@@ -87,6 +107,11 @@
 .dateInput:focus,
 .inputContact:focus {
     background-color: #0057a30e;
+}
+
+.input:invalid,
+.inputContact:invalid {
+    border: 1px solid rgb(241, 136, 136)
 }
 
 .dateInput {
@@ -167,12 +192,13 @@
 }
 
 .trustElementBox {
-    align-self: flex-start;
-    margin-top: -6rem;
+    align-self: flex-end;
+    position: absolute;
+    top: 760px;
+    margin-right: 42rem;
     display: flex;
     column-gap: 2rem;
-    font-size: 1.2em;
-    margin-left: 45rem
+    font-size: 1.1em;
 }
 
 .checkIcon {
@@ -189,6 +215,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1;
 }
 
 .navigationBox {
@@ -316,6 +343,7 @@
     background-color: white;
     padding: 2rem;
     bottom: 0;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     animation: slideIn 0.5s forwards ease-in-out;
@@ -326,6 +354,8 @@
     font-size: 2.5em;
     color: #0057a3;
     cursor: pointer;
+    position: fixed;
+    margin-bottom: 2rem;
 }
 
 .spacer {
@@ -337,6 +367,11 @@
 
 .sliderHeadline {
     font-size: 1.2em;
+}
+
+.sliderHeadlineTop {
+    font-size: 1.2em;
+    margin-top: 4rem;
 }
 
 .infoSliderList {
@@ -577,7 +612,7 @@
 }
 
 .spinnerContainer {
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
@@ -589,6 +624,218 @@
     background-color: rgba(255, 255, 255, 0.884);
     z-index: 3;
 }
+
+.introductionSection {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10rem;
+    background-color: #F5FAFD;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+}
+
+.introductionWrapper {
+    display: flex;
+    width: 80vw;
+    justify-content: center;
+    column-gap: 3rem;
+    align-items: center;
+}
+
+.introductionImage {
+    width: 60%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.introductionSectionHeadline {
+    margin: 0;
+    font-size: 2.2em;
+}
+
+.introductionSectionSubheadline {
+    color: #0057a3;
+    font-size: 1.5em;
+    margin-bottom: 0.2rem;
+    font-weight: 600;
+}
+
+.howSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    margin-bottom: 5rem;
+}
+
+.howSectionSubheadline {
+    font-size: 1.5em;
+    color: #0057a3;
+    font-style: italic;
+    font-weight: 600;
+    background: linear-gradient(90deg, rgb(255, 255, 255) 0%, #fbd81480 45%, #fbd8149c 100%);
+    border-radius: 5px;
+}
+
+.howSectionHeadline {
+    margin: 0;
+    font-size: 2em;
+}
+
+.workFlowWrapper {
+    display: flex;
+    column-gap: 5rem;
+    width: 70vw;
+    margin-top: 3rem;
+}
+
+.stepBox {
+    box-shadow: 0 0 5px #959595;
+    padding: 2rem;
+    border-radius: 5px;
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.stepIcon {
+    padding: 0.7rem 1.5rem 0.7rem 1.5rem;
+    background-color: #0057a3;
+    border-radius: 100%;
+    align-self: flex-end;
+    margin-right: -3rem;
+    margin-top: -3rem;
+    color: white;
+    font-weight: 600;
+    font-size: 1.2em;
+    font-style: italic;
+}
+
+.imagedskSection {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+    margin: 5rem 0 5rem 0;
+}
+
+.imageDSK {
+    width: 80vw;
+    max-width: 500px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #b4b4b4;
+}
+
+.advantageSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    margin-bottom: 5rem;
+}
+
+.advantageSectionSubheadline {
+    color: #0057a3;
+    font-size: 1em;
+}
+
+.advantageSectionHeadline {
+    font-size: 2em;
+    font-weight: 700;
+    margin: 0;
+}
+
+.advantageBoxWrapper {
+    margin-top: 2rem;
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 1rem;
+    row-gap: 1rem;
+}
+
+.advantage {
+    background-color: #F5FAFD;
+    width: 15vw;
+    padding: 2rem;
+    height: 200px;
+    border: 1px solid #0057a3;
+    border-radius: 5px;
+    box-shadow: 0 0 4px #cecece;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    line-height: 1.5em;
+}
+
+.callToActionSection {
+    background-color: #0057a3;
+    padding: 3rem 0.5rem 3rem 0.5rem;
+    margin: 5rem 0 5rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.ctaBTN {
+    background-color: #FBD914;
+    font-size: 1.5em;
+    outline: none;
+    border: none;
+    padding: 0.7rem;
+    border-radius: 5px;
+    color: #0058A3;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 0.5rem;
+}
+
+.ctaBTN:hover {
+    background-color: #fbd814d7;
+    cursor: pointer;
+}
+
+.faqSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.faqBox {
+    display: flex;
+    justify-content: center;
+    width: 80vw;
+    flex-wrap: wrap;
+    column-gap: 3rem;
+    row-gap: 3rem;
+}
+
+.questionBox {
+    width: 40%;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.question {
+    border-left: #0057a3 solid 3px;
+    padding-left: 1rem;
+}
+
+.headlineFAQ {
+    font-size: 2em;
+}
+
 
 @keyframes spinner {
     0% {
@@ -618,4 +865,312 @@
     to {
         transform: translateX(100%);
     }
+}
+
+
+@media screen and (max-width: 1500px) {
+    .form {
+        width: 35vw;
+    }
+
+    .headline {
+        font-size: 2.5rem;
+    }
+
+    .subheadline {
+        font-size: 1.8em;
+    }
+
+    .trustElementBox {
+        margin-right: 32rem;
+    }
+
+    .headerContent {
+        margin-right: 2rem;
+    }
+
+    .workFlowWrapper {
+        width: 90vw;
+        column-gap: 2rem;
+        padding: 0;
+    }
+
+    .introductionWrapper {
+        width: 95vw;
+    }
+
+    .advantageBoxWrapper {
+        width: 90vw;
+    }
+
+    .advantage {
+        width: 28vw;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+
+    .aboveTheFold {
+        max-height: 400px;
+    }
+
+    .form {
+        margin-top: 5rem;
+        min-width: 23rem;
+        width: 35vw;
+    }
+
+    .headline {
+        font-size: 2em;
+    }
+
+    .mainForm {
+        width: 95vw;
+    }
+
+    .introductionSectionHeadline {
+        font-size: 2em;
+    }
+
+}
+
+@media screen and (max-width: 1000px) {
+
+    .inputWrapper {
+        display: flex;
+        column-gap: 1rem;
+        width: 100%;
+    }
+
+    .formGroup {
+        width: 100%;
+    }
+
+    .form {
+        width: 95vw;
+        margin-top: 15rem;
+        align-self: center;
+    }
+
+    .qmInputBox {
+        margin-top: 0;
+    }
+
+    .formGroupQM {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        column-gap: 1rem;
+    }
+
+    .formBTN {
+        align-self: center;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+    }
+
+    .qmLabel {
+        text-align: center;
+    }
+
+    .headerContent {
+        margin-right: 0;
+    }
+
+    .aboveTheFold {
+        max-height: 300px;
+    }
+
+    .headline {
+        margin-top: 18rem;
+        text-align: center;
+    }
+
+    .headlineBox {
+        margin-left: 0;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .introductionWrapper {
+        width: 95vw;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .introductionSection {
+        margin-bottom: 5rem;
+    }
+
+    .introductionSectionContent {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .introductionImage {
+        width: 80%;
+    }
+
+    .introductionSectionHeadline {
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+    }
+}
+
+
+@media screen and (max-width: 800px) {
+    .boxesWrapper {
+        font-size: 0.8em;
+    }
+
+    .workFlowWrapper {
+        flex-direction: column;
+        row-gap: 3rem;
+
+    }
+
+    .howSectionHeadline {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .stepBox {
+        width: 95%;
+    }
+
+    .advantage {
+        width: 40vw;
+    }
+
+    .advantageSectionHeadline,
+    .advantageSectionSubheadline {
+        text-align: center;
+    }
+
+    .faqBox {
+        width: 95vw;
+        column-gap: 2rem;
+    }
+
+}
+
+
+@media screen and (max-width: 502px) {
+    .qmLabel {
+        display: none;
+    }
+
+    .qmInputBox {
+        font-size: 0.8em;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .aboveTheFold {
+        max-height: 200px;
+    }
+
+    .form {
+        margin-top: 8rem;
+        min-width: 95vw;
+    }
+
+    .headline {
+        margin-top: 15rem;
+        text-align: center;
+    }
+
+    .contactFormRow {
+        flex-direction: column;
+    }
+
+    .boxesWrapper {
+        flex-direction: column;
+        row-gap: 1rem;
+    }
+
+    .appointment,
+    .videoUpload {
+        width: 100%;
+    }
+
+    .videoBox {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 1rem;
+        text-align: center;
+    }
+
+    .infoSlider {
+        text-align: center;
+    }
+
+    .advantage {
+        width: 90vw;
+        justify-content: center;
+        row-gap: 1rem;
+    }
+
+    .questionBox {
+        width: 95%;
+    }
+
+    .headline,
+    .introductionSectionHeadline,
+    .howSectionHeadline,
+    .headlineFAQ {
+        font-size: 1.8em;
+        text-align: center;
+    }
+
+    .subHeadline,
+    .introductionSectionSubheadline,
+    .howSectionSubheadline {
+        font-size: 1.1em;
+    }
+
+    .ctaBTN {
+        font-size: 1em;
+    }
+
+}
+
+@media screen and (max-width: 330px) {
+    .inputWrapper {
+        flex-direction: column;
+    }
+
+    .aboveTheFold {
+        max-height: 120px;
+    }
+
+    .form {
+        margin-top: 4rem;
+    }
+
+    .formBTN {
+        font-size: 0.8em;
+    }
+
+    .headline {
+        font-size: 1.7em;
+        margin-top: 23rem;
+    }
+
+    .mainForm {
+        padding: 0.5rem;
+    }
+
+    .stepTwoAppointment {
+        padding: 0;
+    }
+
+    .imageDSK {
+        width: 95vw;
+    }
+
 }

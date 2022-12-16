@@ -26,9 +26,9 @@ export default function HeaderComponent() {
         const handleScroll = () => {
             setScrolled(window.scrollY)
         }
-        window.addEventListener("scroll", handleScroll);     
+        window.addEventListener("scroll", handleScroll);
 
-        if (page === '/' && scrolledY > 300 || page === '/gebraucht-moebel' && scrolledY > 300  ) {
+        if (page === '/' && scrolledY > 300 || page === '/gebraucht-moebel' && scrolledY > 300 || page === "/entruempelung-bonn-koeln" && scrolledY > 900) {
             activateScrollMenu()
         } else {
             deactivateScrollMenu()
@@ -115,7 +115,7 @@ export default function HeaderComponent() {
                     </div>
                     <Link href="/gebraucht-moebel" className={styles.navLinkMobile}>Sortiment</Link>
                     <Link href="/entruempelung-bonn-koeln" className={styles.navLinkMobile}>Entrümpelungen</Link>
-                    <Link href="/" className={styles.navLinkMobile}>Umzüge</Link>
+                    <Link href="/umzugsunternehmen-bonn-koeln" className={styles.navLinkMobile}>Umzüge</Link>
                     <Link href="/" className={styles.navLinkMobile}>Möbelabholungen</Link>
                     <Link href="/" className={styles.navLinkMobile}>Über uns</Link>
                     <Link href="/" className={styles.navLinkMobile}>Kontakt</Link>
@@ -126,7 +126,7 @@ export default function HeaderComponent() {
                     <div className={styles.navigationScrolled}>
                         <Link href="/gebraucht-moebel" className={styles.navLink}>Sortiment</Link>
                         <Link href="/entruempelung-bonn-koeln" className={styles.navLink}>Entrümpelungen</Link>
-                        <Link href="/" className={styles.navLink}>Umzüge</Link>
+                        <Link href="/umzugsunternehmen-bonn-koeln" className={styles.navLink}>Umzüge</Link>
                         <Link href="/" className={styles.navLink}>Möbelabholungen</Link>
                         <Link href="/" className={styles.navLink}>Über uns</Link>
                         <Link href="/" className={styles.navLink}>Kontakt</Link>
@@ -135,14 +135,14 @@ export default function HeaderComponent() {
                             <GiHamburgerMenu />
                         </div>
                     </div>
-                    <button onClick={setCallInfo.bind(this, true)} className={styles.contactBTNscrolledMenu}><BsTelephoneForward /> jetzt anrufen </button>
+                    {page !== '/entruempelung-bonn-koeln' && <button onClick={setCallInfo.bind(this, true)} className={styles.contactBTNscrolledMenu}><BsTelephoneForward /> jetzt anrufen </button>}
                 </nav>
                 }
                 <nav className={styles.navigationBox}>
                     <div className={styles.navigation}>
                         <Link href="/gebraucht-moebel" className={styles.navLink}>Sortiment</Link>
                         <Link href="/entruempelung-bonn-koeln" className={styles.navLink}>Entrümpelungen</Link>
-                        <Link href="/" className={styles.navLink}>Umzüge</Link>
+                        <Link href="/umzugsunternehmen-bonn-koeln" className={styles.navLink}>Umzüge</Link>
                         <Link href="/" className={styles.navLink}>Möbelabholungen</Link>
                         <Link href="/" className={styles.navLink}>Über uns</Link>
                         <Link href="/" className={styles.navLink}>Kontakt</Link>
