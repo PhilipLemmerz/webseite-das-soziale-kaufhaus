@@ -5,17 +5,43 @@
     background-color: #F5FAFD;
 }
 
+.scrollCTAButton {
+    position: fixed;
+    top: 0.75rem;
+    right: 1rem;
+    background-color: #f7df58;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    color: #0058A3;
+    font-size: 1.1em;
+    padding: 0.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 1rem;
+}
+
+.scrollCTAButton:hover {
+    cursor: pointer;
+    background-color: #ffec81;
+
+}
+
 .formWrapper {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-bottom: 10rem;
     background-color: #F5FAFD;
-    padding-bottom: 10rem;
+    padding-bottom: 5rem;
 }
 
 .headerImage {
     border-radius: 5px;
+    max-width: 90vw;
+    object-fit: cover;
 }
 
 .formBackground {
@@ -44,7 +70,7 @@
 }
 
 .input {
-    width: 300px;
+    max-width: 300px;
     height: 40px;
     font-size: 1em;
     padding-left: 0.5rem;
@@ -79,6 +105,7 @@
 .textForm {
     margin-top: 1.5rem;
     margin-bottom: 0;
+    text-align: center;
 }
 
 .mainFormBackground {
@@ -87,8 +114,10 @@
     left: 0;
     right: 0;
     bottom: 0;
+    overflow-y: auto;
     background-color: rgba(255, 255, 255, 0.637);
     display: flex;
+    padding: 1rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -105,6 +134,10 @@
     row-gap: 1rem;
 }
 
+.hideMainForm {
+    display: none;
+}
+
 .closeBTNPopup {
     font-size: 2em;
     color: #0057a3;
@@ -113,7 +146,6 @@
     margin-right: -4rem;
     margin-top: -1rem;
 }
-
 
 .formRow {
     width: 100%;
@@ -137,14 +169,9 @@
     margin-top: 0.5rem;
 }
 
-.invalidInput {
-    height: 30px;
-    font-size: 1em;
-    padding-left: 0.5rem;
-    border-radius: 5px;
-    border: 1px solid #ff7f7fd3;
-    outline: none;
-    margin-top: 0.5rem;
+.inputMainForm:focus,
+.textarea:focus {
+    background-color: #0057a30e;
 }
 
 .formHeadlineTop {
@@ -200,4 +227,377 @@
     border-radius: 5px;
     width: 70%;
     text-align: center;
+}
+
+.introductionSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0.5rem;
+    padding-bottom: 3rem;
+    margin-bottom: 5rem;
+    background-color: #F5FAFD;
+}
+
+.headline {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+.introductionSectionText {
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+.workFlowWrapper {
+    display: flex;
+    column-gap: 5rem;
+    width: 70vw;
+    margin-top: 3rem;
+}
+
+.stepBox {
+    box-shadow: 0 0 5px #959595;
+    padding: 2rem;
+    border-radius: 5px;
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+}
+
+.stepIcon {
+    padding: 0.7rem 1.5rem 0.7rem 1.5rem;
+    border-radius: 100%;
+    align-self: flex-end;
+    margin-right: -3rem;
+    margin-top: -3rem;
+    color: #0057a3;
+    font-weight: 600;
+    font-size: 1.2em;
+    font-style: italic;
+    border: 1px solid #0057a3;
+    background-color: white;
+}
+
+.umzugAndEntrümpelungSection {
+    display: flex;
+    padding: 0.5rem;
+    column-gap: 4rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+.umzugAndEntrümpelungContentWrapper {
+    width: 40vw;
+}
+
+.umzugAndEntrümpelungImage {
+    width: 40vw;
+    object-fit: cover;
+    height: auto;
+    border-radius: 5px;
+}
+
+.advantageSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem
+}
+
+.advantageSectionSubheadline {
+    color: #0057a3;
+    font-size: 1em;
+}
+
+.advantageSectionHeadline {
+    font-size: 2em;
+    font-weight: 700;
+    margin: 0;
+}
+
+.advantageBoxWrapper {
+    margin-top: 2rem;
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 1rem;
+    row-gap: 1rem;
+}
+
+.advantage {
+    background-color: #F5FAFD;
+    width: 15vw;
+    padding: 2rem;
+    height: 200px;
+    border: 1px solid #0057a3;
+    border-radius: 5px;
+    box-shadow: 0 0 4px #cecece;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    line-height: 1.5em;
+}
+
+.checkIconVideo {
+    color: green;
+    font-size: 2em
+}
+
+.faqSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.faqBox {
+    display: flex;
+    justify-content: center;
+    width: 80vw;
+    flex-wrap: wrap;
+    column-gap: 3rem;
+    row-gap: 3rem;
+}
+
+.questionBox {
+    width: 40%;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.question {
+    border-left: #0057a3 solid 3px;
+    padding-left: 1rem;
+}
+
+.headlineFAQ {
+    font-size: 2em;
+}
+
+.callToActionSection {
+    background-color: #0057a3;
+    padding: 3rem 0.5rem 3rem 0.5rem;
+    margin: 5rem 0 5rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.ctaBTN {
+    background-color: #FBD914;
+    font-size: 1.5em;
+    outline: none;
+    border: none;
+    padding: 0.7rem;
+    border-radius: 5px;
+    color: #0058A3;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 0.5rem;
+}
+
+.ctaBTN:hover {
+    background-color: #fbd814d7;
+    cursor: pointer;
+}
+
+.umzugEntrümpelungHeadline {
+    font-size: 2em;
+}
+
+@media screen and (max-width: 1500px) {
+    .advantageBoxWrapper {
+        width: 90vw;
+    }
+
+    .advantage {
+        width: 28vw;
+    }
+
+}
+
+@media screen and (max-width: 1100px) {
+    .formBackground {
+        width: 90vw;
+    }
+
+    .formMain {
+        width: 95vw;
+    }
+
+    .headerImage {
+        border-radius: 5px;
+        max-width: 95vw;
+        object-fit: cover;
+    }
+
+    .lpFormBTN {
+        background-color: #0058A3;
+        width: 220px;
+        height: 40px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        color: white;
+        font-size: 0.9em;
+        font-weight: 500;
+    }
+
+    .workFlowWrapper {
+        display: flex;
+        column-gap: 3rem;
+        width: 90vw;
+        margin-top: 3rem;
+    }
+
+    .stepBox {
+        padding: 1rem;
+    }
+}
+
+@media screen and (max-width: 820px) {
+
+    .headerImage {
+        height: 250px;
+    }
+
+    .formLP {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 1.5rem;
+    }
+
+    .formRow {
+        flex-direction: column;
+        row-gap: 1rem;
+    }
+
+    .formMain {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .closeBTNPopup {
+        margin-top: 0;
+    }
+
+    .input {
+        width: 80vw;
+        max-width: 80vw;
+    }
+
+    .lpFormBTN {
+        background-color: #0058A3;
+        width: 50vw;
+        height: 40px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        color: white;
+        font-size: 1em;
+        font-weight: 500;
+    }
+
+    .headline {
+        font-size: 2em;
+        word-break: break-all;
+    }
+
+    .workFlowWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: 4rem;
+        column-gap: 3rem;
+        width: 90vw;
+        margin-top: 3rem;
+    }
+
+    .stepBox {
+        padding: 1rem;
+        width: 90%;
+    }
+
+    .umzugAndEntrümpelungSection {
+        padding: 0.5rem;
+        flex-direction: column;
+        row-gap: 2rem;
+    }
+
+    .umzugAndEntrümpelungContentWrapper {
+        width: 90%;
+        text-align: center;
+    }
+
+    .umzugAndEntrümpelungImage {
+        width: 90%;
+    }
+
+    .advantage {
+        width: 40vw;
+    }
+
+    .advantageSectionHeadline,
+    .advantageSectionSubheadline {
+        text-align: center;
+    }
+
+    .faqBox {
+        width: 95vw;
+        column-gap: 2rem;
+    }
+
+    .questionBox {
+        width: 95%;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    .lpFormBTN {
+        width: 100%;
+    }
+
+    .introductionSectionText {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .workFlowWrapper {
+        display: flex;
+        column-gap: 3rem;
+        width: 80vw;
+        margin-top: 3rem;
+    }
+
+    .ctaBTN {
+        font-size: 1em;
+    }
+
+    .headlineFAQ {
+        text-align: center;
+    }
+
+    .formMain {
+        padding: 1rem;
+    }
+
+    .closeBTNPopup {
+        margin-right: 0;
+    }
 }
