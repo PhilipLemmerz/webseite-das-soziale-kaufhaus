@@ -116,7 +116,7 @@ export default function HeaderComponent() {
                     <Link href="/gebraucht-moebel" className={styles.navLinkMobile}>Sortiment</Link>
                     <Link href="/entruempelung-bonn-koeln" className={styles.navLinkMobile}>Entrümpelungen</Link>
                     <Link href="/umzugsunternehmen-bonn-koeln" className={styles.navLinkMobile}>Umzüge</Link>
-                    <Link href="/" className={styles.navLinkMobile}>Möbelabholungen</Link>
+                    <Link href="/moebelspende-bonn-koeln" className={styles.navLinkMobile}>Möbelabholungen</Link>
                     <Link href="/" className={styles.navLinkMobile}>Über uns</Link>
                     <Link href="/" className={styles.navLinkMobile}>Kontakt</Link>
                     <Link href="/" className={styles.navLinkMobile}>Karriere</Link>
@@ -127,7 +127,7 @@ export default function HeaderComponent() {
                         <Link href="/gebraucht-moebel" className={styles.navLink}>Sortiment</Link>
                         <Link href="/entruempelung-bonn-koeln" className={styles.navLink}>Entrümpelungen</Link>
                         <Link href="/umzugsunternehmen-bonn-koeln" className={styles.navLink}>Umzüge</Link>
-                        <Link href="/" className={styles.navLink}>Möbelabholungen</Link>
+                        <Link href="/moebelspende-bonn-koeln" className={styles.navLink}>Möbelabholungen</Link>
                         <Link href="/" className={styles.navLink}>Über uns</Link>
                         <Link href="/" className={styles.navLink}>Kontakt</Link>
                         <Link href="/" className={styles.navLink}>Karriere</Link>
@@ -143,7 +143,7 @@ export default function HeaderComponent() {
                         <Link href="/gebraucht-moebel" className={styles.navLink}>Sortiment</Link>
                         <Link href="/entruempelung-bonn-koeln" className={styles.navLink}>Entrümpelungen</Link>
                         <Link href="/umzugsunternehmen-bonn-koeln" className={styles.navLink}>Umzüge</Link>
-                        <Link href="/" className={styles.navLink}>Möbelabholungen</Link>
+                        <Link href="/moebelspende-bonn-koeln" className={styles.navLink}>Möbelabholungen</Link>
                         <Link href="/" className={styles.navLink}>Über uns</Link>
                         <Link href="/" className={styles.navLink}>Kontakt</Link>
                         <Link href="/" className={styles.navLink}>Karriere</Link>

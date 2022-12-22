@@ -22,7 +22,7 @@ export default function FooterComponent() {
                         <Link href="/gebraucht-moebel"><p className={styles.link}>Sortiment</p></Link>
                         <Link href="/entruempelung-bonn-koeln"><p className={styles.link}>Entrümpelungen</p></Link>
                         <Link href="/umzugsunternehmen-bonn-koeln"><p className={styles.link}>Umzüge</p></Link>
-                        <Link href="/"><p className={styles.link}>Möbelabholung</p></Link>
+                        <Link href="/moebelspende-bonn-koeln"><p className={styles.link}>Möbelabholung</p></Link>
                         <Link href="/"><p className={styles.link}>Über uns</p></Link>
                         <Link href="/"><p className={styles.link}>Karriere</p></Link>
                     </nav>
@@ -51,7 +51,7 @@ export default function FooterComponent() {
                     <Link href="/gebraucht-moebel"><p className={styles.link}>Sortiment</p></Link>
                     <Link href="/entruempelung-bonn-koeln"><p className={styles.link}>Entrümpelungen</p></Link>
                     <Link href="/umzugsunternehmen-bonn-koeln"><p className={styles.link}>Umzüge</p></Link>
-                    <Link href="/"><p className={styles.link}>Möbelabholung</p></Link>
+                    <Link href="/moebelspende-bonn-koeln"><p className={styles.link}>Möbelabholung</p></Link>
                     <Link href="/"><p className={styles.link}>Über uns</p></Link>
                     <Link href="/"><p className={styles.link}>Karriere</p></Link>
                 </nav>}

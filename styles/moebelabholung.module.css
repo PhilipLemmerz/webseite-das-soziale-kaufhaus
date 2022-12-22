@@ -1,0 +1,241 @@
+.aboveTheFoldSection {
+    width: 100%;
+    display: flex;
+    padding: 5rem;
+    column-gap: 2.5rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.aboveTheFoldImage {
+    width: 65vw;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #959595;
+}
+
+.headline {
+    margin-top: 0;
+}
+
+.subheadline {
+    color: #0058A3;
+    font-size: 1.2em;
+    font-weight: 600;
+    border-left: #0058A3 solid 3px;
+    padding-left: 5px;
+}
+
+.aboveTheFoldText {
+    font-size: 1.2em;
+}
+
+.btnAboveTheFold {
+    background-color: #f7df58;
+    border-radius: 5px;
+    padding: 1rem 2rem 1rem 2rem;
+    color: #0058A3;
+    border: none;
+    outline: none;
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-top: 2rem;
+}
+
+.introductionSection {
+    background-color: #0058A3;
+    transform: skewY(-3deg);
+    padding: 5rem 1rem 10rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+
+.introductionSectionContent {
+    transform: skewY(3deg);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stepWrapper {
+    display: flex;
+    column-gap: 4rem;
+    margin-top: 2rem;
+}
+
+
+.stepBox {
+    padding: 1rem;
+    border: 1px solid white;
+    border-radius: 5px;
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.stepIcon {
+    padding: 0.7rem 1.5rem 0.7rem 1.5rem;
+    background-color: white;
+    border-radius: 100%;
+    align-self: flex-end;
+    margin-right: -3rem;
+    margin-top: -3rem;
+    color: #0058A3;
+    font-weight: 600;
+    font-size: 1.2em;
+    font-style: italic;
+}
+
+.contactSection {
+    display: flex;   
+    justify-content: center;  
+    
+}
+
+.contactContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70vw;
+    background-color: #F5FAFD;
+    padding: 2rem;
+    box-shadow: 0 0 4px rgb(59, 59, 59);
+    border-radius: 5px;
+}
+
+
+
+.contactWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 2rem;
+}
+
+.contactBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid white;
+}
+
+.contactIconWhatsApp {
+    color: #4CCA5A;
+    font-size: 2em;
+    margin: 0;
+}
+
+.contactIconWebsite {
+    color: #0058A3;
+    font-size: 2em;
+    margin: 0;
+}
+
+.contactIconEmail {
+    color: #f7df58;
+    font-size: 2em;
+    margin: 0;
+}
+
+.socialSection {
+    text-align: center;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    padding: 1rem;
+}
+
+.socialSectionContent {
+    display: flex;
+    justify-content: center;
+    column-gap: 2rem;
+    align-items: center;
+}
+
+.socialSectionText {
+    width: 50%;    
+}
+
+.socialSectionImages {
+    display: flex;
+    flex-wrap: wrap;
+    width: 410px;
+    column-gap: 5px;
+    row-gap: 5px;
+}
+
+.socialSectionImage {
+    border-radius: 5px;
+}
+
+.socialSectionHeadline {
+    margin-top: 0;
+}
+
+.callToActionSection {
+    background-color: #0057a3;
+    padding: 3rem 0.5rem 3rem 0.5rem;
+    margin: 5rem 0 5rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.ctaBTN {
+    background-color: #FBD914;
+    font-size: 1.5em;
+    outline: none;
+    border: none;
+    padding: 0.7rem;
+    border-radius: 5px;
+    color: #0058A3;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 0.5rem;
+}
+
+.ctaBTN:hover {
+    background-color: #fbd814d7;
+    cursor: pointer;
+}
+
+.faqSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.faqBox {
+    display: flex;
+    justify-content: center;
+    width: 80vw;
+    flex-wrap: wrap;
+    column-gap: 3rem;
+    row-gap: 3rem;
+}
+
+.questionBox {
+    width: 40%;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.question {
+    border-left: #0057a3 solid 3px;
+    padding-left: 1rem;
+}
+
+.headlineFAQ {
+    font-size: 2em;
+}

@@ -15,15 +15,15 @@ export default function HomePage() {
             <Link className={styles.aboveFoldContent} href="/gebraucht-moebel">Sortiment & Möbel</Link>
           </div>
           <div className={styles.aboveFoldRightQuadratTop}>
-            <Link className={styles.aboveFoldContent} href="/">Umzug</Link>
+            <Link className={styles.aboveFoldContent} href="/umzugsunternehmen-bonn-koeln">Umzug</Link>
           </div>
         </div>
         <div className={styles.aboveFoldRow}>
           <div className={styles.aboveFoldleftQuadratBottom}>
-            <Link className={styles.aboveFoldContent} href="/entrümpelung-koeln-bonn">Entrümpelung</Link>
+            <Link className={styles.aboveFoldContent} href="/entruempelung-bonn-koeln">Entrümpelung</Link>
           </div>
           <div className={styles.aboveFoldRightQuadratBottom}>
-            <Link className={styles.aboveFoldContent} href="/">Möbelabholung</Link>
+            <Link className={styles.aboveFoldContent} href="/moebelspende-bonn-koeln">Möbelabholung</Link>
           </div>
         </div>
       </section>
