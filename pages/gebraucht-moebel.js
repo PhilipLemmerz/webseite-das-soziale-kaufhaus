@@ -54,45 +54,49 @@ export default function SortimentPage() {
                 <Image className={styles.discountImage} src="/moebelspende-koeln-bonn-header.jpg" alt="gebraucht-moebel Sozialkaufhaus Köln Bonn" width={500} height={300}></Image>
                 <p className={styles.discountText}>Lieferung bereits <span className={styles.percentText}>ab 25 Euro.</span> Montageservice & Lieferung in den Wohnraum gegen Aupreis möglich.</p>
             </section>
+            
             <section className={styles.faqSection}>
-                <h2>Häufig gestellte Fragen</h2>
-                <div className={styles.questionBox}>
-                    <h3 className={styles.question}>Wer darf im Sozialkaufhaus bei Köln und Bonn einkaufen? </h3>
-                    <p>
-                        Bei uns ist jeder Kunde herzlich willkommen. In unserem Sozialkaufhaus bei Köln und Bonn darf jeder Gebraucht-Möbel und Haushaltswaren einkaufen.
-                        Bedürftige Personen erhalten jedoch zusätzlich 20 % Nachlass auf alle Artikel.
-                    </p>
-                </div>
-                <div className={styles.questionBox}>
-                    <h3 className={styles.question}>Liefern Sie meinen Gebraucht-Möbel Einkauf auch an? </h3>
-                    <p>
-                        Ja, wir liefern Ihren Gebraucht-Möbel Einkauf auch zu Ihnen nach Hause. Die Lieferung ist ab 25 € möglich und berechnet sich aus der Entferung und dem Lieferaufwand an der Lieferadresse.
-                        Die festen Lieferkosten teilen wir Ihnen bei Ihrem Einkauf mit. Gerne helfen wir Ihnen auch bei der Montage Ihres Gebraucht-Möbel Einkauf.
-                    </p>
-                </div>
-                <div className={styles.questionBox}>
-                    <h3 className={styles.question}>Wann erhält man den Bedürftigen-Rabatt von 20 % ?</h3>
-                    <p>
-                        Jeder Kunde, welcher bedürftig ist und ein sehr geringes Einkommen hat, erhält 20 % Nachlass auf den gesamten Gebraucht-Möbel und Haushaltswaren Einkauf
-                        in unserem Sozialkaufhaus bei Köln und Bonn. Um den Nachlass zu gewähren benötigen wir z.B. einen Arge-Bescheid, Bonn-Ausweis, Köln Pass, Studentenausweis.
-                        Auch akzeptieren wir selbstverständlich auch andere Nachweise, die Ihre Bedürftigkeit dokumentieren.
-                    </p>
-                </div>
-                <div className={styles.questionBox}>
-                    <h3 className={styles.question}>Reservieren Sie Gebraucht-Möbel und können Sie mich informieren wenn ein bestimmtes Möbelstück vorrätig ist? </h3>
-                    <p>
-                        Leider können wir keine Gebraucht-Möbel reservieren. Gerne informieren wir Sie telefonisch, wenn Sie etwas bestimmtes suchen.
-                        Rufen Sie gerne in der Filiale Ihrer Nähe an. Unsere Telefonnummer finden Sie auf unserer Homepage ganz oben.
-                    </p>
-                </div>
-                <div className={styles.questionBox}>
-                    <h3 className={styles.question}>Kann ich die Gebraucht-Möbel auch online kaufen und versenden lassen? </h3>
-                    <p>
-                        zurzeit haben wir keinen online Shop und können Gebraucht-Möbel nur nach vorheriger Besichtigung in unserem Sozialkaufhaus verkaufen. Da jedes Möbelstück
-                        individuell & gebraucht ist, sollten Sie sich vor Ort auch einen Eindruck vom Zustand des gewünschten Möbelstücks machen.
-                    </p>
+                <h2 className={styles.headlineFAQ}>Häufig gestellte Fragen</h2>
+                <div className={styles.faqBox}>
+                    <div className={styles.questionBox}>
+                        <h3 className={styles.question}>Wer darf im Sozialkaufhaus bei Köln und Bonn einkaufen? </h3>
+                        <p>
+                            Bei uns ist jeder Kunde herzlich willkommen. In unserem Sozialkaufhaus bei Köln und Bonn darf jeder Gebraucht-Möbel und Haushaltswaren einkaufen.
+                            Bedürftige Personen erhalten jedoch zusätzlich 20 % Nachlass auf alle Artikel.
+                        </p>
+                    </div>
+                    <div className={styles.questionBox}>
+                        <h3 className={styles.question}>Liefern Sie meinen Gebraucht-Möbel Einkauf auch an? </h3>
+                        <p>
+                            Ja, wir liefern Ihren Gebraucht-Möbel Einkauf auch zu Ihnen nach Hause. Die Lieferung ist ab 25 € möglich und berechnet sich aus der Entferung und dem Lieferaufwand an der Lieferadresse.
+                            Die festen Lieferkosten teilen wir Ihnen bei Ihrem Einkauf mit. Gerne helfen wir Ihnen auch bei der Montage Ihres Gebraucht-Möbel Einkauf.
+                        </p>
+                    </div>
+                    <div className={styles.questionBox}>
+                        <h3 className={styles.question}>Wann erhält man den Bedürftigen-Rabatt von 20 % ?</h3>
+                        <p>
+                            Jeder Kunde, welcher bedürftig ist und ein sehr geringes Einkommen hat, erhält 20 % Nachlass auf den gesamten Gebraucht-Möbel und Haushaltswaren Einkauf
+                            in unserem Sozialkaufhaus bei Köln und Bonn. Um den Nachlass zu gewähren benötigen wir z.B. einen Arge-Bescheid, Bonn-Ausweis, Köln Pass, Studentenausweis.
+                            Auch akzeptieren wir selbstverständlich auch andere Nachweise, die Ihre Bedürftigkeit dokumentieren.
+                        </p>
+                    </div>
+                    <div className={styles.questionBox}>
+                        <h3 className={styles.question}>Reservieren Sie Gebraucht-Möbel und können Sie mich informieren wenn ein bestimmtes Möbelstück vorrätig ist? </h3>
+                        <p>
+                            Leider können wir keine Gebraucht-Möbel reservieren. Gerne informieren wir Sie telefonisch, wenn Sie etwas bestimmtes suchen.
+                            Rufen Sie gerne in der Filiale Ihrer Nähe an. Unsere Telefonnummer finden Sie auf unserer Homepage ganz oben.
+                        </p>
+                    </div>
+                    <div className={styles.questionBox}>
+                        <h3 className={styles.question}>Kann ich die Gebraucht-Möbel auch online kaufen und versenden lassen? </h3>
+                        <p>
+                            zurzeit haben wir keinen online Shop und können Gebraucht-Möbel nur nach vorheriger Besichtigung in unserem Sozialkaufhaus verkaufen. Da jedes Möbelstück
+                            individuell & gebraucht ist, sollten Sie sich vor Ort auch einen Eindruck vom Zustand des gewünschten Möbelstücks machen.
+                        </p>
+                    </div>
                 </div>
             </section>
+
         </Fragment>
     )
 }

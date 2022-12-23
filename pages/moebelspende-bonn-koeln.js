@@ -2,26 +2,172 @@ import { Fragment } from "react";
 import styles from '../styles/moebelabholung.module.css';
 import Image from "next/image";
 import { HiCursorClick } from "react-icons/hi";
-import { BsWhatsapp } from "react-icons/bs";
+import { BsWhatsapp, BsCheckCircleFill, BsTrash } from "react-icons/bs";
+import { AiOutlineEdit } from "react-icons/ai";
+import Autocomplete from "react-google-autocomplete";
 import { IoMailUnreadOutline } from "react-icons/io5";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 import { CgWebsite } from "react-icons/cg";
-import { useState } from "react";
+import { BiImageAdd, BiArrowBack } from "react-icons/bi";
+import { useState, useRef, useEffect } from "react";
 
 export default function MöbelabholungPage() {
 
     const [form, setForm] = useState(false);
+    const [files, setFiles] = useState([]);
+    const [formStep, setFormStep] = useState('fileupload');
+    const [errorMessage, setErrorMessage] = useState(false);
+    const [scrollBTN, setScrollBTN] = useState(false);
+    const [scrolledY, setScrolled] = useState(0);
+
+    const options = {
+        componentRestrictions: { country: 'DE' },
+        types: ['address']
+    }
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY)
+        }
+        window.addEventListener("scroll", handleScroll);
+
+        if (scrolledY > 300) {
+            activateScrollMenu()
+        } else {
+            deactivateScrollMenu()
+        }
+    });
+
+
+    const nameRef = useRef();
+    const adressRef = useRef();
+    const emailRef = useRef();
+    const telRef = useRef();
+
+    function activateScrollMenu() {
+        setScrollBTN(true);
+    }
+
+    function deactivateScrollMenu() {
+        setScrollBTN(false);
+    }
+
+    function handleFileChange(event) {
+        setFiles([...files, ...event.target.files])
+        event.target.value = null;
+    }
+
+    function deleteFile(name) {
+        const index = files.findIndex(file => file.name === name);
+        files.splice(index, 1);
+        setFiles([...files]);
+    }
+
+    function stepBack() {
+        setFormStep('fileupload')
+    }
+
+    function closePopupForm() {
+        setForm('closed')
+    }
+
+    async function submitHandler(event) {
+        event.preventDefault();
+        // set Loading
+        if (files.length > 0 && nameRef.current.value.length > 3 && emailRef.current.value.length > 3 && telRef.current.value.length > 3 && adressRef.current.value.length > 3) {
+            setErrorMessage(false)
+            const data = {
+                name: nameRef.current.value,
+                email: emailRef.current.value,
+                phone: telRef.current.value,
+                adress: adressRef.current.value
+            }
+            console.log(data)
+            console.log(files);
+            // Backend fortführen -> Email Versand
+        } else {
+            setErrorMessage('Bitte füllen Sie alle Felder gültig aus')
+        }
+    }
 
     return (
         <Fragment>
+            {scrollBTN && <button onClick={setForm.bind(this, true)} className={styles.scrollCTAButton}>{form === 'closed' ? 'Anfrage fotzsetzen' : 'Mobiliar anbieten'}</button>}
+            <div className={form === true ? styles.formBackground : styles.hideForm}>
+                <form className={styles.form} onSubmit={submitHandler}>
+                    <div className={styles.navigationBox}>
+                        <BiArrowBack className={formStep === 'contactStep' ? styles.stepBack : styles.stepBackNone} onClick={stepBack}></BiArrowBack>
+                        <IoIosCloseCircleOutline className={styles.closeBTNPopup} onClick={closePopupForm} />
+                    </div>
+                    <div className={formStep === "fileupload" ? styles.fileupload : styles.hideFileupload}>
+                        <p className={styles.stepTracker}><em>Schritt 1 von 2</em></p>
+                        <h3 className={styles.uploadHeadline}>Bitte laden Sie ein Bild Ihrer Möbelspende hoch </h3>
+                        <p>(Es können auch mehrere Bilder hochgeladen werden)</p>
+                        <div className={styles.uploadFormGroup}>
+                            <label htmlFor="fileupload" className={styles.customFileBTN}>
+                                <BiImageAdd /> Bild hinzufügen
+                            </label>
+                            <input multiple type="file" id="fileupload" className={styles.inputFile} onChange={handleFileChange}></input>
+                            {files.length === 0 && <p className={styles.whatsAppText}> <BsWhatsapp className={styles.whatsAppIcon} /> Alternativ Bilder per WhatsApp senden (+49 (0) 151 423 859 89) </p>}
+                            {files.length > 0 && <div className={styles.uploadedImageBox}>
+                                <p className={styles.imageBoxP}>hochgeladen:</p>
+                                {files.map(file => <div key={Math.random()} className={styles.imageName}><span className={styles.checkIconImage}><BsCheckCircleFill /></span>
+                                    {file.name} <span className={styles.trashIcon}>
+                                        <BsTrash onClick={deleteFile.bind(this, file.name)} /></span> </div>)}
+                            </div>}
+                        </div>
+                        {files.length > 0 && <button className={styles.forwardBTNImageUpload} onClick={setFormStep.bind(this, "contactStep")} type="button">weiter</button>}
+                    </div>
+
+                    <div className={formStep === "contactStep" ? styles.contactInformation : styles.hideContactInformation}>
+                        <p className={styles.stepTracker}><em>Schritt 2 von 2</em></p>
+                        <h3 className={styles.contactHeadline}>Kontaktinformation:</h3>
+                        <div className={styles.contactFormRow}>
+                            <div className={styles.formGroupContact}>
+                                <label className={styles.label}>Ansprechpartner</label>
+                                <input required placeholder="Herr Max Mustermann" ref={nameRef} className={styles.inputContact} type="text"></input>
+                            </div>
+                            <div className={styles.formGroupContact}>
+                                <label className={styles.label}>Abholadresse:</label>
+                                <Autocomplete options={options} placeholder="Breniger Straße 3, 53913 Swisttal" required className={styles.inputContact} ref={adressRef} apiKey={"AIzaSyBXcBLbQlz5-zAwEHfLqD2mQcxghJ8TjOs"} />
+                            </div>
+                        </div>
+                        <div className={styles.contactFormRow}>
+                            <div className={styles.formGroupContact}>
+                                <label className={styles.label}>E-Mail Adresse</label>
+                                <input placeholder="maxmustermann@gmail.com" ref={emailRef} required className={styles.inputContact} type="email"></input>
+                            </div>
+                            <div className={styles.formGroupContact}>
+                                <label className={styles.label}>Telefonnummer</label>
+                                <input required placeholder="0228-227 983 49" ref={telRef} className={styles.inputContact} type="tel"></input>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 className={styles.contactHeadlineProperty}>hochgeladene Bilder:</h3>
+                            {files.length === 1 ? files.map(file => <div key={Math.random()} className={styles.imageBox}><span className={styles.checkIconImage}><BsCheckCircleFill /></span>
+                                {file.name} <span onClick={setFormStep.bind(this, 'fileupload')} className={styles.editImage}>
+                                    <AiOutlineEdit />bearbeiten</span> </div>) : <div className={styles.imageBox}><span className={styles.checkIconImage}><BsCheckCircleFill /></span>
+                                {files.length} Videos hochgeladen <span onClick={setFormStep.bind(this, 'fileupload')} className={styles.editImage}>
+                                    <AiOutlineEdit />bearbeiten</span> </div>}
+                        </div>
+                        <div className={styles.finalbtnDiv}>
+                            <button className={styles.finalFormBTNAppointment} type="submit">Mobiliar anbieten</button>
+                        </div>
+                        {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
+                    </div>
+                </form>
+            </div>
+
+
             <section className={styles.aboveTheFoldSection}>
-                <div>
+                <div className={styles.aboveTheFoldContent}>
                     <span className={styles.subheadline}>kostenfreie & versicherte Abholung</span>
                     <h1 className={styles.headline}>Möbelspende für Köln & Bonn</h1>
                     <p className={styles.aboveTheFoldText}>
                         Wir verwerten Ihr Mobiliar wieder und helfen bedürftigen Personen aus der Region.
                         Möbel einfach über unser Webseite oder WhatsApp anbieten und Abholtermin vereinbaren.
                     </p>
-                    <button className={styles.btnAboveTheFold}> Mobiliar anbieten <HiCursorClick /></button>
+                    <button onClick={setForm.bind(this, true)} className={styles.btnAboveTheFold}> Mobiliar anbieten <HiCursorClick /></button>
                 </div>
                 <Image className={styles.aboveTheFoldImage} width={500} height={250} src="/moebelspende-koeln-bonn-header.jpg" alt="Möbelspende Köln Bonn - kostenfreie Abholung" />
             </section>
@@ -67,15 +213,25 @@ export default function MöbelabholungPage() {
                     <div className={styles.contactWrapper}>
                         <div className={styles.contactBox}>
                             <p className={styles.contactIconWhatsApp}><BsWhatsapp /></p>
-                            <p> WhatsApp: +49 (0) 151 423 859 89</p>
+                            <div className={styles.contactText}>
+                                <p> WhatsApp: </p>
+                                <p className={styles.contactP}>+49 (0) 151 423 859 89</p>
+                            </div>
+
                         </div>
                         <div className={styles.contactBox}>
                             <p className={styles.contactIconWebsite}><CgWebsite /></p>
-                            <p> Webseite: <u>Formular öffnen</u></p>
+                            <div className={styles.contactText}>
+                                <p>Webseite:</p>
+                                <p className={styles.contactP}><u>Formular öffnen</u></p>
+                            </div>
                         </div>
                         <div className={styles.contactBox}>
                             <p className={styles.contactIconEmail}><IoMailUnreadOutline /></p>
-                            <p> Email: info@dsk-nrw.de</p>
+                            <div className={styles.contactText}>
+                                <p>Email:</p>
+                                <p className={styles.contactP}>info@dsk-nrw.de</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -100,7 +256,7 @@ export default function MöbelabholungPage() {
                 </div>
             </section>
             <section className={styles.callToActionSection}>
-                <button onClick={setForm.bind(this, false)} className={styles.ctaBTN}>{form === 'closed' ? 'Anfrage fotzsetzen' : 'Möbelspende anbieten'} <HiCursorClick /></button>
+                <button onClick={setForm.bind(this, true)} className={styles.ctaBTN}>{form === 'closed' ? 'Anfrage fotzsetzen' : 'Möbelspende anbieten'} <HiCursorClick /></button>
             </section>
             <section className={styles.faqSection}>
                 <h2 className={styles.headlineFAQ}>Häufig gestellte Fragen</h2>
@@ -190,6 +346,9 @@ export default function MöbelabholungPage() {
                     </div>
                 </div>
             </section>
+
+
+
 
         </Fragment>
     )

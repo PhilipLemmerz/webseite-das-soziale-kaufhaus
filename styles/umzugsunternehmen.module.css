@@ -9,7 +9,7 @@
     position: fixed;
     top: 0.75rem;
     right: 1rem;
-    background-color: #f7df58;
+    background-color: #fbd814d7;
     outline: none;
     border-radius: 5px;
     box-shadow: none;
@@ -22,11 +22,12 @@
     align-items: center;
     justify-content: center;
     column-gap: 1rem;
+    z-index: 4;
 }
 
 .scrollCTAButton:hover {
     cursor: pointer;
-    background-color: #ffec81;
+    background-color: #ffe134;
 }
 
 .formWrapper {
@@ -85,19 +86,19 @@
 
 
 .lpFormBTN {
-    background-color: #0058A3;
+    background-color: #FBD914;
     width: 250px;
     height: 40px;
     border: none;
     outline: none;
     border-radius: 5px;
-    color: white;
+    color: #0057a3;
     font-size: 1em;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .lpFormBTN:hover {
-    background-color: #0057a3d3;
+    background-color: #fbd814a8;
     cursor: pointer;
 }
 
@@ -189,21 +190,21 @@
 }
 
 .submitBTN {
-    background-color: #0058A3;
+    background-color: #FBD914;
     width: 250px;
     height: 40px;
     border: none;
     outline: none;
     border-radius: 5px;
-    color: white;
+    color: #0057a3;
     font-size: 1em;
-    font-weight: 500;
+    font-weight: 600;
     align-self: center;
     margin-top: 2rem;
 }
 
 .submitBTN:hover {
-    background-color: #0057a3d3;
+    background-color: #fbd814c0;
     cursor: pointer;
 }
 

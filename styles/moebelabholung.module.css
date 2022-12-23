@@ -9,15 +9,14 @@
 }
 
 .aboveTheFoldImage {
-    width: 65vw;
-    height: auto;
+    height: 250px;
     object-fit: cover;
     border-radius: 5px;
     box-shadow: 0 0 5px #959595;
 }
 
 .headline {
-    margin-top: 0;
+    margin-top: 0.5rem;
 }
 
 .subheadline {
@@ -33,7 +32,7 @@
 }
 
 .btnAboveTheFold {
-    background-color: #f7df58;
+    background-color: #FBD914;
     border-radius: 5px;
     padding: 1rem 2rem 1rem 2rem;
     color: #0058A3;
@@ -42,6 +41,11 @@
     font-size: 1.5em;
     font-weight: 600;
     margin-top: 2rem;
+}
+
+.btnAboveTheFold:hover {
+    background-color: #fbd814ac;
+    cursor: pointer;
 }
 
 .introductionSection {
@@ -64,7 +68,7 @@
 
 .stepWrapper {
     display: flex;
-    column-gap: 4rem;
+    column-gap: 3rem;
     margin-top: 2rem;
 }
 
@@ -79,7 +83,7 @@
 }
 
 .stepIcon {
-    padding: 0.7rem 1.5rem 0.7rem 1.5rem;
+    padding: 0.7rem 1.2rem 0.7rem 1.2rem;
     background-color: white;
     border-radius: 100%;
     align-self: flex-end;
@@ -92,9 +96,9 @@
 }
 
 .contactSection {
-    display: flex;   
-    justify-content: center;  
-    
+    display: flex;
+    justify-content: center;
+
 }
 
 .contactContent {
@@ -108,8 +112,6 @@
     box-shadow: 0 0 4px rgb(59, 59, 59);
     border-radius: 5px;
 }
-
-
 
 .contactWrapper {
     display: flex;
@@ -125,6 +127,11 @@
     padding: 1rem;
     border-radius: 5px;
     border: 1px solid white;
+}
+
+.contactText {
+    display: flex;
+    column-gap: 0.5rem;
 }
 
 .contactIconWhatsApp {
@@ -160,7 +167,7 @@
 }
 
 .socialSectionText {
-    width: 50%;    
+    width: 50%;
 }
 
 .socialSectionImages {
@@ -238,4 +245,475 @@
 
 .headlineFAQ {
     font-size: 2em;
+}
+
+.formBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #b4b4b4ad;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    background-color: white;
+    padding: 3rem;
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid #0057a3;
+}
+
+.hideForm {
+    display: none;
+}
+
+.navigationBox {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: top;
+    color: #0057a3;
+}
+
+.stepBackNone {
+    color: transparent
+}
+
+.stepBack {
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.closeBTNPopup {
+    font-size: 2em;
+    color: #0057a3;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+.stepTracker {
+    text-align: center;
+}
+
+.videoHeadline {
+    font-size: 1.2em;
+    margin-bottom: 0;
+}
+
+.uploadFormGroup {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.customFileBTN {
+    background-color: white;
+    color: #0057a3;
+    border: #0057a3 solid 1px;
+    border-radius: 5px;
+    font-size: 1.5em;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.customFileBTN:hover {
+    background-color: #FBD914;
+    cursor: pointer;
+}
+
+.inputFile {
+    display: none;
+}
+
+.whatsAppText {
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+.whatsAppIcon {
+    color: #4CCA5A;
+}
+
+.uploadedImageBox {
+    padding: 1rem;
+    box-shadow: gray 0 0 2px;
+    min-width: 40vw;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+    row-gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+    max-height: 30vh;
+    overflow-y: scroll;
+}
+
+.imageBoxP {
+    text-align: center;
+    margin: 0;
+    text-decoration: underline;
+}
+
+.imageName {
+    display: flex;
+    column-gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.checkIconImage {
+    color: green;
+    font-size: 2em
+}
+
+.trashIcon {
+    color: rgb(253, 129, 129);
+}
+
+.forwardBTNImageUpload {
+    background-color: #FBD914;
+    align-self: center;
+    color: #0057a3;
+    border: none;
+    outline: none;
+    padding: 0.7rem 2.5rem 0.7rem 2.5rem;
+    font-weight: 600;
+    border-radius: 5px;
+    margin-top: 2rem;
+    font-size: 1em;
+    margin-bottom: 0.5rem;
+}
+
+.forwardBTNImageUpload:hover {
+    background-color: #fbd814af;
+    cursor: pointer;
+}
+
+.fileupload {
+    display: block;
+    text-align: center;
+}
+
+.hideFileupload {
+    display: none;
+}
+
+.contactInformation {
+    display: block;
+}
+
+.hideContactInformation {
+    display: none;
+}
+
+.contactHeadline {
+    text-align: center;
+    margin-bottom: 0rem;
+    font-weight: 500;
+    font-size: 1em;
+}
+
+.formGroupContact {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.label {
+    margin-bottom: 0.5rem;
+}
+
+.inputContact {
+    width: 30vw;
+    ;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid rgb(173, 173, 173);
+    box-shadow: 0 0 1px #525252;
+    outline: none;
+    font-size: 1em;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.inputContact:focus {
+    background-color: #0057a30e;
+}
+
+.contactFormRow {
+    display: flex;
+    column-gap: 2rem;
+    width: 100%;
+}
+
+.contactHeadlineProperty {
+    text-align: center;
+    margin-bottom: 0rem;
+    margin-top: 3rem;
+    font-weight: 500;
+    font-size: 1em;
+}
+
+.imageBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 2rem;
+    padding: 1rem;
+}
+
+.editImage {
+    color: #0057a3;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    column-gap: 0.3rem;
+    cursor: pointer;
+}
+
+.finalbtnDiv {
+    display: flex;
+    justify-content: center;
+}
+
+.finalFormBTNAppointment {
+    background-color: #FBD914;
+    align-self: center;
+    color: #0057a3;
+    border: none;
+    outline: none;
+    padding: 0.7rem 2.5rem 0.7rem 2.5rem;
+    border-radius: 5px;
+    margin-top: 2rem;
+    font-size: 1em;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.finalFormBTNAppointment:hover {
+    background-color: #fbd8149f;
+    cursor: pointer;
+}
+
+.errorMessage {
+    text-align: center;
+    color: rgb(246, 125, 125);
+}
+
+.scrollCTAButton {
+    position: fixed;
+    top: 0.75rem;
+    right: 1rem;
+    background-color: #FBD914;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    color: #0058A3;
+    font-size: 1.1em;
+    padding: 0.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 1rem;
+    z-index: 4;
+}
+
+.scrollCTAButton:hover {
+    cursor: pointer;
+    background-color: #fee555;
+}
+
+
+@Media screen and (max-width: 1200px) {
+    .aboveTheFoldSection {
+        width: 100%;
+        display: flex;
+        padding: 5rem 2rem 5rem 2rem;
+        column-gap: 3rem;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 3rem;
+    }
+
+    .headline {
+        font-size: 2em;
+    }
+
+    .contactContent {
+        width: 95vw;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .form {
+        width: 90vw;
+        padding: 1rem;
+    }
+}
+
+@Media screen and (max-width: 1000px) {
+    .aboveTheFoldImage {
+        height: 180px;
+        object-fit: cover;
+        border-radius: 5px;
+        box-shadow: 0 0 5px #959595;
+    }
+
+    .contactWrapper {
+        column-gap: 0.5rem;
+    }
+
+    .contactBox {
+        flex-direction: column;
+    }
+
+    .contactText {
+        flex-direction: column;
+        row-gap: 0;
+        column-gap: 0;
+    }
+
+    .contactP {
+        margin: 0;
+    }
+
+    .socialSectionImages {
+        justify-content: flex-end;
+        width: 200px;
+    }
+}
+
+@Media screen and (max-width: 800px) {
+    .aboveTheFoldSection {
+        flex-direction: column-reverse;
+        padding: 1rem;
+
+    }
+
+    .aboveTheFoldImage {
+        width: 95vw;
+        height: 220px;
+    }
+
+    .aboveTheFoldContent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .faqBox {
+        width: 95vw;
+        column-gap: 2rem;
+    }
+
+    .questionBox {
+        width: 95%;
+    }
+}
+
+@Media screen and (max-width: 700px) {
+    .stepWrapper {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 3rem;
+    }
+
+    .contactFormRow {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .inputContact {
+        width: 100%;
+    }
+
+    .stepBox {
+        width: 80%;
+        text-align: center;
+    }
+
+    .socialSectionHeadline {
+        font-size: 1.8em;
+    }
+}
+
+@Media screen and (max-width: 500px) {
+
+    .btnAboveTheFold {
+        font-size: 1.2em;
+    }
+
+    .stepWrapper {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 3rem;
+
+    }
+
+    .stepBox {
+        width: 80%;
+        text-align: center;
+    }
+
+    .contactWrapper {
+        flex-direction: column;
+    }
+
+    .socialSectionContent {
+        flex-direction: column-reverse;
+    }
+
+    .socialSectionImages {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .socialSectionImage {
+        width: 42vw;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .socialSectionText {
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .ctaBTN {
+        font-size: 1em;
+    }
+
+    .headlineFAQ {
+        text-align: center;
+    }
+
+    .uploadedImageBox {
+        min-width: 80vw;
+        max-width: 90vw;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .customFileBTN {
+        font-size: 1.3em;
+    }
 }

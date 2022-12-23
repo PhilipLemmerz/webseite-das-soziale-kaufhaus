@@ -177,33 +177,55 @@
 .faqSection {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 1rem 2rem 5rem 2rem;
-    text-align: center;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
 
+.faqBox {
+    display: flex;
+    justify-content: center;
+    width: 80vw;
+    flex-wrap: wrap;
+    column-gap: 3rem;
+    row-gap: 3rem;
 }
 
 .questionBox {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    max-width: 1500px;
-    text-align: center;
-    border: 1px solid rgb(179, 179, 179);
-    border-radius: 5px;
-    padding: 1rem 2rem 1rem 2rem;
-    margin-bottom: 2rem;
+    width: 40%;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dbdbdb;
 }
 
 .question {
-    margin-bottom: 0.2rem;
-    color: #0058A3
+    border-left: #0057a3 solid 3px;
+    padding-left: 1rem;
 }
+
+.headlineFAQ {
+    font-size: 2em;
+}
+
 
 @media screen and (max-width: 1000px) {
     .discountText {
         font-size: 1.2em;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .faqBox {
+        width: 95vw;
+        column-gap: 2rem;
+    }
+
+    .questionBox {
+        width: 95%;
+    } 
+    
+    .headlineFAQ {
+        text-align: center;
     }
 }
 

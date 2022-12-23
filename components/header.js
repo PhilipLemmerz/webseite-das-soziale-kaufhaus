@@ -28,7 +28,7 @@ export default function HeaderComponent() {
         }
         window.addEventListener("scroll", handleScroll);
 
-        if (page === '/' && scrolledY > 300 || page === '/gebraucht-moebel' && scrolledY > 300 || page === "/entruempelung-bonn-koeln" && scrolledY > 900 || page === "/umzugsunternehmen-bonn-koeln" && scrolledY > 900) {
+        if (page === '/' && scrolledY > 300 || page === '/gebraucht-moebel' && scrolledY > 300 || page === "/entruempelung-bonn-koeln" && scrolledY > 900 || page === "/umzugsunternehmen-bonn-koeln" && scrolledY > 900 || page === '/moebelspende-bonn-koeln' && scrolledY > 300) {
             activateScrollMenu()
         } else {
             deactivateScrollMenu()
@@ -135,7 +135,8 @@ export default function HeaderComponent() {
                             <GiHamburgerMenu />
                         </div>
                     </div>
-                    {page !== '/entruempelung-bonn-koeln' || page !== '/umzugsunternehmen-koeln-bonn' && <button onClick={setCallInfo.bind(this, true)} className={styles.contactBTNscrolledMenu}><BsTelephoneForward /> jetzt anrufen </button>}
+                    {page === '/' && <button onClick={setCallInfo.bind(this, true)} className={styles.contactBTNscrolledMenu}><BsTelephoneForward /> jetzt anrufen </button>}
+                    {page === '/gebraucht-moebel' && <button onClick={setCallInfo.bind(this, true)} className={styles.contactBTNscrolledMenu}><BsTelephoneForward /> jetzt anrufen </button>}
                 </nav>
                 }
                 <nav className={styles.navigationBox}>

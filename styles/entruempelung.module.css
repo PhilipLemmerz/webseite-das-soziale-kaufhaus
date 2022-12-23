@@ -4,18 +4,17 @@
     display: flex;
     width: 100%;
     height: 80vh;
-    max-height: 500px;
+    max-height: 450px;
     background-size: cover;
     flex-direction: column;
     background-image: url('../public/entruempelung-koeln-bonn-header.jpg');
 }
 
-
 .scrollCTAButton {
     position: fixed;
     top: 0.75rem;
     right: 1rem;
-    background-color: #f7df58;
+    background-color: #FBD914;
     outline: none;
     border-radius: 5px;
     box-shadow: none;
@@ -28,12 +27,12 @@
     align-items: center;
     justify-content: center;
     column-gap: 1rem;
+    z-index: 4;
 }
 
 .scrollCTAButton:hover {
     cursor: pointer;
-    background-color: #ffec81;
-
+    background-color: #fce358;
 }
 
 .headerContent {
@@ -61,7 +60,7 @@
     max-width: 25rem;
     border-radius: 5px;
     color: #0057a3;
-    background: linear-gradient(90deg, rgb(255, 255, 255) 0%, #fbd81480 45%, #fbd8149c 100%);
+    background: linear-gradient(90deg, rgb(255, 255, 255) 0%, #fbd8144d 45%, #fbd81454 100%);
 }
 
 .form {
@@ -174,8 +173,8 @@
 }
 
 .formBTN {
-    background-color: #0058A3;
-    color: white;
+    background-color: #FBD914;
+    color: #0057a3;
     border: none;
     outline: none;
     max-width: 300px;
@@ -183,11 +182,12 @@
     border-radius: 5px;
     margin-top: 2rem;
     font-size: 1.1em;
+    font-weight: 600;
     margin-bottom: 0.5rem;
 }
 
 .formBTN:hover {
-    background-color: #0057a3ce;
+    background-color: #fbd814c6;
     cursor: pointer;
 }
 
@@ -447,22 +447,22 @@
     border-radius: 5px;
 }
 
-
 .finalFormBTNAppointment {
-    background-color: #0058A3;
+    background-color: #FBD914;
     align-self: center;
-    color: white;
+    color: #0057a3;
     border: none;
     outline: none;
     padding: 0.7rem 2.5rem 0.7rem 2.5rem;
     border-radius: 5px;
     margin-top: 2rem;
     font-size: 1em;
+    font-weight: 600;
     margin-bottom: 0.5rem;
 }
 
 .finalFormBTNAppointment:hover {
-    background-color: #0057a3dc;
+    background-color: #fbd814bf;
     cursor: pointer;
 }
 
@@ -529,7 +529,7 @@
 }
 
 .customFileBTN:hover {
-    background-color: #e1edf5;
+    background-color: #FBD914;
 }
 
 .inputFile {
@@ -568,9 +568,9 @@
 }
 
 .forwardBTNVideoUpload {
-    background-color: #0058A3;
+    background-color: #FBD914;
     align-self: center;
-    color: white;
+    color: #0057a3;
     border: none;
     outline: none;
     padding: 0.7rem 2.5rem 0.7rem 2.5rem;
@@ -578,10 +578,11 @@
     margin-top: 2rem;
     font-size: 1em;
     margin-bottom: 0.5rem;
+    font-weight: 600;
 }
 
 .forwardBTNVideoUpload:hover {
-    background-color: #0057a3d0;
+    background-color: #fbd814b6;
     cursor: pointer;
 }
 
