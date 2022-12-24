@@ -10,6 +10,7 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 import { CgWebsite } from "react-icons/cg";
 import { BiImageAdd, BiArrowBack } from "react-icons/bi";
 import { useState, useRef, useEffect } from "react";
+import router from 'next/router';
 
 export default function MöbelabholungPage() {
 
@@ -19,6 +20,7 @@ export default function MöbelabholungPage() {
     const [errorMessage, setErrorMessage] = useState(false);
     const [scrollBTN, setScrollBTN] = useState(false);
     const [scrolledY, setScrolled] = useState(0);
+    const [loading, setLoading] = useState();
 
     const options = {
         componentRestrictions: { country: 'DE' },
@@ -43,6 +45,7 @@ export default function MöbelabholungPage() {
     const adressRef = useRef();
     const emailRef = useRef();
     const telRef = useRef();
+    const messageRef = useRef();
 
     function activateScrollMenu() {
         setScrollBTN(true);
@@ -72,21 +75,70 @@ export default function MöbelabholungPage() {
     }
 
     async function submitHandler(event) {
-        event.preventDefault();
-        // set Loading
-        if (files.length > 0 && nameRef.current.value.length > 3 && emailRef.current.value.length > 3 && telRef.current.value.length > 3 && adressRef.current.value.length > 3) {
-            setErrorMessage(false)
-            const data = {
-                name: nameRef.current.value,
-                email: emailRef.current.value,
-                phone: telRef.current.value,
-                adress: adressRef.current.value
+        setLoading(true);
+        try {
+            event.preventDefault();
+            setLoading(true)
+            if (files.length > 0 && nameRef.current.value.length > 3 && emailRef.current.value.length > 3 && telRef.current.value.length > 3 && adressRef.current.value.length > 3) {
+                setErrorMessage(false)
+                const data = {
+                    name: nameRef.current.value,
+                    email: emailRef.current.value,
+                    phone: telRef.current.value,
+                    adress: adressRef.current.value,
+                    message: messageRef.current.value
+                }
+                const fileNameArray = await uploadFiles(data.name);
+                await sendNewEmail(fileNameArray, data);
+            } else {
+                setErrorMessage('Bitte füllen Sie alle Felder gültig aus')
             }
-            console.log(data)
-            console.log(files);
-            // Backend fortführen -> Email Versand
-        } else {
-            setErrorMessage('Bitte füllen Sie alle Felder gültig aus')
+        } catch (err) {
+            setErrorMessage('Ups! Leider ist etwas schief gelaufen - Bitte versuchen Sie es nocheinmal !')
+        }
+    }
+
+    async function uploadFiles(clientName) {
+        const fileNameArray = [];
+        for await (let file of files) {
+            const filename = `${file.name}-${clientName}-${Math.floor(1000 + Math.random() * 9000)}`;
+            fileNameArray.push(filename);
+            const response = await fetch('http://localhost:3030/dsk-website/getSignedURL', {
+                method: "POST",
+                body: JSON.stringify({ method: "putObject", filename: filename }),
+                headers: { "Content-Type": "application/json" }
+            });
+            if (response.ok) {
+                const data = await response.json();
+                await fetch(`${data.url}`, {
+                    method: "PUT",
+                    body: file,
+                });
+            } else {
+                return false
+            }
+        }
+        return fileNameArray
+    }
+
+    async function sendNewEmail(filenameArray, data) {
+        try {
+            const videoUrl = `localhost:3000/admin/photos/${filenameArray.join('+++')}`;
+            const response = await fetch('http://localhost:3030/dsk-website/moebelspendeForm', {
+                method: "POST",
+                body: JSON.stringify({ ...data, link: videoUrl }),
+                headers: { "Content-Type": "application/json" }
+            });
+            if (response.ok) {
+                setLoading(false);
+                router.replace('anfrage-moebelspende-erhalten');
+            } else {
+                setLoading(false)
+                setErrorMessage('Ups - Leider ist ein Fehler aufgetreten - Bitte versuchen Sie es erneut');
+            }
+        } catch (err) {
+            setLoading(false)
+            setErrorMessage('Ups - Leider ist ein Fehler aufgetreten - Bitte versuchen Sie es erneut');
         }
     }
 
@@ -142,12 +194,18 @@ export default function MöbelabholungPage() {
                                 <input required placeholder="0228-227 983 49" ref={telRef} className={styles.inputContact} type="tel"></input>
                             </div>
                         </div>
+                        <div className={styles.contactFormRow}>
+                            <div className={styles.formGroupContact}>
+                                <label className={styles.label}>zusätzliche Bemerkung</label>
+                                <textarea placeholder="zusätzliche Bemerkungen" ref={messageRef} required className={styles.textarea}></textarea>
+                            </div>
+                        </div>
                         <div>
                             <h3 className={styles.contactHeadlineProperty}>hochgeladene Bilder:</h3>
                             {files.length === 1 ? files.map(file => <div key={Math.random()} className={styles.imageBox}><span className={styles.checkIconImage}><BsCheckCircleFill /></span>
                                 {file.name} <span onClick={setFormStep.bind(this, 'fileupload')} className={styles.editImage}>
                                     <AiOutlineEdit />bearbeiten</span> </div>) : <div className={styles.imageBox}><span className={styles.checkIconImage}><BsCheckCircleFill /></span>
-                                {files.length} Videos hochgeladen <span onClick={setFormStep.bind(this, 'fileupload')} className={styles.editImage}>
+                                {files.length} Bilder hochgeladen <span onClick={setFormStep.bind(this, 'fileupload')} className={styles.editImage}>
                                     <AiOutlineEdit />bearbeiten</span> </div>}
                         </div>
                         <div className={styles.finalbtnDiv}>
@@ -173,7 +231,7 @@ export default function MöbelabholungPage() {
             </section>
             <section className={styles.introductionSection}>
                 <div className={styles.introductionSectionContent}>
-                    <h2>Möbel spenden - So geht's </h2>
+                    <h2>Möbel spenden - So gehts </h2>
                     <div className={styles.stepWrapper}>
                         <div className={styles.stepBox}>
                             <span className={styles.stepIcon}>1</span>
@@ -347,8 +405,11 @@ export default function MöbelabholungPage() {
                 </div>
             </section>
 
-
-
+            {loading && <div className={styles.spinnerContainer}>
+                <div className={styles.loadingSpinner}>
+                </div>
+                <p> Bitte warten...</p>
+            </div>}
 
         </Fragment>
     )

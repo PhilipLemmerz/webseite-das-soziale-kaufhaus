@@ -6,6 +6,7 @@ import { useState, useRef, useEffect } from "react";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { BsCheckCircleFill } from "react-icons/bs";
 import { HiCursorClick } from "react-icons/hi";
+import router from 'next/router';
 
 export default function UmzugsPage() {
 
@@ -16,6 +17,9 @@ export default function UmzugsPage() {
 
     const [mainForm, setMainForm] = useState(false);
     const [errorMessage, setErrorMessage] = useState(false);
+    const [scrollBTN, setScrollBTN] = useState(false);
+    const [scrolledY, setScrolled] = useState(0);
+    const [loading, setLoading] = useState(false);
 
     const startAdressRef = useRef();
     const endAdressRef = useRef();
@@ -25,8 +29,6 @@ export default function UmzugsPage() {
     const startAdressMainRef = useRef();
     const endAdressMainRef = useRef();
     const messageRef = useRef();
-    const [scrollBTN, setScrollBTN] = useState(false);
-    const [scrolledY, setScrolled] = useState(0);
 
     function openMainForm() {
         setErrorMessage(false)
@@ -62,22 +64,41 @@ export default function UmzugsPage() {
         setMainForm('closed')
     }
 
-    function submitHandler(event) {
-        event.preventDefault();
-        setErrorMessage(false)
-        if (nameRef.current.value.length > 3 && emailRef.current.value.length > 3 && numberRef.current.value.length > 3 && startAdressMainRef.current.value.length > 3 && endAdressMainRef.current.value.length > 3) {
-            const data = {
-                name: nameRef.current.value,
-                email: emailRef.current.value,
-                number: numberRef.current.value,
-                startAdress: startAdressMainRef.current.value,
-                endAdress: endAdressMainRef.current.value,
-                message: messageRef.current.value
+    async function submitHandler(event) {
+        setLoading(true);
+        try {
+            event.preventDefault();
+            setErrorMessage(false)
+            if (nameRef.current.value.length > 3 && emailRef.current.value.length > 3 && numberRef.current.value.length > 3 && startAdressMainRef.current.value.length > 3 && endAdressMainRef.current.value.length > 3) {
+                setErrorMessage(false);
+                const data = {
+                    name: nameRef.current.value,
+                    email: emailRef.current.value,
+                    phone: numberRef.current.value,
+                    startAdress: startAdressMainRef.current.value,
+                    endAdress: endAdressMainRef.current.value,
+                    message: messageRef.current.value
+                }
+
+                const response = await fetch('http://localhost:3030/dsk-website/umzugsForm', {
+                    method: "POST",
+                    body: JSON.stringify({ ...data }),
+                    headers: { "Content-Type": "application/json" }
+                });
+                if (response.ok) {
+                    setLoading(false);
+                    router.replace('anfrage-umzug-erhalten');
+                } else {
+                    setLoading(false)
+                    setErrorMessage('Ups - Leider ist ein Fehler aufgetreten - Bitte versuchen Sie es erneut');
+                }
+            } else {
+                setLoading(false)
+                setErrorMessage('Bitte füllen Sie alle Felder gültig aus');
             }
-            console.log(data);
-        }
-        else {
-            setErrorMessage('Bitte füllen Sie Felder korrekt aus')
+        } catch (err) {
+            setLoading(false);
+            setErrorMessage('Ups - Leider ist ein Fehler aufgetreten - Bitte versuchen Sie es erneut');
         }
     }
 
@@ -98,14 +119,14 @@ export default function UmzugsPage() {
                             <label htmlFor="ausladeadresse">Einzugsadresse</label>
                             <Autocomplete className={styles.input} options={options} id="ausladeadresse" ref={endAdressRef} apiKey={"AIzaSyBXcBLbQlz5-zAwEHfLqD2mQcxghJ8TjOs"} placeholder="Breniger Straße 3, 53913 Swisttal" />
                         </div>
-                        <button type="button" className={styles.lpFormBTN} onClick={openMainForm}>{mainForm === 'closed' ? 'Anfrage fortsetzten' : 'kostenloses Angebot erhalten' }</button>
+                        <button type="button" className={styles.lpFormBTN} onClick={openMainForm}>{mainForm === 'closed' ? 'Anfrage fortsetzten' : 'kostenloses Angebot erhalten'}</button>
                     </form>
                     {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
                     <p className={styles.textForm}> Wir beraten Sie kostenfrei & unverbindlich vor Ort und unterbreiten Ihnen ein Festpreis-Angebot </p>
                 </div>
             </div>
 
-           <div className={mainForm === true ? styles.mainFormBackground : styles.hideMainForm}>
+            <div className={mainForm === true ? styles.mainFormBackground : styles.hideMainForm}>
                 <form className={styles.formMain} onSubmit={submitHandler}>
                     <IoIosCloseCircleOutline className={styles.closeBTNPopup} onClick={closePopupForm} />
                     <p className={styles.formHeadlineTop}> Kontaktinformation</p>
@@ -343,6 +364,11 @@ export default function UmzugsPage() {
                     </div>
                 </div>
             </section>
+            {loading && <div className={styles.spinnerContainer}>
+                <div className={styles.loadingSpinner}>
+                </div>
+                <p> Bitte warten...</p>
+            </div>}
 
         </Fragment>
     )

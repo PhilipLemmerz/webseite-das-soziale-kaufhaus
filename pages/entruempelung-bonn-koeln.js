@@ -218,7 +218,6 @@ export default function EntrümpelungPage() {
             setLoading(false)
             setErrorMessage('Ups - Leider ist ein Fehler aufgetreten - Bitte versuchen Sie es erneut');
         }
-
     }
 
     async function uploadFiles(clientName) {

@@ -19,9 +19,20 @@
     padding: 1rem
 }
 
+.objectWrapperPhoto {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin: 3rem;
+    padding: 1rem
+}
+
 .image {
     max-width: 80%;
     height: auto;
+    max-height: 90vh;
     object-fit: contain;
 }
 
@@ -29,4 +40,36 @@
     border: 1px solid #0058A3;
     padding: 0.5rem 2rem 0.5rem 2rem;
     border-radius: 5px;
+}
+
+.printBTN {
+    background-color: #0058A3;
+    color: white;
+    padding: 1rem 2rem 1rem 2rem;
+    margin-top: 5rem;
+    font-size: 1.3em;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+.printBTN:hover {
+    background-color: #0057a3d0;
+    cursor: pointer;
+}
+
+@media print {
+
+    .btn,
+    .printBTN {
+        display: none;
+    }
+
+    .image {
+        max-height: 10cm;
+    }
+
+    .objectWrapperPhoto {
+        margin: 0;
+    }
 }
