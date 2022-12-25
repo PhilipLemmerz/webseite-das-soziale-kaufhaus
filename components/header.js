@@ -117,7 +117,8 @@ export default function HeaderComponent() {
                     <Link href="/entruempelung-bonn-koeln" className={styles.navLinkMobile}>Entrümpelungen</Link>
                     <Link href="/umzugsunternehmen-bonn-koeln" className={styles.navLinkMobile}>Umzüge</Link>
                     <Link href="/moebelspende-bonn-koeln" className={styles.navLinkMobile}>Möbelabholungen</Link>
-                    <Link href="/" className={styles.navLinkMobile}>Über uns</Link>
+                    <Link href="/kleiderspende-bonn-koeln" className={styles.navLinkMobile}>Sach- & Kleiderspende</Link>
+                    <Link href="/ueber-uns" className={styles.navLinkMobile}>Über uns</Link>
                     <Link href="/" className={styles.navLinkMobile}>Kontakt</Link>
                     <Link href="/" className={styles.navLinkMobile}>Karriere</Link>
                 </div>
@@ -128,7 +129,8 @@ export default function HeaderComponent() {
                         <Link href="/entruempelung-bonn-koeln" className={styles.navLink}>Entrümpelungen</Link>
                         <Link href="/umzugsunternehmen-bonn-koeln" className={styles.navLink}>Umzüge</Link>
                         <Link href="/moebelspende-bonn-koeln" className={styles.navLink}>Möbelabholungen</Link>
-                        <Link href="/" className={styles.navLink}>Über uns</Link>
+                        <Link href="/kleiderspende-bonn-koeln" className={styles.navLink}>Sach- & Kleiderspende</Link>
+                        <Link href="/ueber-uns" className={styles.navLink}>Über uns</Link>
                         <Link href="/" className={styles.navLink}>Kontakt</Link>
                         <Link href="/" className={styles.navLink}>Karriere</Link>
                         <div onClick={setMenu.bind(this, true)} className={styles.menuHamburger}>
@@ -145,7 +147,8 @@ export default function HeaderComponent() {
                         <Link href="/entruempelung-bonn-koeln" className={styles.navLink}>Entrümpelungen</Link>
                         <Link href="/umzugsunternehmen-bonn-koeln" className={styles.navLink}>Umzüge</Link>
                         <Link href="/moebelspende-bonn-koeln" className={styles.navLink}>Möbelabholungen</Link>
-                        <Link href="/" className={styles.navLink}>Über uns</Link>
+                        <Link href="/kleiderspende-bonn-koeln" className={styles.navLink}>Sach- & Kleiderspende</Link>
+                        <Link href="/ueber-uns" className={styles.navLink}>Über uns</Link>
                         <Link href="/" className={styles.navLink}>Kontakt</Link>
                         <Link href="/" className={styles.navLink}>Karriere</Link>
                         <div onClick={setMenu.bind(this, true)} className={styles.menuHamburger}>

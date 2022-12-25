@@ -1,0 +1,163 @@
+.aboveTheFoldSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+}
+
+.aboveTheFoldImage {
+    width: 80vw;
+    height: 30vh;
+    object-fit: cover;
+    object-position: 50% 10%;
+    border-radius: 5px;
+}
+
+.headline {
+    margin-bottom: 0;
+}
+
+.subheadline {
+    font-size: 1.3em;
+    background: linear-gradient(90deg, rgb(255, 255, 255) 0%, #fbd81480 45%, #fbd8149c 100%);
+    padding: 0.5rem;
+    border-radius: 5px;
+    color: #0058A3;
+    font-weight: 600;
+}
+
+.aboveTheFoldText {
+    max-width: 1000px;
+    text-align: center;
+}
+
+.locationWrapper {
+    display: flex;
+    column-gap: 2rem;
+    margin: 5rem 0 5rem 0;
+}
+
+.locationBox {
+    width: 40vw;
+    box-shadow: 0 0 5px rgb(149, 149, 149);
+    border-radius: 5px;
+    text-align: center;
+    background-color: #F5FAFD;
+}
+
+.cardContent {
+    padding: 1rem;
+}
+
+.headlineLocationBox {
+    color: #0058A3;
+    background: linear-gradient(90deg, rgb(255, 255, 255) 0%, #fbd81480 60%, #fbd81400 100%);
+}
+
+.locationImage {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px 5px 0 0;
+}
+
+.whatHappenSection {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.whatHappenContentWrapper {
+    display: flex;
+    column-gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    max-width: 80vw;
+}
+
+.imageDonateContent {
+    border-radius: 5px;
+}
+
+.faqSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.faqBox {
+    display: flex;
+    justify-content: center;
+    width: 80vw;
+    flex-wrap: wrap;
+    column-gap: 3rem;
+    row-gap: 3rem;
+}
+
+.questionBox {
+    width: 40%;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.question {
+    border-left: #0057a3 solid 3px;
+    padding-left: 1rem;
+}
+
+@media screen and (max-width: 1000px) {
+    .whatHappenContentWrapper {
+        flex-direction: column;
+    }
+
+    .imageDonateContent {
+        max-width: 90vw;
+        object-fit: cover;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+    .aboveTheFoldImage {
+        width: 95vw;
+    }
+
+    .locationWrapper {
+        flex-direction: column;
+        row-gap: 2rem;
+    }
+
+    .locationBox {
+        width: 100%;
+    }
+
+    .faqBox {
+        width: 95vw;
+        column-gap: 2rem;
+    }
+
+    .questionBox {
+        width: 95%;
+    }
+
+    .headlineFAQ {
+        text-align: center;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    .faqSection,
+    .questionBox {
+        padding: 1rem;
+    }
+}

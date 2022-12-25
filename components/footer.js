@@ -23,7 +23,8 @@ export default function FooterComponent() {
                         <Link href="/entruempelung-bonn-koeln"><p className={styles.link}>Entrümpelungen</p></Link>
                         <Link href="/umzugsunternehmen-bonn-koeln"><p className={styles.link}>Umzüge</p></Link>
                         <Link href="/moebelspende-bonn-koeln"><p className={styles.link}>Möbelabholung</p></Link>
-                        <Link href="/"><p className={styles.link}>Über uns</p></Link>
+                        <Link href="/kleiderspende-bonn-koeln"><p className={styles.link}>Über uns</p></Link>
+                        <Link href="/ueber-uns"><p className={styles.link}>Über uns</p></Link>
                         <Link href="/"><p className={styles.link}>Karriere</p></Link>
                     </nav>
                     <GiHamburgerMenu onClick={setMenuMobile.bind(this, true)} className={styles.menuBTN} />
@@ -52,7 +53,8 @@ export default function FooterComponent() {
                     <Link href="/entruempelung-bonn-koeln"><p className={styles.link}>Entrümpelungen</p></Link>
                     <Link href="/umzugsunternehmen-bonn-koeln"><p className={styles.link}>Umzüge</p></Link>
                     <Link href="/moebelspende-bonn-koeln"><p className={styles.link}>Möbelabholung</p></Link>
-                    <Link href="/"><p className={styles.link}>Über uns</p></Link>
+                    <Link href="/kleiderspende-bonn-koeln"><p className={styles.link}>Sach- & Kleiderspende</p></Link>
+                    <Link href="/ueber-uns"><p className={styles.link}>Über uns</p></Link>
                     <Link href="/"><p className={styles.link}>Karriere</p></Link>
                 </nav>}
                 {menuInfo && <div className={styles.infoMenu}>
