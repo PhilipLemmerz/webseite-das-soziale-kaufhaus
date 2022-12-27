@@ -9,7 +9,7 @@
     position: fixed;
     top: 0.75rem;
     right: 1rem;
-    background-color: #fbd814d7;
+    background-color: #FBD914;
     outline: none;
     border-radius: 5px;
     box-shadow: none;
@@ -27,7 +27,7 @@
 
 .scrollCTAButton:hover {
     cursor: pointer;
-    background-color: #ffe134;
+    background-color: #f8e15f;
 }
 
 .formWrapper {

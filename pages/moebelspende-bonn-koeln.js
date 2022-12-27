@@ -11,6 +11,7 @@ import { CgWebsite } from "react-icons/cg";
 import { BiImageAdd, BiArrowBack } from "react-icons/bi";
 import { useState, useRef, useEffect } from "react";
 import router from 'next/router';
+import Head from "next/head";
 
 export default function MöbelabholungPage() {
 
@@ -144,6 +145,10 @@ export default function MöbelabholungPage() {
 
     return (
         <Fragment>
+            <Head>
+                <title>Möbelspende in Bonn & Köln - kostenfreie Möbelabholung</title>
+                <meta name="description" content="Möbelspende in Bonn & Köln - Wir holen Ihre Möbelspende kostenfrei ab und stellen diese in unseren Sozialkaufhäusern Bedüfrtigen zur Verfügung." />
+            </Head>
             {scrollBTN && <button onClick={setForm.bind(this, true)} className={styles.scrollCTAButton}>{form === 'closed' ? 'Anfrage fotzsetzen' : 'Mobiliar anbieten'}</button>}
             <div className={form === true ? styles.formBackground : styles.hideForm}>
                 <form className={styles.form} onSubmit={submitHandler}>

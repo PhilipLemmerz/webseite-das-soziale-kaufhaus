@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
     "lint": "next lint"
   },
@@ -13,6 +13,7 @@
     "@progress/kendo-react-intl": "^5.9.0",
     "@progress/kendo-react-upload": "^5.9.0",
     "@progress/kendo-theme-default": "^5.12.0",
+    "cookies-next": "^2.1.1",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.5",
     "next": "13.0.5",

@@ -1,10 +1,15 @@
 import { Fragment } from "react";
 import styles from '../styles/about.module.css';
 import Image from "next/image";
+import Head from "next/head";
 
 export default function AboutPage() {
     return (
         <Fragment>
+            <Head>
+                <title>Sozialkaufhaus Bonn & Swisttal bei Köln - Über uns</title>
+                <meta name="description" content="Sozialkaufhaus Bonn & Swisttal - Unsere Sozialkaufhaus Geschichte in Bonn und Swisttal im Überblick." />
+            </Head>
             <section className={styles.aboveTheFoldSection}>
                 <div className={styles.aboveFoldContent}>
                     <h1 className={styles.headline}>Über unser Sozialkaufhaus für Köln/Bonn</h1>

@@ -8,11 +8,15 @@
     text-align: center;
 }
 
+.aboveTheFoldImageBox {
+    display: flex;
+    column-gap: 1rem;
+}
+
 .aboveTheFoldImage {
-    width: 80vw;
-    height: 30vh;
     object-fit: cover;
-    object-position: 50% 10%;
+    max-width: 45vw;
+    max-height: calc(45vw/1.5);
     border-radius: 5px;
 }
 
@@ -46,6 +50,7 @@
     border-radius: 5px;
     text-align: center;
     background-color: #F5FAFD;
+    max-width: 500px;
 }
 
 .cardContent {
@@ -59,7 +64,7 @@
 
 .locationImage {
     width: 100%;
-    height: 300px;
+    max-height: calc(100vw/2);
     object-fit: cover;
     border-radius: 5px 5px 0 0;
 }
@@ -156,8 +161,13 @@
 }
 
 @media screen and (max-width: 500px) {
+
     .faqSection,
     .questionBox {
         padding: 1rem;
+    }
+
+    .aboveTheFoldImageBox {
+        column-gap: 0.2rem;
     }
 }

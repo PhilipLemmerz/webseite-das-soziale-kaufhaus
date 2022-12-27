@@ -7,6 +7,7 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 import { BsCheckCircleFill } from "react-icons/bs";
 import { HiCursorClick } from "react-icons/hi";
 import router from 'next/router';
+import Head from "next/head";
 
 export default function UmzugsPage() {
 
@@ -104,6 +105,10 @@ export default function UmzugsPage() {
 
     return (
         <Fragment>
+            <Head>
+                <title>Umzugsunternehmen Bonn & Köln - umziehen zum Festpreis</title>
+                <meta name="description" content="Umzugsunternehmen für Bonn & Köln - umziehen zum Festrpeis inklusive kostenfreier Umzugsberatung vorab bei Ihnen vor Ort." />
+            </Head>
             {scrollBTN && <button onClick={setMainForm.bind(this, true)} className={styles.scrollCTAButton}>{mainForm === 'closed' ? 'Anfrage fotzsetzen' : 'kostenloses Angebot'}</button>}
             <section className={styles.aboveFoldSection}>
                 <Image src="/umzugsunternehmen-bonn-koeln-headerImage.jpg" alt="umzugsunternehmen koeln bonn header" className={styles.headerImage} width={1500} height={400}></Image>

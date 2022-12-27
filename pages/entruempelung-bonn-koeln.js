@@ -10,6 +10,7 @@ import { BiArrowBack } from "react-icons/bi";
 import router from 'next/router';
 import Image from "next/image";
 import { HiCursorClick } from "react-icons/hi";
+import Head from "next/head";
 
 export default function EntrümpelungPage() {
     const [files, setFiles] = useState([]);
@@ -245,6 +246,10 @@ export default function EntrümpelungPage() {
 
     return (
         <Fragment>
+            <Head>
+                <title>Entrümpelung & Haushhaltsauflösung in Bonn & Köln mit Ihrem Sozialkaufhaus</title>
+                <meta name="description" content="Entrümpelung in Bonn & Köln - Haushaltsauflösung mit Verwertung Ihrer Möbel zugunsten bedürftiger Menschen aus Bonn & Köln." />
+            </Head>
             {scrollBTN && <button onClick={setFormPopup.bind(this, true)} className={styles.scrollCTAButton}>{formPopup === 'closed' ? 'Anfrage fotzsetzen' : 'kostenloses Angebot'}</button>}
             <section className={styles.aboveTheFold}>
                 <div className={styles.imageOverlay}></div>
@@ -276,7 +281,7 @@ export default function EntrümpelungPage() {
                                 <p className={styles.qmText}>{qm} Quadratmeter</p>
                             </div>
                         </div>
-                        <button type="button" className={styles.formBTN} onClick={openPopupForm}>{formPopup === 'closed' ? 'Anfrage fotzsetzen' : 'kostenloses Angebot erhalten'}</button>
+                        <button type="button" className={styles.formBTN} onClick={openPopupForm}>{formPopup === 'closed' ? 'Anfrage fortsetzen' : 'kostenloses Angebot erhalten'}</button>
                         {errorMessage && !formPopup && <p className={styles.errorMessage}>{errorMessage}</p>}
 
                     </div>
@@ -329,16 +334,16 @@ export default function EntrümpelungPage() {
                                     </div>
                                     <h3 className={styles.contactHeadlineProperty}>Ihre Angaben zu der Immobilie:</h3>
                                     <div className={styles.formGroupContact}>
-                                        <label className={styles.label}>Anschrift:</label>
+                                        <label className={styles.label}>Anschrift</label>
                                         <Autocomplete options={options} className={styles.inputContact} ref={adressRefViewing} apiKey={"AIzaSyBXcBLbQlz5-zAwEHfLqD2mQcxghJ8TjOs"} defaultValue={adressRef.current.value} />
                                     </div>
                                     <div className={styles.contactFormRow}>
                                         <div className={styles.formGroupContact}>
-                                            <label className={styles.label}>Wunschtermin:</label>
+                                            <label className={styles.label}>Wunschtermin</label>
                                             <input className={styles.inputContact} ref={dateRefViewing} defaultValue={dateRef.current.value} type="date"></input>
                                         </div>
                                         <div className={styles.formGroupContact}>
-                                            <label className={styles.label}>Quadratmeter:</label>
+                                            <label className={styles.label}>Quadratmeter</label>
                                             <input required className={styles.inputContact} ref={qmRefViewing} defaultValue={qmRef.current.value} type="number"></input>
                                         </div>
                                     </div>
@@ -388,16 +393,16 @@ export default function EntrümpelungPage() {
                                     </div>
                                     <h3 className={styles.contactHeadlineProperty}>Ihre Angaben zu der Immobilie:</h3>
                                     <div className={styles.formGroupContact}>
-                                        <label className={styles.label}>Anschrift:</label>
+                                        <label className={styles.label}>Anschrift</label>
                                         <Autocomplete options={options} className={styles.inputContact} ref={adressRefVideo} apiKey={"AIzaSyBXcBLbQlz5-zAwEHfLqD2mQcxghJ8TjOs"} defaultValue={adressRef.current.value} />
                                     </div>
                                     <div className={styles.contactFormRow}>
                                         <div className={styles.formGroupContact}>
-                                            <label className={styles.label}>spätester Räumungstermin:</label>
+                                            <label className={styles.label}>spätester Räumungstermin</label>
                                             <input className={styles.inputContact} defaultValue={dateRef.current.value} type="date"></input>
                                         </div>
                                         <div className={styles.formGroupContact}>
-                                            <label className={styles.label}>Quadratmeter:</label>
+                                            <label className={styles.label}>Quadratmeter</label>
                                             <input required className={styles.inputContact} defaultValue={qmRef.current.value} type="number"></input>
                                         </div>
                                     </div>
@@ -426,15 +431,15 @@ export default function EntrümpelungPage() {
                 <ul className={styles.infoSliderList}>
                     <li><span className={styles.numberListIcon}>1</span>Unser Außendienst ruft Sie an und vereinbart mit Ihnen einen kostenfreien Besichtigungstermin.</li>
                     <li><span className={styles.numberListIcon}>2</span>Wir beraten Sie unverbindlich vor Ort.</li>
-                    <li><span className={styles.numberListIcon}>3</span>Sie erhalten von uns ein Festpreis-Angebot für die Auflösung der Immobilie</li>
+                    <li><span className={styles.numberListIcon}>3</span>Sie erhalten von uns ein Festpreis-Angebot für die Auflösung der Immobilie.</li>
                 </ul>
                 <div className={styles.spacer}></div>
                 <h2 className={styles.sliderHeadline}>Video hochladen & Angebot erhalten</h2>
                 <ul className={styles.infoSliderList}>
-                    <li><span className={styles.numberListIcon}>1</span>Sie drehen ein Video von den zu räumenden Zimmern der Immobilie</li>
+                    <li><span className={styles.numberListIcon}>1</span>Sie drehen ein Video von den zu räumenden Zimmern der Immobilie.</li>
                     <li><span className={styles.numberListIcon}>2</span>Sie laden das Video im nächsten Schritt dieses Formulars hoch oder senden uns dieses via WhatsApp.</li>
-                    <li><span className={styles.numberListIcon}>3</span>Wir rufen Sie zurück und beraten Sie auf Basis des zur Verfügung gestellten Videos</li>
-                    <li><span className={styles.numberListIcon}>4</span>Sie erhalten von uns ein Festpreis-Angebot für die Auflösung der Immobilie</li>
+                    <li><span className={styles.numberListIcon}>3</span>Wir rufen Sie zurück und beraten Sie auf Basis des zur Verfügung gestellten Videos.</li>
+                    <li><span className={styles.numberListIcon}>4</span>Sie erhalten von uns ein Festpreis-Angebot für die Auflösung der Immobilie.</li>
                 </ul>
             </section>
             }
@@ -451,23 +456,23 @@ export default function EntrümpelungPage() {
                     <div className={styles.introductionSectionContent}>
                         <p className={styles.introductionSectionSubheadline}>nachhaltig & umweltschonend</p>
                         <h2 className={styles.introductionSectionHeadline}>Ihre Entrümpelung mit unserem Sozialkaufhaus</h2>
-                        <p>Wiederverwerten statt entsorgen - Wenn auch Ihnen am Herzen liegt, dass nicht das gesamte Inventar bei Ihrer Entrümpelung entsorgt wird, dann sind wird
+                        <p>Wiederverwerten statt entsorgen - Wenn auch Ihnen am Herzen liegt, dass nicht das gesamte Inventar bei Ihrer Entrümpelung entsorgt wird, dann sind wir
                             genau Ihr richtiger Ansprechpartner. Mit zwei Sozialkaufhäusern bei Köln & Bonn können wir einen Großteil Ihres Mobiliars & Inventars wiederverwerten & bedürftigen
-                            Personen zur Verfügung stellen. Gerne beraten wir Sie kostenfrei & unverbindlich !
+                            Menschen zur Verfügung stellen. Gerne beraten wir Sie kostenfrei & unverbindlich !
                         </p>
                     </div>
                 </div>
             </section>
             <section className={styles.howSection}>
                 <h2 className={styles.howSectionHeadline}>Ablauf für eine optimale Entrümpelung</h2>
-                <p className={styles.howSectionSubheadline}>Über 15 Jahren Erfahrung !</p>
+                <p className={styles.howSectionSubheadline}>Über 15 Jahre Erfahrung !</p>
                 <div className={styles.workFlowWrapper}>
                     <div className={styles.stepBox}>
                         <span className={styles.stepIcon}>1</span>
-                        <h3>kostenfreie Beratung</h3>
+                        <h3>Kostenfreie Beratung</h3>
                         <p>
                             Ob persönlich vor Ort oder digital - Einer unserer 5 Entrümpelungsexperten berät Sie unverbindlich und kostenfrei. Gerne besichtigten wir die
-                            Immobilie oder beraten Sie auf Basis eines Videos der Immobilie kontakfrei und digital.
+                            Immobilie oder beraten Sie auf Basis eines Videos der Immobilie kontaktfrei und digital.
                         </p>
                     </div>
                     <div className={styles.stepBox}>
@@ -480,10 +485,10 @@ export default function EntrümpelungPage() {
                     </div>
                     <div className={styles.stepBox}>
                         <span className={styles.stepIcon}>3</span>
-                        <h3>professionelle Entrümpelung</h3>
+                        <h3>Professionelle Entrümpelung</h3>
                         <p>
                             Nach verbindlicher Terminvereinbarung führen wir Ihre Entrümpelung binnen ein bis drei Tagen durch. Gut erhaltenes & verwertbares Inventar & Mobiliar wird in unseren
-                            Sozialkaufhäusern bei Köln & Bonn bedürftigen Personen zur Verfügung gestellt. Alles weitere wird umweltschonend bei einem zertifizierten Entsorgungsbetrieb
+                            Sozialkaufhäusern bei Köln & Bonn bedürftigen Menschen zur Verfügung gestellt. Alles weitere wird umweltschonend bei einem zertifizierten Entsorgungsbetrieb
                             entsorgt. Sie erhalten Ihre Immmobilie besenrein entrümpelt zurück.
                         </p>
                     </div>
@@ -510,7 +515,7 @@ export default function EntrümpelungPage() {
                     </div>
                     <div className={styles.advantage}>
                         <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
-                        besenrein nach maxmimal drei Tagen
+                        besenrein nach durchschnittlich 1,5 Tagen
                     </div>
                     <div className={styles.advantage}>
                         <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
@@ -519,7 +524,7 @@ export default function EntrümpelungPage() {
                 </div>
             </section>
             <section className={styles.callToActionSection}>
-                <button onClick={openForm} className={styles.ctaBTN}>{formPopup === 'closed' ? 'Anfrage fotzsetzen' : 'kostenloses Angebot erhalten'} <HiCursorClick /></button>
+                <button onClick={openForm} className={styles.ctaBTN}>{formPopup === 'closed' ? 'Anfrage fortsetzen' : 'kostenloses Angebot erhalten'} <HiCursorClick /></button>
             </section>
             <section className={styles.faqSection}>
                 <h2 className={styles.headlineFAQ}>Häufig gestellte Fragen</h2>
@@ -553,7 +558,7 @@ export default function EntrümpelungPage() {
                             Profitieren von den werthaltigen Möbeln aus der Entrümpelung wirklich Bedürftige aus dem Raum Köln/Bonn ?
                         </h3>
                         <p>
-                            Grundsätzlich haben wir in unseren Sozialkaufhäusern bei Köln und Bonn keine Personenkreis Beschränkung.
+                            Grundsätzlich darf jeder in den Sozialkaufhäusern in Köln & Bonn einkaufen.
                             Wir führen jedoch nur Second-Hand Artikel und dementsprechend sind 90% unserer Kunden Sozialhilfeempfänger, Renter und Studenten. Bedürftige Menschen
                             erhalten zudem zusätzlich nochnmals 20% Nachlass auf den gesamten Einkauf.
                         </p>
@@ -563,7 +568,7 @@ export default function EntrümpelungPage() {
                             Ist der Besichtigungstermin auch kostenfrei, wenn ich das Angebot nicht beanspruche ?
                         </h3>
                         <p>
-                            Ja, der Besichtigungstermin ist kostenfrei und unverbindlich. Auch, wenn Sie die Entrümpelung nicht mit uns durchführen,
+                            Ja, der Besichtigungstermin ist kostenfrei und unverbindlich. Auch, wenn Sie die Entrümpelung nicht mit uns durchführen
                             bleibt die Besichtigung eine kostenfreie Leistung.
                         </p>
                     </div>
@@ -592,7 +597,7 @@ export default function EntrümpelungPage() {
                         </h3>
                         <p>
                             Die Besichtigung können wir binnen weniger Tage durchführen und den Kostenvoranschlag erhalten Sie je nach Dringlichkeit auf Nachfrage
-                            bereits am Tag nach der Besichtigung. Für die eigentliche Entrümpelung benötigen wir eine Vorlaufszeit in der Regel eine Vorlaufszeit
+                            bereits am Tag nach der Besichtigung. Für die eigentliche Entrümpelung benötigen wir in der Regel eine Vorlaufszeit
                             von ca. 2-3 Wochen. Muss die Entrümpelung sehr kurzfristig durchgeführt werden, rufen Sie uns gerne an. Wir halten für kurzfristige
                             Aufträge i. d. R. immer Kapazitäten frei.
                         </p>

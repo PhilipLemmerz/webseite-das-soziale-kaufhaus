@@ -1,0 +1,61 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 5rem;
+    margin-top: 5rem;
+    padding: 1rem;
+}
+
+.locationWrapper {
+    display: flex;
+    column-gap: 2rem;
+    margin-top: 2rem;
+}
+
+.locationBox {
+    box-shadow: 0 0 5px #cecece;
+    padding: 1rem;
+    border-radius: 5px;
+    width: 30vw;
+}
+
+.btn {
+    border: 1px solid #0057a3;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    background-color: transparent;
+    outline: none;
+    border-radius: 5px;
+    color: #0057a3;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background-color: #FBD914;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 950px) {
+    .locationBox {
+        width: 45vw;
+    }
+
+}
+
+@media screen and (max-width: 550px) {
+    .locationWrapper {
+        flex-direction: column;
+        row-gap: 1rem;
+    }
+
+    .locationBox {
+        width: 90vw;
+    }
+
+    .headline {
+        font-size: 1.2em;
+    }
+
+}

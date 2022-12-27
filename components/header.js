@@ -17,6 +17,7 @@ export default function HeaderComponent() {
     const [menu, setMenu] = useState(false);
     const [scrollMenu, setScrollMenu] = useState(false);
     const [scrolledY, setScrolled] = useState(0);
+    const [isLandingPage, setisLandingPage] = useState(false)
     const [callInfo, setCallInfo] = useState(false);
 
     const router = useRouter();
@@ -28,7 +29,9 @@ export default function HeaderComponent() {
         }
         window.addEventListener("scroll", handleScroll);
 
-        if (page === '/' && scrolledY > 300 || page === '/gebraucht-moebel' && scrolledY > 300 || page === "/entruempelung-bonn-koeln" && scrolledY > 900 || page === "/umzugsunternehmen-bonn-koeln" && scrolledY > 900 || page === '/moebelspende-bonn-koeln' && scrolledY > 300) {
+        checkIsLandingPage();
+
+        if (page === '/' && scrolledY > 300 || page === '/gebraucht-moebel' && scrolledY > 300 || page === '/kleiderspende-bonn-koeln' && scrolledY > 300 || page === '/ueber-uns' && scrolledY > 300 || page === "/entruempelung-bonn-koeln" && scrolledY > 900 || page === "/umzugsunternehmen-bonn-koeln" && scrolledY > 900 || page === '/moebelspende-bonn-koeln' && scrolledY > 300) {
             activateScrollMenu()
         } else {
             deactivateScrollMenu()
@@ -43,6 +46,15 @@ export default function HeaderComponent() {
         setScrollMenu(false);
     }
 
+    function checkIsLandingPage() {
+        console.log(page)
+        if (page === '/moebelspende-bonn-koeln' || page === '/umzugsunternehmen-bonn-koeln' || page === '/entruempelung-bonn-koeln') {
+            setisLandingPage(true)
+        } else {
+            setisLandingPage(false)
+        }
+    }
+
     return (
         <Fragment>
             <header className={styles.header}>
@@ -52,19 +64,21 @@ export default function HeaderComponent() {
                         <div className={styles.contentBox}>
                             <GoLocation className={styles.icon} />
                             <div>
-                                <p className={styles.headlineBox}>Sozialkaufhaus Swisttal</p>
-                                <p>Breniger Straße 3</p>
-                                <p>53913 Swisttal</p>
-                                <p>Tel: 02254 - 600 480 5</p>
+                                <p className={styles.headlineBox}>Sozialkaufhaus Bonn</p>
+                                <p> <em>DSK gemeinnützige gmbH</em></p>
+                                <p>Deutschherrenstraße 197-201</p>
+                                <p>53179 Bonn</p>
+                                <p>Tel: 0228 - 227 983 49</p>
                             </div>
                         </div>
                         <div className={styles.contentBox}>
                             <GoLocation className={styles.icon} />
                             <div>
-                                <p className={styles.headlineBox}>Sozialkaufhaus Bonn</p>
-                                <p>Deutschherrenstraße 197-201</p>
-                                <p>53179 Bonn</p>
-                                <p>Tel: 0228 - 227 983 49</p>
+                                <p className={styles.headlineBox}>Sozialkaufhaus Swisttal</p>
+                                <p> <em>DSK Service GmbH</em></p>
+                                <p>Breniger Straße 3</p>
+                                <p>53913 Swisttal</p>
+                                <p>Tel: 02254 - 600 480 5</p>
                             </div>
                         </div>
                         <div className={styles.contentBoxSecondary}>
@@ -114,43 +128,42 @@ export default function HeaderComponent() {
                         <AiOutlineCloseSquare />
                     </div>
                     <Link href="/gebraucht-moebel" className={styles.navLinkMobile}>Sortiment</Link>
-                    <Link href="/entruempelung-bonn-koeln" className={styles.navLinkMobile}>Entrümpelungen</Link>
+                    <Link href="/entruempelung-bonn-koeln" className={styles.navLinkMobile}>Entrümpelung</Link>
                     <Link href="/umzugsunternehmen-bonn-koeln" className={styles.navLinkMobile}>Umzüge</Link>
-                    <Link href="/moebelspende-bonn-koeln" className={styles.navLinkMobile}>Möbelabholungen</Link>
+                    <Link href="/moebelspende-bonn-koeln" className={styles.navLinkMobile}>Möbelabholung</Link>
                     <Link href="/kleiderspende-bonn-koeln" className={styles.navLinkMobile}>Sach- & Kleiderspende</Link>
                     <Link href="/ueber-uns" className={styles.navLinkMobile}>Über uns</Link>
-                    <Link href="/" className={styles.navLinkMobile}>Kontakt</Link>
-                    <Link href="/" className={styles.navLinkMobile}>Karriere</Link>
+                    <Link href="/kontakt" className={styles.navLinkMobile}>Kontakt</Link>
+                    <Link href="/karriere" className={styles.navLinkMobile}>Karriere</Link>
                 </div>
                 }
                 {scrollMenu && <nav className={styles.navigationScrolledBox}>
                     <div className={styles.navigationScrolled}>
                         <Link href="/gebraucht-moebel" className={styles.navLink}>Sortiment</Link>
-                        <Link href="/entruempelung-bonn-koeln" className={styles.navLink}>Entrümpelungen</Link>
+                        <Link href="/entruempelung-bonn-koeln" className={styles.navLink}>Entrümpelung</Link>
                         <Link href="/umzugsunternehmen-bonn-koeln" className={styles.navLink}>Umzüge</Link>
-                        <Link href="/moebelspende-bonn-koeln" className={styles.navLink}>Möbelabholungen</Link>
+                        <Link href="/moebelspende-bonn-koeln" className={styles.navLink}>Möbelabholung</Link>
                         <Link href="/kleiderspende-bonn-koeln" className={styles.navLink}>Sach- & Kleiderspende</Link>
                         <Link href="/ueber-uns" className={styles.navLink}>Über uns</Link>
-                        <Link href="/" className={styles.navLink}>Kontakt</Link>
-                        <Link href="/" className={styles.navLink}>Karriere</Link>
+                        <Link href="/kontakt" className={styles.navLink}>Kontakt</Link>
+                        <Link href="/karriere" className={styles.navLink}>Karriere</Link>
                         <div onClick={setMenu.bind(this, true)} className={styles.menuHamburger}>
                             <GiHamburgerMenu />
                         </div>
                     </div>
-                    {page === '/' && <button onClick={setCallInfo.bind(this, true)} className={styles.contactBTNscrolledMenu}><BsTelephoneForward /> jetzt anrufen </button>}
-                    {page === '/gebraucht-moebel' && <button onClick={setCallInfo.bind(this, true)} className={styles.contactBTNscrolledMenu}><BsTelephoneForward /> jetzt anrufen </button>}
+                    {!isLandingPage && <button onClick={setCallInfo.bind(this, true)} className={styles.contactBTNscrolledMenu}><BsTelephoneForward /> jetzt anrufen </button>}
                 </nav>
                 }
                 <nav className={styles.navigationBox}>
                     <div className={styles.navigation}>
                         <Link href="/gebraucht-moebel" className={styles.navLink}>Sortiment</Link>
-                        <Link href="/entruempelung-bonn-koeln" className={styles.navLink}>Entrümpelungen</Link>
+                        <Link href="/entruempelung-bonn-koeln" className={styles.navLink}>Entrümpelung</Link>
                         <Link href="/umzugsunternehmen-bonn-koeln" className={styles.navLink}>Umzüge</Link>
-                        <Link href="/moebelspende-bonn-koeln" className={styles.navLink}>Möbelabholungen</Link>
+                        <Link href="/moebelspende-bonn-koeln" className={styles.navLink}>Möbelabholung</Link>
                         <Link href="/kleiderspende-bonn-koeln" className={styles.navLink}>Sach- & Kleiderspende</Link>
                         <Link href="/ueber-uns" className={styles.navLink}>Über uns</Link>
-                        <Link href="/" className={styles.navLink}>Kontakt</Link>
-                        <Link href="/" className={styles.navLink}>Karriere</Link>
+                        <Link href="/kontakt" className={styles.navLink}>Kontakt</Link>
+                        <Link href="/karriere" className={styles.navLink}>Karriere</Link>
                         <div onClick={setMenu.bind(this, true)} className={styles.menuHamburger}>
                             <GiHamburgerMenu />
                         </div>

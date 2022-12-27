@@ -9,6 +9,10 @@ import { IoMailUnreadOutline } from "react-icons/io5";
 export default function HomePage() {
   return (
     <Fragment>
+      <Head>
+        <title>Sozialkaufhaus Bonn & Swisttal bei Köln - alles second-hand & günstig</title>
+        <meta name="description" content="Sozialkaufhaus Bonn & Swisttal bei Köln - Unser second-hand Kaufhaus bietet Gebraucht-Möbel, Entrüpelungen, Möbelspenden-Abholung und viel mehr." />
+      </Head>
       <section className={styles.aboveFoldSection}>
         <div className={styles.aboveFoldRow}>
           <div className={styles.aboveFoldleftQuadratTop}>
@@ -33,10 +37,10 @@ export default function HomePage() {
           <p className={styles.subheadline}> alles second-hand & günstig</p>
           <p>
             Im Sozialkaufhaus bei Köln und Bonn finden Sie Gebraucht-Möbel, Haushaltswaren, second-hand Kleidung und viele weitere Artikel rund um Haus und Haushalt -
-            alles second-hand & günstig. Auch haben wir immer ein großes Angebot an Deko-Artikeln, Gläsern, Vasen, Porzellan & besonderen antiquarischen Artkieln. Unser gesamtes
-            Sortiment beziehen wir durch Haushaltsauflösungen & Möbelabholungen im Raum Köln & Bonn sowie durch Sachspenden die im Sozialkaufhaus abgegeben werden. Auf diesem Weg
-            können wir Mobiliar Haushaltswaren und Kleidung wiederverwerten das anderenfalls entsorgt werden müsste. Seit über 15 Jahren können wir mit unserem Konzept nachhaltig
-            bedürftige Personen untersützen.
+            alles second-hand & günstig. Auch haben wir immer ein großes Angebot an Deko-Artikeln, Gläsern, Vasen, Porzellan & besonderen antiquarischen Artikeln. Unser gesamtes
+            Sortiment beziehen wir durch Haushaltsauflösungen & Möbelabholungen im Raum Köln & Bonn, sowie durch Sachspenden die im Sozialkaufhaus abgegeben werden. Auf diesem Weg
+            können wir Mobiliar, Haushaltswaren und Kleidung wiederverwerten die anderenfalls entsorgt werden müsste. Seit über 15 Jahren können wir mit unserem Konzept nachhaltig
+            bedürftige Menschen untersützen.
           </p>
         </div>
       </section>
@@ -56,7 +60,7 @@ export default function HomePage() {
         <div className={styles.serviceSectionContent}>
           <h2 className={styles.servicesHeadline}>Unsere Leistungen im Überblick</h2>
           <p className={styles.serviceParagraph}>
-            Ob Entrümpelung, Umzug oder die kostenfreie Abholung Ihres Mobiliars. Ihr Sozialkaufhaus Köln/Bonn unterstützt Sie gerne mit über 15 Jahre Erfahrung.
+            Ob Entrümpelung, Umzug oder die kostenfreie Abholung Ihres Mobiliars. Ihr Sozialkaufhaus Köln/Bonn unterstützt Sie gerne mit über 15 Jahren Erfahrung.
             Persönlich vor Ort oder kontaktfrei & digital - Wir beraten Sie kostenfrei und unverbindlich bei Ihrem Umzug oder Ihrer Entrümpelung.
           </p>
           <div className={styles.servicesBox}>
@@ -81,7 +85,7 @@ export default function HomePage() {
                   <li><BsCheck2 className={styles.checkIcon} /> 100% kostenfrei</li>
                   <li><BsCheck2 className={styles.checkIcon} /> professionell & versichert</li>
                 </ul>
-                <button className={styles.serviceBTN}>jetzt informieren </button>
+                <Link href="/moebelspende-bonn-koeln"><button className={styles.serviceBTN}>jetzt informieren </button></Link>
               </div>
             </div>
             <div className={styles.clearingService}>
@@ -93,7 +97,7 @@ export default function HomePage() {
                   <li><BsCheck2 className={styles.checkIcon} /> Umzug zum Festpreis</li>
                   <li><BsCheck2 className={styles.checkIcon} /> professionell & versichert</li>
                 </ul>
-                <button className={styles.serviceBTN}>jetzt informieren </button>
+                <Link href="/umzugsunternehmen-bonn-koeln"><button className={styles.serviceBTN}>jetzt informieren </button></Link>
               </div>
             </div>
           </div>
@@ -104,7 +108,7 @@ export default function HomePage() {
           <div className={styles.donateContent}>
             <h3 className={styles.donateHeadline}>Kleiderspenden & Sachspenden</h3>
             <p className={styles.donateText}>wir nehmen Ihre Spenden an & Bedürftige aus unserer Region profitieren</p>
-            <button className={styles.donateBTN}> jetzt informieren </button>
+            <Link href="/kleiderspende-bonn-koeln"><button className={styles.donateBTN}> jetzt informieren </button></Link>
           </div>
           <div>
             <Image height={400} width={800} className={styles.donateImage} alt="Kleiderspenden & Sachspenden in Bonn und Swisttal" src="/kleider-spenden-sachspenden-bonn-swisttal.jpg"></Image>
@@ -117,10 +121,9 @@ export default function HomePage() {
           <div className={styles.locationContent}>
             <h3 className={styles.headlineStore}> Sozialkaufhaus Swisttal bei Köln</h3>
             <p>
-              Im Sozialkaufhaus Swisttal bei Köln versorgen wir mittlerweile seit über 15 Jahren bedürftige Menschen mit Gebraucht-Möbel Haushaltswaren & Kleidung.
+              Im Sozialkaufhaus Swisttal bei Köln versorgen wir mittlerweile seit über 15 Jahren bedürftige Menschen mit Gebraucht-Möbel, Haushaltswaren & Kleidung.
               Angefangen mit einer 800 Quadratmeter großen Austellungsfläche, konnten wir das Sozialkaufhaus Swisttal aufgrund des hohen Bedarf an Gebraucht-Möbel
-              auf mittelerweile auf über 3000 Quadratmeter ausbauen. Mittlerweile ist das Sozialkaufhaus in Swisttal bei Köln eines der größten Second-Hand Kaufhäuser
-              in Deutschland.
+              mittelerweile auf über 3000 Quadratmeter ausbauen. Das Sozialkaufhaus in Swisttal bei Köln ist eines der größten Sozialkaufhäuser in Deutschland.
             </p>
             <ul className={styles.storeItemList}>
               <li><BsCheck2 className={styles.checkIcon} /> 3000+ Quadratmeter</li>
@@ -160,7 +163,7 @@ export default function HomePage() {
             <div className={styles.contactBox}>
               <h4> Kontaktinformation</h4>
               <ul className={styles.contactList}>
-                <li className={styles.contactListItem}>< BsTelephone className={styles.test} /> +49 (0) 228 - 227 983 47</li>
+                <li className={styles.contactListItem}>< BsTelephone className={styles.test} /> +49 (0) 228 - 227 983 49</li>
                 <li className={styles.contactListItem}><IoMailUnreadOutline className={styles.test} /> info@dsk-nrw.de</li>
                 <li className={styles.contactListItem}><BsWhatsapp className={styles.test} /> +49 (0) 151 423 859 89</li>
               </ul>

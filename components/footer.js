@@ -20,17 +20,17 @@ export default function FooterComponent() {
                     <nav className={styles.linkBox}>
                         <h4>Weiterführende Links</h4>
                         <Link href="/gebraucht-moebel"><p className={styles.link}>Sortiment</p></Link>
-                        <Link href="/entruempelung-bonn-koeln"><p className={styles.link}>Entrümpelungen</p></Link>
+                        <Link href="/entruempelung-bonn-koeln"><p className={styles.link}>Entrümpelung</p></Link>
                         <Link href="/umzugsunternehmen-bonn-koeln"><p className={styles.link}>Umzüge</p></Link>
                         <Link href="/moebelspende-bonn-koeln"><p className={styles.link}>Möbelabholung</p></Link>
-                        <Link href="/kleiderspende-bonn-koeln"><p className={styles.link}>Über uns</p></Link>
+                        <Link href="/kleiderspende-bonn-koeln"><p className={styles.link}>Sach- & Kleiderspende</p></Link>
                         <Link href="/ueber-uns"><p className={styles.link}>Über uns</p></Link>
-                        <Link href="/"><p className={styles.link}>Karriere</p></Link>
+                        <Link href="/karriere"><p className={styles.link}>Karriere</p></Link>
                     </nav>
                     <GiHamburgerMenu onClick={setMenuMobile.bind(this, true)} className={styles.menuBTN} />
                     <div className={styles.contactBox}>
                         <h4>Kontakt</h4>
-                        <Link href="/"><p className={styles.link}> <BsFillCursorFill /> zum Kontaktformular</p></Link>
+                        <Link href="/kontakt"><p className={styles.link}> <BsFillCursorFill /> zum Kontaktformular</p></Link>
                         <p> <IoMailUnreadOutline /> info@dsk-nrw.de</p>
                         <p> <BsWhatsapp /> +49 (0) 151 423 859 89</p>
                         <p className={styles.firstPhoneNumber}><BsTelephone /> Swisttal: +49 (0) 2254 - 600 480 5</p>
@@ -40,8 +40,8 @@ export default function FooterComponent() {
                 </div>
                 <div className={styles.spacer}></div>
                 <div className={styles.rowBottom}>
-                    <Link href="/"><p className={styles.link}>Impressum</p></Link>
-                    <Link href="/"><p className={styles.link}>Datenschutz</p></Link>
+                    <Link href="/impressum"><p className={styles.link}>Impressum</p></Link>
+                    <Link href="/datenschutz"><p className={styles.link}>Datenschutz</p></Link>
                 </div>
                 {menuMobile && <nav className={styles.menuMobile}>
                     <div className={styles.closeBTN} onClick={setMenuMobile.bind(this, false)}>
@@ -50,12 +50,12 @@ export default function FooterComponent() {
                     <Link href="/"><Image className={styles.logoImage} src="/Logo Sozialkaufhaus Bonn white.png" alt="logo Footer Sozialkaufhaus Kön Bonn" width={200} height={100} /></Link>
                     <h4>Weiterführende Links</h4>
                     <Link href="/gebraucht-moebel"><p className={styles.link}>Sortiment</p></Link>
-                    <Link href="/entruempelung-bonn-koeln"><p className={styles.link}>Entrümpelungen</p></Link>
+                    <Link href="/entruempelung-bonn-koeln"><p className={styles.link}>Entrümpelung</p></Link>
                     <Link href="/umzugsunternehmen-bonn-koeln"><p className={styles.link}>Umzüge</p></Link>
                     <Link href="/moebelspende-bonn-koeln"><p className={styles.link}>Möbelabholung</p></Link>
                     <Link href="/kleiderspende-bonn-koeln"><p className={styles.link}>Sach- & Kleiderspende</p></Link>
                     <Link href="/ueber-uns"><p className={styles.link}>Über uns</p></Link>
-                    <Link href="/"><p className={styles.link}>Karriere</p></Link>
+                    <Link href="/karriere"><p className={styles.link}>Karriere</p></Link>
                 </nav>}
                 {menuInfo && <div className={styles.infoMenu}>
                     <div className={styles.closeBTN} onClick={setMenuInfo.bind(this, false)}>
@@ -63,7 +63,7 @@ export default function FooterComponent() {
                     </div>
                     <Link href="/"><Image className={styles.logoImage} src="/Logo Sozialkaufhaus Bonn white.png" alt="logo Footer Sozialkaufhaus Kön Bonn" width={200} height={100} /></Link>
                     <h4>Kontakt</h4>
-                    <Link href="/"><p className={styles.link}> <BsFillCursorFill /> zum Kontaktformular</p></Link>
+                    <Link href="/kontakt"><p className={styles.link}> <BsFillCursorFill /> zum Kontaktformular</p></Link>
                     <p> <IoMailUnreadOutline /> info@dsk-nrw.de</p>
                     <p> <BsWhatsapp /> +49 (0) 151 423 859 89</p>
                     <p className={styles.firstPhoneNumber}><BsTelephone /> Swisttal: +49 (0) 2254 - 600 480 5</p>

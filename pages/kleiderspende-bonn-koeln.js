@@ -1,13 +1,22 @@
 import { Fragment } from "react";
 import styles from '../styles/spenden.module.css';
 import Image from "next/image";
+import Head from "next/head";
 
 
 export default function Sachspende() {
     return (
         <Fragment>
+            <Head>
+                <title>Kleiderspende & Sachspende für Bonn & Swisttal</title>
+                <meta name="description" content="Sach- & Kleiderspende Bonn - Wir freuen uns über Ihre Kleiderspende und Bedürftige Personen aus der Region profitieren" />
+            </Head>
             <section className={styles.aboveTheFoldSection}>
-                <Image className={styles.aboveTheFoldImage} src="/kleiderspenden-sachspenden-bonn-swisttal.jpg" alt="Kleiderspende & Sachspende Swisttal Bonn" width={500} height={250}></Image>
+                <div className={styles.aboveTheFoldImageBox}>
+                    <Image className={styles.aboveTheFoldImage} src="/kleiderspenden-sachspenden-bonn-swisttal.jpg" alt="Kleiderspende & Sachspende Swisttal Bonn" width={900} height={400}></Image>
+                    <Image className={styles.aboveTheFoldImage} src="/kleider-spenden-sachspenden-bonn-swisttal.jpg" alt="Kleiderspende & Sachspende Swisttal Bonn" width={900} height={400}></Image>
+                </div>
+
                 <h1 className={styles.headline}>Kleider- & Sachspenden Annahme </h1>
                 <p className={styles.subheadline}>für Bedürftige aus Bonn, Swisttal & der Region</p>
                 <p className={styles.aboveTheFoldText}>
