@@ -34,7 +34,7 @@
 .aboveFoldleftQuadratTop {
   width: 55%;
   height: 30vh;
-  background-image: url('../public/sozialkaufhaus-bonn-koeln-moebel-header.jpg');
+  background-image: url('../public/sozialkaufhaus-bonn-koeln-moebel-header.webp');
   background-position: 50%;
   display: flex;
   border-radius: 5px;
@@ -48,7 +48,7 @@
   display: flex;
   height: 30vh;
   background-position: 80% 0%;
-  background-image: url('../public/entrümpelung-sozialkaufhaus-koeln-bonn-header.jpg');
+  background-image: url('../public/entrümpelung-sozialkaufhaus-koeln-bonn-header.webp');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -57,7 +57,7 @@
   width: 55%;
   height: 30vh;
   background-position: 40% 20%;
-  background-image: url('../public/sozialkaufhaus-umzugsunternehmen-koeln-bonn.jpg');
+  background-image: url('../public/sozialkaufhaus-umzugsunternehmen-koeln-bonn.webp');
   display: flex;
   border-radius: 5px;
   background-size: cover;
@@ -70,7 +70,7 @@
   background-position: 80% 90%;
   display: flex;
   height: 30vh;
-  background-image: url('../public/moebelspende-koeln-bonn-header.jpg');
+  background-image: url('../public/moebelspende-koeln-bonn-header.webp');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -476,7 +476,7 @@
   }
 
   .productsBTN {
-    width: 80%
+    max-width: 65vw;
   }
 
   .donatesSection {
@@ -494,7 +494,7 @@
   }
 
   .donateBTN {
-    width: 80%
+    max-width: 65vw;
   }
 
   .contactBox {

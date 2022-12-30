@@ -53,10 +53,10 @@ export default function SortimentPage() {
             </section>
             <section className={styles.discountSection}>
                 <p className={styles.discountText}>Bedürfitge Personen erhalten <span className={styles.percentText}>20% Nachlass</span> auf den gesamten Einkauf.</p>
-                <Image className={styles.discountImage} src="/sozialkaufhaus-bonn-koeln-moebel-header.jpg" alt="gebraucht-moebel Sozialkaufhaus Köln Bonn" width={500} height={300}></Image>
+                <Image className={styles.discountImage} src="/sozialkaufhaus-bonn-koeln-moebel-header.webp" alt="gebraucht-moebel Sozialkaufhaus Köln Bonn" width={500} height={300}></Image>
             </section>
             <section className={styles.deliverySection}>
-                <Image className={styles.discountImage} src="/moebelspende-koeln-bonn-header.jpg" alt="gebraucht-moebel Sozialkaufhaus Köln Bonn" width={500} height={300}></Image>
+                <Image className={styles.discountImage} src="/moebelspende-koeln-bonn-header.webp" alt="gebraucht-moebel Sozialkaufhaus Köln Bonn" width={500} height={300}></Image>
                 <p className={styles.discountText}>Lieferung bereits <span className={styles.percentText}>ab 25 Euro.</span> Montageservice & Lieferung in den Wohnraum gegen Aufpreis möglich.</p>
             </section>
 

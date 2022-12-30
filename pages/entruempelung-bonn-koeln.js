@@ -2,7 +2,6 @@ import { Fragment } from "react";
 import styles from "../styles/entruempelung.module.css";
 import { useRef, useState, useEffect } from "react";
 import { BsFillHouseFill, BsInfoCircle, BsCheckCircleFill, BsTrash, BsWhatsapp } from "react-icons/bs";
-import Autocomplete from "react-google-autocomplete";
 import { FaWalking } from "react-icons/fa";
 import { AiOutlineVideoCameraAdd, AiOutlineCloseCircle, AiOutlineEdit } from "react-icons/ai";
 import { IoIosCloseCircleOutline } from "react-icons/io";
@@ -24,6 +23,8 @@ export default function EntrümpelungPage() {
     const [infoSlider, setInfoSlider] = useState(false);
     const [loading, setLoading] = useState(false);
     const [scrolledY, setScrolled] = useState(0);
+    const date = new Date();
+    const timeStamp = date.getTime();
 
     const options = {
         componentRestrictions: { country: 'DE' },
@@ -144,7 +145,7 @@ export default function EntrümpelungPage() {
                     date: dateRefViewing.current.value,
                     qm: qmRefViewing.current.value,
                 }
-                const response = await fetch('http://localhost:3030/dsk-website/entruempelungForm', {
+                const response = await fetch('https://api.einsatzplaner.com/dsk-website/entruempelungForm', {
                     method: "POST",
                     body: JSON.stringify({ ...data }),
                     headers: { "Content-Type": "application/json" }
@@ -202,8 +203,8 @@ export default function EntrümpelungPage() {
 
     async function sendNewEmail(filenameArray, data) {
         try {
-            const videoUrl = `localhost:3000/admin/videos/${filenameArray.join('+++')}`;
-            const response = await fetch('http://localhost:3030/dsk-website/entruempelungForm', {
+            const videoUrl = `https://portal.einsatzplaner.com/dsk-website/entruempelung/${filenameArray.join('+++')}`;
+            const response = await fetch('https://api.einsatzplaner.com/dsk-website/entruempelungForm', {
                 method: "POST",
                 body: JSON.stringify({ ...data, link: videoUrl }),
                 headers: { "Content-Type": "application/json" }
@@ -224,9 +225,9 @@ export default function EntrümpelungPage() {
     async function uploadFiles(clientName) {
         const fileNameArray = [];
         for await (let file of files) {
-            const filename = `${file.name}-${clientName}-${Math.floor(1000 + Math.random() * 9000)}`;
+            const filename = `${clientName}-${timeStamp}-${Math.floor(1000 + Math.random() * 9000)}`;
             fileNameArray.push(filename);
-            const response = await fetch('http://localhost:3030/dsk-website/getSignedURL', {
+            const response = await fetch('https://api.einsatzplaner.com/dsk-website/getSignedURL', {
                 method: "POST",
                 body: JSON.stringify({ method: "putObject", filename: filename }),
                 headers: { "Content-Type": "application/json" }
@@ -261,7 +262,7 @@ export default function EntrümpelungPage() {
                                 <label className={styles.label} htmlFor="address">
                                     Immobilienadresse:
                                 </label>
-                                <Autocomplete options={options} className={styles.input} ref={adressRef} apiKey={"AIzaSyBXcBLbQlz5-zAwEHfLqD2mQcxghJ8TjOs"} placeholder="Deutschherrenstraße 197, 53179 Bonn" />
+                                <input className={styles.input} ref={adressRef} type="text" placeholder="Deutschherrenstraße 197, 53179 Bonn" />
                             </div>
                             <div className={styles.formGroup}>
                                 <label className={styles.label} htmlFor="date">
@@ -335,7 +336,7 @@ export default function EntrümpelungPage() {
                                     <h3 className={styles.contactHeadlineProperty}>Ihre Angaben zu der Immobilie:</h3>
                                     <div className={styles.formGroupContact}>
                                         <label className={styles.label}>Anschrift</label>
-                                        <Autocomplete options={options} className={styles.inputContact} ref={adressRefViewing} apiKey={"AIzaSyBXcBLbQlz5-zAwEHfLqD2mQcxghJ8TjOs"} defaultValue={adressRef.current.value} />
+                                        <input className={styles.inputContact} ref={adressRefViewing}  defaultValue={adressRef.current.value} type="text" />
                                     </div>
                                     <div className={styles.contactFormRow}>
                                         <div className={styles.formGroupContact}>
@@ -394,7 +395,7 @@ export default function EntrümpelungPage() {
                                     <h3 className={styles.contactHeadlineProperty}>Ihre Angaben zu der Immobilie:</h3>
                                     <div className={styles.formGroupContact}>
                                         <label className={styles.label}>Anschrift</label>
-                                        <Autocomplete options={options} className={styles.inputContact} ref={adressRefVideo} apiKey={"AIzaSyBXcBLbQlz5-zAwEHfLqD2mQcxghJ8TjOs"} defaultValue={adressRef.current.value} />
+                                        <input className={styles.inputContact} ref={adressRefVideo} type="text" defaultValue={adressRef.current.value} />
                                     </div>
                                     <div className={styles.contactFormRow}>
                                         <div className={styles.formGroupContact}>
@@ -452,7 +453,7 @@ export default function EntrümpelungPage() {
             {/* Content */}
             <section className={styles.introductionSection}>
                 <div className={styles.introductionWrapper}>
-                    <Image className={styles.introductionImage} src="/sozialkaufhaus-bonn-koeln-moebel-header.jpg" alt="Sozialkaufhaus Bonn Koeln Entrümpelung" width={500} height={300}></Image>
+                    <Image className={styles.introductionImage} src="/sozialkaufhaus-bonn-koeln-moebel-header.webp" alt="Sozialkaufhaus Bonn Koeln Entrümpelung" width={500} height={300}></Image>
                     <div className={styles.introductionSectionContent}>
                         <p className={styles.introductionSectionSubheadline}>nachhaltig & umweltschonend</p>
                         <h2 className={styles.introductionSectionHeadline}>Ihre Entrümpelung mit unserem Sozialkaufhaus</h2>
@@ -495,7 +496,7 @@ export default function EntrümpelungPage() {
                 </div>
             </section>
             <section className={styles.imagedskSection}>
-                <Image className={styles.imageDSK} src="/entrümpelung-sozialkaufhaus-koeln-bonn-header.jpg" alt="Entrümpelung Köln Bonn in Aktion" width={500} height={350}></Image>
+                <Image className={styles.imageDSK} src="/entrümpelung-sozialkaufhaus-koeln-bonn-header.webp" alt="Entrümpelung Köln Bonn in Aktion" width={500} height={350}></Image>
             </section>
             <section className={styles.advantageSection}>
                 <h2 className={styles.advantageSectionSubheadline}>Entrümpelung mit Ihrem Sozialkaufhaus</h2>

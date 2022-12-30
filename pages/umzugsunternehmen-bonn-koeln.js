@@ -1,7 +1,6 @@
 import { Fragment } from "react";
 import styles from '../styles/umzugsunternehmen.module.css';
 import Image from "next/image";
-import Autocomplete from "react-google-autocomplete";
 import { useState, useRef, useEffect } from "react";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { BsCheckCircleFill } from "react-icons/bs";
@@ -36,7 +35,7 @@ export default function UmzugsPage() {
         if (startAdressRef.current.value.length > 3 && endAdressRef.current.value.length > 3) {
             setMainForm(true)
         } else {
-            setErrorMessage('Bitte füllen Sie bei Felder aus')
+            setErrorMessage('Bitte füllen Sie alle Felder gültig aus')
         }
     }
 
@@ -81,7 +80,7 @@ export default function UmzugsPage() {
                     message: messageRef.current.value
                 }
 
-                const response = await fetch('http://localhost:3030/dsk-website/umzugsForm', {
+                const response = await fetch('https://api.einsatzplaner.com/dsk-website/umzugsForm', {
                     method: "POST",
                     body: JSON.stringify({ ...data }),
                     headers: { "Content-Type": "application/json" }
@@ -111,20 +110,20 @@ export default function UmzugsPage() {
             </Head>
             {scrollBTN && <button onClick={setMainForm.bind(this, true)} className={styles.scrollCTAButton}>{mainForm === 'closed' ? 'Anfrage fotzsetzen' : 'kostenloses Angebot'}</button>}
             <section className={styles.aboveFoldSection}>
-                <Image src="/umzugsunternehmen-bonn-koeln-headerImage.jpg" alt="umzugsunternehmen koeln bonn header" className={styles.headerImage} width={1500} height={400}></Image>
+                <Image src="/umzugsunternehmen-bonn-koeln-headerImage.webp" alt="umzugsunternehmen koeln bonn header" className={styles.headerImage} width={1500} height={400}></Image>
             </section>
             <div className={styles.formWrapper}>
                 <div className={styles.formBackground}>
                     <form className={styles.formLP}>
                         <div className={styles.formGroup}>
                             <label htmlFor="ladeadresse">Auszugsadresse</label>
-                            <Autocomplete options={options} id="ladeadresse" ref={startAdressRef} className={styles.input} apiKey={"AIzaSyBXcBLbQlz5-zAwEHfLqD2mQcxghJ8TjOs"} placeholder="Deutschherrenstraße 197, 53179 Bonn" />
+                            <input type="text" id="ladeadresse" ref={startAdressRef} className={styles.input} placeholder="Deutschherrenstraße 197, 53179 Bonn" />
                         </div>
                         <div className={styles.formGroup}>
                             <label htmlFor="ausladeadresse">Einzugsadresse</label>
-                            <Autocomplete className={styles.input} options={options} id="ausladeadresse" ref={endAdressRef} apiKey={"AIzaSyBXcBLbQlz5-zAwEHfLqD2mQcxghJ8TjOs"} placeholder="Breniger Straße 3, 53913 Swisttal" />
+                            <input className={styles.input} type="text" id="ausladeadresse" ref={endAdressRef} placeholder="Breniger Straße 3, 53913 Swisttal" />
                         </div>
-                        <button type="button" className={styles.lpFormBTN} onClick={openMainForm}>{mainForm === 'closed' ? 'Anfrage fortsetzten' : 'kostenloses Angebot erhalten'}</button>
+                        <button type="button" className={styles.lpFormBTN} onClick={openMainForm}>{mainForm === 'closed' ? 'Anfrage fortsetzen' : 'kostenloses Angebot erhalten'}</button>
                     </form>
                     {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
                     <p className={styles.textForm}> Wir beraten Sie kostenfrei & unverbindlich vor Ort und unterbreiten Ihnen ein Festpreis-Angebot </p>
@@ -133,7 +132,10 @@ export default function UmzugsPage() {
 
             <div className={mainForm === true ? styles.mainFormBackground : styles.hideMainForm}>
                 <form className={styles.formMain} onSubmit={submitHandler}>
-                    <IoIosCloseCircleOutline className={styles.closeBTNPopup} onClick={closePopupForm} />
+                    <div className={styles.closeBTNBox}>
+                        <IoIosCloseCircleOutline className={styles.closeBTNPopup} onClick={closePopupForm} />
+                    </div>
+
                     <p className={styles.formHeadlineTop}> Kontaktinformation</p>
                     <div className={styles.formRow}>
                         <div className={styles.formGroupMainForm}>
@@ -155,11 +157,11 @@ export default function UmzugsPage() {
                     <div className={styles.formRow}>
                         <div className={styles.formGroupMainForm}>
                             <label htmlFor="ladeadresseForm">Auszugsadresse</label>
-                            <Autocomplete ref={startAdressMainRef} required className={styles.inputMainForm} defaultValue={mainForm !== false ? startAdressRef.current.value : ''} options={options} id="ladeadresseForm" apiKey={"AIzaSyBXcBLbQlz5-zAwEHfLqD2mQcxghJ8TjOs"} placeholder="Deutschherrenstraße 197, 53179 Bonn" />
+                            <input ref={startAdressMainRef} required className={styles.inputMainForm} defaultValue={mainForm !== false ? startAdressRef.current.value : ''} type="text" id="ladeadresseForm" placeholder="Deutschherrenstraße 197, 53179 Bonn" />
                         </div>
                         <div className={styles.formGroupMainForm}>
                             <label htmlFor="tel">Einzugsadresse</label>
-                            <Autocomplete ref={endAdressMainRef} required options={options} defaultValue={mainForm ? endAdressRef.current.value : ''} className={styles.inputMainForm} id="ladeadresseForm" apiKey={"AIzaSyBXcBLbQlz5-zAwEHfLqD2mQcxghJ8TjOs"} placeholder="Deutschherrenstraße 197, 53179 Bonn" />
+                            <input ref={endAdressMainRef} required type="text" defaultValue={mainForm ? endAdressRef.current.value : ''} className={styles.inputMainForm} id="ladeadresseForm" placeholder="Deutschherrenstraße 197, 53179 Bonn" />
                         </div>
                     </div>
                     <div className={styles.formRow}>
@@ -177,14 +179,14 @@ export default function UmzugsPage() {
                 <p className={styles.introductionSectionText}>
                     Professionell, transparent und zuverlässig – Das Soziale Kaufhaus Umzugsunternehmen.
                     Wir beraten Sie kostenfrei bei Ihnen vor Ort und und führen Ihren Umzug genau nach Ihren
-                    Wünschen zum Festpreis durch. Jetzt ganz einfach Angebot erhalten und beraten lassen
+                    Wünschen zum Festpreis durch. Jetzt ganz einfach Angebot erhalten und beraten lassen.
                 </p>
                 <div className={styles.workFlowWrapper}>
                     <div className={styles.stepBox}>
                         <span className={styles.stepIcon}>1</span>
-                        <h3>kostenfreie Beratung</h3>
+                        <h3>Kostenfreie Beratung</h3>
                         <p>
-                            kostenfreie & unverbindliche Beratung bei Ihnen vor Ort. Einer unserer 5 Umzugsexperten kommt zu Ihnen, besichtigt das Umzugsvolument und berät Sie unverbindlich und kostenfrei.
+                            Kostenfreie & unverbindliche Beratung bei Ihnen vor Ort. Einer unserer 5 Umzugsexperten kommt zu Ihnen, besichtigt das Umzugsvolument und berät Sie unverbindlich und kostenfrei.
                         </p>
                     </div>
                     <div className={styles.stepBox}>
@@ -197,10 +199,10 @@ export default function UmzugsPage() {
                     </div>
                     <div className={styles.stepBox}>
                         <span className={styles.stepIcon}>3</span>
-                        <h3>professioneller Umzug </h3>
+                        <h3>Professioneller Umzug </h3>
                         <p>
                             Nach verbindlicher Terminvereinbarung führen wir Ihren Umzug professionell durch. Ihr persönlicher Umzugsberater ist beim Umzug mit vor
-                            Ort und Sie haben einen Ansprechpartner von A-Z. Selbstverständlich ist unser Umzugsunternehmen unfangreich versichert.
+                            Ort und Sie haben einen Ansprechpartner von A-Z. Selbstverständlich ist unser Umzugsunternehmen umfangreich versichert.
                         </p>
                     </div>
                 </div>
@@ -209,22 +211,22 @@ export default function UmzugsPage() {
                 <div className={styles.umzugAndEntrümpelungContentWrapper}>
                     <h2 className={styles.umzugEntrümpelungHeadline}>Umzug & Entrümpelung aus einer Hand</h2>
                     <p>
-                        Sie möchten nicht Ihr gesamtes Mobiliar mit umziehen. Unser Umzugsunternehmen übernimmt Ihrern Umzug
+                        Sie möchten nicht Ihr gesamtes Mobiliar mit umziehen. Unser Umzugsunternehmen übernimmt Ihren Umzug
                         und die Resträumung der alten Immobilie. Häufig können wir die zurückgebliebenen Möbel
-                        in unseren Sozialkaufhäusern sogar wieder bedürftigen Personen zur Verfügung stellen. Gerne führen wir Umzug und
-                        Entrümpelung direkt nacheinander durch. Sprechen Sie unseren Umzugsexperten bei der Besichtigung einfach auf die
+                        in unseren Sozialkaufhäusern sogar wieder bedürftigen Menschen zur Verfügung stellen. Gerne führen wir Umzug und
+                        Entrümpelung auch zusammen durch. Sprechen Sie unseren Umzugsexperten bei der Besichtigung einfach auf die
                         Resträumung an.
                     </p>
                 </div>
-                <Image className={styles.umzugAndEntrümpelungImage} src="/moebelspende-koeln-bonn-header.jpg" alt="Umzugsunternehmen Köln und Bonn - Resträumung" width={400} height={250}></Image>
+                <Image className={styles.umzugAndEntrümpelungImage} src="/moebelspende-koeln-bonn-header.webp" alt="Umzugsunternehmen Köln und Bonn - Resträumung" width={400} height={250}></Image>
             </section>
             <section className={styles.advantageSection}>
-                <h2 className={styles.advantageSectionSubheadline}>Entrümpelung mit Ihrem Sozialkaufhaus</h2>
+                <h2 className={styles.advantageSectionSubheadline}>Das Soziale Kaufhaus - Umzugsunternehmen </h2>
                 <p className={styles.advantageSectionHeadline}>Ihre Vorteile auf einen Blick</p>
                 <div className={styles.advantageBoxWrapper}>
                     <div className={styles.advantage}>
                         <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
-                        kostenfreie & uverbindliche Beratung
+                        kostenfreie & unverbindliche Beratung
                     </div>
                     <div className={styles.advantage}>
                         <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
@@ -232,7 +234,7 @@ export default function UmzugsPage() {
                     </div>
                     <div className={styles.advantage}>
                         <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
-                        versicherte & professioneller Umzug
+                        versicherter & professioneller Umzug
                     </div>
                     <div className={styles.advantage}>
                         <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
@@ -245,18 +247,18 @@ export default function UmzugsPage() {
                 </div>
             </section>
             <section className={styles.callToActionSection}>
-                <button onClick={openMainForm} className={styles.ctaBTN}>{mainForm === 'closed' ? 'Anfrage fotzsetzen' : 'kostenloses Angebot erhalten'} <HiCursorClick /></button>
+                <button onClick={setMainForm.bind(this, true)} className={styles.ctaBTN}>{mainForm === 'closed' ? 'Anfrage fortsetzen' : 'kostenloses Angebot erhalten'} <HiCursorClick /></button>
             </section>
             <section className={styles.faqSection}>
                 <h2 className={styles.headlineFAQ}>Häufig gestellte Fragen</h2>
                 <div className={styles.faqBox}>
                     <div className={styles.questionBox}>
-                        <h3 className={styles.question}>Wann sollte ich anfangen meinen Umzug zu organisieren und wie viel Vorlaufzeit benötigt Ihr Umzugs-unternehmen?</h3>
+                        <h3 className={styles.question}>Wann sollte ich anfangen meinen Umzug zu organisieren und wie viel Vorlaufzeit benötigt Ihr Umzugsunternehmen?</h3>
                         <p>
                             Grundsätzlich gilt je früher desto besser.  In der Regel hat unser Umzugsunternehmen für Köln
                             und Bonn eine Vorlaufzeit von 4-6 Wochen.
                             Je nach Auslastung und Umfang, findet unser Umzugsunternehmen für Köln und Bonn auch
-                            kurzfristig eine Lösung. Wenn Sie kurzfristig umziehen wollen, nehmen Sie schnellstmöglich
+                            kurzfristig eine Lösung. Wenn Sie kurzfristig umziehen möchten nehmen Sie bitte schnellstmöglich
                             Kontakt zu uns auf.
                             Wir prüfen gerne, ob wir Sie bei Ihrem Umzug unterstützen können.
                             Wir empfehlen jedoch, dass Sie wir die kostenfreie Beratung 2-3 Monte vor
@@ -272,7 +274,7 @@ export default function UmzugsPage() {
                             besprechen. Gerne liefert unser Umzugsunternehmen Ihnen die Umzugskartons und
                             übernimmt auch das Verpacken der Schrankinhalte.
                             Wie viele Umzugskartons Sie benötigen und wie unser Umzugsunternehmen für Köln und Bonn
-                            Sie beim einpacken der Umzugskartons unterstützt besprechen wir gerne mit Ihnen bei
+                            Sie beim einpacken der Umzugskartons unterstützten kann besprechen wir gerne mit Ihnen bei
                             der kostenfreien Erstberatung.
                         </p>
                     </div>
@@ -284,8 +286,9 @@ export default function UmzugsPage() {
                             Gerne kümmert sich unser Umzugsunternehmen um das verwertbare Mobiliar. Ihr Vorteil – Sie müssen Möbel, welche Sie bis zum Umzugstag
                             noch benötigen nicht vorher abgeben. Unser Umzugsunternehmen für Köln und Bonn
                             nimmt die Möbel direkt am Umzugstag mit.
-                            Zudem helfen Sie mit Ihrem Mobiliar bedürfitgen Personen, welche die Möbel im Sozialkaufhaus bei
-                            Köln und Bonn zu kleinen Preisen erstehen können.
+                            Zudem helfen Sie mit Ihrem Mobiliar bedürfitgen Menschen, welche die Möbel im Sozialkaufhaus bei
+                            Köln und Bonn zu kleinen Preisen erstehen können. Gerne übernehmen wir auch die vollständige Resträumung der alten Immobilie. Sprechen Sie unseren Umzugsexperten
+                            bei der Besichtigung einfach an.
                         </p>
                     </div>
                     <div className={styles.questionBox}>
@@ -294,8 +297,7 @@ export default function UmzugsPage() {
                         </h3>
                         <p>
                             Ja – das ist selbstverständlich auch möglich. Sie sagen uns telefonisch Ort, Datum und Uhrzeit.
-                            Wir stellen Ihnen gerne Umzugshelfer zur Verfügung. Häufig ist diese Lösung jedoch nicht die
-                            sinnvollste, denn der Aufwand für den Umzug wird häufig unterschätzt.
+                            Wir stellen Ihnen gerne Umzugshelfer zur Verfügung. Häufig ist diese Lösung jedoch nicht optimal, denn der Aufwand für den Umzug wird häufig unterschätzt.
                             Wir raten Ihnen: Nehmen Sie das Angebot unseres Umzugsunternehmen an und lassen Sie sich
                             vorab kostenfrei beraten. Gerne stellen wir Ihnen anschließend so viele Umzugshelfer zur
                             Verfügung wie Sie möchten. Unser Umzugsunternehmen kann Ihnen jedoch bestimmt den ein oder
@@ -322,8 +324,8 @@ export default function UmzugsPage() {
                             für Schäden an Kartoninhalten haftet, muss der Kartoninhalt fachgerecht verpackt
                             und durch ausreichend Papier gesichert werden. Gerne übernimmt unser
                             Umzugsunternehmen für Köln und Bonn das Einpacken der Kartonagen für Sie.
-                            Möchten Sie die Umzugskartons lieber selber selber einpacken, beraten
-                            Sie unsere Umzugsexperten gerne.
+                            Möchten Sie die Umzugskartons lieber alleine einpacken, beraten
+                            wir Sie gerne und stellen Ihnen geeignetes Verpackungsmaterial zur Verfügung.
                         </p>
                     </div>
                     <div className={styles.questionBox}>
@@ -331,11 +333,11 @@ export default function UmzugsPage() {
                             Muss ich mich um Parkmöglichkeiten selber kümmern?
                         </h3>
                         <p>
-                            Hier gibt es verschiedene Möglichkeiten, welche wir bei der kostenfreien
-                            Erstberatung mit Ihnen zusammen besprechen. Sollte die Parksituation sehr schlecht
-                            sein, ist es sinnvoll, dass unser Umzugsunternehmen in Köln und Bonn eine
+                            Hier gibt es verschiedene Möglichkeiten, die wir bei der kostenfreien
+                            Erstberatung mit Ihnen zusammen besprechen. Sollte die Parksituation schlecht
+                            sein ist es sinnvoll, dass unser Umzugsunternehmen in Köln und Bonn eine
                             Halteverbotszone einrichtet. Dies ist zwar im Verhältnis zur Absperrung durch
-                            <em>Flatterband</em> oder <em>Mülltonnen</em> aufwendiger, wir haben jedoch die
+                            <em> Flatterband</em> oder <em>Mülltonnen</em> aufwendiger, wir haben jedoch die
                             Möglichkeit falsch parkende Fahrzeuge abschleppen zu lassen und können somit für
                             ausreichende Parkflächen garantieren. Sie können selbstverständlich selbst entnscheiden,
                             ob Sie selber Parkflächen zur Verfügung stellen möchten oder uns mit der Einrichtung
@@ -350,7 +352,7 @@ export default function UmzugsPage() {
                             Ja – wir führen auch Umzüge durch die von Ämtern übernommen werden.
                             Der Ablauf ist bei unserem Umzugsunternehmen immer der selbe.
                             Wir besprechen Ihren Umzug bei der kostenfreien Erstberatung.
-                            Anschließend erhalten Sie einen Kostenvoranschlag, welchen Sie beim zuständigen Amt
+                            Anschließend erhalten Sie einen Kostenvoranschlag, den Sie beim zuständigen Amt
                             einreichen müssen. Sobald wir die Kostenübernahme seitens des Amts erhalten haben,
                             vereinbaren Sie mit unserem Umzugsunternehmen für Köln und Bonn den genauen
                             Umzugstermin.

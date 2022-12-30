@@ -4,7 +4,6 @@ import Image from "next/image";
 import { HiCursorClick } from "react-icons/hi";
 import { BsWhatsapp, BsCheckCircleFill, BsTrash } from "react-icons/bs";
 import { AiOutlineEdit } from "react-icons/ai";
-import Autocomplete from "react-google-autocomplete";
 import { IoMailUnreadOutline } from "react-icons/io5";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { CgWebsite } from "react-icons/cg";
@@ -22,6 +21,8 @@ export default function MöbelabholungPage() {
     const [scrollBTN, setScrollBTN] = useState(false);
     const [scrolledY, setScrolled] = useState(0);
     const [loading, setLoading] = useState();
+    const date = new Date();
+    const timeStamp = date.getTime();
 
     const options = {
         componentRestrictions: { country: 'DE' },
@@ -92,9 +93,12 @@ export default function MöbelabholungPage() {
                 const fileNameArray = await uploadFiles(data.name);
                 await sendNewEmail(fileNameArray, data);
             } else {
+                setLoading(false);
                 setErrorMessage('Bitte füllen Sie alle Felder gültig aus')
             }
         } catch (err) {
+            setLoading(false);
+            console.log(err)
             setErrorMessage('Ups! Leider ist etwas schief gelaufen - Bitte versuchen Sie es nocheinmal !')
         }
     }
@@ -102,9 +106,9 @@ export default function MöbelabholungPage() {
     async function uploadFiles(clientName) {
         const fileNameArray = [];
         for await (let file of files) {
-            const filename = `${file.name}-${clientName}-${Math.floor(1000 + Math.random() * 9000)}`;
+            const filename = `${clientName}-${timeStamp}-${Math.floor(1000 + Math.random() * 9000)}`;
             fileNameArray.push(filename);
-            const response = await fetch('http://localhost:3030/dsk-website/getSignedURL', {
+            const response = await fetch('https://api.einsatzplaner.com/dsk-website/getSignedURL', {
                 method: "POST",
                 body: JSON.stringify({ method: "putObject", filename: filename }),
                 headers: { "Content-Type": "application/json" }
@@ -124,8 +128,8 @@ export default function MöbelabholungPage() {
 
     async function sendNewEmail(filenameArray, data) {
         try {
-            const videoUrl = `localhost:3000/admin/photos/${filenameArray.join('+++')}`;
-            const response = await fetch('http://localhost:3030/dsk-website/moebelspendeForm', {
+            const videoUrl = `https://portal.einsatzplaner.com/dsk-website/moebelspende/${filenameArray.join('+++')}`;
+            const response = await fetch('https://api.einsatzplaner.com/dsk-website/moebelspendeForm', {
                 method: "POST",
                 body: JSON.stringify({ ...data, link: videoUrl }),
                 headers: { "Content-Type": "application/json" }
@@ -186,7 +190,7 @@ export default function MöbelabholungPage() {
                             </div>
                             <div className={styles.formGroupContact}>
                                 <label className={styles.label}>Abholadresse:</label>
-                                <Autocomplete options={options} placeholder="Breniger Straße 3, 53913 Swisttal" required className={styles.inputContact} ref={adressRef} apiKey={"AIzaSyBXcBLbQlz5-zAwEHfLqD2mQcxghJ8TjOs"} />
+                                <input type="text" placeholder="Breniger Straße 3, 53913 Swisttal" required className={styles.inputContact} ref={adressRef} />
                             </div>
                         </div>
                         <div className={styles.contactFormRow}>
@@ -228,11 +232,11 @@ export default function MöbelabholungPage() {
                     <h1 className={styles.headline}>Möbelspende für Köln & Bonn</h1>
                     <p className={styles.aboveTheFoldText}>
                         Wir verwerten Ihr Mobiliar wieder und helfen bedürftigen Personen aus der Region.
-                        Möbel einfach über unser Webseite oder WhatsApp anbieten und Abholtermin vereinbaren.
+                        Möbel einfach über unsere Webseite oder WhatsApp anbieten und Abholtermin vereinbaren.
                     </p>
                     <button onClick={setForm.bind(this, true)} className={styles.btnAboveTheFold}> Mobiliar anbieten <HiCursorClick /></button>
                 </div>
-                <Image className={styles.aboveTheFoldImage} width={500} height={250} src="/moebelspende-koeln-bonn-header.jpg" alt="Möbelspende Köln Bonn - kostenfreie Abholung" />
+                <Image className={styles.aboveTheFoldImage} width={500} height={250} src="/moebelspende-koeln-bonn-header.webp" alt="Möbelspende Köln Bonn - kostenfreie Abholung" />
             </section>
             <section className={styles.introductionSection}>
                 <div className={styles.introductionSectionContent}>
@@ -243,26 +247,27 @@ export default function MöbelabholungPage() {
                             <h3>Möbelspende anbieten</h3>
                             <p>
                                 Möbelspende über unsere Webseite, über WhatsApp oder per Email anbieten und
-                                ein Foto der Möbelspende hochladen. Das Foto der Möbelspende benötigen wir
-                                um Sicherzustellen das im Raum Köln Bonn zurzeit Bedarf an der Möbelspende besteht.
+                                ein Foto der Möbelspende hochladen. Das Foto der Möbelspende benötigen wir,
+                                um sicherzustellen das im Raum Köln Bonn zurzeit Bedarf an der Möbelspende besteht.
                             </p>
 
                         </div>
                         <div className={styles.stepBox}>
                             <span className={styles.stepIcon}>2</span>
-                            <h3>Verbindlichen Abholtermin vereibaren</h3>
-                            <p>Wir melden uns binnen 42 Stunden telefonisch bei Ihnen zurück und vereinbaren mit
+                            <h3>Verbindlichen Abholtermin vereinbaren</h3>
+                            <p>
+                                Wir melden uns binnen 42 Stunden telefonisch bei Ihnen zurück und vereinbaren mit
                                 Ihnen einen verbindlichen Abholtermin für Ihre Möbelspende. Gerne beantworten
                                 wir Ihnen im Telefon alle Fragen zur Abholung Ihrer Möbelspende.
                             </p>
                         </div>
                         <div className={styles.stepBox}>
                             <span className={styles.stepIcon}>3</span>
-                            <h3>profesionelle & versicherte Abholung</h3>
+                            <h3>Profesionelle & versicherte Abholung</h3>
                             <p>
-                                Unser Servie-Team kommt am vereinbarten Abholtermin zu Ihnen und holt Ihre Möbelspende
-                                kostenfrei ab. Wir demontieren das Mobiliar, wenn notwendig bei Ihnen vor Ort und verladen
-                                alles eingeständig. Selbstverständlich ist die Abholung versichert.
+                                Unser Service-Team kommt am vereinbarten Abholtermin zu Ihnen und holt Ihre Möbelspende
+                                kostenfrei ab. Wir demontieren das Mobiliar, wenn notwendig, bei Ihnen vor Ort und verladen
+                                alles eigenständig. Selbstverständlich ist die Abholung versichert.
                             </p>
                         </div>
                     </div>
@@ -286,7 +291,7 @@ export default function MöbelabholungPage() {
                             <p className={styles.contactIconWebsite}><CgWebsite /></p>
                             <div className={styles.contactText}>
                                 <p>Webseite:</p>
-                                <p className={styles.contactP}><u>Formular öffnen</u></p>
+                                <p onClick={setForm.bind(this, true)} className={styles.contactP}><u>Formular öffnen</u></p>
                             </div>
                         </div>
                         <div className={styles.contactBox}>
@@ -305,21 +310,21 @@ export default function MöbelabholungPage() {
                     <div className={styles.socialSectionText}>
                         <h2 className={styles.socialSectionHeadline}>Wo kommt Ihre Möbelspende an</h2>
                         Alle Möbelspenden werden in unserem gemeinnützigen
-                        Sozialkaufhaus Bonn und unserem Sozialkaufhaus in Swisttal wieder bedürftigen Personen zur Verfügung gestellt.
+                        Sozialkaufhaus Bonn und unserem Sozialkaufhaus in Swisttal bedürftigen Menschen zur Verfügung gestellt.
                         Bei uns haben Studenten, Rentner und Sozialhilfeempfänger aus Köln und Bonn die Möglichkeit Gebraucht-Möbel und Haushaltswaren zu sehr kleinen Preisen zu erhalten.
-                        So bieten wir Kleiderschränke und Betten bereits ab 60 Euro, Sofas ab 50 Euro und Küchen ab 150 Euro an. Zudem erhalten bedürftige Personen aus Köln und Bonn nochmals 20 % Nachlass auf Ihren gesamten Einkauf.
-                        Insgesamt haben bedürftige Menschen aus Köln und Bonn dank Ihrer Möbelspende die Möglichkeit, sich für wenig Geld neu einzurichten und sich das Mobiliar zusätzlichab 25,00 € nach Hause liefern zu lassen.
+                        So bieten wir Kleiderschränke und Betten bereits ab 60 Euro, Sofas ab 50 Euro und Küchen ab 150 Euro an. Zudem erhalten bedürftige Menschen aus Köln und Bonn nochmals 20 % Nachlass auf Ihren gesamten Einkauf.
+                        Insgesamt haben bedürftige Menschen aus Köln und Bonn dank Ihrer Möbelspende die Möglichkeit, sich für wenig Geld neu einzurichten und sich das Mobiliar zusätzlich ab 25,00 € nach Hause liefern zu lassen.
                     </div>
                     <div className={styles.socialSectionImages}>
-                        <Image className={styles.socialSectionImage} width={200} height={150} src="/sozialkaufhaus-swisttal-bei-koeln.jpg" alt="Möbelspende Bonn & Köln Sozialkaufhaus" />
-                        <Image className={styles.socialSectionImage} width={200} height={150} src="/sozialkaufhaus-bonn.jpg" alt="Möbelspende Bonn & Köln Sozialkaufhaus" />
-                        <Image className={styles.socialSectionImage} width={200} height={150} src="/gebraucht-möbel-lampen-sozialkaufhaus.jpg" alt="Möbelspende Bonn & Köln Sozialkaufhaus" />
-                        <Image className={styles.socialSectionImage} width={200} height={150} src="/gebraucht-moebel-sozialkaufhaus.jpg" alt="Möbelspende Bonn & Köln Sozialkaufhaus" />
+                        <Image className={styles.socialSectionImage} width={200} height={150} src="/sozialkaufhaus-swisttal-bei-koeln.webp" alt="Möbelspende Bonn & Köln Sozialkaufhaus" />
+                        <Image className={styles.socialSectionImage} width={200} height={150} src="/sozialkaufhaus-bonn.webp" alt="Möbelspende Bonn & Köln Sozialkaufhaus" />
+                        <Image className={styles.socialSectionImage} width={200} height={150} src="/gebraucht-möbel-lampen-sozialkaufhaus.webp" alt="Möbelspende Bonn & Köln Sozialkaufhaus" />
+                        <Image className={styles.socialSectionImage} width={200} height={150} src="/gebraucht-moebel-sozialkaufhaus.webp" alt="Möbelspende Bonn & Köln Sozialkaufhaus" />
                     </div>
                 </div>
             </section>
             <section className={styles.callToActionSection}>
-                <button onClick={setForm.bind(this, true)} className={styles.ctaBTN}>{form === 'closed' ? 'Anfrage fotzsetzen' : 'Möbelspende anbieten'} <HiCursorClick /></button>
+                <button onClick={setForm.bind(this, true)} className={styles.ctaBTN}>{form === 'closed' ? 'Anfrage fortsetzen' : 'Möbelspende anbieten'} <HiCursorClick /></button>
             </section>
             <section className={styles.faqSection}>
                 <h2 className={styles.headlineFAQ}>Häufig gestellte Fragen</h2>
@@ -356,7 +361,7 @@ export default function MöbelabholungPage() {
                         <p>
                             Grundsätzlich holen wir Möbelspenden im gesamten Raum Bonn und Köln ab. Zu unserem Abholgebiet gehört auch
                             der Kreis Ahrweiler, der Kreis Euskirchen, der Rhein-Erft Kreis, der Rhein Sieg Kreis und Teile des Rheinisch-Bergischen Kreis. Ob wir die angebotenen Möbel kostenfrei abholen
-                            können teilen wir Ihnen gerne binnen einem Werktag nach Zusendung der Bilder mit.
+                            können teilen wir Ihnen gerne nach Zusendung der Bilder mit.
                         </p>
                     </div>
                     <div className={styles.questionBox}>
@@ -364,7 +369,7 @@ export default function MöbelabholungPage() {
                             Erhalte ich einen festen Termin für die Abholung meiner Möbelspende ?
                         </h3>
                         <p>
-                            Ja. Wir vereinbaren mit Ihnen telefonisch den Termin für die Möbelabholung in Köln oder Bonn, nachdem wir Ihre Anfrahe erhalten haben.
+                            Ja. Wir vereinbaren mit Ihnen telefonisch den Termin für die Möbelabholung in Köln oder Bonn, nachdem wir Ihre Anfrage erhalten haben.
                         </p>
                     </div>
                     <div className={styles.questionBox}>
@@ -372,9 +377,9 @@ export default function MöbelabholungPage() {
                             Nehmen Sie alle Möbelspenden an ?
                         </h3>
                         <p>
-                            Nein. Es gibt leider Möbel, für welche wir keine Abnehmer mehr in Köln und Bonn finden.
+                            Nein. Es gibt leider Möbel, für die wir keine Abnehmer mehr in Köln und Bonn finden.
                             Hierzu zählen z.B. große Eiche-Schrankwände mit Barfach. Da die Bedarfe sehr individuell sind
-                            benötigen wir leider vorab immer Bilder der Möbelspende – wir melden uns in jedem Fall binnen 42 Stunden bei Ihnen zurück.
+                            benötigen wir leider vorab immer Bilder von der Möbelspende – wir melden uns in jedem Fall binnen 42 Stunden bei Ihnen zurück.
                             Wenn wir die Möbelabholung kostendeckend in Köln oder Bonn durchführen können, holen wir Ihre Möbelspende gerne für Sie kostenfrei ab.
                         </p>
                     </div>

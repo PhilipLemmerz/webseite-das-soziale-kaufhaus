@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /admin
+Disallow: /datenschutz-bonn
+Disallow: /datenschutz-swisttal
+Disallow: /datenschutz
+
+
+Sitemap: https://das-soziale-kaufhaus.de/sitemap.xml

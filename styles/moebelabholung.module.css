@@ -118,6 +118,7 @@
     justify-content: center;
     align-items: center;
     column-gap: 2rem;
+    padding-top: 1rem;
 }
 
 .contactBox {
@@ -126,7 +127,6 @@
     align-items: center;
     padding: 1rem;
     border-radius: 5px;
-    border: 1px solid white;
 }
 
 .contactText {
@@ -252,13 +252,13 @@
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    min-height: 100vh;
     background-color: #b4b4b4ad;
     z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 5;
+    z-index: 20;
 }
 
 .form {
@@ -267,10 +267,10 @@
     width: 70vw;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     border-radius: 5px;
     border: 1px solid #0057a3;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
 .hideForm {
@@ -281,7 +281,6 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
-    align-items: top;
     color: #0057a3;
 }
 
@@ -374,6 +373,7 @@
     column-gap: 1rem;
     align-items: center;
     justify-content: space-between;
+    text-align: center;
 }
 
 .checkIconImage {
@@ -383,6 +383,10 @@
 
 .trashIcon {
     color: rgb(253, 129, 129);
+}
+
+.trashIcon:hover {
+    cursor: pointer;
 }
 
 .forwardBTNImageUpload {
@@ -440,7 +444,7 @@
     margin-bottom: 0.5rem;
 }
 
-.inputContact {   
+.inputContact {
     height: 35px;
     border-radius: 5px;
     border: 1px solid rgb(173, 173, 173);
@@ -488,6 +492,7 @@
     align-items: center;
     column-gap: 2rem;
     padding: 1rem;
+    text-align: center;
 }
 
 .editImage {
@@ -573,7 +578,7 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.884);
-    z-index: 6;
+    z-index: 25;
 }
 
 @keyframes spinner {
@@ -650,7 +655,12 @@
     .aboveTheFoldSection {
         flex-direction: column-reverse;
         padding: 1rem;
+    }
 
+    .formBackground {
+        background-color: white;
+        align-items: flex-start;
+        padding-top: 2rem;
     }
 
     .aboveTheFoldImage {
@@ -705,6 +715,10 @@
     .imageBox {
         flex-direction: column;
         column-gap: 0.5rem;
+    }
+
+    .editImage {
+        margin-top: 1rem;
     }
 }
 
@@ -763,7 +777,7 @@
         max-width: 90vw;
     }
 
-   
+
 }
 
 @media screen and (max-width: 300px) {

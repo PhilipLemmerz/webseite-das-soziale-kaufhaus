@@ -15,22 +15,22 @@ export default function AboutPage() {
                     <h1 className={styles.headline}>Über unser Sozialkaufhaus für Köln/Bonn</h1>
                     <div className={styles.headerContentBox}>
                         Wir verwerten gut erhaltene Gebraucht-Möbel, Haushaltswaren, Kleidung und
-                        Second-Hand Artikel und unterstützen hiermit Studenten, Rentner und bedürftigen
-                        Personen in unserer Region.
+                        Second-Hand Artikel und unterstützen hiermit Studenten, Rentner und bedürftige
+                        Menschen aus dem Raum Köln/Bonn.
                     </div>
                 </div>
-                <Image className={styles.headerImage} src="/sozialkaufhaus-koeln-bonn-team.jpg" alt="Sozialkaufhaus Köln Bonn Team" width={500} height={350}></Image>
+                <Image className={styles.headerImage} src="/sozialkaufhaus-koeln-bonn-team.webp" alt="Sozialkaufhaus Köln Bonn Team" width={500} height={350}></Image>
             </section>
             <section className={styles.historySection}>
                 <h2 className={styles.headlineHistory}>Geschichte der Sozialkaufhäuser bei Köln und Bonn</h2>
                 <p className={styles.historyP}>
-                    Seit über 15 Jahren sind wir mittlerweile im Bereich Entrümpelung  für Sie unterwegs.
+                    Seit über 15 Jahren sind wir mittlerweile im Bereich Entrümpelung für Sie unterwegs.
                     Kurze Zeit später haben wir das erste privatrechtliche Sozialkaufhaus im Kreis Bonn Rhein
-                    Sieg gegründet. Bis heute versorgen wir mit unseren Sozialkaufhaus bei Köln und Bonn viele
+                    Sieg gegründet. Bis heute versorgen wir in unserem Sozialkaufhaus bei Köln und Bonn viele
                     bedürftige Menschen aus der Region mit Gebraucht-Möbeln und Haushaltswaren.
                 </p>
                 <div className={styles.historyWrapper}>
-                    <h3 className={styles.historyH3First}>2006 – Gründung Dienstleistungsunternehmen für Entrümpelung und Haushaltsauflösungen</h3>
+                    <h3 className={styles.historyH3First}>2006 – Gründung Dienstleistungsunternehmen für Entrümpelung und Haushaltsauflösung</h3>
                     <p>
                         2006 haben wir mit der Durchführung von Entrümpelungen und Haushaltsauflösungen
                         begonnen. Die Nachfrage war hoch und schnell wurde uns eine Tatsache bewusst.
@@ -38,11 +38,11 @@ export default function AboutPage() {
                         gut erhaltene Möbel entsorgen. Gebraucht-Möbel, über welche sich viele bedürftige
                         Menschen freuen würden. Je mehr Haushaltsauflösungen wir durchführten, umso mehr
                         wurde uns dieser Umstand bewusst. Also machten wir uns auf die Suche nach einer
-                        Lösung, um die Möbel zu recyceln und bedürftigen Menschen damit zu helfen.
+                        Lösung, um die Möbel wiederzuverwerten und bedürftigen Menschen damit zu helfen.
                     </p>
                     <h3 className={styles.historyH3}>2007 bis 2009 – Aufbau des ersten Sozialkaufhaus in Swistal bei Köln</h3>
                     <p>
-                        gut erhaltene Möbel zu recyclen und bedürftigen Menschen zur Verfügung zu stellen –
+                        gut erhaltene Möbel wiederzuverwerten und bedürftigen Menschen zur Verfügung zu stellen –
                         Das war unsere Mission, mit welcher wir das erste unserer Sozialkaufhäuser 2007 in Swisttal
                         bei Köln eröffnet hatten. Fast ein ganzes Jahr hat es gedauert, bis wir 2008 unser erstes
                         Sozialkaufhaus eröffnen konnten. Auf ca. 1500 Quadratmeter Ladenfläche boten wir Gebraucht-Möbel,
@@ -82,7 +82,7 @@ export default function AboutPage() {
                         Einen großen Nachteil hatte unser Swisttaler Sozialkaufhaus –
                         Ohne Auto ist das Sozialkaufhaus schwierig zu erreichen. Zudem erhielten wir mehr
                         Anfragen von Kunden, welche Ihre Möbel zu verschenken hatten.
-                        Um auch auch den Gebraucht-Möbel Bedarf in Bonn zu decken, eröffneten wir unser
+                        Um auch den Gebraucht-Möbel Bedarf in Bonn zu decken, eröffneten wir unser
                         zweites Sozialkauhaus in Bonn-Beuel.
                     </p>
                     <h3 className={styles.historyH3}>2012 – Unser Sozialkaufhaus zieht um nach Lannesdorf</h3>

@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import styles from '../styles/conatact.module.css';
+import styles from '../styles/contact.module.css';
 import { useRouter } from "next/router";
 import { useState, useRef } from "react";
 import Head from "next/head";
@@ -25,7 +25,7 @@ export default function ContactPage(props) {
             message: messageRef.current.value,
         }
 
-        const response = await fetch('http://localhost:3030/dsk-website/kontakt', {
+        const response = await fetch('https://api.einsatzplaner.com/dsk-website/kontakt', {
             method: "POST",
             body: JSON.stringify(data),
             headers: { "Content-Type": "application/json" }
@@ -47,7 +47,7 @@ export default function ContactPage(props) {
             </Head>
             <section className={styles.contactSection}>
                 <h1 className={styles.headline}> Kontaktformular</h1>
-                <p className={styles.headlineParagraph}> Wir freuen uns auf Ihre Fragen oder Wünsche und melden uns in Kürze zurück</p>
+                <p className={styles.headlineParagraph}> Wir freuen uns auf Ihre Fragen oder Wünsche und melden uns in Kürze zurück.</p>
                 <form className={styles.form} onSubmit={submitHandler}>
                     <div className={styles.formRow}>
                         <div className={styles.formGroup}>

@@ -13,22 +13,22 @@ export default function Sachspende() {
             </Head>
             <section className={styles.aboveTheFoldSection}>
                 <div className={styles.aboveTheFoldImageBox}>
-                    <Image className={styles.aboveTheFoldImage} src="/kleiderspenden-sachspenden-bonn-swisttal.jpg" alt="Kleiderspende & Sachspende Swisttal Bonn" width={900} height={400}></Image>
-                    <Image className={styles.aboveTheFoldImage} src="/kleider-spenden-sachspenden-bonn-swisttal.jpg" alt="Kleiderspende & Sachspende Swisttal Bonn" width={900} height={400}></Image>
+                    <Image className={styles.aboveTheFoldImage} src="/kleiderspenden-sachspenden-bonn-swisttal.webp" alt="Kleiderspende & Sachspende Swisttal Bonn" width={900} height={400}></Image>
+                    <Image className={styles.aboveTheFoldImage} src="/kleider-spenden-sachspenden-bonn-swisttal.webp" alt="Kleiderspende & Sachspende Swisttal Bonn" width={900} height={400}></Image>
                 </div>
 
-                <h1 className={styles.headline}>Kleider- & Sachspenden Annahme </h1>
+                <h1 className={styles.headline}>Sach- & Kleiderspende abgeben </h1>
                 <p className={styles.subheadline}>für Bedürftige aus Bonn, Swisttal & der Region</p>
                 <p className={styles.aboveTheFoldText}>
                     Sie haben Kleiderspenden und  Sachspenden, die Sie nicht mehr benötigen.
                     Gerne können Sie Ihre Spende jederzeit während unserer Öffnungszeiten im
-                    Sozialkaufhaus Bonn oder Swisttal abgeben. Wir freuen uns über Ihre Spende !
+                    gemeinnützigen Sozialkaufhaus Bonn oder im DSK Swisttal abgeben. Wir freuen uns über Ihre Spende !
                 </p>
                 <div className={styles.locationWrapper}>
                     <div className={styles.locationBox}>
-                        <Image className={styles.locationImage} src="/sozialkaufhaus-bonn.jpg" alt="Umzugsunternehmen Köln & Bonn" width={300} height={200}></Image>
+                        <Image className={styles.locationImage} src="/sozialkaufhaus-bonn.webp" alt="Umzugsunternehmen Köln & Bonn" width={300} height={200}></Image>
                         <div className={styles.cardContent}>
-                            <h3 className={styles.headlineLocationBox}>Sach- & Kleiderspenden Annahme Bonn</h3>
+                            <h3 className={styles.headlineLocationBox}>Sach- & Kleiderspende Annahme Bonn</h3>
                             <div>
                                 <p><b>Anschrift:</b></p>
                                 <p>Deutschherrentraße 197-201 in 53179 Bonn</p>
@@ -40,15 +40,15 @@ export default function Sachspende() {
                             </div>
                             <div>
                                 <p><b>Kontakt:</b></p>
-                                <p>Telefon: 0228-227 983 47</p>
+                                <p>Telefon: 0228-227 983 49</p>
                                 <p>Email: info@dsk-nrw.de</p>
                             </div>
                         </div>
                     </div>
                     <div className={styles.locationBox}>
-                        <Image className={styles.locationImage} src="/sozialkaufhaus-swisttal-bei-koeln.jpg" alt="Umzugsunternehmen Köln & Bonn" width={300} height={200}></Image>
+                        <Image className={styles.locationImage} src="/sozialkaufhaus-swisttal-bei-koeln.webp" alt="Umzugsunternehmen Köln & Bonn" width={300} height={200}></Image>
                         <div className={styles.cardContent}>
-                            <h3 className={styles.headlineLocationBox}>Sach- & Kleiderspenden Annahme Swisttal</h3>
+                            <h3 className={styles.headlineLocationBox}>Sach- & Kleiderspende Annahme Swisttal</h3>
                             <div>
                                 <p><b>Anschrift:</b></p>
                                 <p>Breniger Straße 3 in 53913 Swisttal</p>
@@ -84,7 +84,7 @@ export default function Sachspende() {
                         Bonn werden gesammelt und zum Beispiel bei einer Spendenaktion in Bonn an
                         bedürftige Menschen verschenkt.
                     </p>
-                    <Image className={styles.imageDonateContent} src="/kleider-spenden-sachspenden-bonn-swisttal.jpg" alt="Kleiderspende Bonn & Swisttal" width={500} height={250}></Image>
+                    <Image className={styles.imageDonateContent} src="/kleider-spenden-sachspenden-bonn-swisttal.webp" alt="Kleiderspende Bonn & Swisttal" width={500} height={250}></Image>
                 </div>
             </section>
             <section className={styles.faqSection}>
@@ -121,7 +121,7 @@ export default function Sachspende() {
                         </p>
                     </div>
                     <div className={styles.questionBox}>
-                        <h3 className={styles.question}>Wann Kann ich Ihnen meine Sachspenden und Kleiderspenden vorbei bringen? </h3>
+                        <h3 className={styles.question}>Wann kann ich Ihnen meine Sachspenden und Kleiderspenden vorbei bringen? </h3>
                         <p>
                             Gerne können Sie uns Ihre Kleiderspenden und Sachspenden jederzeit während unserer
                             Öffnungszeiten vorbei bringen. Unsere Sozialkaufhäuser haben von Montag bis Freitag

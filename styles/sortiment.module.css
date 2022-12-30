@@ -11,7 +11,7 @@
 }
 
 .productFurniture {
-    background-image: url('../public/gebraucht-moebel-sozialkaufhaus.jpg');
+    background-image: url('../public/gebraucht-moebel-sozialkaufhaus.webp');
     background-size: cover;
     width: 350px;
     max-height: 250px;
@@ -21,7 +21,7 @@
 }
 
 .productArticles {
-    background-image: url('../public/sozialkaufhaus-gebraucht-moebel-haushaltswaren.jpg');
+    background-image: url('../public/sozialkaufhaus-gebraucht-moebel-haushaltswaren.webp');
     background-size: cover;
     width: 350px;
     max-height: 250px;
@@ -31,7 +31,7 @@
 }
 
 .productClothes {
-    background-image: url('../public/gebraucht-moebel-kleidung-sozialkaufhaus.jpg');
+    background-image: url('../public/gebraucht-moebel-kleidung-sozialkaufhaus.webp');
     background-size: cover;
     width: 350px;
     max-height: 250px;
@@ -41,7 +41,7 @@
 }
 
 .productEletricity {
-    background-image: url('../public/gebraucht-moebel-egeräte-sozialkaufhaus.jpg');
+    background-image: url('../public/gebraucht-moebel-egeräte-sozialkaufhaus.webp');
     background-size: cover;
     width: 350px;
     max-height: 250px;
@@ -51,7 +51,7 @@
 }
 
 .productLamps {
-    background-image: url('../public/gebraucht-möbel-lampen-sozialkaufhaus.jpg');
+    background-image: url('../public/gebraucht-möbel-lampen-sozialkaufhaus.webp');
     background-size: cover;
     width: 350px;
     max-height: 250px;
@@ -61,7 +61,7 @@
 }
 
 .productSpecials {
-    background-image: url('../public/gebraucht-moebel-besonderes-sozialkaufhaus.jpg');
+    background-image: url('../public/gebraucht-moebel-besonderes-sozialkaufhaus.webp');
     background-size: cover;
     width: 350px;
     max-height: 250px;

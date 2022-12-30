@@ -26,7 +26,6 @@ export default function CookieConsent(props) {
     async function configureCookies() {
         setConsent(true);
         if (marketingCookies) {
-            console.log('tet')
             setCookie('localConsent', 'false', { maxAge: 60 * 60 * 24 * 365 });
             setCookie('marketingConsent', 'true', { maxAge: 60 * 60 * 24 * 365 });
             await gtag('consent', 'update', {

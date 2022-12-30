@@ -47,7 +47,7 @@ export default function HomePage() {
       <section className={styles.productsSection}>
         <div className={styles.products}>
           <div>
-            <Image height={400} width={800} className={styles.productsImage} alt="sortiment Sozialkaufhaus Koeln Bonn" src="/sozialkaufhaus-bonn-koeln-moebel-header.jpg"></Image>
+            <Image height={400} width={800} className={styles.productsImage} alt="sortiment Sozialkaufhaus Koeln Bonn" src="/sozialkaufhaus-bonn-koeln-moebel-header.webp"></Image>
           </div>
           <div className={styles.productsContent}>
             <h3 className={styles.productsHeadline}>Möbel & mehr</h3>
@@ -65,7 +65,7 @@ export default function HomePage() {
           </p>
           <div className={styles.servicesBox}>
             <div className={styles.clearingService}>
-              <Image className={styles.serviceImage} src="/entrümpelung-sozialkaufhaus-koeln-bonn-header.jpg" alt="Entrümpelung mit Sozialkaufhaus Köln Bonn" width={300} height={200}></Image>
+              <Image className={styles.serviceImage} src="/entrümpelung-sozialkaufhaus-koeln-bonn-header.webp" alt="Entrümpelung mit Sozialkaufhaus Köln Bonn" width={300} height={200}></Image>
               <div className={styles.cardContent}>
                 <h3>Entrümpelung</h3>
                 <ul className={styles.serviceList}>
@@ -77,7 +77,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className={styles.clearingService}>
-              <Image className={styles.serviceImage} src="/moebelspende-koeln-bonn-header.jpg" alt="Möbelspende Köln und Bonn" width={300} height={200}></Image>
+              <Image className={styles.serviceImage} src="/moebelspende-koeln-bonn-header.webp" alt="Möbelspende Köln und Bonn" width={300} height={200}></Image>
               <div className={styles.cardContent}>
                 <h3>kostenfreie Möbelabholung</h3>
                 <ul className={styles.serviceList}>
@@ -89,7 +89,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className={styles.clearingService}>
-              <Image className={styles.serviceImage} src="/sozialkaufhaus-umzugsunternehmen-koeln-bonn.jpg" alt="Umzugsunternehmen Köln & Bonn" width={300} height={200}></Image>
+              <Image className={styles.serviceImage} src="/sozialkaufhaus-umzugsunternehmen-koeln-bonn.webp" alt="Umzugsunternehmen Köln & Bonn" width={300} height={200}></Image>
               <div className={styles.cardContent}>
                 <h3>Umzug & Transport</h3>
                 <ul className={styles.serviceList}>
@@ -111,7 +111,7 @@ export default function HomePage() {
             <Link href="/kleiderspende-bonn-koeln"><button className={styles.donateBTN}> jetzt informieren </button></Link>
           </div>
           <div>
-            <Image height={400} width={800} className={styles.donateImage} alt="Kleiderspenden & Sachspenden in Bonn und Swisttal" src="/kleider-spenden-sachspenden-bonn-swisttal.jpg"></Image>
+            <Image height={400} width={800} className={styles.donateImage} alt="Kleiderspenden & Sachspenden in Bonn und Swisttal" src="/kleider-spenden-sachspenden-bonn-swisttal.webp"></Image>
           </div>
         </div>
       </section>
@@ -140,11 +140,11 @@ export default function HomePage() {
               </ul>
             </div>
           </div>
-          <Image className={styles.storeImageHeimerzheim} src="/sozialkaufhaus-swisttal-bei-koeln.jpg" alt="Sozialkaufhaus Swisttal bei Koeln" width={500} height={350}></Image>
+          <Image className={styles.storeImageHeimerzheim} src="/sozialkaufhaus-swisttal-bei-koeln.webp" alt="Sozialkaufhaus Swisttal bei Koeln" width={500} height={350}></Image>
         </div>
         <div className={styles.spacer}></div>
         <div className={styles.locationBox}>
-          <Image className={styles.storeImageLannesdorf} src="/sozialkaufhaus-bonn.jpg" alt="Sozialkaufhaus Swisttal bei Koeln" width={500} height={350}></Image>
+          <Image className={styles.storeImageLannesdorf} src="/sozialkaufhaus-bonn.webp" alt="Sozialkaufhaus Swisttal bei Koeln" width={500} height={350}></Image>
           <div className={styles.locationContent}>
             <h3 className={styles.headlineStore}> Sozialkaufhaus Bonn</h3>
             <p>

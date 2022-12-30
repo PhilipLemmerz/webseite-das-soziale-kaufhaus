@@ -59,7 +59,7 @@
 
 .headlineLocationBox {
     color: #0058A3;
-    background: linear-gradient(90deg, rgb(255, 255, 255) 0%, #fbd81480 60%, #fbd81400 100%);
+    background: linear-gradient(90deg, #F5FAFD 0%, #fbd81480 60%, #fbd81400 100%);
 }
 
 .locationImage {

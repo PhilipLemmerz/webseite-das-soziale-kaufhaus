@@ -47,12 +47,15 @@ export default function HeaderComponent() {
     }
 
     function checkIsLandingPage() {
-        console.log(page)
         if (page === '/moebelspende-bonn-koeln' || page === '/umzugsunternehmen-bonn-koeln' || page === '/entruempelung-bonn-koeln') {
             setisLandingPage(true)
         } else {
             setisLandingPage(false)
         }
+    }
+
+    function closeMenu() {
+        setMenu(false);
     }
 
     return (
@@ -127,14 +130,14 @@ export default function HeaderComponent() {
                     <div className={styles.closeBTN} onClick={setMenu.bind(this, false)}>
                         <AiOutlineCloseSquare />
                     </div>
-                    <Link href="/gebraucht-moebel" className={styles.navLinkMobile}>Sortiment</Link>
-                    <Link href="/entruempelung-bonn-koeln" className={styles.navLinkMobile}>Entrümpelung</Link>
-                    <Link href="/umzugsunternehmen-bonn-koeln" className={styles.navLinkMobile}>Umzüge</Link>
-                    <Link href="/moebelspende-bonn-koeln" className={styles.navLinkMobile}>Möbelabholung</Link>
-                    <Link href="/kleiderspende-bonn-koeln" className={styles.navLinkMobile}>Sach- & Kleiderspende</Link>
-                    <Link href="/ueber-uns" className={styles.navLinkMobile}>Über uns</Link>
-                    <Link href="/kontakt" className={styles.navLinkMobile}>Kontakt</Link>
-                    <Link href="/karriere" className={styles.navLinkMobile}>Karriere</Link>
+                    <Link onClick={closeMenu} href="/gebraucht-moebel" className={styles.navLinkMobile}>Sortiment</Link>
+                    <Link onClick={closeMenu} href="/entruempelung-bonn-koeln" className={styles.navLinkMobile}>Entrümpelung</Link>
+                    <Link onClick={closeMenu} href="/umzugsunternehmen-bonn-koeln" className={styles.navLinkMobile}>Umzüge</Link>
+                    <Link onClick={closeMenu} href="/moebelspende-bonn-koeln" className={styles.navLinkMobile}>Möbelabholung</Link>
+                    <Link onClick={closeMenu} href="/kleiderspende-bonn-koeln" className={styles.navLinkMobile}>Sach- & Kleiderspende</Link>
+                    <Link onClick={closeMenu} href="/ueber-uns" className={styles.navLinkMobile}>Über uns</Link>
+                    <Link onClick={closeMenu} href="/kontakt" className={styles.navLinkMobile}>Kontakt</Link>
+                    <Link onClick={closeMenu} href="/karriere" className={styles.navLinkMobile}>Karriere</Link>
                 </div>
                 }
                 {scrollMenu && <nav className={styles.navigationScrolledBox}>
