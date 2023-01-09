@@ -444,6 +444,12 @@
     margin-bottom: 0.5rem;
 }
 
+.adressInputWrapper {
+    display: flex;
+    column-gap: 1rem;
+    width: 100%;
+}
+
 .inputContact {
     height: 35px;
     border-radius: 5px;
@@ -454,6 +460,31 @@
     padding-left: 0.5rem;
     padding-right: 0.5rem;
 }
+
+.inputAdressStreet {
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid rgb(173, 173, 173);
+    box-shadow: 0 0 1px #525252;
+    outline: none;
+    font-size: 1em;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    width: 70%;
+}
+
+.inputAdressPLZ {
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid rgb(173, 173, 173);
+    box-shadow: 0 0 1px #525252;
+    outline: none;
+    font-size: 1em;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    width: 30%
+}
+
 
 .textarea {
     height: 30px;
@@ -468,7 +499,7 @@
     resize: none;
 }
 
-.inputContact:focus {
+.inputContact:focus, .inputAdressPLZ:focus, .inputAdressStreet:focus {
     background-color: #0057a30e;
 }
 
@@ -720,6 +751,14 @@
     .editImage {
         margin-top: 1rem;
     }
+
+    .inputAdressStreet {
+        width: 55%;
+    }
+    
+    .inputAdressPLZ {
+        width: 45%
+    }
 }
 
 @Media screen and (max-width: 500px) {
@@ -777,6 +816,14 @@
         max-width: 90vw;
     }
 
+    .adressInputWrapper {
+        flex-direction: column;
+        row-gap: 0.5rem;
+    }
+
+    .inputAdressPLZ, .inputAdressStreet {
+        width: 100%;
+    }
 
 }
 

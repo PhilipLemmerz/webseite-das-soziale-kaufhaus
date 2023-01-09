@@ -24,10 +24,6 @@ export default function MöbelabholungPage() {
     const date = new Date();
     const timeStamp = date.getTime();
 
-    const options = {
-        componentRestrictions: { country: 'DE' },
-        types: ['address']
-    }
 
     useEffect(() => {
         const handleScroll = () => {
@@ -44,7 +40,8 @@ export default function MöbelabholungPage() {
 
 
     const nameRef = useRef();
-    const adressRef = useRef();
+    const adressStreetRef = useRef();
+    const adressPLZRef = useRef();
     const emailRef = useRef();
     const telRef = useRef();
     const messageRef = useRef();
@@ -81,13 +78,13 @@ export default function MöbelabholungPage() {
         try {
             event.preventDefault();
             setLoading(true)
-            if (files.length > 0 && nameRef.current.value.length > 3 && emailRef.current.value.length > 3 && telRef.current.value.length > 3 && adressRef.current.value.length > 3) {
+            if (files.length > 0 && nameRef.current.value.length > 3 && emailRef.current.value.length > 3 && telRef.current.value.length > 3 && adressStreetRef.current.value.length > 3 && adressPLZRef.current.value.length > 3) {
                 setErrorMessage(false)
                 const data = {
                     name: nameRef.current.value,
                     email: emailRef.current.value,
                     phone: telRef.current.value,
-                    adress: adressRef.current.value,
+                    adress: `${adressStreetRef.current.value}, ${adressPLZRef.current.value}`,
                     message: messageRef.current.value
                 }
                 const fileNameArray = await uploadFiles(data.name);
@@ -188,9 +185,14 @@ export default function MöbelabholungPage() {
                                 <label className={styles.label}>Ansprechpartner</label>
                                 <input required placeholder="Herr Max Mustermann" ref={nameRef} className={styles.inputContact} type="text"></input>
                             </div>
+                        </div>
+                        <div className={styles.contactFormRow}>
                             <div className={styles.formGroupContact}>
                                 <label className={styles.label}>Abholadresse:</label>
-                                <input type="text" placeholder="Breniger Straße 3, 53913 Swisttal" required className={styles.inputContact} ref={adressRef} />
+                                <div className={styles.adressInputWrapper}>
+                                    <input type="text" placeholder="Deutschherrenstraße 197" required className={styles.inputAdressStreet} ref={adressStreetRef} />
+                                    <input type="text" placeholder="53179 Bonn" required className={styles.inputAdressPLZ} ref={adressPLZRef} />
+                                </div>
                             </div>
                         </div>
                         <div className={styles.contactFormRow}>

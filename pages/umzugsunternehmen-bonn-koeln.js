@@ -10,19 +10,16 @@ import Head from "next/head";
 
 export default function UmzugsPage() {
 
-    const options = {
-        componentRestrictions: { country: 'DE' },
-        types: ['address']
-    }
-
     const [mainForm, setMainForm] = useState(false);
     const [errorMessage, setErrorMessage] = useState(false);
     const [scrollBTN, setScrollBTN] = useState(false);
     const [scrolledY, setScrolled] = useState(0);
     const [loading, setLoading] = useState(false);
 
-    const startAdressRef = useRef();
-    const endAdressRef = useRef();
+    const startAdressStreetRef = useRef();
+    const startAdressPLZRef = useRef();
+    const endAdressStreetRef = useRef();
+    const endAdressPLZRef = useRef();
     const nameRef = useRef();
     const emailRef = useRef();
     const numberRef = useRef();
@@ -32,7 +29,7 @@ export default function UmzugsPage() {
 
     function openMainForm() {
         setErrorMessage(false)
-        if (startAdressRef.current.value.length > 3 && endAdressRef.current.value.length > 3) {
+        if (startAdressStreetRef.current.value.length > 3 && startAdressPLZRef.current.value.length > 3 && endAdressPLZRef.current.value.length > 3 && endAdressStreetRef.current.value.length > 3) {
             setMainForm(true)
         } else {
             setErrorMessage('Bitte füllen Sie alle Felder gültig aus')
@@ -117,11 +114,18 @@ export default function UmzugsPage() {
                     <form className={styles.formLP}>
                         <div className={styles.formGroup}>
                             <label htmlFor="ladeadresse">Auszugsadresse</label>
-                            <input type="text" id="ladeadresse" ref={startAdressRef} className={styles.input} placeholder="Deutschherrenstraße 197, 53179 Bonn" />
+                            <div className={styles.inputAdressWrapper}>
+                                <input type="text" id="ladeadresse" ref={startAdressStreetRef} className={styles.input} placeholder="Breniger Straße 3" />
+                                <input type="text" id="ladeadresse" ref={startAdressPLZRef} className={styles.inputPLZ} placeholder="53913 Swisttal" />
+                            </div>
+
                         </div>
                         <div className={styles.formGroup}>
                             <label htmlFor="ausladeadresse">Einzugsadresse</label>
-                            <input className={styles.input} type="text" id="ausladeadresse" ref={endAdressRef} placeholder="Breniger Straße 3, 53913 Swisttal" />
+                            <div className={styles.inputAdressWrapper}>
+                                <input className={styles.input} type="text" id="ausladeadresse" ref={endAdressStreetRef} placeholder="Deutschherrenstraße 197" />
+                                <input className={styles.inputPLZ} type="text" id="ausladeadresse" ref={endAdressPLZRef} placeholder="53179 Bonn" />
+                            </div>
                         </div>
                         <button type="button" className={styles.lpFormBTN} onClick={openMainForm}>{mainForm === 'closed' ? 'Anfrage fortsetzen' : 'kostenloses Angebot erhalten'}</button>
                     </form>
@@ -157,11 +161,11 @@ export default function UmzugsPage() {
                     <div className={styles.formRow}>
                         <div className={styles.formGroupMainForm}>
                             <label htmlFor="ladeadresseForm">Auszugsadresse</label>
-                            <input ref={startAdressMainRef} required className={styles.inputMainForm} defaultValue={mainForm !== false ? startAdressRef.current.value : ''} type="text" id="ladeadresseForm" placeholder="Deutschherrenstraße 197, 53179 Bonn" />
+                            <input ref={startAdressMainRef} required className={styles.inputMainForm} defaultValue={mainForm && startAdressStreetRef.current.value.length > 3 && startAdressPLZRef.current.value.length > 3 ? `${startAdressStreetRef.current.value}, ${startAdressPLZRef.current.value}` : ''} type="text" id="ladeadresseForm" placeholder="Deutschherrenstraße 197, 53179 Bonn" />
                         </div>
                         <div className={styles.formGroupMainForm}>
                             <label htmlFor="tel">Einzugsadresse</label>
-                            <input ref={endAdressMainRef} required type="text" defaultValue={mainForm ? endAdressRef.current.value : ''} className={styles.inputMainForm} id="ladeadresseForm" placeholder="Deutschherrenstraße 197, 53179 Bonn" />
+                            <input ref={endAdressMainRef} required type="text" defaultValue={mainForm && endAdressStreetRef.current.value.length > 3 && endAdressPLZRef.current.value.length > 3 ? `${endAdressStreetRef.current.value}, ${endAdressPLZRef.current.value}` : ''} className={styles.inputMainForm} id="ladeadresseForm" placeholder="Deutschherrenstraße 197, 53179 Bonn" />
                         </div>
                     </div>
                     <div className={styles.formRow}>

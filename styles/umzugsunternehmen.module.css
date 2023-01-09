@@ -44,7 +44,6 @@
     object-fit: cover;
 }
 
-
 .formBackground {
     background-color: white;
     display: flex;
@@ -68,7 +67,12 @@
 .formGroup {
     display: flex;
     flex-direction: column;
-    width: 20vw;
+    width: 25vw;
+}
+
+.inputAdressWrapper {
+    display: flex;
+    column-gap: 0.5rem;
 }
 
 .input {
@@ -79,6 +83,18 @@
     border: 1px solid rgb(196, 196, 196);
     outline: none;
     margin-top: 0.5rem;
+    width: 100%;
+}
+
+.inputPLZ {
+    height: 40px;
+    font-size: 1em;
+    padding-left: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid rgb(196, 196, 196);
+    outline: none;
+    margin-top: 0.5rem;
+    width: 50%;
 }
 
 .input:focus {
@@ -471,6 +487,10 @@
     .advantage {
         width: 28vw;
     }
+    
+    .formBackground {
+        width: 85vw;
+    }
 
 }
 
@@ -504,10 +524,21 @@
 
     .stepBox {
         padding: 1rem;
+    }  
+    
+    .formLP {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 1.5rem;
     }
 
     .formGroup {
-        width: 23vw;
+        width: auto;
+    }
+
+    .input {
+        width: 80vw;
+        max-width: 80vw;
     }
 }
 
@@ -652,5 +683,13 @@
 
     .errorMessage {
         width: 100%;       
+    }
+
+    .input {
+        width: 60%;
+    }
+
+    .inputPLZ {
+        width: 40%;
     }
 }

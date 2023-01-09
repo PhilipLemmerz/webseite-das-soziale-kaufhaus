@@ -26,10 +26,6 @@ export default function EntrümpelungPage() {
     const date = new Date();
     const timeStamp = date.getTime();
 
-    const options = {
-        componentRestrictions: { country: 'DE' },
-        types: ['address']
-    }
 
     useEffect(() => {
         const handleScroll = () => {
@@ -58,8 +54,11 @@ export default function EntrümpelungPage() {
     const nameRefViewing = useRef();
     const emailRefViewing = useRef();
     const telRefViewing = useRef();
-    const adressRef = useRef();
+    const adressStreetRef = useRef();
+    const adressPLZRef = useRef();
     const adressRefVideo = useRef();
+    const qmRefVideo = useRef();
+    const dateRefVideo = useRef();
     const dateRef = useRef();
     const qmRef = useRef();
     const nameRef = useRef();
@@ -72,7 +71,7 @@ export default function EntrümpelungPage() {
     }
 
     function openPopupForm() {
-        if (adressRef.current.value.length > 5 && dateRef.current.value.length > 5 && qmRef.current.value > 1) {
+        if (adressStreetRef.current.value.length > 5 && adressPLZRef.current.value.length > 2 && dateRef.current.value.length > 5 && qmRef.current.value > 1) {
             setFormPopup(true);
             setErrorMessage(false)
         }
@@ -93,8 +92,6 @@ export default function EntrümpelungPage() {
 
     function closePopupForm() {
         setFormPopup('closed');
-        setContactInformationStep(false);
-        setWhatsAppHint(false);
     }
 
     function openForm() {
@@ -135,7 +132,7 @@ export default function EntrümpelungPage() {
         setLoading(true)
         try {
             if (nameRefViewing.current.value.length > 3 && emailRefViewing.current.value.length > 3 && telRefViewing.current.value.length > 3 && adressRefViewing.current.value.length > 3
-                && qmRefViewing.current.value.length > 1) {
+                && qmRefViewing.current.value.length >= 1) {
                 setErrorMessage(false);
                 const data = {
                     name: nameRefViewing.current.value,
@@ -145,6 +142,7 @@ export default function EntrümpelungPage() {
                     date: dateRefViewing.current.value,
                     qm: qmRefViewing.current.value,
                 }
+                console.log(data)
                 const response = await fetch('https://api.einsatzplaner.com/dsk-website/entruempelungForm', {
                     method: "POST",
                     body: JSON.stringify({ ...data }),
@@ -187,8 +185,8 @@ export default function EntrümpelungPage() {
                     email: emailRef.current.value,
                     phone: telRef.current.value,
                     adress: adressRefVideo.current.value,
-                    date: dateRef.current.value,
-                    qm: qmRef.current.value,
+                    date: dateRefVideo.current.value,
+                    qm: qmRefVideo.current.value,
                     category: categoryRef,
                 }
                 const fileNameArray = await uploadFiles(data.name);
@@ -262,7 +260,10 @@ export default function EntrümpelungPage() {
                                 <label className={styles.label} htmlFor="address">
                                     Immobilienadresse:
                                 </label>
-                                <input className={styles.input} ref={adressRef} type="text" placeholder="Deutschherrenstraße 197, 53179 Bonn" />
+                                <div className={styles.adressInputWrapper}>
+                                    <input className={styles.inputAdressStreet} ref={adressStreetRef} type="text" placeholder="Straße & Hausnummer" />
+                                    <input className={styles.input} ref={adressPLZRef} type="text" placeholder="Postleitzahl & Ort" />
+                                </div>
                             </div>
                             <div className={styles.formGroup}>
                                 <label className={styles.label} htmlFor="date">
@@ -288,138 +289,135 @@ export default function EntrümpelungPage() {
                     </div>
 
                     {/* PopUp Form */}
-                    {formPopup === true &&
-                        <div className={styles.backgroundMainForm}>
-                            <form className={styles.mainForm} onSubmit={submitHandler}>
-                                <div className={styles.navigationBox}>
-                                    <BiArrowBack className={contactInformationStep ? styles.stepBack : styles.stepBackNone} onClick={stepBack}></BiArrowBack>
-                                    <IoIosCloseCircleOutline className={styles.closeBTNPopup} onClick={closePopupForm} />
+
+                    <div className={formPopup === true ? styles.backgroundMainForm : styles.hideMainForm}>
+                        <div className={styles.mainForm}>
+                            <div className={styles.navigationBox}>
+                                <BiArrowBack className={contactInformationStep ? styles.stepBack : styles.stepBackNone} onClick={stepBack}></BiArrowBack>
+                                <IoIosCloseCircleOutline className={styles.closeBTNPopup} onClick={closePopupForm} />
+                            </div>
+                            {!contactInformationStep &&
+                                <div className={styles.categoryStepWrapper}>
+                                    <p><em>Schritt 1 von 2</em></p>
+                                    <h3>Wie soll die Immobilie besichtigt werden ?</h3>
+                                    <div className={styles.boxesWrapper}>
+                                        <div className={styles.appointment} onClick={selectCategory.bind(this, "appointment")}>
+                                            <FaWalking className={styles.iconCalculationCategory} />
+                                            <p>kostenfreier Termin vor Ort</p>
+                                        </div>
+                                        <div className={styles.videoUpload} onClick={selectCategory.bind(this, "video")}>
+                                            <AiOutlineVideoCameraAdd className={styles.iconCalculationCategory} />
+                                            <p>Video hochladen & Angebot erhalten</p>
+                                        </div>
+                                    </div>
+                                    <div className={styles.infoBox}>
+                                        <BsInfoCircle className={styles.infoIcon} onClick={setInfoSlider.bind(this, true)} />
+                                        <p className={styles.hint}>weitere Informationen</p>
+                                    </div>
                                 </div>
-                                {!contactInformationStep &&
-                                    <div className={styles.categoryStepWrapper}>
-                                        <p><em>Schritt 1 von 2</em></p>
-                                        <h3>Wie soll die Immobilie besichtigt werden ?</h3>
-                                        <div className={styles.boxesWrapper}>
-                                            <div className={styles.appointment} onClick={selectCategory.bind(this, "appointment")}>
-                                                <FaWalking className={styles.iconCalculationCategory} />
-                                                <p>kostenfreier Termin vor Ort</p>
-                                            </div>
-                                            <div className={styles.videoUpload} onClick={selectCategory.bind(this, "video")}>
-                                                <AiOutlineVideoCameraAdd className={styles.iconCalculationCategory} />
-                                                <p>Video hochladen & Angebot erhalten</p>
-                                            </div>
-                                        </div>
-                                        <div className={styles.infoBox}>
-                                            <BsInfoCircle className={styles.infoIcon} onClick={setInfoSlider.bind(this, true)} />
-                                            <p className={styles.hint}>weitere Informationen</p>
-                                        </div>
-                                    </div>
-                                }
+                            }
 
-                                <div className={contactInformationStep === "appointment" ? styles.stepTwoAppointment : styles.hideStep}>
-                                    <p className={styles.stepTracker}><em>Schritt 2 von 2</em></p>
-                                    <h3 className={styles.contactHeadline}>Kontaktinformation:</h3>
-                                    <div className={styles.formGroupContact}>
-                                        <label className={styles.label}>Ansprechpartner</label>
-                                        <input minLength="3" placeholder="Herr Max Mustermann" ref={nameRefViewing} className={styles.inputContact} type="text"></input>
-                                    </div>
-                                    <div className={styles.contactFormRow}>
-                                        <div className={styles.formGroupContact}>
-                                            <label className={styles.label}>E-Mail Adresse</label>
-                                            <input placeholder="maxmustermann@gmail.com" ref={emailRefViewing} className={styles.inputContact} type="email"></input>
-                                        </div>
-                                        <div className={styles.formGroupContact}>
-                                            <label className={styles.label}>Telefonnummer</label>
-                                            <input minLength="3" placeholder="0228-227 983 49" ref={telRefViewing} className={styles.inputContact} type="tel"></input>
-                                        </div>
-                                    </div>
-                                    <h3 className={styles.contactHeadlineProperty}>Ihre Angaben zu der Immobilie:</h3>
-                                    <div className={styles.formGroupContact}>
-                                        <label className={styles.label}>Anschrift</label>
-                                        <input className={styles.inputContact} ref={adressRefViewing}  defaultValue={adressRef.current.value} type="text" />
-                                    </div>
-                                    <div className={styles.contactFormRow}>
-                                        <div className={styles.formGroupContact}>
-                                            <label className={styles.label}>Wunschtermin</label>
-                                            <input className={styles.inputContact} ref={dateRefViewing} defaultValue={dateRef.current.value} type="date"></input>
-                                        </div>
-                                        <div className={styles.formGroupContact}>
-                                            <label className={styles.label}>Quadratmeter</label>
-                                            <input required className={styles.inputContact} ref={qmRefViewing} defaultValue={qmRef.current.value} type="number"></input>
-                                        </div>
-                                    </div>
-                                    {whatsAppHint && <p className={styles.whatsAppHint}>Video & Namen einfach per WhatsApp an folgende Telefonnummer senden: +49 (0) 151 423 859 89</p>}
-                                    <button className={styles.finalFormBTNAppointment} type="submit">kostenlos anfragen</button>
-                                    {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
+                            <form onSubmit={submitHandler} className={contactInformationStep === "appointment" ? styles.stepTwoAppointment : styles.hideStep}>
+                                <p className={styles.stepTracker}><em>Schritt 2 von 2</em></p>
+                                <h3 className={styles.contactHeadline}>Kontaktinformation:</h3>
+                                <div className={styles.formGroupContact}>
+                                    <label htmlFor="name" className={styles.label}>Ansprechpartner</label>
+                                    <input required placeholder="Herr Max Mustermann" ref={nameRefViewing} id="name" className={styles.inputContact} type="text" ></input>
                                 </div>
-
-
-                                <div className={contactInformationStep === "video" ? styles.stepTwoVideo : styles.hideStep}>
-                                    <p className={styles.stepTracker}><em>Schritt 2 von 3</em></p>
-                                    <h3 className={styles.videoHeadline}>Bitte laden Sie Ihr Video hoch </h3>
-                                    <p>(Es können auch mehrere Videos hochgeladen werden)</p>
-                                    <div className={styles.uploadFormGroup}>
-                                        <label htmlFor="fileupload" className={styles.customFileBTN}>
-                                            <AiOutlineVideoCameraAdd /> Video hochladen
-                                        </label>
-                                        <input multiple type="file" id="fileupload" className={styles.inputFile} onChange={handleFileChange} ref={fileRef}></input>
-                                        {files.length === 0 && <p onClick={whatsAppHandler} className={styles.whatsAppText}> <BsWhatsapp className={styles.whatsAppIcon} /> Video per WhatsApp senden </p>}
-                                        {files.length > 0 && <div className={styles.uploadedVideoBox}>
-                                            <p className={styles.videoBoxP}>hochgeladen:</p>
-                                            {files.map(file => <div key={Math.random()} className={styles.videoName}><span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
-                                                {file.name} <span className={styles.trashIcon}>
-                                                    <BsTrash onClick={deleteFile.bind(this, file.name)} /></span> </div>)}
-                                        </div>}
-                                    </div>
-                                    {files.length > 0 && <button className={styles.forwardBTNVideoUpload} onClick={setContactInformationStep.bind(this, "videoContact")} type="button">weiter</button>}
-                                </div>
-
-
-                                <div className={contactInformationStep === "videoContact" ? styles.stepTwoAppointment : styles.hideStep}>
-                                    <p className={styles.stepTracker}><em>Schritt 3 von 3</em></p>
-                                    <h3 className={styles.contactHeadline}>Kontaktinformation:</h3>
+                                <div className={styles.contactFormRow}>
                                     <div className={styles.formGroupContact}>
-                                        <label className={styles.label}>Ansprechpartner</label>
-                                        <input minLength="3" placeholder="Herr Max Mustermann" ref={nameRef} className={styles.inputContact} type="text"></input>
+                                        <label htmlFor="email" className={styles.label}>E-Mail Adresse</label>
+                                        <input required placeholder="maxmustermann@gmail.com" ref={emailRefViewing} id="email" className={styles.inputContact} type="email"></input>
                                     </div>
-                                    <div className={styles.contactFormRow}>
-                                        <div className={styles.formGroupContact}>
-                                            <label className={styles.label}>E-Mail Adresse</label>
-                                            <input placeholder="maxmustermann@gmail.com" ref={emailRef} className={styles.inputContact} type="email"></input>
-                                        </div>
-                                        <div className={styles.formGroupContact}>
-                                            <label className={styles.label}>Telefonnummer</label>
-                                            <input minLength="3" placeholder="0228-227 983 49" ref={telRef} className={styles.inputContact} type="tel"></input>
-                                        </div>
-                                    </div>
-                                    <h3 className={styles.contactHeadlineProperty}>Ihre Angaben zu der Immobilie:</h3>
                                     <div className={styles.formGroupContact}>
-                                        <label className={styles.label}>Anschrift</label>
-                                        <input className={styles.inputContact} ref={adressRefVideo} type="text" defaultValue={adressRef.current.value} />
+                                        <label htmlFor="phone" className={styles.label}>Telefonnummer</label>
+                                        <input required placeholder="0228-227 983 49" id="phone" ref={telRefViewing} className={styles.inputContact} type="tel"></input>
                                     </div>
-                                    <div className={styles.contactFormRow}>
-                                        <div className={styles.formGroupContact}>
-                                            <label className={styles.label}>spätester Räumungstermin</label>
-                                            <input className={styles.inputContact} defaultValue={dateRef.current.value} type="date"></input>
-                                        </div>
-                                        <div className={styles.formGroupContact}>
-                                            <label className={styles.label}>Quadratmeter</label>
-                                            <input required className={styles.inputContact} defaultValue={qmRef.current.value} type="number"></input>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h3 className={styles.contactHeadlineProperty}>hochgeladenes Video:</h3>
-                                        {files.length === 1 ? files.map(file => <div key={Math.random()} className={styles.videoBox}><span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
-                                            {file.name} <span onClick={setContactInformationStep.bind(this, 'video')} className={styles.editVideo}>
-                                                <AiOutlineEdit />bearbeiten</span> </div>) : <div className={styles.videoBox}><span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
-                                            {files.length} Videos hochgeladen <span onClick={setContactInformationStep.bind(this, 'video')} className={styles.editVideo}>
-                                                <AiOutlineEdit />bearbeiten</span> </div>}
-                                    </div>
-                                    <button className={styles.finalFormBTNAppointment} type="submit">kostenfreies Angebot anfordern</button>
-                                    {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
                                 </div>
+                                <h3 className={styles.contactHeadlineProperty}>Ihre Angaben zu der Immobilie:</h3>
+                                <div className={styles.formGroupContact}>
+                                    <label htmlFor="fulladress" className={styles.label}>Anschrift</label>
+                                    <input required placeholder="Deutschherrenstraße 197, 53179 Bonn" id="fulladress" className={styles.inputContact} ref={adressRefViewing} defaultValue={formPopup && adressStreetRef.current.value.length > 3 && adressPLZRef.current.value.length > 3 ? `${adressStreetRef.current.value}, ${adressPLZRef.current.value}` : ''} type="text" />
+                                </div>
+                                <div className={styles.contactFormRow}>
+                                    <div className={styles.formGroupContact}>
+                                        <label htmlFor="datemain" className={styles.label}>Wunschtermin</label>
+                                        <input required className={styles.inputContact} ref={dateRefViewing} id="datemain" defaultValue={formPopup && dateRef.current.value.length > 3 ? dateRef.current.value : ''} type="date"></input>
+                                    </div>
+                                    <div className={styles.formGroupContact}>
+                                        <label htmlFor="qmmain" className={styles.label}>Quadratmeter</label>
+                                        <input required className={styles.inputContact} ref={qmRefViewing} id="qmmain" defaultValue={formPopup && qmRef.current.value.length > 1 ? qmRef.current.value : ''} type="number"></input>
+                                    </div>
+                                </div>
+                                {whatsAppHint && <p className={styles.whatsAppHint}>Video & Namen einfach per WhatsApp an folgende Telefonnummer senden: +49 (0) 151 423 859 89</p>}
+                                <button className={styles.finalFormBTNAppointment} type="submit">kostenlos anfragen</button>
                             </form>
-                        </div>}
+
+
+                            <div className={contactInformationStep === "video" ? styles.stepTwoVideo : styles.hideStep}>
+                                <p className={styles.stepTracker}><em>Schritt 2 von 3</em></p>
+                                <h3 className={styles.videoHeadline}>Bitte laden Sie Ihr Video hoch </h3>
+                                <p>(Es können auch mehrere Videos hochgeladen werden)</p>
+                                <div className={styles.uploadFormGroup}>
+                                    <label htmlFor="fileupload" className={styles.customFileBTN}>
+                                        <AiOutlineVideoCameraAdd /> Video hochladen
+                                    </label>
+                                    <input multiple type="file" id="fileupload" className={styles.inputFile} onChange={handleFileChange} ref={fileRef}></input>
+                                    {files.length === 0 && <p onClick={whatsAppHandler} className={styles.whatsAppText}> <BsWhatsapp className={styles.whatsAppIcon} /> Video per WhatsApp senden </p>}
+                                    {files.length > 0 && <div className={styles.uploadedVideoBox}>
+                                        <p className={styles.videoBoxP}>hochgeladen:</p>
+                                        {files.map(file => <div key={Math.random()} className={styles.videoName}><span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
+                                            {file.name} <span className={styles.trashIcon}>
+                                                <BsTrash onClick={deleteFile.bind(this, file.name)} /></span> </div>)}
+                                    </div>}
+                                </div>
+                                {files.length > 0 && <button className={styles.forwardBTNVideoUpload} onClick={setContactInformationStep.bind(this, "videoContact")} type="button">weiter</button>}
+                            </div>
+
+                            <form onSubmit={submitHandler} className={contactInformationStep === "videoContact" ? styles.stepTwoAppointment : styles.hideStep}>
+                                <p className={styles.stepTracker}><em>Schritt 3 von 3</em></p>
+                                <h3 className={styles.contactHeadline}>Kontaktinformation:</h3>
+                                <div className={styles.formGroupContact}>
+                                    <label htmlFor="videoName" className={styles.label}>Ansprechpartner</label>
+                                    <input required placeholder="Herr Max Mustermann" ref={nameRef} id="videoName" className={styles.inputContact} type="text"></input>
+                                </div>
+                                <div className={styles.contactFormRow}>
+                                    <div className={styles.formGroupContact}>
+                                        <label htmlFor="emailVideo" className={styles.label}>E-Mail Adresse</label>
+                                        <input required id="emailVideo" placeholder="maxmustermann@gmail.com" ref={emailRef} className={styles.inputContact} type="email"></input>
+                                    </div>
+                                    <div className={styles.formGroupContact}>
+                                        <label htmlFor="phoneVideo" className={styles.label}>Telefonnummer</label>
+                                        <input required id="phoneVideo" placeholder="0228-227 983 49" ref={telRef} className={styles.inputContact} type="tel"></input>
+                                    </div>
+                                </div>
+                                <h3 className={styles.contactHeadlineProperty}>Ihre Angaben zu der Immobilie:</h3>
+                                <div className={styles.formGroupContact}>
+                                    <label htmlFor="fulladresssvideo" className={styles.label}>Anschrift</label>
+                                    <input required id="fulladresssvideo" placeholder="Deutschherrenstraße 197, 53179 Bonn" className={styles.inputContact} ref={adressRefVideo} type="text" defaultValue={formPopup && adressStreetRef.current.value.length > 3 && adressPLZRef.current.value.length > 3 ? `${adressStreetRef.current.value}, ${adressPLZRef.current.value}` : ''} />
+                                </div>
+                                <div className={styles.contactFormRow}>
+                                    <div className={styles.formGroupContact}>
+                                        <label htmlFor="dateVideo" className={styles.label}>spätester Räumungstermin</label>
+                                        <input required id="dateVideo" ref={dateRefVideo} className={styles.inputContact} defaultValue={formPopup && dateRef.current.value.length > 3 ? dateRef.current.value : ''} type="date"></input>
+                                    </div>
+                                    <div className={styles.formGroupContact}>
+                                        <label htmlFor="qmVideo" className={styles.label}>Quadratmeter</label>
+                                        <input id="qmVideo" ref={qmRefVideo} required className={styles.inputContact} defaultValue={formPopup && qmRef.current.value.length > 1 ? qmRef.current.value : ''} type="number"></input>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 className={styles.contactHeadlineProperty}>hochgeladenes Video:</h3>
+                                    {files.length === 1 ? files.map(file => <div key={Math.random()} className={styles.videoBox}><span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
+                                        {file.name} <span onClick={setContactInformationStep.bind(this, 'video')} className={styles.editVideo}>
+                                            <AiOutlineEdit />bearbeiten</span> </div>) : <div className={styles.videoBox}><span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
+                                        {files.length} Videos hochgeladen <span onClick={setContactInformationStep.bind(this, 'video')} className={styles.editVideo}>
+                                            <AiOutlineEdit />bearbeiten</span> </div>}
+                                </div>
+                                <button className={styles.finalFormBTNAppointment} type="submit">kostenfreies Angebot anfordern</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </section>
             <div className={styles.headlineBox}>
