@@ -68,7 +68,7 @@ export default function HeaderComponent() {
                             <GoLocation className={styles.icon} />
                             <div>
                                 <p className={styles.headlineBox}>Sozialkaufhaus Bonn</p>
-                                <p> <em>DSK gemeinnützige gmbH</em></p>
+                                <p> <em>DSK gemeinnützige GmbH</em></p>
                                 <p>Deutschherrenstraße 197-201</p>
                                 <p>53179 Bonn</p>
                                 <p>Tel: 0228 - 227 983 49</p>
