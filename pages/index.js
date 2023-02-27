@@ -134,7 +134,7 @@ export default function HomePage() {
             <div className={styles.contactBox}>
               <h4> Kontaktinformation</h4>
               <ul className={styles.contactList}>
-                <li className={styles.contactListItem}>< BsTelephone className={styles.test} /> +49 (0) 2254 - 600 485 5</li>
+                <li className={styles.contactListItem}>< BsTelephone className={styles.test} /> +49 (0) 2254 - 600 480 5</li>
                 <li className={styles.contactListItem}><IoMailUnreadOutline className={styles.test} /> info@dsk-nrw.de</li>
                 <li className={styles.contactListItem}><BsWhatsapp className={styles.test} /> +49 (0) 151 423 859 89</li>
               </ul>

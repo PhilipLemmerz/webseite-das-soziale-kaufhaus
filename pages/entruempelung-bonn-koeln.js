@@ -49,7 +49,6 @@ export default function EntrümpelungPage() {
     }
 
     const adressRefViewing = useRef();
-    const dateRefViewing = useRef();
     const qmRefViewing = useRef();
     const nameRefViewing = useRef();
     const emailRefViewing = useRef();
@@ -58,8 +57,6 @@ export default function EntrümpelungPage() {
     const adressPLZRef = useRef();
     const adressRefVideo = useRef();
     const qmRefVideo = useRef();
-    const dateRefVideo = useRef();
-    const dateRef = useRef();
     const qmRef = useRef();
     const nameRef = useRef();
     const emailRef = useRef();
@@ -71,7 +68,7 @@ export default function EntrümpelungPage() {
     }
 
     function openPopupForm() {
-        if (adressStreetRef.current.value.length > 5 && adressPLZRef.current.value.length > 2 && dateRef.current.value.length > 5 && qmRef.current.value > 1) {
+        if (adressStreetRef.current.value.length > 5 && adressPLZRef.current.value.length > 2 && qmRef.current.value > 1) {
             setFormPopup(true);
             setErrorMessage(false)
         }
@@ -139,10 +136,8 @@ export default function EntrümpelungPage() {
                     email: emailRefViewing.current.value,
                     phone: telRefViewing.current.value,
                     adress: adressRefViewing.current.value,
-                    date: dateRefViewing.current.value,
                     qm: qmRefViewing.current.value,
                 }
-                console.log(data)
                 const response = await fetch('https://api.einsatzplaner.com/dsk-website/entruempelungForm', {
                     method: "POST",
                     body: JSON.stringify({ ...data }),
@@ -185,7 +180,6 @@ export default function EntrümpelungPage() {
                     email: emailRef.current.value,
                     phone: telRef.current.value,
                     adress: adressRefVideo.current.value,
-                    date: dateRefVideo.current.value,
                     qm: qmRefVideo.current.value,
                     category: categoryRef,
                 }
@@ -265,12 +259,6 @@ export default function EntrümpelungPage() {
                                     <input className={styles.input} ref={adressPLZRef} type="text" placeholder="Postleitzahl & Ort" />
                                 </div>
                             </div>
-                            <div className={styles.formGroup}>
-                                <label className={styles.label} htmlFor="date">
-                                    Wunschtermin:
-                                </label>
-                                <input required type="date" ref={dateRef} className={styles.dateInput}></input>
-                            </div>
                         </div>
 
                         <div className={styles.formGroupQM}>
@@ -303,11 +291,11 @@ export default function EntrümpelungPage() {
                                     <div className={styles.boxesWrapper}>
                                         <div className={styles.appointment} onClick={selectCategory.bind(this, "appointment")}>
                                             <FaWalking className={styles.iconCalculationCategory} />
-                                            <p>kostenfreier Termin vor Ort</p>
+                                            <p>Besichtigungstermin vor Ort vereinbaren</p>
                                         </div>
                                         <div className={styles.videoUpload} onClick={selectCategory.bind(this, "video")}>
                                             <AiOutlineVideoCameraAdd className={styles.iconCalculationCategory} />
-                                            <p>Video hochladen & Angebot erhalten</p>
+                                            <p>Bilder oder Video hochladen & Angebot erhalten</p>
                                         </div>
                                     </div>
                                     <div className={styles.infoBox}>
@@ -341,10 +329,6 @@ export default function EntrümpelungPage() {
                                 </div>
                                 <div className={styles.contactFormRow}>
                                     <div className={styles.formGroupContact}>
-                                        <label htmlFor="datemain" className={styles.label}>Wunschtermin</label>
-                                        <input required className={styles.inputContact} ref={dateRefViewing} id="datemain" defaultValue={formPopup && dateRef.current.value.length > 3 ? dateRef.current.value : ''} type="date"></input>
-                                    </div>
-                                    <div className={styles.formGroupContact}>
                                         <label htmlFor="qmmain" className={styles.label}>Quadratmeter</label>
                                         <input required className={styles.inputContact} ref={qmRefViewing} id="qmmain" defaultValue={formPopup && qmRef.current.value.length > 1 ? qmRef.current.value : ''} type="number"></input>
                                     </div>
@@ -356,14 +340,14 @@ export default function EntrümpelungPage() {
 
                             <div className={contactInformationStep === "video" ? styles.stepTwoVideo : styles.hideStep}>
                                 <p className={styles.stepTracker}><em>Schritt 2 von 3</em></p>
-                                <h3 className={styles.videoHeadline}>Bitte laden Sie Ihr Video hoch </h3>
-                                <p>(Es können auch mehrere Videos hochgeladen werden)</p>
+                                <h3 className={styles.videoHeadline}>Bitte laden Sie hier Videos oder Bilder hoch </h3>
+                                <p>(Es können auch mehrere Dateien hochgeladen werden)</p>
                                 <div className={styles.uploadFormGroup}>
                                     <label htmlFor="fileupload" className={styles.customFileBTN}>
-                                        <AiOutlineVideoCameraAdd /> Video hochladen
+                                        <AiOutlineVideoCameraAdd /> Dateien hochladen
                                     </label>
                                     <input multiple type="file" id="fileupload" className={styles.inputFile} onChange={handleFileChange} ref={fileRef}></input>
-                                    {files.length === 0 && <p onClick={whatsAppHandler} className={styles.whatsAppText}> <BsWhatsapp className={styles.whatsAppIcon} /> Video per WhatsApp senden </p>}
+                                    {files.length === 0 && <p onClick={whatsAppHandler} className={styles.whatsAppText}> <BsWhatsapp className={styles.whatsAppIcon} /> Video oder Bilder per WhatsApp senden </p>}
                                     {files.length > 0 && <div className={styles.uploadedVideoBox}>
                                         <p className={styles.videoBoxP}>hochgeladen:</p>
                                         {files.map(file => <div key={Math.random()} className={styles.videoName}><span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
@@ -398,16 +382,12 @@ export default function EntrümpelungPage() {
                                 </div>
                                 <div className={styles.contactFormRow}>
                                     <div className={styles.formGroupContact}>
-                                        <label htmlFor="dateVideo" className={styles.label}>spätester Räumungstermin</label>
-                                        <input required id="dateVideo" ref={dateRefVideo} className={styles.inputContact} defaultValue={formPopup && dateRef.current.value.length > 3 ? dateRef.current.value : ''} type="date"></input>
-                                    </div>
-                                    <div className={styles.formGroupContact}>
                                         <label htmlFor="qmVideo" className={styles.label}>Quadratmeter</label>
                                         <input id="qmVideo" ref={qmRefVideo} required className={styles.inputContact} defaultValue={formPopup && qmRef.current.value.length > 1 ? qmRef.current.value : ''} type="number"></input>
                                     </div>
                                 </div>
                                 <div>
-                                    <h3 className={styles.contactHeadlineProperty}>hochgeladenes Video:</h3>
+                                    <h3 className={styles.contactHeadlineProperty}>hochgeladene Dateien:</h3>
                                     {files.length === 1 ? files.map(file => <div key={Math.random()} className={styles.videoBox}><span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
                                         {file.name} <span onClick={setContactInformationStep.bind(this, 'video')} className={styles.editVideo}>
                                             <AiOutlineEdit />bearbeiten</span> </div>) : <div className={styles.videoBox}><span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
@@ -471,14 +451,14 @@ export default function EntrümpelungPage() {
                         <h3>Kostenfreie Beratung</h3>
                         <p>
                             Ob persönlich vor Ort oder digital - Einer unserer 5 Entrümpelungsexperten berät Sie unverbindlich und kostenfrei. Gerne besichtigten wir die
-                            Immobilie oder beraten Sie auf Basis eines Videos der Immobilie kontaktfrei und digital.
+                            Immobilie oder beraten Sie auf Basis eines Videos oder Bildern von der Immobilie kontaktfrei und digital.
                         </p>
                     </div>
                     <div className={styles.stepBox}>
                         <span className={styles.stepIcon}>2</span>
                         <h3>Angebot mit Festpreisbindung</h3>
                         <p>
-                            Bei uns wissen Sie vorab zu 100% was die Entrümpelung kostet. Auf Basis der Besichtigung oder des zur Verfügung gestellten Video kalkulieren wir den
+                            Bei uns wissen Sie vorab zu 100% was die Entrümpelung kostet. Auf Basis der Besichtigung oder des zur Verfügung gestellten Bildmaterial kalkulieren wir den
                             Aufwand und unterbreiten Ihnen ein Angebot mit Festpreisbindung. Anschließend können Sie in Ruhe entscheiden, ob Sie uns mit Ihrer Entrümpelung beauftragen möchten.
                         </p>
                     </div>
