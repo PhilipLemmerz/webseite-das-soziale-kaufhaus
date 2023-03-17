@@ -23,7 +23,7 @@ export default function FooterComponent() {
                         <Link href="/entruempelung-bonn-koeln"><p className={styles.link}>Entrümpelung</p></Link>
                         <Link href="/umzugsunternehmen-bonn-koeln"><p className={styles.link}>Umzüge</p></Link>
                         <Link href="/moebelspende-bonn-koeln"><p className={styles.link}>Möbelabholung</p></Link>
-                        <Link href="/kleiderspende-bonn-koeln"><p className={styles.link}>Sach- & Kleiderspende</p></Link>
+                        <Link href="/kleiderspende-bonn-koeln"><p className={styles.link}>Spenden</p></Link>
                         <Link href="/ueber-uns"><p className={styles.link}>Über uns</p></Link>
                         <Link href="/karriere"><p className={styles.link}>Karriere</p></Link>
                     </nav>
@@ -53,7 +53,7 @@ export default function FooterComponent() {
                     <Link href="/entruempelung-bonn-koeln"><p className={styles.link}>Entrümpelung</p></Link>
                     <Link href="/umzugsunternehmen-bonn-koeln"><p className={styles.link}>Umzüge</p></Link>
                     <Link href="/moebelspende-bonn-koeln"><p className={styles.link}>Möbelabholung</p></Link>
-                    <Link href="/kleiderspende-bonn-koeln"><p className={styles.link}>Sach- & Kleiderspende</p></Link>
+                    <Link href="/kleiderspende-bonn-koeln"><p className={styles.link}>Spenden</p></Link>
                     <Link href="/ueber-uns"><p className={styles.link}>Über uns</p></Link>
                     <Link href="/karriere"><p className={styles.link}>Karriere</p></Link>
                 </nav>}

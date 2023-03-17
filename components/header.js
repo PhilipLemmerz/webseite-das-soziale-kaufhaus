@@ -47,7 +47,7 @@ export default function HeaderComponent() {
     }
 
     function checkIsLandingPage() {
-        if (page === '/moebelspende-bonn-koeln' || page === '/umzugsunternehmen-bonn-koeln' || page === '/entruempelung-bonn-koeln') {
+        if (page === '/moebelspende-bonn-koeln' || page === '/umzugsunternehmen-bonn-koeln' || page === '/entruempelung-bonn-koeln' || page === '/kleiderspende-bonn-koeln') {
             setisLandingPage(true)
         } else {
             setisLandingPage(false)
@@ -134,7 +134,7 @@ export default function HeaderComponent() {
                     <Link onClick={closeMenu} href="/entruempelung-bonn-koeln" className={styles.navLinkMobile}>Entrümpelung</Link>
                     <Link onClick={closeMenu} href="/umzugsunternehmen-bonn-koeln" className={styles.navLinkMobile}>Umzüge</Link>
                     <Link onClick={closeMenu} href="/moebelspende-bonn-koeln" className={styles.navLinkMobile}>Möbelabholung</Link>
-                    <Link onClick={closeMenu} href="/kleiderspende-bonn-koeln" className={styles.navLinkMobile}>Sach- & Kleiderspende</Link>
+                    <Link onClick={closeMenu} href="/kleiderspende-bonn-koeln" className={styles.navLinkMobile}>Spenden</Link>
                     <Link onClick={closeMenu} href="/ueber-uns" className={styles.navLinkMobile}>Über uns</Link>
                     <Link onClick={closeMenu} href="/kontakt" className={styles.navLinkMobile}>Kontakt</Link>
                     <Link onClick={closeMenu} href="/karriere" className={styles.navLinkMobile}>Karriere</Link>
@@ -146,7 +146,7 @@ export default function HeaderComponent() {
                         <Link href="/entruempelung-bonn-koeln" className={styles.navLink}>Entrümpelung</Link>
                         <Link href="/umzugsunternehmen-bonn-koeln" className={styles.navLink}>Umzüge</Link>
                         <Link href="/moebelspende-bonn-koeln" className={styles.navLink}>Möbelabholung</Link>
-                        <Link href="/kleiderspende-bonn-koeln" className={styles.navLink}>Sach- & Kleiderspende</Link>
+                        <Link href="/kleiderspende-bonn-koeln" className={styles.navLink}>Spenden</Link>
                         <Link href="/ueber-uns" className={styles.navLink}>Über uns</Link>
                         <Link href="/kontakt" className={styles.navLink}>Kontakt</Link>
                         <Link href="/karriere" className={styles.navLink}>Karriere</Link>
@@ -163,7 +163,7 @@ export default function HeaderComponent() {
                         <Link href="/entruempelung-bonn-koeln" className={styles.navLink}>Entrümpelung</Link>
                         <Link href="/umzugsunternehmen-bonn-koeln" className={styles.navLink}>Umzüge</Link>
                         <Link href="/moebelspende-bonn-koeln" className={styles.navLink}>Möbelabholung</Link>
-                        <Link href="/kleiderspende-bonn-koeln" className={styles.navLink}>Sach- & Kleiderspende</Link>
+                        <Link href="/kleiderspende-bonn-koeln" className={styles.navLink}>Spenden</Link>
                         <Link href="/ueber-uns" className={styles.navLink}>Über uns</Link>
                         <Link href="/kontakt" className={styles.navLink}>Kontakt</Link>
                         <Link href="/karriere" className={styles.navLink}>Karriere</Link>
