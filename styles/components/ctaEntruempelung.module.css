@@ -1,0 +1,309 @@
+.qmIcon {
+    font-size: 1.8em;
+    color: #b4b4b4;
+}
+
+
+.globalWrapper {
+    border-top: 1px #0057a3 solid;
+    padding-top: 2rem;
+}
+
+.h2 {
+    font-size: 1.5em
+}
+
+.rangeInput {
+    -webkit-appearance: none;
+    height: 10px;
+    margin-right: 10px;
+    border-radius: 6px;
+    outline: 0;
+    background: #b4b4b4;
+    color: #0058A3
+}
+
+.formWrapper {
+    display: flex;
+    column-gap: 3rem;
+    background-color: #f7fafc;
+    max-width: 1000px;
+    border-radius: 5px;
+    padding: 1rem;
+    box-shadow: 1px 1px 5px gray;
+    margin-top: 2rem;
+}
+
+.qmWrapper {
+    display: flex;
+    align-items: center;
+}
+
+
+
+.btnWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.formBTN {
+    background-color: #FBD914;
+    color: #0057a3;
+    border: none;
+    outline: none;
+    max-width: 300px;
+    padding: 0.9rem;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.formBTN:hover {
+    cursor: pointer;
+    background-color: #f5da41;
+}
+
+
+.inputAdress {
+    margin-top: 1rem;
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid rgb(173, 173, 173);
+    box-shadow: 0 0 1px #525252;
+    outline: none;
+    font-size: 1em;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.input:focus,
+.inputAdress:focus,
+.inputContact:focus {
+    background-color: #0057a30e;
+}
+
+.backgroundMainForm {
+    position: fixed;
+    background-color: #b4b4b4ad;
+    top: 0;
+    min-height: 100vh;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+}
+
+.hideMainForm {
+    display: none;
+}
+
+.mainForm {
+    width: 60vw;
+    background-color: white;
+    border: 1px solid #0058A3;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.closeBTNPopup {
+    font-size: 2em;
+    color: #0057a3;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+.navigationBox {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: top;
+    color: #0057a3;
+}
+
+
+.contactHeadline {
+    text-align: center;
+    margin-bottom: 0rem;
+    font-weight: 500;
+    font-size: 1em;
+}
+
+.formGroupContact {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.label {
+    margin-bottom: 0.5rem;
+}
+
+.inputContact {
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid rgb(173, 173, 173);
+    box-shadow: 0 0 1px #525252;
+    outline: none;
+    font-size: 1em;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.contactFormRow {
+    display: flex;
+    column-gap: 2rem;
+    width: 100%;
+}
+
+.finalFormBTNAppointment {
+    background-color: #FBD914;
+    align-self: center;
+    color: #0057a3;
+    border: none;
+    outline: none;
+    padding: 0.7rem 2.5rem 0.7rem 2.5rem;
+    border-radius: 5px;
+    margin-top: 2rem;
+    font-size: 1em;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.finalFormBTNAppointment:hover {
+    background-color: #fbd814bf;
+    cursor: pointer;
+}
+
+.loadingSpinner {
+    width: 100px;
+    height: 100px;
+    border: 20px solid #f3f3f3;
+    border-top: 20px solid #0057a3;
+    border-radius: 50%;
+    animation: spinner 1.5s linear infinite;
+}
+
+.spinnerContainer {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.884);
+    z-index: 25;
+}
+
+.errorMessage {
+    color: rgb(248, 85, 85)
+}
+
+
+@media screen and (max-width: 1000px) {
+
+    .globalWrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+
+    .formWrapper {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 2rem;
+    }
+
+    .adressWrapper {
+        display: flex;
+        column-gap: 1rem;
+        align-items: baseline;
+    }
+
+    .inputAdress {
+        width: 50vw;
+    }
+
+    .qmInputWrapper {
+        display: flex;
+        column-gap: 2rem;
+        align-items: center;
+    }
+
+}
+
+@media screen and (max-width: 700px) { 
+    .mainForm {
+        width: 90vw;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .adressWrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .qmInputWrapper {
+        flex-direction: column;
+    }
+
+    .formWrapper {
+        width: 100%;
+    }
+
+    .inputAdress {
+        width: 75vw;
+    }
+
+    .rangeInput {
+        width: 50vw;
+    }
+
+    .contactFormRow {
+        flex-direction: column;
+    }
+
+}
+
+@media screen and (max-width: 370px) {
+    .adressWrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .qmInputWrapper {
+        flex-direction: column;
+    }
+
+    .formWrapper {
+        width: 100%;
+    }
+
+    .inputAdress {
+        width: 70vw;
+    }
+
+    .rangeInput {
+        width: 30vw;
+    }
+
+    .formBTN {
+        padding: 0.7rem;
+    }
+
+}

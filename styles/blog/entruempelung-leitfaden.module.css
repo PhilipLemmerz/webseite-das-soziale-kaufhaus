@@ -1,0 +1,113 @@
+.section {
+    padding: 2rem 4rem 0 4rem;
+    margin-bottom: 5rem;
+}
+
+.h1 {
+    font-size: 2em;
+    color: #0057a3;
+    background: linear-gradient(90deg, rgb(255, 255, 255) 0%, #fbd81480 60%, #fbd8149c 95%);
+    max-width: 50rem;
+    border-radius: 5px;
+}
+
+.h2 {
+    font-size: 1.5em
+}
+
+.headerImage {
+    object-fit: cover;
+    width: 90vw;
+    object-position: 15% 10%;
+    border-radius: 5px;
+}
+
+.articleBox {
+    align-items: flex-end;
+    width: 80%;
+    background-color: white;
+    z-index: 1;
+}
+
+.containerImage {
+    border-radius: 5px;
+}
+
+.callToAction {
+    padding-top: 5rem;
+}
+
+.scrollCTAButton {
+    position: fixed;
+    top: 0.75rem;
+    right: 1rem;
+    background-color: #FBD914;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    color: #0058A3;
+    font-size: 1.1em;
+    padding: 0.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 1rem;
+    z-index: 4;
+}
+
+.scrollCTAButton:hover {
+    cursor: pointer;
+    background-color: #fce358;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .section {
+        padding: 2rem;
+    }
+
+    .headerImage {
+        width: 100%;
+    }
+
+    .articleBox {
+        width: 100%;
+    }
+
+    .h1 {
+        font-size: 1.5em;
+    }
+
+    .h2 {
+        font-size: 1.2em;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+    .headerImage {
+        height: 200px
+    }
+
+    .section {
+        padding: 1rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .h1 {
+        font-size: 1.2em;
+    }
+
+
+    .h2 {
+        font-size: 1.1em;
+    }
+
+    .containerImage {
+        width: 100%;
+        object-fit: cover;
+    }
+}

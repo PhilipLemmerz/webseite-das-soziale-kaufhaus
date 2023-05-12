@@ -31,7 +31,7 @@ export default function HeaderComponent() {
 
         checkIsLandingPage();
 
-        if (page === '/' && scrolledY > 300 || page === '/gebraucht-moebel' && scrolledY > 300 || page === '/kleiderspende-bonn-koeln' && scrolledY > 300 || page === '/ueber-uns' && scrolledY > 300 || page === "/entruempelung-bonn-koeln" && scrolledY > 900 || page === "/umzugsunternehmen-bonn-koeln" && scrolledY > 900 || page === '/moebelspende-bonn-koeln' && scrolledY > 300) {
+        if (page === '/' && scrolledY > 300 || page === '/gebraucht-moebel' && scrolledY > 300 || page === '/kleiderspende-bonn-koeln' && scrolledY > 300 || page === '/ueber-uns' && scrolledY > 300 || page.includes('blog') && scrolledY > 300 || page === "/entruempelung-bonn-koeln" && scrolledY > 900 || page === "/umzugsunternehmen-bonn-koeln" && scrolledY > 900 || page === '/moebelspende-bonn-koeln' && scrolledY > 300) {
             activateScrollMenu()
         } else {
             deactivateScrollMenu()
@@ -154,7 +154,7 @@ export default function HeaderComponent() {
                             <GiHamburgerMenu />
                         </div>
                     </div>
-                    {!isLandingPage && <button onClick={setCallInfo.bind(this, true)} className={styles.contactBTNscrolledMenu}><BsTelephoneForward /> jetzt anrufen </button>}
+                    {!isLandingPage && <button onClick={setCallInfo.bind(this, true)} className={styles.contactBTNscrolledMenu}><BsTelephoneForward /> anrufen </button>}
                 </nav>
                 }
                 <nav className={styles.navigationBox}>

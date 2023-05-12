@@ -26,6 +26,7 @@ export default function FooterComponent() {
                         <Link href="/kleiderspende-bonn-koeln"><p className={styles.link}>Spenden</p></Link>
                         <Link href="/ueber-uns"><p className={styles.link}>Über uns</p></Link>
                         <Link href="/karriere"><p className={styles.link}>Karriere</p></Link>
+                        <Link href="/blog"><p className={styles.link}>Blog</p></Link>
                     </nav>
                     <GiHamburgerMenu onClick={setMenuMobile.bind(this, true)} className={styles.menuBTN} />
                     <div className={styles.contactBox}>
@@ -56,6 +57,7 @@ export default function FooterComponent() {
                     <Link href="/kleiderspende-bonn-koeln"><p className={styles.link}>Spenden</p></Link>
                     <Link href="/ueber-uns"><p className={styles.link}>Über uns</p></Link>
                     <Link href="/karriere"><p className={styles.link}>Karriere</p></Link>
+                    <Link href="/blog"><p className={styles.link}>Blog</p></Link>
                 </nav>}
                 {menuInfo && <div className={styles.infoMenu}>
                     <div className={styles.closeBTN} onClick={setMenuInfo.bind(this, false)}>
