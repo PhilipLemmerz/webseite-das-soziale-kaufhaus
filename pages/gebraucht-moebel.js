@@ -48,8 +48,8 @@ export default function SortimentPage() {
             </section>
             <section className={styles.ebaySection}>
                 <h2 className={styles.ebayHeadline}>Möbel-Angebote</h2>
-                <p>Auf ebay-kleinanzeigen finden Sie alle Möbel die wir aktuell im Bestand haben</p>
-                <Link target="_blank" href="https://www.ebay-kleinanzeigen.de/pro/das-soziale-kaufhaus"><button className={styles.ebayBTN}>zu ebay-kleinanzeigen <HiCursorClick /></button></Link>
+                <p> In unserem Shop finden Sie alle Möbel die wir aktuell im Bestand haben</p>
+                <Link target="_blank" href="https://shop.das-soziale-kaufhaus.de"><button className={styles.ebayBTN}>zum Möbelsortiment<HiCursorClick /></button></Link>
             </section>
             <section className={styles.discountSection}>
                 <p className={styles.discountText}>Bedürftige Personen erhalten <span className={styles.percentText}>20% Nachlass</span> auf den gesamten Einkauf.</p>
