@@ -28,6 +28,25 @@
     text-align: center;
 }
 
+.applyBTN {
+    background-color: #FBD914;
+    color: #0057a3;
+    border: none;
+    outline: none;
+    max-width: 300px;
+    padding: 0.7rem 0.5rem 0.7rem 0.5rem;
+    border-radius: 5px;
+    margin-top: 2rem;
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.applyBTN:hover {
+    background-color: #ffe75f;
+    cursor: pointer;
+}
+
 @Media screen and (max-width: 1000px) {
 
     .workOfferBox {
