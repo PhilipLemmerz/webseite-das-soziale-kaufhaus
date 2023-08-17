@@ -1,9 +1,11 @@
 import { Fragment } from "react";
 import Head from "next/head";
+import Link from "next/link";
 import Image from "next/image";
 import styles from '../../styles/karriere/moebelmonteur-swisttal.module.css';
 import { BsCheck2Circle } from "react-icons/bs";
 import { useState, useEffect } from "react";
+
 
 export default function MöbelmonteurSwisttal() {
 
@@ -34,16 +36,14 @@ export default function MöbelmonteurSwisttal() {
     }
 
 
-
     return (
         <Fragment>
             <Head>
                 <title>Jobs Swisttal - Möbelmonteur & Auslieferungsfahrer gesucht</title>
                 <meta name="description" content="Jobs in Swisttal - Wir suchen dich als Möbelmonteur & Auslieferungsfahrer - Bewirb dich jetzt bei uns" />
             </Head>
-
             {scrollMenu && <div className={styles.scrollMenu}>
-                <button className={styles.scrollBTN}> jetzt bewerben</button>
+                <Link href="/karriere/bewerbungsformular"><button className={styles.scrollBTN}>jetzt bewerben</button></Link>
             </div>}
 
             <div className={styles.header}>
@@ -52,7 +52,7 @@ export default function MöbelmonteurSwisttal() {
             </div>
             <section className={styles.ContentWrapper}>
                 <section className={styles.ctaSection}>
-                    <button className={styles.ctaBTN}>jetzt bewerben</button>
+                    <Link href="/karriere/bewerbungsformular"><button className={styles.ctaBTN}>jetzt bewerben</button></Link>
                 </section>
                 <section className={styles.aboutUsSection}>
                     <div className={styles.aboutUsContent}>
@@ -65,7 +65,7 @@ export default function MöbelmonteurSwisttal() {
                             die unsere Kollegen unterstützen. Auf unserer "Über Uns" Seite finden Sie weitere Informationen zu unserer Firmengeschichte und unsern Kaufhäusern.
                         </p>
                     </div>
-                    <Image className={styles.heimerzheimImage} width={600} height={300} src="/sozialkaufhaus-swisttal-bei-koeln.webp"></Image>
+                    <Image alt="Sozialkaufhaus für Möbelmonteur Job in Swisttal" className={styles.heimerzheimImage} width={600} height={300} src="/sozialkaufhaus-swisttal-bei-koeln.webp"></Image>
                 </section>
                 <section className={styles.benefitSection}>
                     <div className={styles.benefitBox}>
@@ -102,7 +102,7 @@ export default function MöbelmonteurSwisttal() {
                     <p className={styles.highlightExpections}>Quereinsteiger sind herzlich willkommen!</p>
                 </section>
                 <section className={styles.ctaSection}>
-                    <button className={styles.ctaBTN}>jetzt bewerben</button>
+                    <Link href="/karriere/bewerbungsformular"><button className={styles.ctaBTN}>jetzt bewerben</button></Link>
                 </section>
             </section>
         </Fragment>

@@ -80,6 +80,16 @@
     font-weight: 600;
 }
 
+.ctaBTN:hover {
+    background-color: #fce254;
+    cursor: pointer;
+}
+
+.scrollBTN:hover {
+    background-color: #f8e471;
+    cursor: pointer;
+}
+
 .aboutUsSection {
     display: flex;
     justify-content: center;
@@ -164,8 +174,6 @@
     font-size: 2em;
     text-decoration: underline #FBD914;
 }
-
-
 
 
 @media screen and (max-width: 970px) {
