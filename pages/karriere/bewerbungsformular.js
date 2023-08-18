@@ -95,7 +95,7 @@ export default function Apply(props) {
     async function sendNewEmail(filenameArray, data) {
         try {
             const videoUrl = `https://portal.einsatzplaner.com/dsk-website/moebelspende/${filenameArray.join('+++')}`;
-            const response = await fetch('https://api.einsatzplaner.com/dsk-website/moebelspendeForm', {
+            const response = await fetch('https://api.einsatzplaner.com/dsk-website/bewerbungsForm', {
                 method: "POST",
                 body: JSON.stringify({ ...data, link: videoUrl }),
                 headers: { "Content-Type": "application/json" }

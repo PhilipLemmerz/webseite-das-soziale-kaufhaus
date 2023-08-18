@@ -62,7 +62,7 @@ export default function MöbelmonteurSwisttal() {
                             Mit über 20 Kollegen & Kolleginen versorgen wir die Region mit Gebraucht-Möbeln, Haushaltswaren und Kleidung und unterstützen unsere Kunden
                             bei Haushaltsauflösungen & Umzügen. Der Bedarf an Gebraucht-Möbeln und Haushaltswaren wächst seit Jahren und die Anzahl der
                             Möbelabholungen & Auslieferungen nimmt stetig zu. Aus diesem Grund suchen wir für unser swisttaler Team neue Möbelmonteure und Auslieferungsfahrer
-                            die unsere Kollegen unterstützen. Auf unserer "Über Uns" Seite finden Sie weitere Informationen zu unserer Firmengeschichte und unsern Kaufhäusern.
+                            die unsere Kollegen unterstützen. Auf unserer Über Uns Seite finden Sie weitere Informationen zu unserer Firmengeschichte und unsern Kaufhäusern.
                         </p>
                     </div>
                     <Image alt="Sozialkaufhaus für Möbelmonteur Job in Swisttal" className={styles.heimerzheimImage} width={600} height={300} src="/sozialkaufhaus-swisttal-bei-koeln.webp"></Image>
