@@ -92,9 +92,6 @@ export default function MöbelmonteurSwisttal() {
                         </div>
                         <div className={styles.expectionRow}>
                             <div className={styles.expectionBox}>
-                                <p>Führerschein für LKWs bis 7,5 Tonnen</p>
-                            </div>
-                            <div className={styles.expectionBox}>
                                 <p>Erfahrung in der Möbeldemontage & Montage</p>
                             </div>
                         </div>
