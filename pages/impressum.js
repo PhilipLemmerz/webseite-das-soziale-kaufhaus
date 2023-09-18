@@ -31,7 +31,7 @@ export default function Impressum() {
                 <h4 className={styles.headlineContact}>Kontakt:</h4>
                 <p>
                     Telefon: +49 2254 600 480 5<br></br>
-                    E-Mail: swisstal@dsk-nrw.de
+                    E-Mail: swisttal@dsk-nrw.de
                 </p>
                 <h4 className={styles.tdgHeadline}>Haftungsausschluss und Datenschutz (TDG)</h4>
                 <p>

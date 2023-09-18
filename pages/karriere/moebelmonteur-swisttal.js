@@ -72,7 +72,7 @@ export default function MöbelmonteurSwisttal() {
                         <h2>Wir bieten Ihnen</h2>
                         <ul className={styles.benefitList}>
                             <li><BsCheck2Circle className={styles.checkIcon} /> unbefristeten Arbeitsvertrag</li>
-                            <li className={styles.highlight}> <BsCheck2Circle className={styles.checkIcon} /> 14,50 € Stundenlohn</li>
+                            <li> <BsCheck2Circle className={styles.checkIcon} /> branchenübliches Gehalt</li>
                             <li> <BsCheck2Circle className={styles.checkIcon} /> umfangreiche Mitarbeiterrabatte</li>
                             <li><BsCheck2Circle className={styles.checkIcon} /> hochwertiges Arbeitsmaterial</li>
                             <li><BsCheck2Circle className={styles.checkIcon} /> familiäres Team & hilfsbereite Kollegen</li>
@@ -87,7 +87,7 @@ export default function MöbelmonteurSwisttal() {
                                 <p>Spaß an körperlicher Arbeit</p>
                             </div>
                             <div className={styles.expectionBox}>
-                                <p>gute Deutschkenntisse</p>
+                                <p>Grundkenntnisse in der deutschen Sprache</p>
                             </div>
                         </div>
                         <div className={styles.expectionRow}>

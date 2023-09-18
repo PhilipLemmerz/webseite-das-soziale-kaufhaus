@@ -43,10 +43,9 @@ export default function Apply(props) {
     }
 
     async function submitHandler(event) {
+        event.preventDefault();
         try {
-            setLoading(true)
-            event.preventDefault();
-            setLoading(true)
+            setLoading(true)            
             if (files.length > 0 && nameRef.current.value.length > 3 && emailRef.current.value.length > 3 && telRef.current.value.length > 3 && townRef.current.value.length > 3) {
                 setErrorMessage(false)
                 const data = {
@@ -149,7 +148,7 @@ export default function Apply(props) {
                     </div>
                     <div className={styles.formRow}>
                         <div className={styles.formGroupFileUpload}>
-                            <p>Lebenslauf & Anschreiben (Optional) hochladen:</p>
+                            <p>Lebenslauf & Anschreiben hochladen</p>
                             <label htmlFor="fileupload" className={styles.customFileBTN}>
                                 <BiImageAdd /> Datei hochladen
                             </label>
@@ -165,9 +164,9 @@ export default function Apply(props) {
                     <button type="submit" className={styles.submitBTN} onClick={props.onSubmit}>jetzt bewerben</button>
                     {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
                     {loading && <div className={styles.spinnerContainer}>
-                <div className={styles.loadingSpinner}>
-                </div>
-            </div>}
+                        <div className={styles.loadingSpinner}>
+                        </div>
+                    </div>}
                 </form>
             </section>
         </Fragment>
