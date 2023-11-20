@@ -97,7 +97,7 @@ export default function HeaderComponent() {
                             <div>
                                 <p className={styles.headlineBox}>Kontakt</p>
                                 <p className={styles.mailP}> <IoMailUnreadOutline className={styles.iconMail} /> info@dsk-nrw.de</p>
-                                <p className={styles.mailP}> <BsWhatsapp className={styles.iconWhatsApp} /> +49 (0) 151 423 859 89</p>
+                                <p className={styles.mailP}> <BsWhatsapp className={styles.iconWhatsApp} /> +49 (0) 151 11 4444 69</p>
                             </div>
                         </div>
                         <div onClick={setinfoSlider.bind(this, true)} className={styles.contentBoxInfoIcon}>
@@ -122,7 +122,7 @@ export default function HeaderComponent() {
                         <div>
                             <p className={styles.headlineBox}>Kontakt</p>
                             <p className={styles.mailP}> <IoMailUnreadOutline className={styles.iconMail} /> info@dsk-nrw.de</p>
-                            <p className={styles.mailP}> <BsWhatsapp className={styles.iconWhatsApp} /> +49 (0) 151 423 859 89</p>
+                            <p className={styles.mailP}> <BsWhatsapp className={styles.iconWhatsApp} /> +49 (0) 151 11 4444 69 </p>
                         </div>
                     </div>
                 </div>}

@@ -33,7 +33,7 @@ export default function FooterComponent() {
                         <h4>Kontakt</h4>
                         <Link href="/kontakt"><p className={styles.link}> <BsFillCursorFill /> zum Kontaktformular</p></Link>
                         <p> <IoMailUnreadOutline /> info@dsk-nrw.de</p>
-                        <p> <BsWhatsapp /> +49 (0) 151 423 859 89</p>
+                        <p> <BsWhatsapp />+49 (0) 151 11 4444 69</p>
                         <p className={styles.firstPhoneNumber}><BsTelephone /> Swisttal: +49 (0) 2254 - 600 480 5</p>
                         <p><BsTelephone /> Bonn: +49 (0) 228 - 227 983 49</p>
                     </div>
@@ -67,7 +67,7 @@ export default function FooterComponent() {
                     <h4>Kontakt</h4>
                     <Link href="/kontakt"><p className={styles.link}> <BsFillCursorFill /> zum Kontaktformular</p></Link>
                     <p> <IoMailUnreadOutline /> info@dsk-nrw.de</p>
-                    <p> <BsWhatsapp /> +49 (0) 151 423 859 89</p>
+                    <p> <BsWhatsapp /> +49 (0) 151 11 4444 69</p>
                     <p className={styles.firstPhoneNumber}><BsTelephone /> Swisttal: +49 (0) 2254 - 600 480 5</p>
                     <p><BsTelephone /> Bonn: +49 (0) 227 - 983 49</p>
                 </div>}

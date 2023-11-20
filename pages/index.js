@@ -136,7 +136,7 @@ export default function HomePage() {
               <ul className={styles.contactList}>
                 <li className={styles.contactListItem}>< BsTelephone className={styles.test} /> +49 (0) 2254 - 600 480 5</li>
                 <li className={styles.contactListItem}><IoMailUnreadOutline className={styles.test} /> info@dsk-nrw.de</li>
-                <li className={styles.contactListItem}><BsWhatsapp className={styles.test} /> +49 (0) 151 423 859 89</li>
+                <li className={styles.contactListItem}><BsWhatsapp className={styles.test} /> +49 (0) 151 11 4444 69</li>
               </ul>
             </div>
           </div>
@@ -165,7 +165,7 @@ export default function HomePage() {
               <ul className={styles.contactList}>
                 <li className={styles.contactListItem}>< BsTelephone className={styles.test} /> +49 (0) 228 - 227 983 49</li>
                 <li className={styles.contactListItem}><IoMailUnreadOutline className={styles.test} /> info@dsk-nrw.de</li>
-                <li className={styles.contactListItem}><BsWhatsapp className={styles.test} /> +49 (0) 151 423 859 89</li>
+                <li className={styles.contactListItem}><BsWhatsapp className={styles.test} /> +49 (0) 151 11 4444 69</li>
               </ul>
             </div>
           </div>

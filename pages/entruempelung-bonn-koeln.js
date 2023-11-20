@@ -333,7 +333,7 @@ export default function EntrümpelungPage() {
                                         <input required className={styles.inputContact} ref={qmRefViewing} id="qmmain" defaultValue={formPopup && qmRef.current.value.length > 1 ? qmRef.current.value : ''} type="number"></input>
                                     </div>
                                 </div>
-                                {whatsAppHint && <p className={styles.whatsAppHint}>Video & Namen einfach per WhatsApp an folgende Telefonnummer senden: +49 (0) 151 423 859 89</p>}
+                                {whatsAppHint && <p className={styles.whatsAppHint}>Video & Namen einfach per WhatsApp an folgende Telefonnummer senden: +49 (0) 151 11 4444 69</p>}
                                 <button className={styles.finalFormBTNAppointment} type="submit">kostenlos anfragen</button>
                             </form>
 

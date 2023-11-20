@@ -166,7 +166,7 @@ export default function MöbelabholungPage() {
                                 <BiImageAdd /> Bild hinzufügen
                             </label>
                             <input multiple type="file" id="fileupload" className={styles.inputFile} onChange={handleFileChange}></input>
-                            {files.length === 0 && <p className={styles.whatsAppText}> <BsWhatsapp className={styles.whatsAppIcon} /> Alternativ Bilder per WhatsApp senden (+49 (0) 151 423 859 89) </p>}
+                            {files.length === 0 && <p className={styles.whatsAppText}> <BsWhatsapp className={styles.whatsAppIcon} /> Alternativ Bilder per WhatsApp senden (+49 (0) 151 11 4444 69) </p>}
                             {files.length > 0 && <div className={styles.uploadedImageBox}>
                                 <p className={styles.imageBoxP}>hochgeladen:</p>
                                 {files.map(file => <div key={Math.random()} className={styles.imageName}><span className={styles.checkIconImage}><BsCheckCircleFill /></span>
@@ -285,7 +285,7 @@ export default function MöbelabholungPage() {
                             <p className={styles.contactIconWhatsApp}><BsWhatsapp /></p>
                             <div className={styles.contactText}>
                                 <p> WhatsApp: </p>
-                                <p className={styles.contactP}>+49 (0) 151 423 859 89</p>
+                                <p className={styles.contactP}>+49 (0) 151 11 4444 69</p>
                             </div>
 
                         </div>
