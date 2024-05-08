@@ -46,7 +46,7 @@ export default function Apply(props) {
         event.preventDefault();
         try {
             setLoading(true)            
-            if (files.length > 0 && nameRef.current.value.length > 3 && emailRef.current.value.length > 3 && telRef.current.value.length > 3 && townRef.current.value.length > 3) {
+            if (nameRef.current.value.length > 3 && emailRef.current.value.length > 3 && telRef.current.value.length > 3 && townRef.current.value.length > 3) {
                 setErrorMessage(false)
                 const data = {
                     name: nameRef.current.value,
@@ -116,27 +116,27 @@ export default function Apply(props) {
         <Fragment>
             <section className={styles.section}>
                 <h1 className={styles.headline}>Wir freuen uns auf Ihre Bewerbung</h1>
-                <p className={styles.headlineParagraph}>Bitte füllen Sie das Bewerbungsformular aus & laden Sie Ihren Lebenslauf und optional Ihr Anschreiben hoch.
+                <p className={styles.headlineParagraph}>Bitte füllen Sie das Bewerbungsformular aus.
                     Wir melden uns dann schnellstmöglich bei Ihnen zurück
                 </p>
                 <form className={styles.form} onSubmit={submitHandler}>
                     <div className={styles.formRow}>
                         <div className={styles.formGroup}>
-                            <label className={styles.label} htmlFor="name">Name</label>
+                            <label className={styles.label} htmlFor="name">Name *</label>
                             <input className={styles.input} required ref={nameRef} type="text" id="name"></input>
                         </div>
                         <div className={styles.formGroup}>
-                            <label className={styles.label} htmlFor="town"> Wohnort </label>
+                            <label className={styles.label} htmlFor="town"> Wohnort *</label>
                             <input className={styles.input} ref={townRef} type="text" required id="town"></input>
                         </div>
                     </div>
                     <div className={styles.formRow}>
                         <div className={styles.formGroup}>
-                            <label className={styles.label} htmlFor="email"> E-Mail Adresse</label>
+                            <label className={styles.label} htmlFor="email"> E-Mail Adresse *</label>
                             <input className={styles.input} ref={emailRef} type="email" id="email" required></input>
                         </div>
                         <div className={styles.formGroup}>
-                            <label className={styles.label} htmlFor="phone"> Telefonnummer </label>
+                            <label className={styles.label} htmlFor="phone"> Telefonnummer *</label>
                             <input className={styles.input} ref={telRef} type="tel" id="phone"></input>
                         </div>
                     </div>
@@ -148,7 +148,7 @@ export default function Apply(props) {
                     </div>
                     <div className={styles.formRow}>
                         <div className={styles.formGroupFileUpload}>
-                            <p>Lebenslauf & Anschreiben hochladen</p>
+                            <p>Lebenslauf & Anschreiben hochladen (Optional)</p>
                             <label htmlFor="fileupload" className={styles.customFileBTN}>
                                 <BiImageAdd /> Datei hochladen
                             </label>
