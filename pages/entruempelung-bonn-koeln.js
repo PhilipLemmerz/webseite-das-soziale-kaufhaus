@@ -2,9 +2,9 @@ import { Fragment } from "react";
 import styles from "../styles/entruempelung.module.css";
 import { useRef, useState, useEffect } from "react";
 import { BsFillHouseFill, BsInfoCircle, BsCheckCircleFill, BsTrash, BsWhatsapp } from "react-icons/bs";
-import { FaWalking } from "react-icons/fa";
+import { FaWalking, FaCheck, FaArrowRight } from "react-icons/fa";
 import { AiOutlineVideoCameraAdd, AiOutlineCloseCircle, AiOutlineEdit } from "react-icons/ai";
-import { IoIosCloseCircleOutline } from "react-icons/io";
+import { IoIosCloseCircleOutline , IoIosArrowRoundForward } from "react-icons/io";
 import { BiArrowBack } from "react-icons/bi";
 import router from 'next/router';
 import Image from "next/image";
@@ -244,11 +244,10 @@ export default function EntrümpelungPage() {
                 <meta name="description" content="Entrümpelung in Bonn & Köln - Haushaltsauflösung mit Verwertung Ihrer Möbel zugunsten bedürftiger Menschen aus Bonn & Köln." />
             </Head>
             {scrollBTN && <button onClick={setFormPopup.bind(this, true)} className={styles.scrollCTAButton}>{formPopup === 'closed' ? 'Anfrage fotzsetzen' : 'kostenloses Angebot'}</button>}
-            <section className={styles.aboveTheFold}>
-                <div className={styles.imageOverlay}></div>
+            <section>
                 <div className={styles.headerContent}>
                     {/* LandingPage Form */}
-                    <div className={styles.form}>
+                    {/* <div className={styles.form}>
                         <div className={styles.inputWrapper}>
                             <div className={styles.formGroup}>
                                 <label className={styles.label} htmlFor="address">
@@ -274,8 +273,7 @@ export default function EntrümpelungPage() {
                         <button type="button" className={styles.formBTN} onClick={openPopupForm}>{formPopup === 'closed' ? 'Anfrage fortsetzen' : 'kostenloses Angebot erhalten'}</button>
                         {errorMessage && !formPopup && <p className={styles.errorMessage}>{errorMessage}</p>}
 
-                    </div>
-
+                    </div> */}
                     {/* PopUp Form */}
 
                     <div className={formPopup === true ? styles.backgroundMainForm : styles.hideMainForm}>
@@ -400,9 +398,26 @@ export default function EntrümpelungPage() {
                     </div>
                 </div>
             </section>
-            <div className={styles.headlineBox}>
-                <h1 className={styles.headline}>Entrümpelung im Raum Köln & Bonn</h1>
-                <p className={styles.subHeadline}> wiederverwerten statt entsorgen</p>
+
+
+            <div className={styles.headerBox}>
+                <div>
+                    <p className={styles.subHeadline}> wiederverwerten statt entsorgen</p>
+                    <h1 className={styles.headline}>Entrümpelung Bonn  Köln</h1>
+                    <p className={styles.subheadlineText}>Einen Großteil Ihres Hausstandes verwerten wir wieder<br></br> zugunsten bedürftiger Menschen in unseren Sozialkaufhäusern </p>
+
+                    <ul className={styles.listHeader}>
+                        <li> <span className={styles.blueCheck}><FaCheck /> </span>besenreine Entrümpelung <b className={styles.markUp}>zum Festpreis</b></li>
+                        <li> <span className={styles.blueCheck}><FaCheck /></span> <b className={styles.markUp}>unverbindlicher Kostenvoranschlag</b> binnen 24 Stunden</li>
+                        <li> <span className={styles.blueCheck}><FaCheck /></span> durch Wiederverwertung Ihres Inventars <b className={styles.markUp}>nachhaltig & umweltschonend</b> </li>
+                    </ul>
+
+                    <button className={styles.offerButton}>kostenfreies Angebot <FaArrowRight className={styles.arrowRightOfferBTN}/> </button>
+                </div>
+                <Image className={styles.headerImage} src="/sozialkaufhaus-koeln-bonn-team.webp" alt="Entrümpelung Köln Bonn Team" width={750} height={450}></Image>
+                
+
+
             </div>
             {infoSlider && <section className={styles.infoSlider}>
                 <AiOutlineCloseCircle className={styles.closeBTNInfoSlider} onClick={setInfoSlider.bind(this, false)} />

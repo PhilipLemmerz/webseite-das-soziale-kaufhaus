@@ -1,13 +1,12 @@
 .aboveTheFold {
     margin-bottom: 2rem;
-    padding-top: 2rem;
     display: flex;
     width: 100%;
     height: 80vh;
     max-height: 450px;
     background-size: cover;
     flex-direction: column;
-    background-image: url('../public/entruempelung-koeln-bonn-header.webp');
+    background-image: url('../public/sozialkaufhaus-koeln-bonn-team.webp');
 }
 
 .scrollCTAButton {
@@ -41,26 +40,79 @@
     margin-right: 5rem;
 }
 
-.headlineBox {
-    margin-left: 2rem;
+.headerBox {
+    margin-left: 5rem;
     margin-bottom: 1rem;
-    padding: 0.5rem;
+    height: 70vh;
+    display: flex;
+    column-gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .headline {
     margin: 0;
-    font-size: 2.5em;
-    margin-bottom: 0;
+    font-size: 4em;
+    margin-bottom: 3rem;
+    margin-top: 0.5rem;
+}
+
+.listHeader {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    font-size: 1.3em;
+    font-weight: 300;
+
 }
 
 .subHeadline {
-    font-weight: 500;
+    font-weight: 400;
     font-style: italic;
     font-size: 1.7em;
     max-width: 25rem;
-    border-radius: 5px;
     color: #0057a3;
-    background: linear-gradient(90deg, rgb(255, 255, 255) 0%, #fbd8144d 45%, #fbd81454 100%);
+    margin-bottom: 0
+}
+
+.subheadlineText {
+    font-weight: 400;
+    font-size: 1.2em;
+    max-width: 50rem;
+}
+
+.blueCheck {
+    color: #0057a3;
+}
+
+.markUp {
+    font-weight: 400;
+    text-decoration: underline;
+}
+
+.headerImage {
+    border-radius: 15px 0px 0px 15px;
+}
+
+
+.offerButton {
+    background-color: #FBD914;
+    color: #0057a3;
+    border: none;
+    outline: none;
+    max-width: 400px;
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    border-radius: 5px;
+    margin-top: 2rem;
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.arrowRightOfferBTN {
+    font-size: 1.1rem;
+    margin-left: 0.5rem;
 }
 
 .form {
