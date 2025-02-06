@@ -4,8 +4,9 @@ import { useRef, useState, useEffect } from "react";
 import { BsFillHouseFill, BsInfoCircle, BsCheckCircleFill, BsTrash, BsWhatsapp } from "react-icons/bs";
 import { FaWalking, FaCheck, FaArrowRight } from "react-icons/fa";
 import { AiOutlineVideoCameraAdd, AiOutlineCloseCircle, AiOutlineEdit } from "react-icons/ai";
-import { IoIosCloseCircleOutline , IoIosArrowRoundForward } from "react-icons/io";
+import { IoIosCloseCircleOutline, IoIosArrowRoundForward } from "react-icons/io";
 import { BiArrowBack } from "react-icons/bi";
+import Link from "next/link";
 import router from 'next/router';
 import Image from "next/image";
 import { HiCursorClick } from "react-icons/hi";
@@ -244,10 +245,10 @@ export default function EntrümpelungPage() {
                 <meta name="description" content="Entrümpelung in Bonn & Köln - Haushaltsauflösung mit Verwertung Ihrer Möbel zugunsten bedürftiger Menschen aus Bonn & Köln." />
             </Head>
             {scrollBTN && <button onClick={setFormPopup.bind(this, true)} className={styles.scrollCTAButton}>{formPopup === 'closed' ? 'Anfrage fotzsetzen' : 'kostenloses Angebot'}</button>}
-            <section>
+            {/* <section>
                 <div className={styles.headerContent}>
                     {/* LandingPage Form */}
-                    {/* <div className={styles.form}>
+            {/* <div className={styles.form}>
                         <div className={styles.inputWrapper}>
                             <div className={styles.formGroup}>
                                 <label className={styles.label} htmlFor="address">
@@ -274,9 +275,9 @@ export default function EntrümpelungPage() {
                         {errorMessage && !formPopup && <p className={styles.errorMessage}>{errorMessage}</p>}
 
                     </div> */}
-                    {/* PopUp Form */}
+            {/* PopUp Form */}
 
-                    <div className={formPopup === true ? styles.backgroundMainForm : styles.hideMainForm}>
+            {/* <div className={formPopup === true ? styles.backgroundMainForm : styles.hideMainForm}>
                         <div className={styles.mainForm}>
                             <div className={styles.navigationBox}>
                                 <BiArrowBack className={contactInformationStep ? styles.stepBack : styles.stepBackNone} onClick={stepBack}></BiArrowBack>
@@ -399,7 +400,7 @@ export default function EntrümpelungPage() {
                 </div>
             </section>
 
-
+ */}
             <div className={styles.headerBox}>
                 <div>
                     <p className={styles.subHeadline}> wiederverwerten statt entsorgen</p>
@@ -412,14 +413,37 @@ export default function EntrümpelungPage() {
                         <li> <span className={styles.blueCheck}><FaCheck /></span> durch Wiederverwertung Ihres Inventars <b className={styles.markUp}>nachhaltig & umweltschonend</b> </li>
                     </ul>
 
-                    <button className={styles.offerButton}>kostenfreies Angebot <FaArrowRight className={styles.arrowRightOfferBTN}/> </button>
+                    <Link href="/angebotsanfrage-entruepelung"><button className={styles.offerButton}>kostenfreies Angebot <FaArrowRight className={styles.arrowRightOfferBTN} /> </button></Link>
                 </div>
                 <Image className={styles.headerImage} src="/sozialkaufhaus-koeln-bonn-team.webp" alt="Entrümpelung Köln Bonn Team" width={750} height={450}></Image>
-                
-
-
             </div>
-            {infoSlider && <section className={styles.infoSlider}>
+            <section className={styles.advantageSection}>
+                <h2 className={styles.advantageSectionSubheadline}>Entrümpelung mit Ihrem Sozialkaufhaus</h2>
+                <p className={styles.advantageSectionHeadline}>Ihre Vorteile auf einen Blick</p>
+                <div className={styles.advantageBoxWrapper}>
+                    <div className={styles.advantage}>
+                        <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
+                        Bedürftige profitieren von Ihrem Mobilar
+                    </div>
+                    <div className={styles.advantage}>
+                        <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
+                        Besenreine Entrümpelung zum Festpreis
+                    </div>
+                    <div className={styles.advantage}>
+                        <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
+                        Versicherte & professionelle Entrümpelung
+                    </div>
+                    <div className={styles.advantage}>
+                        <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
+                        Unverbindlicher & kostenfreier Kostenvoranschlag
+                    </div>
+                    <div className={styles.advantage}>
+                        <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
+                        Anrechung des werthaltigen Inventars 
+                    </div>
+                </div>
+            </section>
+        {/*     {infoSlider && <section className={styles.infoSlider}>
                 <AiOutlineCloseCircle className={styles.closeBTNInfoSlider} onClick={setInfoSlider.bind(this, false)} />
                 <h2 className={styles.sliderHeadlineTop}>Kostenfreier vor Ort Termin</h2>
                 <ul className={styles.infoSliderList}>
@@ -436,12 +460,12 @@ export default function EntrümpelungPage() {
                     <li><span className={styles.numberListIcon}>4</span>Sie erhalten von uns ein Festpreis-Angebot für die Auflösung der Immobilie.</li>
                 </ul>
             </section>
-            }
-            {loading && <div className={styles.spinnerContainer}>
+            } */}
+      {/*       {loading && <div className={styles.spinnerContainer}>
                 <div className={styles.loadingSpinner}>
                 </div>
                 <p> Bitte warten...</p>
-            </div>}
+            </div>} */}
 
             {/* Content */}
             <section className={styles.introductionSection}>
@@ -465,15 +489,15 @@ export default function EntrümpelungPage() {
                         <span className={styles.stepIcon}>1</span>
                         <h3>Kostenfreie Beratung</h3>
                         <p>
-                            Ob persönlich vor Ort oder digital - Einer unserer 5 Entrümpelungsexperten berät Sie unverbindlich und kostenfrei. Gerne besichtigten wir die
-                            Immobilie oder beraten Sie auf Basis eines Videos oder Bildern von der Immobilie kontaktfrei und digital.
+                            Ob persönlich vor Ort oder digital - Wir beraten Sie unverbindlich und kostenfrei. Gerne besichtigten wir die
+                            Immobilie oder beraten Sie auf Basis eines Videos oder Bildern von der Immobilie kontaktfrei und digital. 
                         </p>
                     </div>
                     <div className={styles.stepBox}>
                         <span className={styles.stepIcon}>2</span>
                         <h3>Angebot mit Festpreisbindung</h3>
                         <p>
-                            Bei uns wissen Sie vorab zu 100% was die Entrümpelung kostet. Auf Basis der Besichtigung oder des zur Verfügung gestellten Bildmaterial kalkulieren wir den
+                            Bei uns wissen Sie vorab zu 100% was die Entrümpelung in Bonn & Köln kostet. Auf Basis der Besichtigung oder des zur Verfügung gestellten Bildmaterial kalkulieren wir den
                             Aufwand und unterbreiten Ihnen ein Angebot mit Festpreisbindung. Anschließend können Sie in Ruhe entscheiden, ob Sie uns mit Ihrer Entrümpelung beauftragen möchten.
                         </p>
                     </div>
@@ -483,7 +507,7 @@ export default function EntrümpelungPage() {
                         <p>
                             Nach verbindlicher Terminvereinbarung führen wir Ihre Entrümpelung binnen ein bis drei Tagen durch. Gut erhaltenes & verwertbares Inventar & Mobiliar wird in unseren
                             Sozialkaufhäusern bei Köln & Bonn bedürftigen Menschen zur Verfügung gestellt. Alles weitere wird umweltschonend bei einem zertifizierten Entsorgungsbetrieb
-                            entsorgt. Sie erhalten Ihre Immmobilie besenrein entrümpelt zurück.
+                            entsorgt. Sie erhalten Ihre Immmobilie besenrein entrümpelt zurück. Sie müssen bei der E
                         </p>
                     </div>
                 </div>
@@ -491,32 +515,7 @@ export default function EntrümpelungPage() {
             <section className={styles.imagedskSection}>
                 <Image className={styles.imageDSK} src="/entrümpelung-sozialkaufhaus-koeln-bonn-header.webp" alt="Entrümpelung Köln Bonn in Aktion" width={500} height={350}></Image>
             </section>
-            <section className={styles.advantageSection}>
-                <h2 className={styles.advantageSectionSubheadline}>Entrümpelung mit Ihrem Sozialkaufhaus</h2>
-                <p className={styles.advantageSectionHeadline}>Ihre Vorteile auf einen Blick</p>
-                <div className={styles.advantageBoxWrapper}>
-                    <div className={styles.advantage}>
-                        <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
-                        nachhaltige Wiederverwertung Ihres Inventars
-                    </div>
-                    <div className={styles.advantage}>
-                        <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
-                        Angebot mit 100% Festpreisbindung
-                    </div>
-                    <div className={styles.advantage}>
-                        <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
-                        versicherte & professionelle Entrümpelung
-                    </div>
-                    <div className={styles.advantage}>
-                        <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
-                        besenrein nach durchschnittlich 1,5 Tagen
-                    </div>
-                    <div className={styles.advantage}>
-                        <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
-                        über 15 Jahre Erfahrung für Ihre Entrümpelung
-                    </div>
-                </div>
-            </section>
+
             <section className={styles.callToActionSection}>
                 <button onClick={openForm} className={styles.ctaBTN}>{formPopup === 'closed' ? 'Anfrage fortsetzen' : 'kostenloses Angebot erhalten'} <HiCursorClick /></button>
             </section>

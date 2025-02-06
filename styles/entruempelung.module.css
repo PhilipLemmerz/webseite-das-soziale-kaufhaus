@@ -41,8 +41,8 @@
 }
 
 .headerBox {
-    margin-left: 5rem;
     margin-bottom: 1rem;
+    margin-left: 2rem;
     height: 70vh;
     display: flex;
     column-gap: 2rem;
@@ -93,6 +93,8 @@
 
 .headerImage {
     border-radius: 15px 0px 0px 15px;
+    max-width: 40vw;
+    max-height: calc(100vw/4);
 }
 
 
@@ -810,6 +812,8 @@
     align-items: center;
     padding: 0.5rem;
     margin-bottom: 5rem;
+    background-color: #F5FAFD;
+    padding: 2rem 0 2rem 0;
 }
 
 .advantageSectionSubheadline {
@@ -1006,9 +1010,11 @@
         font-size: 2em;
     }
 
+
+
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1050px) {
 
     .inputWrapper {
         display: flex;
@@ -1018,6 +1024,10 @@
 
     .formGroup {
         width: 100%;
+    }
+
+    .headerBox {
+        height: auto;
     }
 
     .form {
@@ -1054,10 +1064,10 @@
         max-height: 300px;
     }
 
-    .headline {
-        margin-top: 18rem;
-        text-align: center;
+    .listHeader {
+        padding-left: 1rem;
     }
+
 
     .headlineBox {
         margin-left: 0;
@@ -1144,12 +1154,45 @@
         flex-direction: column;
     }
 
+    .headerBox {
+        flex-direction: column-reverse;
+        text-align: center;
+        margin-left: 0rem;        
+    }
 
+    .subHeadline {
+        max-width: none;
+    }
 
+    .headerImage{
+        max-height: 30vh;
+        object-fit: cover;
+        border-radius: 0;
+        width: 100vw;
+        max-width: none;
+        padding: 0;
+
+    }
 }
 
 
 @media screen and (max-width: 502px) {
+
+    .subheadlineText {
+        font-size: 1.1em;
+    }
+
+    .headline {
+        margin-bottom: 1.5rem;
+    }
+
+    .headerBox {
+        padding: 0 0.5rem 0 0.5rem;
+    }
+
+    .listHeader {
+        font-size: 1.1em;
+    }
     .qmLabel {
         display: none;
     }
@@ -1167,11 +1210,6 @@
     .form {
         margin-top: 8rem;
         min-width: 95vw;
-    }
-
-    .headline {
-        margin-top: 15rem;
-        text-align: center;
     }
 
     .contactFormRow {
