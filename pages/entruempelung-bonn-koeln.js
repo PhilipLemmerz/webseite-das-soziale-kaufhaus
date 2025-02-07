@@ -439,11 +439,11 @@ export default function EntrümpelungPage() {
                     </div>
                     <div className={styles.advantage}>
                         <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
-                        Anrechung des werthaltigen Inventars 
+                        Anrechung des werthaltigen Inventars
                     </div>
                 </div>
             </section>
-        {/*     {infoSlider && <section className={styles.infoSlider}>
+            {/*     {infoSlider && <section className={styles.infoSlider}>
                 <AiOutlineCloseCircle className={styles.closeBTNInfoSlider} onClick={setInfoSlider.bind(this, false)} />
                 <h2 className={styles.sliderHeadlineTop}>Kostenfreier vor Ort Termin</h2>
                 <ul className={styles.infoSliderList}>
@@ -461,7 +461,7 @@ export default function EntrümpelungPage() {
                 </ul>
             </section>
             } */}
-      {/*       {loading && <div className={styles.spinnerContainer}>
+            {/*       {loading && <div className={styles.spinnerContainer}>
                 <div className={styles.loadingSpinner}>
                 </div>
                 <p> Bitte warten...</p>
@@ -490,7 +490,7 @@ export default function EntrümpelungPage() {
                         <h3>Kostenfreie Beratung</h3>
                         <p>
                             Ob persönlich vor Ort oder digital - Wir beraten Sie unverbindlich und kostenfrei. Gerne besichtigten wir die
-                            Immobilie oder beraten Sie auf Basis eines Videos oder Bildern von der Immobilie kontaktfrei und digital. 
+                            Immobilie oder beraten Sie auf Basis eines Videos oder Bildern von der Immobilie kontaktfrei und digital.
                         </p>
                     </div>
                     <div className={styles.stepBox}>

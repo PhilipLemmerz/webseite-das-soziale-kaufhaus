@@ -1,0 +1,25 @@
+.section {
+    display: flex;
+    margin: 100px;
+
+}
+
+.headline {
+    margin: 0;
+}
+
+.stepsBox {
+    width: 30vw;
+}
+
+.formBox {
+    width: 70vw;
+}
+
+.activeIcon {
+    color: #FBD914;
+}
+
+.stepActive{
+    font-weight: bold;
+}
