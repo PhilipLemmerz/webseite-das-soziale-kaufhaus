@@ -31,7 +31,7 @@ export default function EntruemelungAnfrage() {
                 <div className={styles.formBox}>
                     <div>
                         <h1 className={styles.headline}>kostenfreies & unverbindliches Angebot </h1>
-                        <p className={styles.introText}>Bitte nehmen Sie sich ein paar Sekunden Zeit und teilen Sie uns ein paar Information mit.  </p>
+                        <p className={styles.introText}>Bitte nehmen Sie sich  doch ein paar Sekunden Zeit und teilen Sie uns ein paar Information mit.  </p>
                     </div>
                     <div>
                         <form onSubmit={submitHandler}>
