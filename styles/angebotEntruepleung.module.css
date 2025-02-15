@@ -12,6 +12,7 @@
     width: 30vw;
 }
 
+
 .formBox {
     width: 70vw;
 }
@@ -20,6 +21,49 @@
     color: #FBD914;
 }
 
-.stepActive{
+.stepActive {
     font-weight: bold;
 }
+
+.questionBox {
+    margin-top: 3rem;
+}
+
+.question {
+    font-weight: 600;
+}
+
+.inputBox {
+    display: flex;
+    column-gap: 2rem;
+    margin: 1rem 0 1rem 0;
+}
+
+.inputLong,
+.inputShort {
+    border: none;
+    border-bottom: 1px solid #767676;
+    outline: none;
+    font-size: 1em;
+    padding: 0.5rem 0 0.5rem 0;
+}
+
+.inputLong {
+    width: 30rem;
+}
+
+.checkBox {
+    accent-color: #FBD914;
+    transform: scale(1.8);
+    margin-left: 0.75rem;
+}
+
+.inputLabelWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    margin-right: 2rem;
+}
+
