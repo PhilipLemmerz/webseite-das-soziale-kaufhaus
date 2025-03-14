@@ -52,6 +52,10 @@
     width: 30rem;
 }
 
+.inputLong:focus, .inputShort:focus {
+    border-bottom: 2px solid #0058A3;
+}
+
 .checkBox {
     accent-color: #FBD914;
     transform: scale(1.8);
@@ -65,5 +69,9 @@
 
 .label {
     margin-right: 2rem;
+}
+
+.noLabel {
+    color: transparent
 }
 

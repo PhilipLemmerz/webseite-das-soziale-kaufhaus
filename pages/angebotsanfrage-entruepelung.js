@@ -6,10 +6,11 @@ import { useState, useRef, useEffect } from "react";
 
 export default function EntruemelungAnfrage() {
 
-
     const [isFlat, setFlat] = useState(false);
     const [isHouse, setHouse] = useState(false);
-    const [inputSelected, setInputSelected] = useState('');
+    const [inputWithLabel, setInputwithLabel] = useState([]);
+
+    const townRef = useRef();
 
 
     async function submitHandler(event) {
@@ -26,13 +27,28 @@ export default function EntruemelungAnfrage() {
         isFlat ? setFlat(false) : true;
     }
 
-    function test(e) {
+    function displayLabel(e) {
+
         const inputID = e.target.id
         const value = e.target.value;
-        value.length > 0 ? setInputSelected(inputID) : setInputSelected('');
+        const index = inputWithLabel.indexOf(inputID);
+
+        if (index == -1 && value.length > 0) {
+            setInputwithLabel([...inputWithLabel, inputID]);
+        }
+
+        if (index !== -1 && value.length == 0) {
+            let labelArray = [...inputWithLabel];
+            labelArray.splice(index, 1);
+            setInputwithLabel([...labelArray]);
+        }
+
     }
 
 
+    function test() {
+
+    }
 
     return (
 
@@ -73,39 +89,45 @@ export default function EntruemelungAnfrage() {
                                         <input id="property" type="checkbox" onChange={selectFlat.bind(this)} checked={isFlat} className={styles.checkBox} />
                                     </div>
                                 </div>
-                                <div className={styles.inputBox}>
+                                {isFlat && <div className={styles.inputBox}>
                                     <div className={styles.inputLabelWrapper}>
-                                        {inputSelected == "floor" && <label className={styles.label} htmlFor="floor"> Etage</label>}
-                                        <input className={styles.inputFloor} id="floor" type="text" placeholder="Etage der Wohnung" onChange={test.bind(this)} />
+                                        <label className={inputWithLabel.includes('floor') ? styles.label : styles.noLabel} htmlFor="floor">Etage</label>
+                                        <input className={styles.inputShort} id="floor" type="text" placeholder="Stockwerk" onChange={displayLabel.bind(this)} />
                                     </div>
-                                </div>
+                                </div>}
                             </div>
                             <div className={styles.questionBox}>
                                 <p className={styles.question}>Adresse der Immobilie:</p>
                                 <div className={styles.inputBox}>
                                     <div className={styles.inputLabelWrapper}>
-                                        {inputSelected == "town" && <label className={styles.label}>Ort</label>}
-                                        <input className={styles.inputLong} id="town" type="text" onChange={test.bind(this)} placeholder="Ort" />
+                                        <label className={inputWithLabel.includes('town') ? styles.label : styles.noLabel}>Ort</label>
+                                        <input className={styles.inputLong} onChange={displayLabel.bind(this)} id="town" type="text" ref={townRef} placeholder="Ort" />
                                     </div>
                                     <div className={styles.inputLabelWrapper}>
-                                        {inputSelected == "zip" && <label className={styles.label}>Postleitzahl</label>}
-                                        <input className={styles.inputShort} id="zip" type="text" onChange={test.bind(this)} placeholder="Postleitzahl" />
+                                        <label className={inputWithLabel.includes('zip') ? styles.label : styles.noLabel}>Postleitzahl</label>
+                                        <input className={styles.inputShort} id="zip" type="text" onChange={displayLabel.bind(this)} placeholder="Postleitzahl" />
                                     </div>
 
                                 </div>
                                 <div className={styles.inputBox}>
-                                    <input className={styles.inputLong} type="text" id="street" placeholder="Straße" />
-                                    <input className={styles.inputShort} type="text" id="streetnumber" placeholder="Hausnummer" />
+                                    <div className={styles.inputLabelWrapper}>
+                                        <label className={inputWithLabel.includes('street') ? styles.label : styles.noLabel}>Straße</label>
+                                        <input className={styles.inputLong} onChange={displayLabel.bind(this)} type="text" id="street" placeholder="Straße" />
+                                    </div>
+                                    <div className={styles.inputLabelWrapper}>
+                                        <label className={inputWithLabel.includes('streetnumber') ? styles.label : styles.noLabel}>Hausnummer</label>
+                                        <input className={styles.inputShort} onChange={displayLabel.bind(this)} type="text" id="streetnumber" placeholder="Hausnummer" />
+                                    </div>
                                 </div>
                             </div>
                         </form>
-                        {/* <button onClick={test}>test</button> */}
+                        <button onClick={test}>test</button>
                     </div>
 
                 </div>
-            </section>
+            </section >
 
 
-        </Fragment>
+        </Fragment >
     )
 }
