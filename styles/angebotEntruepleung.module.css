@@ -31,6 +31,7 @@
 
 .question {
     font-weight: 600;
+
 }
 
 .inputBox {
@@ -52,7 +53,12 @@
     width: 30rem;
 }
 
-.inputLong:focus, .inputShort:focus {
+.inputShort {
+    max-width: 30rem
+}
+
+.inputLong:focus,
+.inputShort:focus {
     border-bottom: 2px solid #0058A3;
 }
 
@@ -75,3 +81,20 @@
     color: transparent
 }
 
+.questionInventory {
+    margin-bottom: 2.5rem;
+    font-weight: 600;
+}
+
+.nextStepBTN {
+    background-color: #FBD914;
+    color:#0058A3;
+    border: none;
+    outline: none;
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-top: 3rem;
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
