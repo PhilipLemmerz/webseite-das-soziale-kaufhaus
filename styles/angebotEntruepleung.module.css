@@ -18,11 +18,18 @@
 }
 
 .activeIcon {
-    color: #FBD914;
+    color: #0058A3;
+    border-radius: 100px;
+    font-size: 1.5em;
+    margin-right: 0.3rem;
 }
 
 .stepActive {
     font-weight: bold;
+}
+
+.stepInactive {
+    color: rgba(0, 0, 0, 0.486)
 }
 
 .questionBox {
@@ -88,7 +95,7 @@
 
 .nextStepBTN {
     background-color: #FBD914;
-    color:#0058A3;
+    color: #0058A3;
     border: none;
     outline: none;
     font-size: 1.5em;
@@ -97,4 +104,135 @@
     padding: 0.5rem 2rem 0.5rem 2rem;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.backStepBTN {
+    background-color: transparent;
+    color: #0058A3;
+    border: #0058A3 1px solid;
+    outline: none;
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-top: 3rem;
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btnBoxFirstStep {
+    display: flex;
+    justify-content: flex-end;
+    max-width: 30rem;
+}
+
+.btnBox {
+    display: flex;
+    justify-content: space-between;
+    max-width: 30rem;
+}
+
+.displayNone {
+    display: none;
+}
+
+
+.uploadWrapper {
+    display: flex;
+    justify-content: space-between;
+    max-width: 50vw;
+    margin-top: 5rem;
+}
+
+.exampleVideoWrapper {
+    margin-top: 5rem;
+}
+
+.exapmpleVideo {
+    object-fit: cover;
+    object-position: center;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.btnBoxVideoUpoad {
+    display: flex;
+    justify-content: space-between;
+    max-width: 50vw;
+}
+
+.uploadFormGroup {
+    margin-top: 2rem;
+}
+
+.customFileBTN {
+    background-color: #FBD914;
+    color: #0058A3;
+    border: none;
+    outline: none;
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-top: 3rem;
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.inputFile {
+    display: none;
+}
+
+.whatsAppText {
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+.whatsAppIcon {
+    color: #4CCA5A;
+    margin-left: 0.5rem;
+}
+
+.videoBoxP {
+    margin: 0;
+    text-decoration: underline;
+}
+
+.uploadFileEntryWrapper {
+    display: flex;
+    column-gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.iconAndNameVideoWrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+}
+
+.checkIconVideo {
+    color: green;
+    font-size: 2em
+}
+
+.trashIcon {
+    color: rgb(253, 129, 129);
+}
+
+.uploadedVideoBox {
+    padding: 1rem;
+    box-shadow: gray 0 0 2px;
+    min-width: 40vw;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+    row-gap: 1rem;
+    margin-top: 5rem;
+}
+
+.summerizeStepWrapper {
+    margin-top: 3rem;
 }
