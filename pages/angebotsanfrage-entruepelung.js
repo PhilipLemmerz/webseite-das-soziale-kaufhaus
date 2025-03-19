@@ -7,33 +7,52 @@ import { useRef, useState } from "react";
 
 export default function EntruemelungAnfrage() {
 
-    const [isFlat, setFlat] = useState(false);
-    const [isHouse, setHouse] = useState(false);
+    const [isObject, setObject] = useState("undefiend");
     const [isInventory, setInventory] = useState("undefiend");
     const [inputWithLabel, setInputwithLabel] = useState([]);
     const [isGender, setGender] = useState('undefiend');
     const [step, setStep] = useState(1);
     const [files, setFiles] = useState([]);
+    const [invalidInputs, setInvalidInputs] = useState([]);
 
-    const townRef = useRef();
-    const townOfferRef = useRef();
-    const fileRef = useState();
+    const floorRef = useRef(null);
+    const townRef = useRef(null);
+    const zipRef = useRef(null);
+    const streetRef = useRef(null);
+    const streetNumberRef = useRef(null);
+    const roomRef = useRef(null);
+    const dateRef = useRef(null);
+    const nameOfferRef = useRef(null);
+    const townOfferRef = useRef(null);
+    const zipOfferRef = useRef(null);
+    const streetOfferRef = useRef(null);
+    const streetNumberOfferRef = useRef(null);
+    const emailRef = useRef(null);
+    const phoneRef = useRef(null);
+    const fileRef = useState(null);
 
     async function submitHandler(event) {
         event.preventDefault();
-        console.log(townRef);
+
     }
 
-    function selectFlat(e) {
-        setFlat(e.target.checked);
-        isHouse ? setHouse(false) : true;
+    function selectObject(e) {
+        const object = e.target.id;
+        object === "Wohnung" ? setObject("Wohnung") : setObject('Haus');
+        validInput("property");
+        deleteFloorInvalidIfHouse(object)
     }
 
-    function selectHouse(e) {
-        setHouse(e.target.checked);
-        isFlat ? setFlat(false) : true;
+    function deleteFloorInvalidIfHouse(object) {
+        if (object === "Haus") {
+            const index = invalidInputs.indexOf("floor");
+            if (index !== -1) {
+                let invalidInputArray = [...invalidInputs];
+                invalidInputArray.splice(index, 1);
+                setInvalidInputs([...invalidInputArray])
+            }
+        }
     }
-
 
     function displayLabel(e) {
         const inputID = e.target.id
@@ -49,17 +68,28 @@ export default function EntruemelungAnfrage() {
             labelArray.splice(index, 1);
             setInputwithLabel([...labelArray]);
         }
+        validInput(inputID)
+    }
+
+    function validInput(inputID) {
+        const index = invalidInputs.indexOf(inputID);
+        if (index !== -1) {
+            let invalidInputArray = [...invalidInputs];
+            invalidInputArray.splice(index, 1);
+            setInvalidInputs([...invalidInputArray])
+        }
     }
 
     function selectInventory(e) {
-        e === "yesInventory" ? setInventory("yes") : setInventory('no');
+        e === "yesInventory" ? setInventory("ja") : setInventory('nein');
+        validInput("inventory");
     }
 
     function selectGender(e) {
-        console.log(e)
         const gender = e.target.id;
         const checked = e.target.checked;
-        checked ? setGender(gender) : setGender('undefiend');
+        checked ? setGender(gender) : setGender(gender);
+        validInput("gender");
     }
 
     function handleFileChange(event) {
@@ -74,8 +104,105 @@ export default function EntruemelungAnfrage() {
     }
 
 
-    function test() {
-        console.log(townRef)
+    function changeStep(e) {
+        if (e === 2) {
+            const invalidInputsArray = validatePropertyStep1();
+            invalidInputsArray.length === 0 ? setStep(2) : setStep(1);
+        }
+        if (e === 3) {
+            const invalidInputsArray = validateContactStep2();
+            invalidInputsArray.length === 0 ? setStep(3) : setStep(2);
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function validatePropertyStep1() {
+        const invalidInputsArray = [...invalidInputs];
+
+        if (townRef.current.value.length < 1 && invalidInputs.indexOf("town") === -1) {
+            invalidInputsArray.push('town')
+        }
+
+        if (isObject === "undefiend" && invalidInputs.indexOf("property") === -1) {
+            invalidInputsArray.push('property');
+        }
+
+        if (zipRef.current.value.length < 1 && invalidInputs.indexOf("zip") === -1) {
+            invalidInputsArray.push('zip')
+        }
+
+        if (floorRef.current.value.length < 1 && invalidInputs.indexOf("floor") === -1) {
+            if (isObject === "Wohnung") {
+                invalidInputsArray.push('floor')
+            }
+        }
+
+        if (streetRef.current.value.length < 1 && invalidInputs.indexOf("street") === -1) {
+            invalidInputsArray.push('street')
+        }
+
+        if (streetNumberRef.current.value.length < 1 && invalidInputs.indexOf("streetnumber") === -1) {
+            invalidInputsArray.push('streetnumber')
+        }
+
+        if (isInventory === "undefiend" && invalidInputs.indexOf("inventory") === -1) {
+            invalidInputsArray.push('inventory');
+        }
+
+        if (roomRef.current.value.length < 1 && invalidInputs.indexOf("rooms") === -1) {
+            invalidInputsArray.push('rooms')
+        }
+
+        if (dateRef.current.value.length < 1 && invalidInputs.indexOf("date") === -1) {
+            invalidInputsArray.push('date')
+        }
+
+        setInvalidInputs([...invalidInputsArray]);
+
+        return invalidInputsArray;
+
+    }
+
+
+    function validateContactStep2() {
+        const invalidInputsArray = [...invalidInputs];
+
+        if (isGender === "undefiend" && invalidInputs.indexOf("gender") === -1) {
+            invalidInputsArray.push('gender');
+        }
+
+        if (nameOfferRef.current.value.length < 1 && invalidInputs.indexOf("nameOffer") === -1) {
+            invalidInputsArray.push('nameOffer')
+        }
+
+        if (streetOfferRef.current.value.length < 1 && invalidInputs.indexOf("streetOffer") === -1) {
+            invalidInputsArray.push('streetOffer')
+        }
+
+        if (streetNumberOfferRef.current.value.length < 1 && invalidInputs.indexOf("streetnumberOffer") === -1) {
+            invalidInputsArray.push('streetnumberOffer')
+        }
+
+        if (zipOfferRef.current.value.length < 1 && invalidInputs.indexOf("zipOffer") === -1) {
+            invalidInputsArray.push('zipOffer')
+        }
+
+        if (townOfferRef.current.value.length < 1 && invalidInputs.indexOf("townOffer") === -1) {
+            invalidInputsArray.push('townOffer')
+        }
+
+        if (emailRef.current.value.length < 1 && invalidInputs.indexOf("email") === -1) {
+            invalidInputsArray.push('email')
+        }
+
+        if (phoneRef.current.value.length < 1 && invalidInputs.indexOf("tel") === -1) {
+            invalidInputsArray.push('tel')
+        }
+
+        setInvalidInputs([...invalidInputsArray]);
+
+        return invalidInputsArray;
+
     }
 
 
@@ -116,21 +243,23 @@ export default function EntruemelungAnfrage() {
                         <form onSubmit={submitHandler} >
                             <div className={step !== 1 ? styles.displayNone : ""}>
                                 <div className={styles.questionBox}>
-                                    <p className={styles.question}>Welche Immobilie möchten Sie auflösen?</p>
-                                    <div className={styles.inputBox}>
-                                        <div>
-                                            <label htmlFor="property "> Haus</label>
-                                            <input id="property" type="checkbox" onChange={selectHouse.bind(this)} checked={isHouse} className={styles.checkBox} />
-                                        </div>
-                                        <div>
-                                            <label htmlFor="property"> Wohnung </label>
-                                            <input id="property" type="checkbox" onChange={selectFlat.bind(this)} checked={isFlat} className={styles.checkBox} />
+                                    <div className={invalidInputs.includes('property') ? styles.invalidCheckboxes : ""}>
+                                        <p className={styles.question}>Welche Immobilie möchten Sie auflösen?</p>
+                                        <div className={styles.inputBox}>
+                                            <div>
+                                                <label htmlFor="property "> Haus</label>
+                                                <input id="Haus" type="checkbox" onChange={selectObject.bind(this)} checked={isObject === "Haus"} className={styles.checkBox} />
+                                            </div>
+                                            <div>
+                                                <label htmlFor="property"> Wohnung </label>
+                                                <input id="Wohnung" type="checkbox" onChange={selectObject.bind(this)} checked={isObject === "Wohnung"} className={styles.checkBox} />
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className={isFlat ? styles.inputBox : styles.displayNone}>
+                                    <div className={isObject === "Wohnung" ? styles.inputBox : styles.displayNone}>
                                         <div className={styles.inputLabelWrapper}>
-                                            <label className={inputWithLabel.includes('floor') ? styles.label : styles.noLabel} htmlFor="floor">Etage</label>
-                                            <input className={styles.inputShort} id="floor" type="text" placeholder="Stockwerk" onChange={displayLabel.bind(this)} />
+                                            <label className={inputWithLabel.includes('floor') ? styles.label : styles.noLabel} htmlFor="floor">Stockwerk / Fahrstuhl</label>
+                                            <input className={invalidInputs.includes('floor') ? styles.invalidShortInput : styles.inputShort} id="floor" type="text" ref={floorRef} placeholder="Stockwerk / Fahrstuhl" onChange={displayLabel.bind(this)} />
                                         </div>
                                     </div>
                                 </div>
@@ -139,34 +268,34 @@ export default function EntruemelungAnfrage() {
                                     <div className={styles.inputBox}>
                                         <div className={styles.inputLabelWrapper}>
                                             <label className={inputWithLabel.includes('town') ? styles.label : styles.noLabel}>Ort</label>
-                                            <input className={styles.inputLong} onChange={displayLabel.bind(this)} id="town" type="text" ref={townRef} placeholder="Ort" />
+                                            <input className={invalidInputs.includes('town') ? styles.invalidLongInput : styles.inputLong} onChange={displayLabel.bind(this)} id="town" type="text" ref={townRef} placeholder="Ort" />
                                         </div>
                                         <div className={styles.inputLabelWrapper}>
                                             <label className={inputWithLabel.includes('zip') ? styles.label : styles.noLabel}>Postleitzahl</label>
-                                            <input className={styles.inputShort} id="zip" type="text" onChange={displayLabel.bind(this)} placeholder="Postleitzahl" />
+                                            <input className={invalidInputs.includes('zip') ? styles.invalidShortInput : styles.inputShort} id="zip" type="text" ref={zipRef} onChange={displayLabel.bind(this)} placeholder="Postleitzahl" />
                                         </div>
 
                                     </div>
                                     <div className={styles.inputBox}>
                                         <div className={styles.inputLabelWrapper}>
                                             <label className={inputWithLabel.includes('street') ? styles.label : styles.noLabel}>Straße</label>
-                                            <input className={styles.inputLong} onChange={displayLabel.bind(this)} type="text" id="street" placeholder="Straße" />
+                                            <input className={invalidInputs.includes('street') ? styles.invalidLongInput : styles.inputLong} ref={streetRef} onChange={displayLabel.bind(this)} type="text" id="street" placeholder="Straße" />
                                         </div>
                                         <div className={styles.inputLabelWrapper}>
                                             <label className={inputWithLabel.includes('streetnumber') ? styles.label : styles.noLabel}>Hausnummer</label>
-                                            <input className={styles.inputShort} onChange={displayLabel.bind(this)} type="text" id="streetnumber" placeholder="Hausnummer" />
+                                            <input className={invalidInputs.includes('streetnumber') ? styles.invalidShortInput : styles.inputShort} ref={streetNumberRef} onChange={displayLabel.bind(this)} type="text" id="streetnumber" placeholder="Hausnummer" />
                                         </div>
                                     </div>
-                                    <div className={styles.questionBox}>
+                                    <div className={invalidInputs.includes('inventory') ? styles.invalidCheckboxes : styles.questionBox} >
                                         <p className={styles.questionInventory}>Müssen Schrankinhalte & Kleinartikel geräumt werden?</p>
                                         <div className={styles.inputBox}>
                                             <div>
                                                 <label htmlFor="IsInvetory"> Ja</label>
-                                                <input id="yesInventory" type="checkbox" onChange={selectInventory.bind(this, "yesInventory")} checked={isInventory === "yes"} className={styles.checkBox} />
+                                                <input id="yesInventory" type="checkbox" onChange={selectInventory.bind(this, "yesInventory")} checked={isInventory === "ja"} className={styles.checkBox} />
                                             </div>
                                             <div>
                                                 <label htmlFor="isNotInventory"> Nein </label>
-                                                <input id="noInventory" type="checkbox" onChange={selectInventory.bind(this, "noInventory")} checked={isInventory === "no"} className={styles.checkBox} />
+                                                <input id="noInventory" type="checkbox" onChange={selectInventory.bind(this, "noInventory")} checked={isInventory === "nein"} className={styles.checkBox} />
                                             </div>
                                         </div>
                                     </div>
@@ -174,18 +303,18 @@ export default function EntruemelungAnfrage() {
                                         <p className={styles.question}>Wie viele Zimmer müssen geräumt werden?</p>
                                         <div className={styles.inputLabelWrapper}>
                                             <label className={inputWithLabel.includes('rooms') ? styles.label : styles.noLabel}>Anzahl Zimmer</label>
-                                            <input className={styles.inputShort} onChange={displayLabel.bind(this)} type="text" id="rooms" placeholder="Anzahl Zimmer" />
+                                            <input className={invalidInputs.includes('rooms') ? styles.invalidShortInput : styles.inputShort} ref={roomRef} onChange={displayLabel.bind(this)} type="text" id="rooms" placeholder="Anzahl Zimmer" />
                                         </div>
                                     </div>
                                     <div className={styles.questionBox}>
                                         <p className={styles.question}>Bis wann muss die Immobilie geräumt werden?</p>
                                         <div className={styles.inputLabelWrapper}>
                                             <label className={inputWithLabel.includes('date') ? styles.label : styles.noLabel}>Monat/Jahr</label>
-                                            <input className={styles.inputShort} onChange={displayLabel.bind(this)} type="text" id="date" placeholder="Monat/Jahr" />
+                                            <input className={invalidInputs.includes('date') ? styles.invalidShortInput : styles.inputShort} ref={dateRef} onChange={displayLabel.bind(this)} type="text" id="date" placeholder="Monat/Jahr" />
                                         </div>
                                     </div>
                                     <div className={styles.btnBoxFirstStep}>
-                                        <button className={styles.nextStepBTN} type="button" onClick={setStep.bind(this, 2)}>weiter</button>
+                                        <button className={styles.nextStepBTN} type="button" onClick={changeStep.bind(this, 2)}>weiter</button>
                                     </div>
 
                                 </div>
@@ -193,49 +322,51 @@ export default function EntruemelungAnfrage() {
 
                             <div className={step !== 2 ? styles.displayNone : ""}>
                                 <div className={styles.questionBox}>
-                                    <p className={styles.question}>Anrede</p>
-                                    <div className={styles.inputBox}>
-                                        <div>
-                                            <label htmlFor="genderWoman">Frau</label>
-                                            <input id="genderWoman" type="checkbox" checked={isGender === "genderWoman"} onChange={selectGender.bind(this)} className={styles.checkBox} />
-                                        </div>
-                                        <div>
-                                            <label htmlFor="genderMan">Herr</label>
-                                            <input id="genderMan" type="checkbox" checked={isGender === "genderMan"} onChange={selectGender.bind(this)} className={styles.checkBox} />
-                                        </div>
+                                    <div className={invalidInputs.includes('gender') ? styles.invalidCheckboxes : ""}>
+                                        <p className={styles.question}>Anrede</p>
+                                        <div className={styles.inputBox}>
+                                            <div>
+                                                <label htmlFor="genderWoman">Frau</label>
+                                                <input id="Frau" type="checkbox" checked={isGender === "Frau"} onChange={selectGender.bind(this)} className={styles.checkBox} />
+                                            </div>
+                                            <div>
+                                                <label htmlFor="genderMan">Herr</label>
+                                                <input id="Herr" type="checkbox" checked={isGender === "Herr"} onChange={selectGender.bind(this)} className={styles.checkBox} />
+                                            </div>
 
-                                        <div>
-                                            <label htmlFor="genderUnkown">An</label>
-                                            <input id="genderUnkown" type="checkbox" checked={isGender === "genderUnkown"} onChange={selectGender.bind(this)} className={styles.checkBox} />
+                                            <div>
+                                                <label htmlFor="genderUnkown">An</label>
+                                                <input id="An" type="checkbox" checked={isGender === "An"} onChange={selectGender.bind(this)} className={styles.checkBox} />
+                                            </div>
                                         </div>
                                     </div>
                                     <div className={styles.questionBox}>
                                         <p className={styles.question}>Angebotsanschrift</p>
                                         <div className={styles.inputBox}>
                                             <div className={styles.inputLabelWrapper}>
-                                                <label className={inputWithLabel.includes('nameOffer') ? styles.label : styles.noLabel}>Name</label>
-                                                <input className={styles.inputLong} onChange={displayLabel.bind(this)} type="text" id="nameOffer" placeholder="Name" />
+                                                <label className={inputWithLabel.includes('nameOffer') ? styles.label : styles.noLabel}>Vor- & Nachname</label>
+                                                <input className={invalidInputs.includes('nameOffer') ? styles.invalidLongInput : styles.inputLong} ref={nameOfferRef} onChange={displayLabel.bind(this)} type="text" id="nameOffer" placeholder="Vor- & Nachname" />
                                             </div>
                                         </div>
                                         <div className={styles.inputBox}>
                                             <div className={styles.inputLabelWrapper}>
                                                 <label className={inputWithLabel.includes('townOffer') ? styles.label : styles.noLabel}>Ort</label>
-                                                <input className={styles.inputLong} onChange={displayLabel.bind(this)} id="townOffer" type="text" ref={townOfferRef} placeholder="Ort" />
+                                                <input className={invalidInputs.includes('townOffer') ? styles.invalidLongInput : styles.inputLong} onChange={displayLabel.bind(this)} id="townOffer" type="text" ref={townOfferRef} placeholder="Ort" />
                                             </div>
                                             <div className={styles.inputLabelWrapper}>
                                                 <label className={inputWithLabel.includes('zipOffer') ? styles.label : styles.noLabel}>Postleitzahl</label>
-                                                <input className={styles.inputShort} id="zipOffer" type="text" onChange={displayLabel.bind(this)} placeholder="Postleitzahl" />
+                                                <input className={invalidInputs.includes('zipOffer') ? styles.invalidShortInput : styles.inputShort} ref={zipOfferRef} id="zipOffer" type="text" onChange={displayLabel.bind(this)} placeholder="Postleitzahl" />
                                             </div>
 
                                         </div>
                                         <div className={styles.inputBox}>
                                             <div className={styles.inputLabelWrapper}>
                                                 <label className={inputWithLabel.includes('streetOffer') ? styles.label : styles.noLabel}>Straße</label>
-                                                <input className={styles.inputLong} onChange={displayLabel.bind(this)} type="text" id="streetOffer" placeholder="Straße" />
+                                                <input className={invalidInputs.includes('streetOffer') ? styles.invalidLongInput : styles.inputLong} ref={streetOfferRef} onChange={displayLabel.bind(this)} type="text" id="streetOffer" placeholder="Straße" />
                                             </div>
                                             <div className={styles.inputLabelWrapper}>
                                                 <label className={inputWithLabel.includes('streetnumberOffer') ? styles.label : styles.noLabel}>Hausnummer</label>
-                                                <input className={styles.inputShort} onChange={displayLabel.bind(this)} type="text" id="streetnumberOffer" placeholder="Hausnummer" />
+                                                <input className={invalidInputs.includes('streetnumberOffer') ? styles.invalidShortInput : styles.inputShort} ref={streetNumberOfferRef} onChange={displayLabel.bind(this)} type="text" id="streetnumberOffer" placeholder="Hausnummer" />
                                             </div>
                                         </div>
                                     </div>
@@ -247,20 +378,20 @@ export default function EntruemelungAnfrage() {
                                         <div className={styles.inputBox}>
                                             <div className={styles.inputLabelWrapper}>
                                                 <label className={inputWithLabel.includes('email') ? styles.label : styles.noLabel}>E-Mail</label>
-                                                <input className={styles.inputLong} onChange={displayLabel.bind(this)} type="email" id="email" placeholder="E-Mail" />
+                                                <input className={invalidInputs.includes('email') ? styles.invalidLongInput : styles.inputLong} ref={emailRef} onChange={displayLabel.bind(this)} type="email" id="email" placeholder="E-Mail" />
                                             </div>
                                         </div>
                                         <div className={styles.inputBox}>
                                             <div className={styles.inputLabelWrapper}>
                                                 <label className={inputWithLabel.includes('tel') ? styles.label : styles.noLabel}>Telefonnummer</label>
-                                                <input className={styles.inputLong} onChange={displayLabel.bind(this)} type="text" id="tel" placeholder="Telefonnummer" />
+                                                <input className={invalidInputs.includes('tel') ? styles.invalidLongInput : styles.inputLong} ref={phoneRef} onChange={displayLabel.bind(this)} type="text" id="tel" placeholder="Telefonnummer" />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className={styles.btnBox}>
                                     <button className={styles.backStepBTN} type="button" onClick={setStep.bind(this, 1)}>zurück</button>
-                                    <button className={styles.nextStepBTN} type="button" onClick={setStep.bind(this, 3)}>weiter</button>
+                                    <button className={styles.nextStepBTN} type="button" onClick={changeStep.bind(this, 3)}>weiter</button>
                                 </div>
                             </div>
 
@@ -292,26 +423,23 @@ export default function EntruemelungAnfrage() {
                             {step === 4 && <div className={styles.summerizeStepWrapper}>
                                 <div>
                                     <h4>Angaben zu Immobilie:</h4>
-                                    <p>Anschrift: <em>{townRef.current.value}</em></p>
-                                    <p> Anzahl der Zimmer: </p>
-
-                                    <p>Räumung von Schrankinhalten: </p>
-
-
-                                    <p>Wunschtermin: </p>
+                                    <p>Anschrift: <span className={styles.summerizeValue}>{streetRef.current.value} {streetNumberRef.current.value} in {zipRef.current.value} {townRef.current.value} </span> </p>
+                                    <p>Objektart: <span className={styles.summerizeValue}> {isObject}<span className={isObject === "Wohnung" ? "" : styles.displayNone}>, Etage: {floorRef.current.value} </span> </span> </p>
+                                    <p> Anzahl der Zimmer:<span className={styles.summerizeValue}> {roomRef.current.value}</span> </p>
+                                    <p>Räumung von Schrankinhalten:<span className={styles.summerizeValue}> {isInventory}</span> </p>
+                                    <p>Wunschtermin: <span className={styles.summerizeValue}>{dateRef.current.value}</span> </p>
                                 </div>
                                 <div>
                                     <h4>Angebotsanschrift & Kontaktinformationen:</h4>
-                                    <p>Name: </p>
-                                    <p>Anschrift</p>
-                                    <p>E-Mail: </p>
-                                    <p>Telefon: </p>
+                                    <p>Name: <span className={styles.summerizeValue}> {isGender} {nameOfferRef.current.value}</span> </p>
+                                    <p>Anschrift: <span className={styles.summerizeValue}>{streetOfferRef.current.value} {streetNumberRef.current.value} in {zipOfferRef.current.value} {townOfferRef.current.value}</span></p>
+                                    <p>E-Mail: <span className={styles.summerizeValue}>{emailRef.current.value} </span></p>
+                                    <p>Telefon:<span className={styles.summerizeValue}> {phoneRef.current.value} </span></p>
                                 </div>
                                 <div>
                                     <h4>Hochgeladene Dateien</h4>
-                                    <p> Sie haben {files.length} Dateien hochgeladen. <u>Dateien bearbeiten</u></p>
+                                    <p> Sie haben {files.length} Dateien hochgeladen. <span className={styles.summerzizeLink} onClick={setStep.bind(this, 3)}>Dateien bearbeiten</span></p>
                                 </div>
-
 
                                 <div className={styles.btnBox}>
                                     <button type="button" className={styles.backStepBTN} onClick={setStep.bind(this, 3)}>zurück</button>

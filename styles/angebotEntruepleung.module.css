@@ -60,6 +60,44 @@
     width: 30rem;
 }
 
+.invalidLongInput {
+    border: none;
+    border-bottom: 1px solid #f74444;
+    outline: none;
+    font-size: 1em;
+    padding: 0.5rem 0 0.5rem 0;
+    width: 30rem;
+}
+
+.invalidLongInput::placeholder {
+    color: #f74444;
+}
+
+.invalidShortInput::placeholder {
+    color: #f74444;
+}
+
+.invalidShortInput {
+    border: none;
+    border-bottom: 1px solid #f74444;
+    outline: none;
+    font-size: 1em;
+    padding: 0.5rem 0 0.5rem 0;
+    max-width: 30rem;
+}
+
+.invalidCheckboxes {
+    padding: 0.5rem;
+    border: 1px solid #f74444;
+    border-radius: 5px;
+}
+
+.validCheckboxes {
+    padding: 0;
+    border: none;
+    border-radius: 0px;
+}
+
 .inputShort {
     max-width: 30rem
 }
@@ -235,4 +273,15 @@
 
 .summerizeStepWrapper {
     margin-top: 3rem;
+}
+
+
+.summerizeValue {
+    font-style: italic;
+    padding-left: 0.5rem;
+}
+
+.summerzizeLink {
+    text-decoration: underline;
+    cursor: pointer;
 }
