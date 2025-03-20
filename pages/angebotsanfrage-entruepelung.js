@@ -2,6 +2,7 @@ import { Fragment } from "react"
 import styles from '../styles/angebotEntruepleung.module.css'
 import Head from "next/head"
 import { BsCheckCircleFill, BsTrash, BsWhatsapp, Bs1Circle, Bs2Circle, Bs3Circle, Bs4Circle } from "react-icons/bs";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 import { AiOutlineVideoCameraAdd } from "react-icons/ai";
 import { useRef, useState } from "react";
 
@@ -227,16 +228,18 @@ export default function EntruemelungAnfrage() {
                     <div className={step === 4 ? styles.stepActive : styles.stepInactive}>
                         <p><Bs4Circle className={step === 4 ? styles.activeIcon : styles.displayNone} />{step !== 4 ? "4." : ""} Zusammenfassung</p>
                     </div>
-                    {step === 3 && <div className={styles.exampleVideoWrapper}>
+                    {/* {step === 3 && <div className={styles.exampleVideoWrapper}>
                         <p className={styles.headlineExampleVideo}>Beispielvideo</p>
                         <video className={styles.exapmpleVideo} width="250" height="230" controls preload="none" poster="/entruempelung_bonn_koeln_thumbnail.webp">
                             <source src="/Entruemeplung_koeln_bonn_video.mp4" type="video/mp4" />
                             Dieses Fortmat wird von Ihrem Browser leider nicht unterstützt.
                         </video>
-                    </div>}
+                    </div>} */}
                 </div>
                 <div className={styles.mobileStepBox}>
-                    <p>Schritt {step} von 3 - <span className={styles.summerzizeLink}>Schritte anzeigen </span> </p>
+                    <p>
+                        Schritt {step} von 4 - {step === 1 && "Angaben Immobilie"} {step === 2 && "Kontaktinformation"} {step === 3 && "Video hochladen (Optional)"} {step === 4 && "Zusammenfassung"}
+                    </p>
                 </div>
                 <div className={styles.formBox}>
                     <div >
@@ -399,28 +402,38 @@ export default function EntruemelungAnfrage() {
                             </div>
 
                             <div className={step !== 3 ? styles.displayNone : ""}>
-                                <p> Laden Sie Video oder Bilder der Räumlichkeiten hoch & wir senden Ihnen umgehend einen Festpreiskostenvoranschlag zu. </p>
+                                <p> Laden Sie Videos oder Bilder der Räumlichkeiten hoch & wir senden Ihnen umgehend einen Festpreiskostenvoranschlag zu. </p>
                                 <p> Oder senden Sie Ihr Video ganz einfach via <BsWhatsapp className={styles.whatsAppIcon} /> WhatsApp an 0170 - 723 0 385</p>
 
-                                <div className={styles.uploadWrapper}>
-                                    <div>
-                                        <div className={styles.uploadFormGroup}>
+                                <div>
+                                    <div className={styles.exampleVideoWrapper}>
+                                        <div>
                                             <label htmlFor="fileupload" className={styles.customFileBTN}>
                                                 <AiOutlineVideoCameraAdd /> Dateien hochladen
                                             </label>
                                             <input multiple type="file" id="fileupload" className={styles.inputFile} onChange={handleFileChange} ref={fileRef}></input>
-                                            <div className={styles.uploadedVideoBox}>
-                                                {files.length === 0 && <p>Noch keine Dateien hochgeladen</p>}
-                                                {files.map(file => <div key={Math.random()} className={styles.uploadFileEntryWrapper}> <div className={styles.iconAndNameVideoWrapper}> <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
-                                                    {file.name}</div> <span className={styles.trashIcon}>
-                                                        <BsTrash onClick={deleteFile.bind(this, file.name)} /></span> </div>)}
-                                            </div>
+                                        </div>
+                                        <div>
+                                            <p className={styles.headlineExampleVideo}>Beispielvideo</p>
+                                            <video className={styles.exapmpleVideo} width="250" height="230" controls preload="none" poster="/entruempelung_bonn_koeln_thumbnail.webp">
+                                                <source src="/Entruemeplung_koeln_bonn_video.mp4" type="video/mp4" />
+                                                Dieses Fortmat wird von Ihrem Browser leider nicht unterstützt.
+                                            </video>
                                         </div>
                                     </div>
                                 </div>
+                                <div className={files.length > 0 ? styles.uploadFormGroup : styles.displayNone}>
+                                    <div className={styles.uploadedVideoBox}>
+                                        {files.length === 0 && <p>Noch keine Dateien hochgeladen</p>}
+                                        {files.map(file => <div key={Math.random()} className={styles.uploadFileEntryWrapper}> <div className={styles.iconAndNameVideoWrapper}> <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
+                                            {file.name}</div> <span className={styles.trashIcon}>
+                                                <BsTrash onClick={deleteFile.bind(this, file.name)} /></span> </div>)}
+                                    </div>
+                                </div>
+
                                 <div className={styles.btnBoxVideoUpoad}>
-                                    <button type="button" className={styles.backStepBTN} onClick={setStep.bind(this, 2)}>zurück</button>
-                                    <button type="button" className={files.length === 0 ? styles.backStepBTN : styles.nextStepBTN} onClick={setStep.bind(this, 4)}>{files.length === 0 ? "weiter (ohne Video)" : "weiter"} </button>
+                                    <button type="button" className={styles.backStepBTNVideo} onClick={setStep.bind(this, 2)}>zurück</button>
+                                    <button type="button" className={files.length === 0 ? styles.backStepBTNVideo : styles.nextStepBTNVideo} onClick={setStep.bind(this, 4)}>{files.length === 0 ? "weiter (ohne Video)" : "weiter"} </button>
                                 </div>
                             </div>
                             {step === 4 && <div className={styles.summerizeStepWrapper}>

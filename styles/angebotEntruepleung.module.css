@@ -140,7 +140,8 @@
     font-weight: 600;
 }
 
-.nextStepBTN {
+.nextStepBTN,
+.nextStepBTNVideo {
     background-color: #FBD914;
     color: #0058A3;
     border: none;
@@ -153,13 +154,16 @@
     cursor: pointer;
 }
 
-.backStepBTN {
+
+
+.backStepBTN,
+.backStepBTNVideo {
     background-color: transparent;
     color: #0058A3;
-    border: #0058A3 1px solid;
+    border: #0058A3 0.5px solid;
     outline: none;
     font-size: 1.5em;
-    font-weight: 600;
+    font-weight: 500;
     margin-top: 3rem;
     padding: 0.5rem 2rem 0.5rem 2rem;
     border-radius: 5px;
@@ -168,20 +172,16 @@
 
 .btnBoxFirstStep {
     display: flex;
-    justify-content: flex-start;
-    max-width: 30rem;
 }
 
 .btnBox {
     display: flex;
-    justify-content: space-between;
-    max-width: 30rem;
+    column-gap: 2rem;
 }
 
 .displayNone {
     display: none;
 }
-
 
 .uploadWrapper {
     display: flex;
@@ -191,7 +191,9 @@
 }
 
 .exampleVideoWrapper {
-    margin-top: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .exapmpleVideo {
@@ -200,12 +202,14 @@
     border-radius: 5px;
     border: none;
     outline: none;
+    width: 20vw;
+    height: calc(100vw/8)
 }
 
 .btnBoxVideoUpoad {
     display: flex;
-    justify-content: space-between;
-    max-width: 50vw;
+    column-gap: 2rem;
+
 }
 
 .uploadFormGroup {
@@ -236,7 +240,7 @@
 
 .whatsAppIcon {
     color: #4CCA5A;
-    margin-left: 0.5rem;
+    margin-left: 0.25rem;
 }
 
 .videoBoxP {
@@ -265,12 +269,13 @@
 
 .trashIcon {
     color: rgb(253, 129, 129);
+    cursor: pointer;
 }
 
 .uploadedVideoBox {
     padding: 1rem;
     box-shadow: gray 0 0 2px;
-    min-width: 40vw;
+    min-width: 50vw;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -297,7 +302,7 @@
 }
 
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1420px) {
     .stepsBox {
         display: none;
     }
@@ -315,17 +320,45 @@
         display: block;
     }
 
+    .btnBoxVideoUpoad {
+        max-width: 90vw;
+    }
+
+    .uploadedVideoBox {
+        min-width: 90vw;
+    }
+
+    .section {
+        margin-right: 5vw;
+        margin-left: 5vw;
+    }
+
+    .exapmpleVideo {
+        width: 28vw;
+        height: calc(100vw/5.5)
+    }
+
+}
+
+@media screen and (max-width: 1000px) {
+    .exampleVideoWrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        row-gap: 2rem;
+        margin-top: 3rem;
+    }
+
+    .btnBoxVideoUpoad {
+        margin-top: 2rem;
+    }
+
 }
 
 
 @media screen and (max-width: 880px) {
     .headline {
         font-size: 2em;
-    }
-
-    .section {
-        margin-right: 5vw;
-        margin-left: 5vw;
     }
 
     .inputLong,
@@ -342,7 +375,56 @@
         column-gap: 0.75rem;
     }
 
+    .uploadFormGroup {
+        margin-top: 0;
+    }
+
+    .exapmpleVideo {
+        width: 35vw;
+        height: calc(100vw/4)
+    }
+
 }
+
+@media screen and (max-width: 680px) {
+
+    .customFileBTN,
+    .backStepBTNVideo,
+    .nextStepBTNVideo {
+        font-size: 1.2em;
+    }
+
+    .exapmpleVideo {
+        width: 45vw;
+        height: calc(100vw/3)
+    }
+}
+
+@media screen and (max-width: 500px) {
+
+    .backStepBTNVideo,
+    .nextStepBTNVideo {
+        font-size: 1.2em;
+        padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+    }
+
+    .btnBoxFirstStep,
+    .btnBox,
+    .btnBoxVideoUpoad {
+        justify-content: space-between;
+    }
+
+    .exapmpleVideo {
+        width: 60vw;
+        height: calc(100vw/2)
+    }
+
+    .checkIconVideo {
+        font-size: 1.2em;
+    }
+
+}
+
 
 @media screen and (max-width: 425px) {
     .headline {
@@ -368,5 +450,21 @@
         margin-top: 1rem;
     }
 
+    .btnBoxVideoUpoad {
+        max-width: 90vw;
+    }
 
+    .uploadedVideoBox {
+        min-width: 90vw;
+    }
+
+}
+
+@media screen and (max-width: 370px) {
+
+    .backStepBTNVideo,
+    .nextStepBTNVideo {
+        font-size: 1em;
+        padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+    }
 }
