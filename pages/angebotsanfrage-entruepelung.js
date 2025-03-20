@@ -235,6 +235,9 @@ export default function EntruemelungAnfrage() {
                         </video>
                     </div>}
                 </div>
+                <div className={styles.mobileStepBox}>
+                    <p>Schritt {step} von 3 - <span className={styles.summerzizeLink}>Schritte anzeigen </span> </p>
+                </div>
                 <div className={styles.formBox}>
                     <div >
                         <h1 className={styles.headline}>kostenfreies & unverbindliches Angebot </h1>
@@ -245,7 +248,7 @@ export default function EntruemelungAnfrage() {
                                 <div className={styles.questionBox}>
                                     <div className={invalidInputs.includes('property') ? styles.invalidCheckboxes : ""}>
                                         <p className={styles.question}>Welche Immobilie möchten Sie auflösen?</p>
-                                        <div className={styles.inputBox}>
+                                        <div className={styles.inputBoxCheckBox}>
                                             <div>
                                                 <label htmlFor="property "> Haus</label>
                                                 <input id="Haus" type="checkbox" onChange={selectObject.bind(this)} checked={isObject === "Haus"} className={styles.checkBox} />
@@ -288,7 +291,7 @@ export default function EntruemelungAnfrage() {
                                     </div>
                                     <div className={invalidInputs.includes('inventory') ? styles.invalidCheckboxes : styles.questionBox} >
                                         <p className={styles.questionInventory}>Müssen Schrankinhalte & Kleinartikel geräumt werden?</p>
-                                        <div className={styles.inputBox}>
+                                        <div className={styles.inputBoxCheckBox}>
                                             <div>
                                                 <label htmlFor="IsInvetory"> Ja</label>
                                                 <input id="yesInventory" type="checkbox" onChange={selectInventory.bind(this, "yesInventory")} checked={isInventory === "ja"} className={styles.checkBox} />
@@ -324,7 +327,7 @@ export default function EntruemelungAnfrage() {
                                 <div className={styles.questionBox}>
                                     <div className={invalidInputs.includes('gender') ? styles.invalidCheckboxes : ""}>
                                         <p className={styles.question}>Anrede</p>
-                                        <div className={styles.inputBox}>
+                                        <div className={styles.inputBoxCheckBox}>
                                             <div>
                                                 <label htmlFor="genderWoman">Frau</label>
                                                 <input id="Frau" type="checkbox" checked={isGender === "Frau"} onChange={selectGender.bind(this)} className={styles.checkBox} />
