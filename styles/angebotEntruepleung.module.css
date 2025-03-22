@@ -193,7 +193,8 @@
 .exampleVideoWrapper {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    column-gap: 3rem;
+    margin-top: 5rem;
 }
 
 .exapmpleVideo {
@@ -267,22 +268,26 @@
     font-size: 2em
 }
 
+.headlineExampleVideo {
+    padding-top: 0;
+    margin-top: 0;
+}
+
 .trashIcon {
     color: rgb(253, 129, 129);
     cursor: pointer;
 }
 
 .uploadedVideoBox {
-    padding: 1rem;
+    padding: 1rem 2rem 1rem 2rem;
     box-shadow: gray 0 0 2px;
-    min-width: 50vw;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     text-align: left;
     row-gap: 1rem;
-    margin-top: 5rem;
+    margin-top: 3rem;
 }
 
 .summerizeStepWrapper {
@@ -322,10 +327,6 @@
 
     .btnBoxVideoUpoad {
         max-width: 90vw;
-    }
-
-    .uploadedVideoBox {
-        min-width: 90vw;
     }
 
     .section {
@@ -460,11 +461,3 @@
 
 }
 
-@media screen and (max-width: 370px) {
-
-    .backStepBTNVideo,
-    .nextStepBTNVideo {
-        font-size: 1em;
-        padding: 0.5rem 0.8rem 0.5rem 0.8rem;
-    }
-}

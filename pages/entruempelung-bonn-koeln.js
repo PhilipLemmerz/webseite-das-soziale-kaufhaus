@@ -125,6 +125,7 @@ export default function EntrümpelungPage() {
             sendEmailVideo();
         }
     }
+    
 
     async function sendEmailViewing() {
         setLoading(true)

@@ -2,7 +2,6 @@ import { Fragment } from "react"
 import styles from '../styles/angebotEntruepleung.module.css'
 import Head from "next/head"
 import { BsCheckCircleFill, BsTrash, BsWhatsapp, Bs1Circle, Bs2Circle, Bs3Circle, Bs4Circle } from "react-icons/bs";
-import { IoIosCloseCircleOutline } from "react-icons/io";
 import { AiOutlineVideoCameraAdd } from "react-icons/ai";
 import { useRef, useState } from "react";
 
@@ -15,6 +14,10 @@ export default function EntruemelungAnfrage() {
     const [step, setStep] = useState(1);
     const [files, setFiles] = useState([]);
     const [invalidInputs, setInvalidInputs] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(false);
+    const date = new Date();
+    const timeStamp = date.getTime();
 
     const floorRef = useRef(null);
     const townRef = useRef(null);
@@ -34,8 +37,104 @@ export default function EntruemelungAnfrage() {
 
     async function submitHandler(event) {
         event.preventDefault();
-
+        prepareEmail();
     }
+
+
+    async function prepareEmail() {
+        setLoading(true)
+        try {
+            setErrorMessage(false);
+            // const data = {
+            //     property: isObject,
+            //     floor: floorRef.current.value,
+            //     town: townRef.current.value,
+            //     zip: zipRef.current.value,
+            //     street: streetRef.current.value,
+            //     streetNumber: streetNumberRef.current.value,
+            //     inventory: isInventory,
+            //     rooms: roomRef.current.value,
+            //     date: dateRef.current.value,
+            //     genderOffer: isGender,
+            //     nameOffer: nameOfferRef.current.value,
+            //     townOffer: townOfferRef.current.value,
+            //     zipOffer: zipOfferRef.current.value,
+            //     streetOffer: streetOfferRef.current.value,
+            //     streetNumberOffer: streetNumberOfferRef.current.value,
+            //     email: emailRef.current.value,
+            //     phone: phoneRef.current.value
+
+            // }
+
+            const data = {
+                nameOffer: 'test',
+                email: 'test',
+                phone: 'test',
+                adress: 'test',
+                qm: 'test',
+                category: 'test',
+            }
+
+            const fileNameArray = await uploadFiles(data.nameOffer);
+            await sendEmail(fileNameArray, data);
+
+
+        } catch (err) {
+            console.log(err)
+            setLoading(false)
+            setErrorMessage('Ups - Leider ist ein Fehler aufgetreten - Bitte versuchen Sie es erneut');
+        }
+    }
+
+    async function sendEmail(filenameArray, data) {
+        try {
+            const videoUrl = `https://portal.einsatzplaner.com/dsk-website/entruempelung/${filenameArray.join('+++')}`;
+            const response = await fetch('https://api.einsatzplaner.com/dsk-website/entruempelungForm', {
+                method: "POST",
+                body: JSON.stringify({ ...data, link: videoUrl }),
+                headers: { "Content-Type": "application/json" }
+            });
+            // Bis hier hin gedebuggt -> Status Code 400 
+            console.log(response)
+
+
+            if (response.ok) {
+                setLoading(false);
+                router.replace('anfrage-entruempelung-erhalten');
+            } else {
+                setLoading(false)
+                setErrorMessage('Ups - Leider ist ein Fehler aufgetreten - Bitte versuchen Sie es erneut');
+            }
+        } catch (err) {
+            console.log(err)
+            setLoading(false)
+            setErrorMessage('Ups - Leider ist ein Fehler aufgetreten - Bitte versuchen Sie es erneut');
+        }
+    }
+
+    async function uploadFiles(clientName) {
+        const fileNameArray = [];
+        for await (let file of files) {
+            const filename = `${clientName}-${timeStamp}-${Math.floor(1000 + Math.random() * 9000)}`;
+            fileNameArray.push(filename);
+            const response = await fetch('https://api.einsatzplaner.com/dsk-website/getSignedURL', {
+                method: "POST",
+                body: JSON.stringify({ method: "putObject", filename: filename }),
+                headers: { "Content-Type": "application/json" }
+            });
+            if (response.ok) {
+                const data = await response.json();
+                await fetch(`${data.url}`, {
+                    method: "PUT",
+                    body: file,
+                });
+            } else {
+                return false
+            }
+        }
+        return fileNameArray
+    }
+
 
     function selectObject(e) {
         const object = e.target.id;
@@ -384,7 +483,7 @@ export default function EntruemelungAnfrage() {
                                         <div className={styles.inputBox}>
                                             <div className={styles.inputLabelWrapper}>
                                                 <label className={inputWithLabel.includes('email') ? styles.label : styles.noLabel}>E-Mail</label>
-                                                <input className={invalidInputs.includes('email') ? styles.invalidLongInput : styles.inputLong} ref={emailRef} onChange={displayLabel.bind(this)} type="email" id="email" placeholder="E-Mail" />
+                                                <input className={invalidInputs.includes('email') ? styles.invalidLongInput : styles.inputLong} ref={emailRef} onChange={displayLabel.bind(this)} type="text" id="email" placeholder="E-Mail" />
                                             </div>
                                         </div>
                                         <div className={styles.inputBox}>
@@ -412,7 +511,17 @@ export default function EntruemelungAnfrage() {
                                                 <AiOutlineVideoCameraAdd /> Dateien hochladen
                                             </label>
                                             <input multiple type="file" id="fileupload" className={styles.inputFile} onChange={handleFileChange} ref={fileRef}></input>
+
+                                            <div className={files.length > 0 ? styles.uploadFormGroup : styles.displayNone}>
+                                                <div className={styles.uploadedVideoBox}>
+                                                    {files.length === 0 && <p>Noch keine Dateien hochgeladen</p>}
+                                                    {files.map(file => <div key={Math.random()} className={styles.uploadFileEntryWrapper}> <div className={styles.iconAndNameVideoWrapper}> <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
+                                                        {file.name}</div> <span className={styles.trashIcon}>
+                                                            <BsTrash onClick={deleteFile.bind(this, file.name)} /></span> </div>)}
+                                                </div>
+                                            </div>
                                         </div>
+
                                         <div>
                                             <p className={styles.headlineExampleVideo}>Beispielvideo</p>
                                             <video className={styles.exapmpleVideo} width="250" height="230" controls preload="none" poster="/entruempelung_bonn_koeln_thumbnail.webp">
@@ -420,14 +529,6 @@ export default function EntruemelungAnfrage() {
                                                 Dieses Fortmat wird von Ihrem Browser leider nicht unterstützt.
                                             </video>
                                         </div>
-                                    </div>
-                                </div>
-                                <div className={files.length > 0 ? styles.uploadFormGroup : styles.displayNone}>
-                                    <div className={styles.uploadedVideoBox}>
-                                        {files.length === 0 && <p>Noch keine Dateien hochgeladen</p>}
-                                        {files.map(file => <div key={Math.random()} className={styles.uploadFileEntryWrapper}> <div className={styles.iconAndNameVideoWrapper}> <span className={styles.checkIconVideo}><BsCheckCircleFill /></span>
-                                            {file.name}</div> <span className={styles.trashIcon}>
-                                                <BsTrash onClick={deleteFile.bind(this, file.name)} /></span> </div>)}
                                     </div>
                                 </div>
 
