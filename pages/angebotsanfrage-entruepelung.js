@@ -45,34 +45,24 @@ export default function EntruemelungAnfrage() {
         setLoading(true)
         try {
             setErrorMessage(false);
-            // const data = {
-            //     property: isObject,
-            //     floor: floorRef.current.value,
-            //     town: townRef.current.value,
-            //     zip: zipRef.current.value,
-            //     street: streetRef.current.value,
-            //     streetNumber: streetNumberRef.current.value,
-            //     inventory: isInventory,
-            //     rooms: roomRef.current.value,
-            //     date: dateRef.current.value,
-            //     genderOffer: isGender,
-            //     nameOffer: nameOfferRef.current.value,
-            //     townOffer: townOfferRef.current.value,
-            //     zipOffer: zipOfferRef.current.value,
-            //     streetOffer: streetOfferRef.current.value,
-            //     streetNumberOffer: streetNumberOfferRef.current.value,
-            //     email: emailRef.current.value,
-            //     phone: phoneRef.current.value
-
-            // }
-
             const data = {
-                nameOffer: 'test',
-                email: 'test',
-                phone: 'test',
-                adress: 'test',
-                qm: 'test',
-                category: 'test',
+                property: isObject,
+                floor: floorRef.current.value,
+                town: townRef.current.value,
+                zip: zipRef.current.value,
+                street: streetRef.current.value,
+                streetNumber: streetNumberRef.current.value,
+                inventory: isInventory,
+                rooms: roomRef.current.value,
+                date: dateRef.current.value,
+                genderOffer: isGender,
+                nameOffer: nameOfferRef.current.value,
+                townOffer: townOfferRef.current.value,
+                zipOffer: zipOfferRef.current.value,
+                streetOffer: streetOfferRef.current.value,
+                streetNumberOffer: streetNumberOfferRef.current.value,
+                email: emailRef.current.value,
+                phone: phoneRef.current.value
             }
 
             const fileNameArray = await uploadFiles(data.nameOffer);
@@ -87,28 +77,49 @@ export default function EntruemelungAnfrage() {
     }
 
     async function sendEmail(filenameArray, data) {
-        try {
-            const videoUrl = `https://portal.einsatzplaner.com/dsk-website/entruempelung/${filenameArray.join('+++')}`;
-            const response = await fetch('https://api.einsatzplaner.com/dsk-website/entruempelungForm', {
-                method: "POST",
-                body: JSON.stringify({ ...data, link: videoUrl }),
-                headers: { "Content-Type": "application/json" }
-            });
-            // Bis hier hin gedebuggt -> Status Code 400 
-            console.log(response)
+        if (filenameArray.length > 0) {
+            try {
+                const videoUrl = `https://portal.einsatzplaner.com/dsk-website/entruempelung/${filenameArray.join('+++')}`;
+                const response = await fetch('http://localhost:3030/dsk-website/entruempelungForm', {
+                    method: "POST",
+                    body: JSON.stringify({ ...data, link: videoUrl }),
+                    headers: { "Content-Type": "application/json" }
+                });
+                console.log(response);
 
-
-            if (response.ok) {
-                setLoading(false);
-                router.replace('anfrage-entruempelung-erhalten');
-            } else {
+                if (response.ok) {
+                    setLoading(false);
+                    router.replace('anfrage-entruempelung-erhalten');
+                } else {
+                    setLoading(false)
+                    setErrorMessage('Ups - Leider ist ein Fehler aufgetreten - Bitte versuchen Sie es erneut');
+                }
+            } catch (err) {
+                console.log(err)
                 setLoading(false)
                 setErrorMessage('Ups - Leider ist ein Fehler aufgetreten - Bitte versuchen Sie es erneut');
             }
-        } catch (err) {
-            console.log(err)
-            setLoading(false)
-            setErrorMessage('Ups - Leider ist ein Fehler aufgetreten - Bitte versuchen Sie es erneut');
+        } else {
+            try {
+                const response = await fetch('http://localhost:3030/dsk-website/entruempelungForm', {
+                    method: "POST",
+                    body: JSON.stringify({ ...data }),
+                    headers: { "Content-Type": "application/json" }
+                });
+                console.log(response);
+
+                if (response.ok) {
+                    setLoading(false);
+                    router.replace('anfrage-entruempelung-erhalten');
+                } else {
+                    setLoading(false)
+                    setErrorMessage('Ups - Leider ist ein Fehler aufgetreten - Bitte versuchen Sie es erneut');
+                }
+            } catch (err) {
+                console.log(err)
+                setLoading(false)
+                setErrorMessage('Ups - Leider ist ein Fehler aufgetreten - Bitte versuchen Sie es erneut');
+            }
         }
     }
 
