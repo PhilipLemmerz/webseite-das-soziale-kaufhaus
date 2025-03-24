@@ -414,7 +414,7 @@ export default function EntrümpelungPage() {
                         <li> <span className={styles.blueCheck}><FaCheck /></span> durch Wiederverwertung Ihres Inventars <b className={styles.markUp}>nachhaltig & umweltschonend</b> </li>
                     </ul>
 
-                    <Link href="/angebotsanfrage-entruepelung"><button className={styles.offerButton}>kostenfreies Angebot <FaArrowRight className={styles.arrowRightOfferBTN} /> </button></Link>
+                    <Link href="/angebotsanfrage-entruempelung"><button className={styles.offerButton}>kostenfreies Angebot <FaArrowRight className={styles.arrowRightOfferBTN} /> </button></Link>
                 </div>
                 <Image className={styles.headerImage} src="/sozialkaufhaus-koeln-bonn-team.webp" alt="Entrümpelung Köln Bonn Team" width={750} height={450}></Image>
             </div>

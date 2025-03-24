@@ -31,7 +31,7 @@ export default function HeaderComponent() {
 
         checkIsLandingPage();
 
-        if (page === '/' && scrolledY > 300 || page === '/gebraucht-moebel' && scrolledY > 300 || page === '/karriere' && scrolledY > 300 || page === '/kleiderspende-bonn-koeln' && scrolledY > 300  || page === '/ueber-uns' && scrolledY > 300 || page.includes('blog') && scrolledY > 300 || page === "/entruempelung-bonn-koeln" && scrolledY > 900 || page === "/umzugsunternehmen-bonn-koeln" && scrolledY > 900 || page === '/moebelspende-bonn-koeln' && scrolledY > 300) {
+        if (page === '/' && scrolledY > 300 || page === '/gebraucht-moebel' && scrolledY > 300 || page === '/karriere' && scrolledY > 300 || page === '/kleiderspende-bonn-koeln' && scrolledY > 300 || page === '/ueber-uns' && scrolledY > 300 || page.includes('blog') && scrolledY > 300 || page === "/entruempelung-bonn-koeln" && scrolledY > 900 || page === "/umzugsunternehmen-bonn-koeln" && scrolledY > 900 || page === '/moebelspende-bonn-koeln' && scrolledY > 300) {
             activateScrollMenu()
         } else {
             deactivateScrollMenu()
@@ -97,7 +97,7 @@ export default function HeaderComponent() {
                             <div>
                                 <p className={styles.headlineBox}>Kontakt</p>
                                 <p className={styles.mailP}> <IoMailUnreadOutline className={styles.iconMail} /> info@dsk-nrw.de</p>
-                                <p className={styles.mailP}> <BsWhatsapp className={styles.iconWhatsApp} /> +49 (0) 151 11 4444 69</p>
+                                <p className={styles.mailP}> <BsWhatsapp className={styles.iconWhatsApp} /> {page.includes('entruempelung') && '+49 (0) 170 - 723 0 385'} {page.includes('entruempelung') === false && '+49 (0) 151 - 11 44 44 66'} </p>
                             </div>
                         </div>
                         <div onClick={setinfoSlider.bind(this, true)} className={styles.contentBoxInfoIcon}>
