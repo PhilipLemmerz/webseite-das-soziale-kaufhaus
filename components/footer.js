@@ -7,10 +7,13 @@ import { BsWhatsapp, BsInfoCircleFill, BsTelephone, BsFillCursorFill } from "rea
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from "react";
 import { AiOutlineCloseSquare } from "react-icons/ai";
+import { useRouter } from 'next/router'
 
 export default function FooterComponent() {
     const [menuMobile, setMenuMobile] = useState(false);
     const [menuInfo, setMenuInfo] = useState(false)
+    const router = useRouter();
+    const page = router.pathname;
 
     return (
         <Fragment>
@@ -33,7 +36,7 @@ export default function FooterComponent() {
                         <h4>Kontakt</h4>
                         <Link href="/kontakt"><p className={styles.link}> <BsFillCursorFill /> zum Kontaktformular</p></Link>
                         <p> <IoMailUnreadOutline /> info@dsk-nrw.de</p>
-                        <p> <BsWhatsapp />+49 (0) 151 11 4444 69</p>
+                        <p> <BsWhatsapp />{page.includes('entruempelung') && '+49 (0) 170 - 723 0 385'} {page.includes('entruempelung') === false && '+49 (0) 151 - 11 44 44 69'}</p>
                         <p className={styles.firstPhoneNumber}><BsTelephone /> Swisttal: +49 (0) 2254 - 600 480 5</p>
                         <p><BsTelephone /> Bonn: +49 (0) 228 - 227 983 49</p>
                     </div>
@@ -67,7 +70,7 @@ export default function FooterComponent() {
                     <h4>Kontakt</h4>
                     <Link href="/kontakt"><p className={styles.link}> <BsFillCursorFill /> zum Kontaktformular</p></Link>
                     <p> <IoMailUnreadOutline /> info@dsk-nrw.de</p>
-                    <p> <BsWhatsapp /> +49 (0) 151 11 4444 69</p>
+                    <p> <BsWhatsapp /> {page.includes('entruempelung') && '+49 (0) 170 - 723 0 385'} {page.includes('entruempelung') === false && '+49 (0) 151 - 11 44 44 69'}</p>
                     <p className={styles.firstPhoneNumber}><BsTelephone /> Swisttal: +49 (0) 2254 - 600 480 5</p>
                     <p><BsTelephone /> Bonn: +49 (0) 228 - 227 983 49</p>
                 </div>}

@@ -46,7 +46,7 @@ export default function KarrierePage() {
                         <p><b>Arbeitszeiten & Gehalt</b></p>
                         <ul className={styles.list}>
                             <li>Vollzeit</li>
-                            <li>2.300 bis 2.400 € / Monat</li>
+                            <li>13,00 € / Stunde</li>
                         </ul>
                         <p>
                             Wenn wir Ihr Interesse geweckt haben freuen wir uns auf Ihre Bewerbung per Email (info@dsk-nrw.de), WhatsApp (0151 - 11 44 44 69) oder über den Link unten.

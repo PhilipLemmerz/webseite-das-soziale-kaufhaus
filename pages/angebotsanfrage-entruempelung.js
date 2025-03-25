@@ -4,6 +4,7 @@ import Head from "next/head"
 import { BsCheckCircleFill, BsTrash, BsWhatsapp, Bs1Circle, Bs2Circle, Bs3Circle, Bs4Circle } from "react-icons/bs";
 import { AiOutlineVideoCameraAdd } from "react-icons/ai";
 import { useRef, useState } from "react";
+import router from 'next/router';
 
 export default function EntruemelungAnfrage() {
 
@@ -80,7 +81,7 @@ export default function EntruemelungAnfrage() {
         if (filenameArray.length > 0) {
             try {
                 const videoUrl = `https://portal.einsatzplaner.com/dsk-website/entruempelung/${filenameArray.join('+++')}`;
-                const response = await fetch('http://localhost:3030/dsk-website/entruempelungForm', {
+                const response = await fetch('https://api.einsatzplaner.com/dsk-website/entruempelungForm', {
                     method: "POST",
                     body: JSON.stringify({ ...data, link: videoUrl }),
                     headers: { "Content-Type": "application/json" }
@@ -101,7 +102,7 @@ export default function EntruemelungAnfrage() {
             }
         } else {
             try {
-                const response = await fetch('http://localhost:3030/dsk-website/entruempelungForm', {
+                const response = await fetch('https://api.einsatzplaner.com/dsk-website/entruempelungForm', {
                     method: "POST",
                     body: JSON.stringify({ ...data }),
                     headers: { "Content-Type": "application/json" }
@@ -337,14 +338,7 @@ export default function EntruemelungAnfrage() {
                     </div>
                     <div className={step === 4 ? styles.stepActive : styles.stepInactive}>
                         <p><Bs4Circle className={step === 4 ? styles.activeIcon : styles.displayNone} />{step !== 4 ? "4." : ""} Zusammenfassung</p>
-                    </div>
-                    {/* {step === 3 && <div className={styles.exampleVideoWrapper}>
-                        <p className={styles.headlineExampleVideo}>Beispielvideo</p>
-                        <video className={styles.exapmpleVideo} width="250" height="230" controls preload="none" poster="/entruempelung_bonn_koeln_thumbnail.webp">
-                            <source src="/Entruemeplung_koeln_bonn_video.mp4" type="video/mp4" />
-                            Dieses Fortmat wird von Ihrem Browser leider nicht unterstützt.
-                        </video>
-                    </div>} */}
+                    </div>                  
                 </div>
                 <div className={styles.mobileStepBox}>
                     <p>
@@ -573,15 +567,19 @@ export default function EntruemelungAnfrage() {
                                     <button type="button" className={styles.backStepBTN} onClick={setStep.bind(this, 3)}>zurück</button>
                                     <button className={styles.nextStepBTN} type="submit"> senden </button>
                                 </div>
+                                {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
 
                             </div>}
-
                         </form>
-
                     </div>
-
                 </div >
             </section >
+            {loading && <div className={styles.spinnerContainer}>
+                <div className={styles.loadingSpinner}>
+                </div>
+                <p> Bitte warten...</p>
+                <p> Videos & Bilder werden hochgeladen - bitte unterbrechen Sie diesen Vorgang nicht</p>
+            </div>}
 
 
         </Fragment >

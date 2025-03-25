@@ -20,7 +20,7 @@ export default function MöbelabholungPage() {
     const [errorMessage, setErrorMessage] = useState(false);
     const [scrollBTN, setScrollBTN] = useState(false);
     const [scrolledY, setScrolled] = useState(0);
-    const [loading, setLoading] = useState();
+    const [loading, setLoading] = useState(true);
     const date = new Date();
     const timeStamp = date.getTime();
 
