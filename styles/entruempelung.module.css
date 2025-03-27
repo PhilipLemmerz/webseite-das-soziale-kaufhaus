@@ -747,6 +747,7 @@
     margin-bottom: 5rem;
 }
 
+
 .howSectionSubheadline {
     font-size: 1.5em;
     color: #0057a3;
@@ -758,7 +759,7 @@
 
 .howSectionHeadline {
     margin: 0;
-    font-size: 2em;
+    font-size: 2.2em;
 }
 
 .workFlowWrapper {
@@ -914,6 +915,54 @@
 
 .headlineFAQ {
     font-size: 2em;
+}
+
+.headlineExampleVideo {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.howSectionDetail {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 5rem;
+    width: 80vw;
+}
+
+
+.exapmpleVideo {
+    object-fit: cover;
+    object-position: center;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    width: 25vw;
+    
+}
+
+.imageHowToDetail {
+    width: 25vw;
+    border-radius: 5px;
+}
+
+.howDetailWrapperStep1 {
+    display: flex;
+    column-gap: 5rem;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.howDetailWrapperStep2 {
+    display: flex;
+    column-gap: 5rem;
+    align-items: center;
+    margin-top: 3rem;
+
+}
+
+.stepOneTextBox {
+    text-align: left;
 }
 
 
