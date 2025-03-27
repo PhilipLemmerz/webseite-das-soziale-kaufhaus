@@ -20,7 +20,7 @@ export default function MöbelabholungPage() {
     const [errorMessage, setErrorMessage] = useState(false);
     const [scrollBTN, setScrollBTN] = useState(false);
     const [scrolledY, setScrolled] = useState(0);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const date = new Date();
     const timeStamp = date.getTime();
 
@@ -208,7 +208,7 @@ export default function MöbelabholungPage() {
                         <div className={styles.contactFormRow}>
                             <div className={styles.formGroupContact}>
                                 <label className={styles.label}>zusätzliche Bemerkung</label>
-                                <textarea placeholder="zusätzliche Bemerkungen" ref={messageRef} required className={styles.textarea}></textarea>
+                                <textarea placeholder="zusätzliche Bemerkungen" ref={messageRef}  className={styles.textarea}></textarea>
                             </div>
                         </div>
                         <div>

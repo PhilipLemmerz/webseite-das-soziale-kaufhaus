@@ -499,7 +499,9 @@
     resize: none;
 }
 
-.inputContact:focus, .inputAdressPLZ:focus, .inputAdressStreet:focus {
+.inputContact:focus,
+.inputAdressPLZ:focus,
+.inputAdressStreet:focus {
     background-color: #0057a30e;
 }
 
@@ -755,7 +757,7 @@
     .inputAdressStreet {
         width: 55%;
     }
-    
+
     .inputAdressPLZ {
         width: 45%
     }
@@ -821,7 +823,8 @@
         row-gap: 0.5rem;
     }
 
-    .inputAdressPLZ, .inputAdressStreet {
+    .inputAdressPLZ,
+    .inputAdressStreet {
         width: 100%;
     }
 
