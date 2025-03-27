@@ -174,7 +174,7 @@ export default function EntrümpelungPage() {
                             </p>
                         </div>
                     </div>
-                    <div className={styles.howDetailWrapperStep2}>
+                    <div className={styles.howDetailWrapperStep3}>
                         <div className={styles.stepOneTextBox}>
                             <h3>3.	Durchführung der Entrümpelung oder Wohnungsauflösung</h3>
                             <p>

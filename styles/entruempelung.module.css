@@ -920,13 +920,15 @@
 .headlineExampleVideo {
     padding-top: 0;
     margin-top: 0;
+    text-decoration: underline;
 }
 
 .howSectionDetail {
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin-top: 5rem;
+    margin-top: 10rem;
+    margin-bottom: 5rem;
     width: 80vw;
 }
 
@@ -938,7 +940,7 @@
     border: none;
     outline: none;
     width: 25vw;
-    
+
 }
 
 .imageHowToDetail {
@@ -953,7 +955,8 @@
     margin-top: 2rem;
 }
 
-.howDetailWrapperStep2 {
+.howDetailWrapperStep2,
+.howDetailWrapperStep3 {
     display: flex;
     column-gap: 5rem;
     align-items: center;
@@ -1225,6 +1228,30 @@
         padding: 0;
 
     }
+
+    .howDetailWrapperStep1 {
+        flex-direction: column;
+    }
+
+    .howDetailWrapperStep2 {
+        flex-direction: column-reverse;
+    }
+
+    .howDetailWrapperStep3 {
+        flex-direction: column;
+    }
+
+    .exapmpleVideo,
+    .imageHowToDetail {
+        width: 80vw;
+        height: calc(90vw/2);
+    }
+
+    .howSectionDetail,
+    .stepOneTextBox {
+        text-align: center;
+    }
+
 }
 
 
