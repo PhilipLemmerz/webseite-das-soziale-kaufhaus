@@ -35,6 +35,7 @@ export default function EntruemelungAnfrage() {
     const emailRef = useRef(null);
     const phoneRef = useRef(null);
     const fileRef = useState(null);
+    const messageRef = useState(null);
 
     async function submitHandler(event) {
         event.preventDefault();
@@ -63,7 +64,8 @@ export default function EntruemelungAnfrage() {
                 streetOffer: streetOfferRef.current.value,
                 streetNumberOffer: streetNumberOfferRef.current.value,
                 email: emailRef.current.value,
-                phone: phoneRef.current.value
+                phone: phoneRef.current.value,
+                message: messageRef.current.value || ''
             }
 
             const fileNameArray = await uploadFiles(data.nameOffer);
@@ -337,12 +339,12 @@ export default function EntruemelungAnfrage() {
                         <p><Bs3Circle className={step === 3 ? styles.activeIcon : styles.displayNone} /> {step !== 3 ? "3." : ""} Video & Bilder hochladen (Optional)</p>
                     </div>
                     <div className={step === 4 ? styles.stepActive : styles.stepInactive}>
-                        <p><Bs4Circle className={step === 4 ? styles.activeIcon : styles.displayNone} />{step !== 4 ? "4." : ""} Zusammenfassung</p>
-                    </div>                  
+                        <p><Bs4Circle className={step === 4 ? styles.activeIcon : styles.displayNone} />{step !== 4 ? "4." : ""} Zusammenfassung & Nachricht</p>
+                    </div>
                 </div>
                 <div className={styles.mobileStepBox}>
                     <p>
-                        Schritt {step} von 4 - {step === 1 && "Angaben Immobilie"} {step === 2 && "Kontaktinformation"} {step === 3 && "Video hochladen (Optional)"} {step === 4 && "Zusammenfassung"}
+                        Schritt {step} von 4 - {step === 1 && "Angaben Immobilie"} {step === 2 && "Kontaktinformation"} {step === 3 && "Video hochladen (Optional)"} {step === 4 && "Zusammenfassung & Nachricht"}
                     </p>
                 </div>
                 <div className={styles.formBox}>
@@ -561,6 +563,10 @@ export default function EntruemelungAnfrage() {
                                 <div>
                                     <h4>Hochgeladene Dateien</h4>
                                     <p> Sie haben {files.length} Dateien hochgeladen. <span className={styles.summerzizeLink} onClick={setStep.bind(this, 3)}>Dateien bearbeiten</span></p>
+                                </div>
+                                <div className={styles.textAreaWrapper}>
+                                    <label className={styles.labelTextarea}>Möchten Sie uns noch etwas mitteilen? (Optional)</label>
+                                    <textarea placeholder="zusätzliche Bemerkungen" ref={messageRef} className={styles.textarea}></textarea>
                                 </div>
 
                                 <div className={styles.btnBox}>
