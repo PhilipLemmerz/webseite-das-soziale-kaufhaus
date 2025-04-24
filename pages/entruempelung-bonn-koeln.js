@@ -23,6 +23,13 @@ export default function EntrümpelungPage() {
         } else {
             deactivateScrollMenu()
         }
+
+        if (typeof window !== 'undefined') {
+            const anchor = window.location.hash;
+            if (anchor.length > 0) {
+                localStorage.setItem('adwords', 'yes');
+            }
+        };
     });
 
     function activateScrollMenu() {
@@ -39,8 +46,7 @@ export default function EntrümpelungPage() {
                 <title>Entrümpelung & Haushhaltsauflösung in Bonn & Köln mit Ihrem Sozialkaufhaus</title>
                 <meta name="description" content="Entrümpelung in Bonn & Köln - Haushaltsauflösung mit Verwertung Ihrer Möbel zugunsten bedürftiger Menschen aus Bonn & Köln." />
             </Head>
-            {scrollBTN && <Link href="/angebotsanfrage-entruempelung"><button className={styles.scrollCTAButton}>kostenfreies Angebot</button></Link>}
-
+            {scrollBTN && <Link href="/angebotsanfrage-entruempelung/"><button className={styles.scrollCTAButton}>kostenfreies Angebot</button></Link>}
             <div className={styles.headerBox}>
                 <div>
                     <p className={styles.subHeadline}> wiederverwerten statt entsorgen</p>
@@ -53,7 +59,7 @@ export default function EntrümpelungPage() {
                         <li> <span className={styles.blueCheck}><FaCheck /></span> durch Wiederverwertung Ihres Inventars <b className={styles.markUp}>nachhaltig & umweltschonend</b> </li>
                     </ul>
 
-                    <Link href="/angebotsanfrage-entruempelung"><button className={styles.offerButton}>kostenfreies Angebot <FaArrowRight className={styles.arrowRightOfferBTN} /> </button></Link>
+                    <Link href="/angebotsanfrage-entruempelung/"><button className={styles.offerButton}>kostenfreies Angebot <FaArrowRight className={styles.arrowRightOfferBTN} /> </button></Link>
                 </div>
                 <Image className={styles.headerImage} src="/sozialkaufhaus-koeln-bonn-team.webp" alt="Entrümpelung Köln Bonn Team" width={750} height={450}></Image>
             </div>
@@ -198,7 +204,7 @@ export default function EntrümpelungPage() {
             </section>
 
             <section className={styles.callToActionSection}>
-                <Link href="/angebotsanfrage-entruempelung"><button className={styles.ctaBTN}>kostenloses Angebot erhalten<HiCursorClick /></button> </Link>
+                <Link href="/angebotsanfrage-entruempelung/"><button className={styles.ctaBTN}>kostenloses Angebot erhalten<HiCursorClick /></button> </Link>
             </section>
             <section className={styles.faqSection}>
                 <h2 className={styles.headlineFAQ}>Häufig gestellte Fragen</h2>
@@ -304,9 +310,9 @@ export default function EntrümpelungPage() {
                         </h3>
                         <p>
                             Leider sind die Vorlaufszeiten immer sehr unterschiedlich. Häufig können wir eine Entrümpelung binnen 2 bis 3 Wochen durchführen. Wir hatten jedoch
-                            in der Vergangenheit auch bereits Vorlaufzeiten von bis zu 10 Wochen. Die Vorlaufszeit hängt auch immer vom Umfang der Entrümpelung in Bonn oder 
-                            Köln ab.Gerne können wir Ihnen vorab eine telefonische Terminauskunft geben. Im besten Fall fragen Sie Ihre Entrümpelung inkl. einen Video 
-                            von den Räumlichkeiten über unsere Webseite an. Wir können Ihnen dann binnen maximal 2 Werktagen einen genauen Terminvorschlag 
+                            in der Vergangenheit auch bereits Vorlaufzeiten von bis zu 10 Wochen. Die Vorlaufszeit hängt auch immer vom Umfang der Entrümpelung in Bonn oder
+                            Köln ab.Gerne können wir Ihnen vorab eine telefonische Terminauskunft geben. Im besten Fall fragen Sie Ihre Entrümpelung inkl. einen Video
+                            von den Räumlichkeiten über unsere Webseite an. Wir können Ihnen dann binnen maximal 2 Werktagen einen genauen Terminvorschlag
                             inklusive Kostenvoranschlag zusenden.
                         </p>
                     </div>

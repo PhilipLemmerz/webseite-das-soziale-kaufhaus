@@ -7,7 +7,6 @@ import { useRef, useState } from "react";
 import router from 'next/router';
 
 export default function EntruemelungAnfrage() {
-
     const [isObject, setObject] = useState("undefiend");
     const [isInventory, setInventory] = useState("undefiend");
     const [inputWithLabel, setInputwithLabel] = useState([]);
@@ -19,7 +18,6 @@ export default function EntruemelungAnfrage() {
     const [errorMessage, setErrorMessage] = useState(false);
     const date = new Date();
     const timeStamp = date.getTime();
-
     const floorRef = useRef(null);
     const townRef = useRef(null);
     const zipRef = useRef(null);
@@ -47,6 +45,7 @@ export default function EntruemelungAnfrage() {
         setLoading(true)
         try {
             setErrorMessage(false);
+
             const data = {
                 property: isObject,
                 floor: floorRef.current.value,
@@ -65,12 +64,12 @@ export default function EntruemelungAnfrage() {
                 streetNumberOffer: streetNumberOfferRef.current.value,
                 email: emailRef.current.value,
                 phone: phoneRef.current.value,
-                message: messageRef.current.value || ''
+                message: messageRef.current.value || '',
+                adwords: localStorage.getItem('adwords') || 'no'
             }
 
             const fileNameArray = await uploadFiles(data.nameOffer);
             await sendEmail(fileNameArray, data);
-
 
         } catch (err) {
             console.log(err)
@@ -556,7 +555,7 @@ export default function EntruemelungAnfrage() {
                                 <div>
                                     <h4>Angebotsanschrift & Kontaktinformationen:</h4>
                                     <p>Name: <span className={styles.summerizeValue}> {isGender} {nameOfferRef.current.value}</span> </p>
-                                    <p>Anschrift: <span className={styles.summerizeValue}>{streetOfferRef.current.value} {streetNumberRef.current.value} in {zipOfferRef.current.value} {townOfferRef.current.value}</span></p>
+                                    <p>Anschrift: <span className={styles.summerizeValue}>{streetOfferRef.current.value} {streetNumberOfferRef.current.value} in {zipOfferRef.current.value} {townOfferRef.current.value}</span></p>
                                     <p>E-Mail: <span className={styles.summerizeValue}>{emailRef.current.value} </span></p>
                                     <p>Telefon:<span className={styles.summerizeValue}> {phoneRef.current.value} </span></p>
                                 </div>
