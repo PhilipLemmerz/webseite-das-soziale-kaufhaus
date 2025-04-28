@@ -57,7 +57,7 @@ export default function SortimentPage() {
             </section>
             <section className={styles.deliverySection}>
                 <Image className={styles.discountImage} src="/moebelspende-koeln-bonn-header.webp" alt="gebraucht-moebel Sozialkaufhaus Köln Bonn" width={500} height={300}></Image>
-                <p className={styles.discountText}>Lieferung bereits <span className={styles.percentText}>ab 25 Euro.</span> Montageservice & Lieferung in den Wohnraum gegen Aufpreis möglich.</p>
+                <p className={styles.discountText}>Lieferung bereits <span className={styles.percentText}>ab 25 Euro.</span> </p>
             </section>
 
             <section className={styles.faqSection}>
@@ -73,8 +73,8 @@ export default function SortimentPage() {
                     <div className={styles.questionBox}>
                         <h3 className={styles.question}>Liefern Sie meinen Gebraucht-Möbel Einkauf auch an? </h3>
                         <p>
-                            Ja, wir liefern Ihren Gebraucht-Möbel Einkauf auch zu Ihnen nach Hause. Die Lieferung ist ab 25 € möglich und berechnet sich aus der Entferung und dem Lieferaufwand an der Lieferadresse.
-                            Die genauen Lieferkosten teilen wir Ihnen bei Ihrem Einkauf mit. Gerne helfen wir Ihnen auch bei der Montage Ihres Gebraucht-Möbel Einkauf.
+                            Ja, wir liefern Ihren Gebraucht-Möbel Einkauf auch zu Ihnen nach Hause. Die Lieferung ist ab 25 € möglich und berechnet sich aus der Entferung Aufwand.
+                            Die genauen Lieferkosten teilen wir Ihnen bei Ihrem Einkauf mit.
                         </p>
                     </div>
                     <div className={styles.questionBox}>
