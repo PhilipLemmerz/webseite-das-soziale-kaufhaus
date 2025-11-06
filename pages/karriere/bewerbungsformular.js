@@ -107,6 +107,7 @@ export default function Apply(props) {
                 setErrorMessage('Ups - Leider ist ein Fehler aufgetreten - Bitte versuchen Sie es erneut');
             }
         } catch (err) {
+            console.log(err)
             setLoading(false)
             setErrorMessage('Ups - Leider ist ein Fehler aufgetreten - Bitte versuchen Sie es erneut');
         }

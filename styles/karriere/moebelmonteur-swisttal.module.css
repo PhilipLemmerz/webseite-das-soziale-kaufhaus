@@ -6,7 +6,7 @@
     column-gap: 2rem;
     height: 80vh;
     max-height: 450px;
-    background-image: url('../../public/entruempelung-koeln-bonn-header.webp');
+    background-image: url('../../public/jobs-bonn-warenauszeichnung.webp'); 
     padding-right: 3rem;
     padding-bottom: 3rem;
 }
@@ -76,7 +76,7 @@
     max-width: 300px;
     padding: 1rem 2rem 1rem 2rem;
     border-radius: 5px;
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 600;
 }
 
@@ -113,7 +113,7 @@
     flex-direction: column;
     align-items: center;
     padding: 5rem;
-    margin: 5rem 0 5rem 0;
+    margin: 5rem 0 2rem 0;
     background-color: #dcedf8;
 
 }
@@ -177,6 +177,39 @@
 }
 
 
+.applySection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0rem 0 5rem 0;
+}
+
+.applyBox {
+    border-radius: 5px;
+    max-width: 90vw;
+    padding: 2rem;
+    row-gap: 2rem;
+}
+
+.applyList {
+    list-style: none;
+    font-size: 1.5em;
+    border-bottom: 1px solid gray;
+}
+
+
+.applyList li {
+   padding-bottom: 1rem;
+}
+
+.applyBox p {
+   font-size: 1.1em;
+}
+
+
+
 @media screen and (max-width: 970px) {
 
     .header {
@@ -228,12 +261,12 @@
         margin: 5rem 2rem 5rem 2rem;
     }
 
-    .benefitList {
+    .benefitList, .applyList {
         font-size: 1.3em;
         padding-inline-start: 10px;
     }
 
-    .benefitBox {
+    .benefitBox, .applyBox {
         padding: 1rem;
     }
 
@@ -255,7 +288,7 @@
 }
 
 
-@media screen and (max-width: 490px) { 
+@media screen and (max-width: 490px) {
 
     .header {
         background-position: -100% 1%;
@@ -282,8 +315,12 @@
         width: 100%;
     }
 
-    .benefitList {
+    .benefitList, .applyBox, .applyList {
         font-size: 1.1em;
+    }
+
+    .applyBox p {
+        font-size: 1em;
     }
 
     .expectionBox {
@@ -298,14 +335,14 @@
         margin: 3rem 2rem 3rem 2rem;
     }
 
-    .scrollMenu {       
+    .scrollMenu {
         justify-content: center;
         padding-right: 0rem;
     }
 }
 
 
-@media screen and (min-width: 1000px) and (max-height: 610px) { 
+@media screen and (min-width: 1000px) and (max-height: 610px) {
     .header {
         height: 55vh;
     }
